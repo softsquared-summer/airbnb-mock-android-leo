@@ -1,8 +1,10 @@
-package com.shinplest.airbnbclone;
+package com.shinplest.airbnbclone.src.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.shinplest.airbnbclone.R;
 
 public class MainActivity extends AppCompatActivity {
 
