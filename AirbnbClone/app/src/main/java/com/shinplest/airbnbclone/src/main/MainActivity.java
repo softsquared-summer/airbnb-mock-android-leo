@@ -10,16 +10,56 @@ package com.shinplest.airbnbclone.src.main;
 
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 
 public class MainActivity extends BaseActivity {
+
+    private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
+
+
+        addActionBottomNavigation();
+
     }
+
+
+
+    private void addActionBottomNavigation(){
+        mBottomNavigationView = findViewById(R.id.bottom_navigation_main);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        return true;
+                    case R.id.action_savelist:
+                        return true;
+                    case R.id.action_travel:
+                        return true;
+//                    case R.id.:
+//                        mViewPager.setCurrentItem(3);
+//                        return true;
+//                    case R.id.action_five:
+//                        mViewPager.setCurrentItem(4);
+//                        return true;
+                }
+                return false;
+            }
+        });
+    }
+
+
+
+
 }
