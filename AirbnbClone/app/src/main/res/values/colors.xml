@@ -9,4 +9,12 @@
     <color name="basicText">#000000</color>
     <color name="secondText">#484848</color>
     <color name="placeholdText">#767676</color>
+
+
+    <!-- splash colors-->
+    <color name="splashBackground">#f2f2f2</color>
+    <color name="splaschLogo">#d4d4d4</color>
+
+    <!-- basic colors-->]
+    <color name="black">#000000</color>
 </resources>
