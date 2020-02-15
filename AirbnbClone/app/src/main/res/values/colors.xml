@@ -10,6 +10,9 @@
     <color name="secondText">#484848</color>
     <color name="placeholdText">#767676</color>
 
+    <!-- split line color-->
+    <color name="splitColor">#ebebeb</color>
+
 
     <!-- splash colors-->
     <color name="splashBackground">#f2f2f2</color>
