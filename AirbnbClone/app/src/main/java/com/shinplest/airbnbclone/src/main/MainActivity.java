@@ -7,18 +7,18 @@ package com.shinplest.airbnbclone.src.main;
 //fremelayout 대신 viewpager로 구현
 
 
-
-
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView mBottomNavigationView;
 
@@ -28,38 +28,50 @@ public class MainActivity extends BaseActivity {
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);
 
+        //기본으로 로드해주는 부분
+        loadFragment(new FragSearch());
 
-        addActionBottomNavigation();
-
-    }
-
-
-
-    private void addActionBottomNavigation(){
+        //버텀 네비바에 따라 바뀌는 부분
         mBottomNavigationView = findViewById(R.id.bottom_navigation_main);
-        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_search:
-                        return true;
-                    case R.id.action_savelist:
-                        return true;
-                    case R.id.action_travel:
-                        return true;
-//                    case R.id.:
-//                        mViewPager.setCurrentItem(3);
-//                        return true;
-//                    case R.id.action_five:
-//                        mViewPager.setCurrentItem(4);
-//                        return true;
-                }
-                return false;
-            }
-        });
+        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_main, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
 
-
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                fragment = new FragSearch();
+                break;
+            case R.id.action_savelist:
+                fragment = new FragSavelist();
+                break;
+            case R.id.action_travel:
+                fragment = new FragTravel();
+                break;
+            case R.id.action_message:
+                fragment = new FragMessage();
+                break;
+            case R.id.action_profile:
+                fragment = new FragProfile();
+                break;
+        }
+        return loadFragment(fragment);
+    }
 }
