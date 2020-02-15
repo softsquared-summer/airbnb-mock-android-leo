@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="countries">
+        <item>대한민국 (+82)</item>
+        <item>가나 (+233)</item>
+        <item>가봉 (+241)</item>
+        <item>가이아나 (+592)</item>
+        <item>감비아 (+220)</item>
+        <item>건지 (+44)</item>
+        <item>과들루프 (+590)</item>
+        <item>과테말라 (+502)</item>
+        <item>대한민국 (+82)</item>
+        <item>가나 (+233)</item>
+        <item>가봉 (+241)</item>
+        <item>가이아나 (+592)</item>
+        <item>감비아 (+220)</item>
+        <item>건지 (+44)</item>
+        <item>과들루프 (+590)</item>
+        <item>과테말라 (+502)</item>
+    </string-array>
+</resources>
