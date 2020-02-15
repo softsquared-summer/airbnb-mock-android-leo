@@ -7,5 +7,4 @@
             android:gravity="center"
             android:src="@drawable/splash_logo_96"/>
     </item>
-
 </layer-list>

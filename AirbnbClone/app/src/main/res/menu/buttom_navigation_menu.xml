@@ -3,31 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/it_buttom_search"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
+        android:id="@+id/action_search"
+        android:icon="@drawable/item_search"
         android:title="탐색하기" />
     <item
-        android:id="@+id/it_buttom_savelist"
-        app:showAsAction="ifRoom"
+        android:id="@+id/action_savelist"
+        android:icon="@drawable/item_savelist"
         android:title="저장 목록" />
     <item
-        android:id="@+id/it_buttom_travel"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
+        android:id="@+id/action_travel"
+        android:icon="@drawable/item_travel"
         android:title="여행" />
 
     <item
-        android:id="@+id/it_buttom_message"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
+        android:id="@+id/action_message"
+        android:icon="@drawable/item_message"
         android:title="메시지" />
 
     <item
-        android:id="@+id/it_buttom_profile"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
+        android:id="@+id/action_profile"
+        android:icon="@drawable/item_profile"
         android:title="프로필" />
-
 
 </menu>

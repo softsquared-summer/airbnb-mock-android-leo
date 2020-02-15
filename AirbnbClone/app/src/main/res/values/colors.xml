@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#d03442</color>
 
 
     <!--    font colors-->
     <color name="basicText">#000000</color>
     <color name="secondText">#484848</color>
     <color name="placeholdText">#767676</color>
+    <color name="buttonText">#ffffff</color>
 
     <!-- split line color-->
     <color name="splitColor">#ebebeb</color>
