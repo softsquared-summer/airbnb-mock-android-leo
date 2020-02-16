@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -16,7 +14,6 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends BaseActivity {
@@ -49,6 +46,7 @@ public class LoginActivity extends BaseActivity {
                 //핸드폰 유효성 검사
                 if(!Pattern.matches("^01(?:0|1|[6-9]) - (?:\\d{3}|\\d{4}) - \\d{4}$", phonenum))
                 {
+                    mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
                 }
                 else{

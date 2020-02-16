@@ -24,4 +24,8 @@
 
     <!-- basic colors-->]
     <color name="black">#000000</color>
+
+    <!-- buttonColor-->
+    <color name="buttonClickable">#ff5a60</color>
+    <color name="buttonUnclickable">#ffe1e1</color>
 </resources>

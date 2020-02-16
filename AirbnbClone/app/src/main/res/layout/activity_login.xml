@@ -133,7 +133,8 @@
                 android:layout_marginTop="10dp"
                 android:text="전화번호로 회원가입"
                 android:textColor="@color/buttonText"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:background="@drawable/shape_login_btn_unclickable"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
