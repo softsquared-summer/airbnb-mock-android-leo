@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/container_frag_search_search"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="80dp"
         android:background="@color/statusbackgroundColor"
         android:orientation="vertical"
         app:layout_collapseMode="parallax"
@@ -42,12 +42,50 @@
                 android:textColor="@color/secondText" />
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        app:layout_constraintTop_toBottomOf="@id/container_frag_search_search"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="?attr/colorPrimaryDark"
+                app:expandedTitleMarginStart="24dp"
+                app:expandedTitleMarginEnd="64dp"/>
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Platform.MaterialComponents.Light">
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
         <LinearLayout
             android:id="@+id/test2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_collapseMode="parallax">
+            app:layout_collapseMode="parallax"
+            android:background="@color/statusbackgroundColor">
 
             <Button
                 android:layout_width="wrap_content"
@@ -59,51 +97,6 @@
                 android:text="인원"/>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        app:layout_constraintTop_toBottomOf="@id/container_frag_search_search"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="?attr/colorPrimaryDark"
-                app:expandedTitleMarginStart="24dp"
-                app:expandedTitleMarginEnd="64dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textColor="@color/basicText"/>
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/Platform.MaterialComponents.Light">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom|end"
-                    app:layout_collapseMode="parallax"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Button"/>
-                </LinearLayout>
-
-
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -124,10 +117,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="test"/>
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="test"/>
+                    android:text="test" />
+
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
