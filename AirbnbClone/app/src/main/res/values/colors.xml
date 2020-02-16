@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#d03442</color>
 
+<!--    메인에서 검색창부분 색이 다름-->
+    <color name="statusbackgroundColor">#fcfdff</color>
+
 
     <!--    font colors-->
     <color name="basicText">#000000</color>
