@@ -16,9 +16,9 @@ public class SplashActivity extends BaseActivity {
 
         Intent activityIntent;
 
-        //테스트용으로 int값으로 하였음, 토큰있으면 메인, 없으면 로그인 창
+        //테스트용으로 int값으로 하였음, 토큰있으면 메인, 없으면 로그인 창 jwt위해 남겨놓는다.
         int token = 10;
-        if(token == 10){
+        if(token != 10){
             activityIntent = new Intent(this, MainActivity.class);
         }
         else
