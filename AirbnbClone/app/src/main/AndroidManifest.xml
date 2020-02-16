@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".src.main.MainActivity"/>
         <activity android:name=".src.login.LoginActivity"/>
+        <activity android:name=".src.register.RegisterActivity"/>
     </application>
 
 </manifest>
