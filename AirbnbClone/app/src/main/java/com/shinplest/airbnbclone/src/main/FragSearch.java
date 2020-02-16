@@ -24,15 +24,15 @@ public class FragSearch extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-
-        mLlSearch = view.findViewById(R.id.ll_frag_search_search);
-        mLlSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCustomToastFrag("test");
-                //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//        mLlSearch = view.findViewById(R.id.ll_frag_search_search);
+//        mLlSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showCustomToastFrag("test");
+//                //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return view;
     }

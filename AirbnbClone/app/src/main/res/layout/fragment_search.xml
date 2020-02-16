@@ -49,10 +49,6 @@
             android:orientation="horizontal"
             app:layout_collapseMode="parallax">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="날짜" />
 
         </LinearLayout>
 
