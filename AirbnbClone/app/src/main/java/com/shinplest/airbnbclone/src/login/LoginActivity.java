@@ -21,7 +21,6 @@ public class LoginActivity extends BaseActivity {
     private Button mBtnRegister;
     private EditText mEtPhonenum;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +30,10 @@ public class LoginActivity extends BaseActivity {
         mEtPhonenum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -44,18 +41,15 @@ public class LoginActivity extends BaseActivity {
                 String phonenum = mEtPhonenum.getText().toString();
 
                 //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어줌.
-                if(Pattern.matches( "^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$", phonenum))
-                {
+                if (Pattern.matches("^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$", phonenum)) {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
-                }
-                else{
+                } else {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_unclickable));
                     mBtnRegister.setEnabled(false);
                 }
             }
         });
-
 
         mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
