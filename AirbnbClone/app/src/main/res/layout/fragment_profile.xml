@@ -10,4 +10,11 @@
         android:textColor="@color/basicText"
         android:textSize="20dp"/>
 
+
+    <Button
+        android:id="@+id/btn_frag_profile_logout"
+        android:text="logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
