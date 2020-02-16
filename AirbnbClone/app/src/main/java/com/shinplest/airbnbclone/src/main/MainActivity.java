@@ -7,6 +7,8 @@ package com.shinplest.airbnbclone.src.main;
 //fremelayout 대신 viewpager로 구현
 
 
+//요즘 핫한 파이어 베이스를 통한 구글 로그인 구현 -> 로그인 정보 가져와서 profile에 넣어주는 기능 구현 필요
+
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
