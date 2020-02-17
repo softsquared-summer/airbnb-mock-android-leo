@@ -17,12 +17,12 @@
 
         <LinearLayout
             android:id="@+id/ll_frag_search_search"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/shape_rounding"
             android:clickable="true"
             android:elevation="2dp"
@@ -79,8 +79,8 @@
 
                     <Button
                         style="@style/SearchButton"
-                        android:background="@drawable/shape_btn"
                         android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_btn"
                         android:text="날짜"
                         android:textColor="@color/basicText" />
 
@@ -114,10 +114,10 @@
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/rv_frag_search_look_around"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20dp" />
 
                 <TextView
                     style="@style/TitleText"

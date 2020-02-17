@@ -46,6 +46,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(this.textSet[position]);
         holder.imageView.setBackgroundResource(this.imgSet[position]);
+        //fresco로 이미지 넣어주자
     }
 
     @Override
