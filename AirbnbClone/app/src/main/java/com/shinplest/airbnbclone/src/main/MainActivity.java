@@ -11,7 +11,6 @@ package com.shinplest.airbnbclone.src.main;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,6 +18,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.main.fragments.FragMessage;
+import com.shinplest.airbnbclone.src.main.fragments.FragProfile;
+import com.shinplest.airbnbclone.src.main.fragments.FragSavelist;
+import com.shinplest.airbnbclone.src.main.fragments.FragSearch;
+import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
