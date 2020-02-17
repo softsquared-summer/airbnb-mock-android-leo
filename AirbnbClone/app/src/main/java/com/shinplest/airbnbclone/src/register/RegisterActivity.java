@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterRetrofitInterface;
 
@@ -64,6 +66,11 @@ public class RegisterActivity extends BaseActivity {
                     public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                         DefaultResponse defaultResponse = response.body();
                         showCustomToast(defaultResponse.getMessage());
+                        if (defaultResponse.getCode() == 100){
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                     @Override
                     public void onFailure(Call<DefaultResponse> call, Throwable t) {

@@ -113,6 +113,10 @@
                     style="@style/TitleText"
                     android:text="에어비앤비 둘러보기" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <TextView
                     style="@style/TitleText"
                     android:text="에어비앤비 어드밴처를 소개합니다." />
