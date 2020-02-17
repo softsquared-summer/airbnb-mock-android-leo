@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,11 +93,13 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        //버튼 누르면 번호 가입 인텐트로 넘겨줌
         mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
                 startActivity(intent);
                 finish();
             }
