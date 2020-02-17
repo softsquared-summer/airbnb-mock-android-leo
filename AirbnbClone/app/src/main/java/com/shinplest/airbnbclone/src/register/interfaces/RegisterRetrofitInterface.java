@@ -2,6 +2,7 @@ package com.shinplest.airbnbclone.src.register.interfaces;
 
 
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
+import com.shinplest.airbnbclone.src.register.UserInfo;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -22,6 +23,6 @@ public interface RegisterRetrofitInterface {
             @Query("content") final String content
     );
 
-    @POST("/test")
-    Call<DefaultResponse> postTest(@Body RequestBody params);
+    @POST("/users")
+    Call<UserInfo> postTest(@Body UserInfo user);
 }

@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main;
+package com.shinplest.airbnbclone.src.main.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,15 +24,17 @@ public class FragSearch extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-//
-//        mLlSearch = view.findViewById(R.id.ll_frag_search_search);
-//        mLlSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showCustomToastFrag("test");
-//                //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+
+        //검색창 눌렀을때 온클릭 리스너
+        mLlSearch = view.findViewById(R.id.ll_frag_search_search);
+        mLlSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToastFrag("test");
+                //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }

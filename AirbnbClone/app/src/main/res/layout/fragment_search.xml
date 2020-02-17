@@ -95,13 +95,9 @@
                 </LinearLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/Platform.MaterialComponents.Light">
 
-            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -111,13 +107,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="24dp">
+                android:orientation="vertical">
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="test" />
+                <TextView
+                    style="@style/TitleText"
+                    android:text="에어비앤비 둘러보기" />
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="에어비앤비 어드밴처를 소개합니다." />
+
+                <TextView
+                    style="@style/BasicText"
+                    android:layout_marginTop="0dp"
+                    android:text="현지 전문가가 진행하는 2일 이상의 여행 - 액티비티, 식사, 숙박 포함" />
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="" />
 
                 <Button
                     android:layout_width="match_parent"
