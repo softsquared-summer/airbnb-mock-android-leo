@@ -24,5 +24,5 @@ public interface RegisterRetrofitInterface {
     );
 
     @POST("/users")
-    Call<UserInfo> postTest(@Body UserInfo user);
+    Call<DefaultResponse> postTest(@Body UserInfo user);
 }
