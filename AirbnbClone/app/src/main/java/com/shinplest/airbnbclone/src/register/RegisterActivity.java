@@ -62,8 +62,8 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                         showCustomToast(response.raw().toString());
+                        //showCustomToast(userInfo.getCode());
                     }
-
                     @Override
                     public void onFailure(Call<UserInfo> call, Throwable t) {
                         showCustomToast("network fail");
@@ -81,6 +81,6 @@ public class RegisterActivity extends BaseActivity {
         mEtPassword = findViewById(R.id.et_register_password);
     }
     private void getEditTextInfo(){
-       userInfo = new UserInfo("010-1111-1111", mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
+       userInfo = new UserInfo("010-1234-1234", mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
     }
 }

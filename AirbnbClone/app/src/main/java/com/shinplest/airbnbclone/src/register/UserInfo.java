@@ -1,5 +1,7 @@
 package com.shinplest.airbnbclone.src.register;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserInfo {
     private String phone;
     private String last_name;
@@ -7,6 +9,27 @@ public class UserInfo {
     private String birthday;
     private String email;
     private String pw;
+
+    @SerializedName("code")
+    private int code;
+
+    @SerializedName("message")
+    private String message;
+
+    @SerializedName("isSuccess")
+    private boolean isSuccess;
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public boolean getIsSuccess() {
+        return isSuccess;
+    }
 
     public UserInfo(String phone, String last_name, String first_name, String birthday, String email, String pw) {
         this.phone = phone;
