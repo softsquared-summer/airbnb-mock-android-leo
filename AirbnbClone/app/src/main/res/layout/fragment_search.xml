@@ -114,6 +114,7 @@
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_frag_search_look_around"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
