@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterRetrofitInterface;
-import com.shinplest.airbnbclone.src.register.models.DefaultResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,13 +24,12 @@ public class RegisterActivity extends BaseActivity {
     private UserInfo userInfo;
 
     //모든 에딧텍스트
-    private EditText mEtName;
+    private EditText mEtFirstName;
     private EditText mEtLastName;
     private EditText mEtBirthday;
     private EditText mEtEmail;
     private EditText mEtPassword;
 
-    //
     private String phoneNum;
 
 
@@ -42,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
         mBtnRegister = findViewById(R.id.btn_register_test);
 
-        final String phoneNum = getIntent().getExtras().getString("phoneNum","010-0000-0000");
+        phoneNum = getIntent().getExtras().getString("phoneNum","010-0000-0000");
         showCustomToast(phoneNum);
 
         getEditText();
@@ -52,7 +49,6 @@ public class RegisterActivity extends BaseActivity {
             public void onClick(View v) {
                 //json 레트로핏으로 보내기
                 getEditTextInfo();
-
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
@@ -66,12 +62,11 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
                         showCustomToast(response.raw().toString());
-                        showCustomToast("good");
                     }
 
                     @Override
                     public void onFailure(Call<UserInfo> call, Throwable t) {
-
+                        showCustomToast("network fail");
                     }
                 });
             }
@@ -79,14 +74,13 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void getEditText(){
-        mEtName = findViewById(R.id.et_register_name);
         mEtLastName = findViewById(R.id.et_register_last_name);
+        mEtFirstName = findViewById(R.id.et_register_first_name);
         mEtBirthday = findViewById(R.id.et_register_birthday);
         mEtEmail = findViewById(R.id.et_register_eamil);
         mEtPassword = findViewById(R.id.et_register_password);
     }
-
     private void getEditTextInfo(){
-       // userInfo = new UserInfo(phoneNum, mEtName.getText().toString(), mEtLastName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
+       userInfo = new UserInfo("010-1111-1111", mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
     }
 }
