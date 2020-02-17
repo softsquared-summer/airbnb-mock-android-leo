@@ -1,5 +1,8 @@
 package com.shinplest.airbnbclone.src.main;
 
+//        android:usesCleartextTraffic="true"
+//메니페스트 http 접속 허용해주려고 임시로 만듬
+
 //주요 고안점
 
 //splash화면에서 불필요한 시간을 없애기 위해서, drawable로 구현.

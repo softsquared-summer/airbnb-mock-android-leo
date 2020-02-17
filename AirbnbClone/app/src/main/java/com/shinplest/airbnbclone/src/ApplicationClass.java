@@ -20,7 +20,7 @@ public class ApplicationClass extends Application {
     public static MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
     // 테스트 서버 주소
-    public static String BASE_URL = "http://test.developerjoy.fun/";
+    public static String BASE_URL = "https://test.developerjoy.fun/";
     // 실서버 주소
 //    public static String BASE_URL = "https://template.softsquared.com/";
 
