@@ -58,8 +58,8 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(layoutManager);
-        String[] textSet =  {"이건","테스트","입니다","4개만요"};
-        int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
+        String[] textSet =  {"숙소","체험","어드벤처"};
+        int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
         adapter = new AdapterCard(textSet,imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);
