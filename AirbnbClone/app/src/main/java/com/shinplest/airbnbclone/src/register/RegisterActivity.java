@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.register;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.main.MainActivity;
+import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterRetrofitInterface;
 
 import retrofit2.Call;
@@ -57,15 +60,20 @@ public class RegisterActivity extends BaseActivity {
 
                 RegisterRetrofitInterface registerRetrofitInterface = retrofit.create(RegisterRetrofitInterface.class);
 
-                Call<UserInfo> call = registerRetrofitInterface.postTest(userInfo);
-                call.enqueue(new Callback<UserInfo>() {
+                Call<DefaultResponse> call = registerRetrofitInterface.postTest(userInfo);
+                call.enqueue(new Callback<DefaultResponse>() {
                     @Override
-                    public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                        showCustomToast(response.raw().toString());
-                        //showCustomToast(userInfo.getCode());
+                    public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                        DefaultResponse defaultResponse = response.body();
+                        showCustomToast(defaultResponse.getMessage());
+                        if (defaultResponse.getCode() == 100){
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                     @Override
-                    public void onFailure(Call<UserInfo> call, Throwable t) {
+                    public void onFailure(Call<DefaultResponse> call, Throwable t) {
                         showCustomToast("network fail");
                     }
                 });
