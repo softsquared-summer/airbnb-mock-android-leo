@@ -55,6 +55,31 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- frag profile-->
+
+    <style name="FragProfileTitleText">
+        <item name="android:layout_width">330dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="FragProfileBasicText">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FragProfileIV">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
 
     <!-- frag search text style-->
 
