@@ -99,8 +99,6 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <LinearLayout
@@ -109,8 +107,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/TitleText"
-                    android:layout_marginTop="20dp"
+                    style="@style/FragSearchTitleText"
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -121,12 +118,19 @@
                     android:layout_marginTop="20dp" />
 
                 <TextView
-                    style="@style/TitleText"
+                style="@style/FragSearchTitleText"
+                android:text="최고 평점의 체험"/>
+                <TextView
+                    style="@style/FragSearchBasicText"
+                    android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
+
+
+                <TextView
+                    style="@style/FragSearchTitleText"
                     android:text="에어비앤비 어드밴처를 소개합니다." />
 
                 <TextView
-                    style="@style/BasicText"
-                    android:layout_marginTop="0dp"
+                    style="@style/FragSearchBasicText"
                     android:text="현지 전문가가 진행하는 2일 이상의 여행 - 액티비티, 식사, 숙박 포함" />
 
                 <TextView
