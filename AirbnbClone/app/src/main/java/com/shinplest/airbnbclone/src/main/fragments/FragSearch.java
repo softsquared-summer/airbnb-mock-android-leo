@@ -1,9 +1,13 @@
 package com.shinplest.airbnbclone.src.main.fragments;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -18,10 +22,16 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.AdapterCard;
 
+import java.util.Calendar;
+
 public class FragSearch extends BaseFragment {
 
+    //view
     private LinearLayout mLlSearch;
+    private Button mBtnDate;
+    private Button mBtnAttendance;
 
+    //first recycler view
     private RecyclerView mRvLookAround;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -46,6 +56,34 @@ public class FragSearch extends BaseFragment {
             public void onClick(View v) {
                 showCustomToastFrag("test");
                 //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //검색창 및 버튼 온클릭
+
+        mBtnDate = view.findViewById(R.id.btn_frag_search_date);
+
+        final Calendar myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            }
+
+        };
+
+        mBtnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToastFrag("show calender");
+                new DatePickerDialog(getActivity(), date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 

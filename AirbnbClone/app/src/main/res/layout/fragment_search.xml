@@ -78,6 +78,7 @@
                     app:layout_collapseMode="parallax">
 
                     <Button
+                        android:id="@+id/btn_frag_search_date"
                         style="@style/SearchButton"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/shape_btn"
@@ -85,6 +86,7 @@
                         android:textColor="@color/basicText" />
 
                     <Button
+                        android:id="@+id/btn_frag_search_attendance"
                         style="@style/SearchButton"
                         android:background="@drawable/shape_btn"
                         android:text="인원"
