@@ -89,6 +89,6 @@ public class RegisterActivity extends BaseActivity {
         mEtPassword = findViewById(R.id.et_register_password);
     }
     private void getEditTextInfo(){
-       userInfo = new UserInfo("010-1234-1234", mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
+       userInfo = new UserInfo(phoneNum, mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
     }
 }

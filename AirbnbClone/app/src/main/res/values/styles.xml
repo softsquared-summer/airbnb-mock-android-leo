@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        //status color
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!-- splash theme-->
@@ -13,14 +15,7 @@
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
-    <!-- text style-->
-
-    <style name="RegisterEditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/secondText</item>
-        <item name="android:textSize">20sp</item>
-    </style>
+    <!--Basic text style-->
 
     <style name="TitleText">
         <item name="android:layout_width">match_parent</item>
@@ -30,6 +25,29 @@
     </style>
 
     <style name="BasicText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <!--Register text style-->
+    <style name="RegisterEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="RegisterTitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="RegisterBasicText">
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -37,13 +55,57 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
+    <!-- frag search text style-->
+
+
+    <style name="FragSearchTitleText">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FragSearchBasicText">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <!-- btn style-->
+
+    <style name="SearchButton">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">70dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+
+    </style>
+
     <!-- 바텀 네비게이션바 글씨 크기 조정 -->
     <style name="BottomNavigationView">
-        <item name="itemTextAppearanceActive">@style/TextAppearance.BottomNavigationView.Active</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.BottomNavigationView.Inactive</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.BottomNavigationView.Active
+        </item>
+        <item name="itemTextAppearanceInactive">
+            @style/TextAppearance.BottomNavigationView.Inactive
+        </item>
     </style>
-    <style name="TextAppearance"/>
-    <style name="TextAppearance.BottomNavigationView"/>
+
+    <style name="TextAppearance" />
+
+    <style name="TextAppearance.BottomNavigationView" />
 
     <style name="TextAppearance.BottomNavigationView.Inactive">
         <item name="android:textSize">10sp</item>

@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +13,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.AdapterCard;
@@ -35,6 +34,8 @@ public class FragSearch extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//      뷰가 초기화 되기 전에 fresco initiate
+        Fresco.initialize(getActivity());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
 
@@ -58,8 +59,8 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(layoutManager);
-        String[] textSet =  {"이건","테스트","입니다","4개만요"};
-        int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
+        String[] textSet =  {"숙소","체험","어드벤처"};
+        int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
         adapter = new AdapterCard(textSet,imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);

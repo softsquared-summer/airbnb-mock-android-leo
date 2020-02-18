@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/container_frag_search_search"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@color/statusbackgroundColor"
         android:orientation="vertical"
         app:layout_collapseMode="parallax"
@@ -17,10 +17,12 @@
 
         <LinearLayout
             android:id="@+id/ll_frag_search_search"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/shape_rounding"
             android:clickable="true"
             android:elevation="2dp"
@@ -56,7 +58,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -76,19 +78,14 @@
                     app:layout_collapseMode="parallax">
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        style="@style/SearchButton"
+                        android:layout_marginLeft="20dp"
                         android:background="@drawable/shape_btn"
                         android:text="날짜"
                         android:textColor="@color/basicText" />
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        style="@style/SearchButton"
                         android:background="@drawable/shape_btn"
                         android:text="인원"
                         android:textColor="@color/basicText" />
@@ -110,21 +107,30 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/FragSearchTitleText"
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:clipToPadding="false"
                     android:id="@+id/rv_frag_search_look_around"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp" />
 
                 <TextView
-                    style="@style/TitleText"
+                style="@style/FragSearchTitleText"
+                android:text="최고 평점의 체험"/>
+                <TextView
+                    style="@style/FragSearchBasicText"
+                    android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
+
+
+                <TextView
+                    style="@style/FragSearchTitleText"
                     android:text="에어비앤비 어드밴처를 소개합니다." />
 
                 <TextView
-                    style="@style/BasicText"
-                    android:layout_marginTop="0dp"
+                    style="@style/FragSearchBasicText"
                     android:text="현지 전문가가 진행하는 2일 이상의 여행 - 액티비티, 식사, 숙박 포함" />
 
                 <TextView
