@@ -15,14 +15,7 @@
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
-    <!-- text style-->
-
-    <style name="RegisterEditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/secondText</item>
-        <item name="android:textSize">20sp</item>
-    </style>
+    <!--Basic text style-->
 
     <style name="TitleText">
         <item name="android:layout_width">match_parent</item>
@@ -32,6 +25,30 @@
     </style>
 
     <style name="BasicText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <!--Register text style-->
+    <style name="RegisterEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="RegisterTitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="RegisterBasicText">
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/secondText</item>

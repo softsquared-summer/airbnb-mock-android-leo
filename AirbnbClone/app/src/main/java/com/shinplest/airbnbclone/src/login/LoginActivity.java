@@ -2,12 +2,14 @@ package com.shinplest.airbnbclone.src.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -82,8 +84,8 @@ public class LoginActivity extends BaseActivity {
             public void afterTextChanged(Editable s) {
                 String phonenum = mEtPhonenum.getText().toString();
 
-                //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어줌.
-                if (Pattern.matches("^01(?:0|1|[6-9])(\\d{3}|\\d{4})(\\d{4})$", phonenum)) {
+                //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어주고 phone중간에 -삽입해줌
+                if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phonenum)) {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
                 } else {
