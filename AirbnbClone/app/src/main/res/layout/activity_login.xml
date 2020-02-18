@@ -32,8 +32,8 @@
             app:layout_constraintTop_toBottomOf="@+id/ll_login_exit">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:src="@drawable/login_logo_96" />
         </LinearLayout>
 
@@ -41,7 +41,7 @@
             android:id="@+id/ll_login_text_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@+id/ll_login_logo">
 
             <TextView
@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/ll_login_text_register">
 
             <TextView
@@ -67,25 +68,27 @@
                 android:text="전화번호"
                 android:textColor="@color/secondText"
                 android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/ll_login_text_phone">
 
             <Spinner
                 android:id="@+id/spn_login_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:entries="@array/countries" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/ll_login_text_phone">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/splitColor" />
 
             <LinearLayout
@@ -116,7 +119,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@color/splitColor" />
 
             <TextView
