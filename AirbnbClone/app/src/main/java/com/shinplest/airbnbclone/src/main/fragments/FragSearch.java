@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.AdapterCard;
@@ -35,6 +36,8 @@ public class FragSearch extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//      뷰가 초기화 되기 전에 fresco initiate
+        Fresco.initialize(getActivity());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
 
