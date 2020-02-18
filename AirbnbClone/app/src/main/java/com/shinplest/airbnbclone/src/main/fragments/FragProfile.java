@@ -38,7 +38,7 @@ public class FragProfile extends BaseFragment {
         //구글 아이디로 프로필 업데이트 해주는 부분
         FirebaseUser user = mAuth.getCurrentUser();
         mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
-        mTvUserName = view.findViewById(R.id.tv_frag_profile_userinfo);
+        mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
         updateUI(user);
 
 

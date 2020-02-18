@@ -62,7 +62,7 @@
                 android:text="개인정보" />
 
             <ImageView
-                style="fr"
+                style="@style/FragProfileIV"
                 android:src="@drawable/profile_userinfo"
                 android:layout_toEndOf="@+id/tv_frag_profile_userinfo" />
         </RelativeLayout>

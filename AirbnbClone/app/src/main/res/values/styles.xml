@@ -75,8 +75,8 @@
     </style>
 
     <style name="FragProfileIV">
-        <item name="android:layout_width">20dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
 
