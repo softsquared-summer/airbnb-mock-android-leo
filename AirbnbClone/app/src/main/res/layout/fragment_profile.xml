@@ -1,20 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="profile"
-        android:textColor="@color/basicText"
-        android:textSize="20dp"/>
-
-
-    <Button
-        android:id="@+id/btn_frag_profile_logout"
-        android:text="logout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/sd_frag_profile_profile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true" />
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@+id/sd_frag_profile_profile"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jae Hyoung" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프로필 보기" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:elevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/splitColor" />
+
+        <Button
+            android:id="@+id/btn_frag_profile_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="logout" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/tv_frag_profile_userinfo"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:text="개인정보"
+                android:textColor="@color/basicText"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_toEndOf="@+id/tv_frag_profile_userinfo"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
