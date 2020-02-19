@@ -1,13 +1,13 @@
 package com.shinplest.airbnbclone.src.main.fragments;
 
-import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +20,10 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.AdapterCard;
+import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class FragSearch extends BaseFragment {
@@ -58,31 +61,31 @@ public class FragSearch extends BaseFragment {
             }
         });
 
-        //검색창 및 버튼 온클릭
+        //버튼 온클릭
 
         mBtnDate = view.findViewById(R.id.btn_frag_search_date);
-
-        final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            }
-
-        };
 
         mBtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCustomToastFrag("show calender");
-                new DatePickerDialog(getActivity(), date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                AirCalendarIntent intent = new AirCalendarIntent(getActivity());
+                intent.setSelectButtonText("결과 보기"); //the select button text
+                intent.setResetBtnText("삭제"); //the reset button text
+                intent.setWeekStart(Calendar.SUNDAY);
+                intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+
+                ArrayList<String> weekDay = new ArrayList<>();
+                weekDay.add("월");
+                weekDay.add("화");
+                weekDay.add("수");
+                weekDay.add("목");
+                weekDay.add("금");
+                weekDay.add("토");
+                weekDay.add("일");
+                intent.setCustomWeekDays(weekDay); //custom weekdays
+
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -96,14 +99,15 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(layoutManager);
-        String[] textSet =  {"숙소","체험","어드벤처"};
+        String[] textSet = {"숙소", "체험", "어드벤처"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
-        adapter = new AdapterCard(textSet,imgSet);
+        adapter = new AdapterCard(textSet, imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
-
         return view;
     }
+
+
 }
