@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +24,9 @@ import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import static android.app.Activity.RESULT_OK;
+import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
 
 public class FragSearch extends BaseFragment {
 
@@ -86,7 +88,7 @@ public class FragSearch extends BaseFragment {
                 intent.setCustomWeekDays(weekDay); //custom weekdays
 
 
-                startActivityForResult(intent,111);
+                startActivityForResult(intent,GET_DATE);
             }
         });
 
@@ -114,8 +116,7 @@ public class FragSearch extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 111) {
+        if (resultCode == RESULT_OK && requestCode == GET_DATE) {
             if(data != null){
                 showCustomToastFrag("Select Date range : \n" + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE) +"~"+data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE));
             }
