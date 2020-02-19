@@ -1,9 +1,11 @@
 package com.shinplest.airbnbclone.src.main.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -17,11 +19,23 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.AdapterCard;
+import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import static android.app.Activity.RESULT_OK;
+import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
 
 public class FragSearch extends BaseFragment {
 
+    //view
     private LinearLayout mLlSearch;
+    private Button mBtnDate;
+    private Button mBtnAttendance;
 
+    //first recycler view
     private RecyclerView mRvLookAround;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -49,6 +63,35 @@ public class FragSearch extends BaseFragment {
             }
         });
 
+        //버튼 온클릭
+
+        mBtnDate = view.findViewById(R.id.btn_frag_search_date);
+
+        mBtnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToastFrag("show calender");
+                AirCalendarIntent intent = new AirCalendarIntent(getActivity());
+                intent.setSelectButtonText("결과 보기"); //the select button text
+                intent.setResetBtnText("삭제"); //the reset button text
+                intent.setWeekStart(Calendar.SUNDAY);
+                intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+
+                ArrayList<String> weekDay = new ArrayList<>();
+                weekDay.add("월");
+                weekDay.add("화");
+                weekDay.add("수");
+                weekDay.add("목");
+                weekDay.add("금");
+                weekDay.add("토");
+                weekDay.add("일");
+                intent.setCustomWeekDays(weekDay); //custom weekdays
+
+
+                startActivityForResult(intent,GET_DATE);
+            }
+        });
+
 
         //모든 리사이클러에서 쓰일 스냅헬퍼
         snapHelper = new LinearSnapHelper();
@@ -59,14 +102,26 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(layoutManager);
-        String[] textSet =  {"숙소","체험","어드벤처"};
+        String[] textSet = {"숙소", "체험", "어드벤처"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground};
-        adapter = new AdapterCard(textSet,imgSet);
+        adapter = new AdapterCard(textSet, imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
-
         return view;
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == GET_DATE) {
+            if(data != null){
+                showCustomToastFrag("Select Date range : \n" + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE) +"~"+data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE));
+            }
+        }
+    }
+
+
 }

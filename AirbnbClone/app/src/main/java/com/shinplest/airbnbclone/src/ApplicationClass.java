@@ -38,6 +38,9 @@ public class ApplicationClass extends Application {
     // Retrofit 인스턴스
     public static Retrofit retrofit;
 
+    //캘린더 날짜 호출하는 Request Code;
+    public static int GET_DATE = 111;
+
     @Override
     public void onCreate() {
         super.onCreate();
