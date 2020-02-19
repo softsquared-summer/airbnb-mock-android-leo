@@ -85,7 +85,8 @@ public class FragSearch extends BaseFragment {
                 weekDay.add("일");
                 intent.setCustomWeekDays(weekDay); //custom weekdays
 
-                startActivityForResult(intent, 100);
+
+                startActivityForResult(intent,111);
             }
         });
 
@@ -107,6 +108,18 @@ public class FragSearch extends BaseFragment {
 
 
         return view;
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 111) {
+            if(data != null){
+                showCustomToastFrag("Select Date range : \n" + data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE) +"~"+data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE));
+            }
+        }
     }
 
 

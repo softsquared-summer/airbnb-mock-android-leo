@@ -38,6 +38,8 @@ public class ApplicationClass extends Application {
     // Retrofit 인스턴스
     public static Retrofit retrofit;
 
+    //
+
     @Override
     public void onCreate() {
         super.onCreate();

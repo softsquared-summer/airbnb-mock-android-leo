@@ -21,6 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
+import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
 
 public class RegisterActivity extends BaseActivity {
     private Button mBtnRegister;
@@ -53,7 +54,7 @@ public class RegisterActivity extends BaseActivity {
                 //json 레트로핏으로 보내기
                 getEditTextInfo();
 
-                Retrofit retrofit = new Retrofit.Builder()
+                retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
