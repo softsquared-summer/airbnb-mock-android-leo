@@ -3,7 +3,8 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,13 +45,20 @@
 
             </LinearLayout>
 
+
+
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
+            android:layout_height="2dp"
             android:background="@color/splitColor"
             android:elevation="2dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_frag_profile_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -63,8 +71,8 @@
 
             <ImageView
                 style="@style/FragProfileIV"
-                android:src="@drawable/profile_userinfo"
-                android:layout_toEndOf="@+id/tv_frag_profile_userinfo" />
+                android:layout_toEndOf="@+id/tv_frag_profile_userinfo"
+                android:src="@drawable/profile_userinfo" />
         </RelativeLayout>
 
 
