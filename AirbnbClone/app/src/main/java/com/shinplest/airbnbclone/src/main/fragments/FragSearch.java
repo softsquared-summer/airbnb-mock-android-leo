@@ -11,14 +11,13 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
-import com.shinplest.airbnbclone.src.main.AdapterCard;
+import com.shinplest.airbnbclone.src.main.CardAdapter;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
@@ -93,7 +92,7 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setLayoutManager(layoutManager);
         String[] textSet = {"test", "숙소", "체험", "어드벤처", "test"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,};
-        adapter = new AdapterCard(textSet, imgSet);
+        adapter = new CardAdapter(textSet, imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);
 
