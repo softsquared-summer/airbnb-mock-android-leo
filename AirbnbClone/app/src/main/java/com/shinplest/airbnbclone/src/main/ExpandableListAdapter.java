@@ -34,7 +34,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         switch (type) {
             case HEADER:
                 LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.list_header, parent, false);
+                view = inflater.inflate(R.layout.expendable_list_header_frag_profile, parent, false);
                 ListHeaderViewHolder header = new ListHeaderViewHolder(view);
                 return header;
             case CHILD:
@@ -58,37 +58,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 final ListHeaderViewHolder itemController = (ListHeaderViewHolder) holder;
                 itemController.refferalItem = item;
                 itemController.header_title.setText(item.text);
-                if (item.invisibleChildren == null) {
-                    itemController.btn_expand_toggle.setImageResource(R.drawable.appicon);
-                } else {
-                    itemController.btn_expand_toggle.setImageResource(R.drawable.appicon);
-                }
-                itemController.btn_expand_toggle.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (item.invisibleChildren == null) {
-                            item.invisibleChildren = new ArrayList<Item>();
-                            int count = 0;
-                            int pos = data.indexOf(itemController.refferalItem);
-                            while (data.size() > pos + 1 && data.get(pos + 1).type == CHILD) {
-                                item.invisibleChildren.add(data.remove(pos + 1));
-                                count++;
-                            }
-                            notifyItemRangeRemoved(pos + 1, count);
-                            itemController.btn_expand_toggle.setImageResource(R.drawable.appicon);
-                        } else {
-                            int pos = data.indexOf(itemController.refferalItem);
-                            int index = pos + 1;
-                            for (Item i : item.invisibleChildren) {
-                                data.add(index, i);
-                                index++;
-                            }
-                            notifyItemRangeInserted(pos + 1, index - pos - 1);
-                            itemController.btn_expand_toggle.setImageResource(R.drawable.appicon);
-                            item.invisibleChildren = null;
-                        }
-                    }
-                });
+
                 break;
             case CHILD:
                 TextView itemTextView = (TextView) holder.itemView;
@@ -110,13 +80,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private static class ListHeaderViewHolder extends RecyclerView.ViewHolder {
         public TextView header_title;
-        public ImageView btn_expand_toggle;
         public Item refferalItem;
 
+        //헤더부분 뷰홀더
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
             header_title = (TextView) itemView.findViewById(R.id.header_title);
-            btn_expand_toggle = (ImageView) itemView.findViewById(R.id.btn_expand_toggle);
         }
     }
 
