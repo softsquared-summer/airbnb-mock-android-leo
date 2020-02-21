@@ -37,7 +37,7 @@ public class ContinueLookAroundAdapter extends RecyclerView.Adapter<ContinueLook
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.continue_look_around_holder, parent, false);
+        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_continue_look_around, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
         return myViewHolder;
     }

@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import com.shinplest.airbnbclone.R;
 
 public class FragSavelist extends Fragment {
+
+
+
     public FragSavelist() {
     }
 

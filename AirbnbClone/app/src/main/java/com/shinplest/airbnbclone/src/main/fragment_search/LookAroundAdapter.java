@@ -41,7 +41,7 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.look_around_holder, parent, false);
+        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_look_around, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
         return myViewHolder;
     }
