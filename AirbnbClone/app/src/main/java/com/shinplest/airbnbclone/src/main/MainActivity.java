@@ -7,7 +7,8 @@ package com.shinplest.airbnbclone.src.main;
     프로필과 저장목록에서 모든게 같이 스크롤되게 만들고 싶음
     리사이클러뷰에 온클릭 리스너를 다는 효율적인 방법
     구글 로그인과 일반로그인 데이터를 분리해서 가져오는 효율적인 방법
-
+    인터셉터 사용법(네트워크 코드 나누는 법)
+    도메인 별로 코드를 리팩토링하는 효과적인 방법
  */
 
 //안쓰는 import 자동 정리 ctrl + alt + o
@@ -42,6 +43,8 @@ import com.shinplest.airbnbclone.src.main.fragment_savelist.FragSavelist;
 import com.shinplest.airbnbclone.src.main.fragment_search.FragSearch;
 import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
 
+import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView mBottomNavigationView;
@@ -53,7 +56,14 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         setContentView(R.layout.activity_main);
 
         //기본으로 로드해주는 부분
+        Bundle extras = getIntent().getExtras();
+        if(extras!= null){
+            if (extras.getString("Login") == null)
+                LOGIN_INFO = extras.getString("Login");
+        }
+
         loadFragment(new FragSearch());
+
 
         //버텀 네비바에 따라 바뀌는 부분
         mBottomNavigationView = findViewById(R.id.bottom_navigation_main);
