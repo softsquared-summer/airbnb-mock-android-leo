@@ -28,7 +28,7 @@ import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 public class LoginActivity extends BaseActivity {
 
-    private Userinfo_Login userInfo;
+    private UserInfo userInfo;
 
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -53,7 +53,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                userInfo = new Userinfo_Login(mEtEmail.getText().toString(), mEtPassword.getText().toString());
+                userInfo = new UserInfo(mEtEmail.getText().toString(), mEtPassword.getText().toString());
 
                 retrofit = new Retrofit
                         .Builder()
