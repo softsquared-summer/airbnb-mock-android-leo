@@ -21,12 +21,12 @@ public class ContinueLookAroundAdapter extends RecyclerView.Adapter<ContinueLook
         this.contentSet = contentSet;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public CardView cardView;
-        public TextView tvTitle;
-        public TextView tvContent;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private CardView cardView;
+        private TextView tvTitle;
+        private TextView tvContent;
 
-        public MyViewHolder(View view) {
+        private MyViewHolder(View view) {
             super(view);
             this.tvTitle = view.findViewById(R.id.tv_search_frag_continue_look_around_title);
             this.tvContent = view.findViewById(R.id.tv_search_frag_continue_look_around_content);

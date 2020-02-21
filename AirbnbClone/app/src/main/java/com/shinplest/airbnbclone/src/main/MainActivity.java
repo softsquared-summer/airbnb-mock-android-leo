@@ -29,7 +29,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.main.fragments.FragMessage;
 import com.shinplest.airbnbclone.src.main.fragments.FragProfile;
-import com.shinplest.airbnbclone.src.main.fragments.FragSavelist;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.FragSavelist;
 import com.shinplest.airbnbclone.src.main.fragment_search.FragSearch;
 import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
 

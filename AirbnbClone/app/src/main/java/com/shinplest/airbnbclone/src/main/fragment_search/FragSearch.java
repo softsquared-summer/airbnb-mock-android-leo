@@ -108,8 +108,7 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setLayoutManager(mHorizontalLayoutManagerLookAround);
         String[] textSet = {"test", "숙소", "체험", "어드벤처", "test"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,};
-        mLookAroundAdapter = new LookAroundAdapter(textSet, imgSet);
-        mRvLookAround.setAdapter(mLookAroundAdapter);
+        mRvLookAround.setAdapter(new LookAroundAdapter(textSet, imgSet));
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
