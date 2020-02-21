@@ -19,7 +19,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
-import com.shinplest.airbnbclone.src.Search.SearchActivity;
+import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;

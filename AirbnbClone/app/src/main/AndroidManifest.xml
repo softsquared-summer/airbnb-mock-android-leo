@@ -22,12 +22,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".src.main.MainActivity" />
-        <activity android:name=".src.login.LoginActivity" />
+        <activity android:name=".src.signup.SignUpActivity" />
         <activity android:name=".src.register.RegisterActivity" />
         <activity
             android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".src.Search.SearchActivity"/>
+        <activity android:name=".src.search.SearchActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.Search;
+package com.shinplest.airbnbclone.src.search;
 
 import android.os.Bundle;
 import android.view.View;

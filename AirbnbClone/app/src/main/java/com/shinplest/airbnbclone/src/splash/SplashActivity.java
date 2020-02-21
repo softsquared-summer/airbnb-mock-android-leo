@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.shinplest.airbnbclone.src.BaseActivity;
-import com.shinplest.airbnbclone.src.login.LoginActivity;
+import com.shinplest.airbnbclone.src.signup.SignUpActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
@@ -36,9 +36,9 @@ public class SplashActivity extends BaseActivity {
         } else if (!X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")) {
             activityIntent = new Intent(this, MainActivity.class);
         }
-        //토큰이 있으면
+        //토큰이 없으면
         else {
-            activityIntent = new Intent(this, LoginActivity.class);
+            activityIntent = new Intent(this, SignUpActivity.class);
         }
         startActivity(activityIntent);
         finish();
