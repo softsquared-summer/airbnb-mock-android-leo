@@ -2,14 +2,12 @@ package com.shinplest.airbnbclone.src.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -114,14 +112,7 @@ public class LoginActivity extends BaseActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    //로그인 되어있을경우 자동으로 메인으로 넘어가도록 설정
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //user가 null이 아닐경우에 메인으로 넘겨줌
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        updateUI(currentUser);
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -162,11 +153,16 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
     }
+
+    //user가 있을경우에만
     private void updateUI(FirebaseUser user) { //update ui code here
         if (user != null) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+        }
+        else{
+            showCustomToast("google login error code : no user");
         }
     }
 

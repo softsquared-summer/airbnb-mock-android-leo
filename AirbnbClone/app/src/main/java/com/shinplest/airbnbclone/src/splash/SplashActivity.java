@@ -12,7 +12,6 @@ import com.shinplest.airbnbclone.src.login.LoginActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 public class SplashActivity extends BaseActivity {
     private FirebaseAuth mAuth = null;
