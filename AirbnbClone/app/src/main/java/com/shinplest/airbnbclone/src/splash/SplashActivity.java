@@ -24,8 +24,6 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Intent activityIntent;
-
-
         // 여기서 해야할 것 .
 
         //구글 로그인 오케이 || 토큰 있으면 메인으로
@@ -34,7 +32,9 @@ public class SplashActivity extends BaseActivity {
         user = mAuth.getCurrentUser();
 
         //구글 로그인이 되어 있거나 토큰이 있으면
-        if (user != null || !X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")) {
+        if (user != null) {
+            activityIntent = new Intent(this, MainActivity.class);
+        } else if (!X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")) {
             activityIntent = new Intent(this, MainActivity.class);
         }
         //토큰이 있으면
@@ -43,17 +43,6 @@ public class SplashActivity extends BaseActivity {
         }
         startActivity(activityIntent);
         finish();
-
-
-//        //테스트용으로 int값으로 하였음, 토큰있으면 메인, 없으면 로그인 창 jwt위해 남겨놓는다.
-//        int token = 10;
-//        if (token != 10) {
-//            activityIntent = new Intent(this, MainActivity.class);
-//        } else {
-//            activityIntent = new Intent(this, LoginActivity.class);
-//        }
-//        startActivity(activityIntent);
-//        finish();
     }
 
     @Override
