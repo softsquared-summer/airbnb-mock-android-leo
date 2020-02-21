@@ -28,8 +28,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         View view = null;
         Context context = parent.getContext();
         float dp = context.getResources().getDisplayMetrics().density;
-        int subItemPaddingLeft = (int) (18 * dp);
-        int subItemPaddingTopAndBottom = (int) (5 * dp);
+        int subItemPaddingTopAndBottom = (int) (10 * dp);
         switch (type) {
             case HEADER:
                 LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -37,8 +36,10 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 ListHeaderViewHolder header = new ListHeaderViewHolder(view);
                 return header;
             case CHILD:
+
+                //레이아웃 만들고 거기다가 할당해주는게 맞을듯
                 TextView itemTextView = new TextView(context);
-                itemTextView.setPadding(subItemPaddingLeft, subItemPaddingTopAndBottom, 0, subItemPaddingTopAndBottom);
+                itemTextView.setPadding(0, subItemPaddingTopAndBottom, 0, subItemPaddingTopAndBottom);
                 itemTextView.setTextColor(context.getResources().getColor(R.color.basicText));
                 itemTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                 itemTextView.setLayoutParams(
