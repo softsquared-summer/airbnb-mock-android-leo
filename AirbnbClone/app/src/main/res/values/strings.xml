@@ -2,4 +2,8 @@
     <string name="app_name">AirbnbClone</string>
     <string name="loading">로딩중입니다.</string>
     <string name="network_error">네트워크 연결이 원활하지 않습니다.</string>
+
+
+    <!-- activity signup-->
+    <string name="signup_login">이미 계정을 보유하고 계시나요? <u>로그인</u></string>
 </resources>

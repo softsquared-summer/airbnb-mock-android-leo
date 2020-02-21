@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.login.LoginActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.register.RegisterActivity;
 
@@ -42,6 +44,8 @@ public class SignUpActivity extends BaseActivity {
 
     private Button mBtnRegister;
     private EditText mEtPhonenum;
+
+    private LinearLayout mLlLogin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,6 +104,16 @@ public class SignUpActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
                 intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        mLlLogin = findViewById(R.id.ll_singup_login);
+        mLlLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
