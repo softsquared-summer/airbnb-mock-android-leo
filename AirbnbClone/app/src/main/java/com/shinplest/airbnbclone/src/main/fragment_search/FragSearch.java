@@ -44,8 +44,13 @@ public class FragSearch extends BaseFragment {
 
     //first recycler view
     private RecyclerView mRvLookAround;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.Adapter mLookAroundAdapter;
+    private RecyclerView.LayoutManager mHorizontalLayoutManagerLookAround;
+
+    //secont recycler view
+    private RecyclerView mRvContinewLookAround;
+    private RecyclerView.Adapter mContinueLookAroundAdapter;
+    private RecyclerView.LayoutManager mHorizontalLayoutManagerContinueLookAround;
 
     private SnapHelper snapHelper;
 
@@ -99,13 +104,28 @@ public class FragSearch extends BaseFragment {
         mRvLookAround = view.findViewById(R.id.rv_frag_search_look_around);
         // 리사이클러뷰의 notify()처럼 데이터가 변했을 때 성능을 높일 때 사용한다.
         mRvLookAround.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        mRvLookAround.setLayoutManager(layoutManager);
+        mHorizontalLayoutManagerLookAround = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mRvLookAround.setLayoutManager(mHorizontalLayoutManagerLookAround);
         String[] textSet = {"test", "숙소", "체험", "어드벤처", "test"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,};
-        adapter = new LookAroundAdapter(textSet, imgSet);
-        mRvLookAround.setAdapter(adapter);
+        mRvLookAround.setAdapter(new LookAroundAdapter(textSet, imgSet));
         snapHelper.attachToRecyclerView(mRvLookAround);
+
+
+        //두번째 리사이클러
+        mRvContinewLookAround = view.findViewById(R.id.rv_frag_search_continue_look_around);
+        mRvContinewLookAround.setHasFixedSize(true);
+        mHorizontalLayoutManagerContinueLookAround = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        mRvContinewLookAround.setLayoutManager(mHorizontalLayoutManagerContinueLookAround);
+        String[] titleSet = {"test", "한국", "신주쿠, Shinjuku City, 일본", "맨해튼, 뉴욕, 뉴욕", "test"};
+        String[] contentSet = {"test", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "test"};
+        mContinueLookAroundAdapter = new ContinueLookAroundAdapter(titleSet, contentSet);
+        mRvContinewLookAround.setAdapter(mContinueLookAroundAdapter);
+        snapHelper.attachToRecyclerView(mRvContinewLookAround);
+
+
+
+
 
 
         return view;

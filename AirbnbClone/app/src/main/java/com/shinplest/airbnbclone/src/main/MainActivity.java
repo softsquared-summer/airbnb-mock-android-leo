@@ -1,7 +1,16 @@
 package com.shinplest.airbnbclone.src.main;
 
-//안쓰는 import 자동 정리 ctrl + alt + o
 
+//질문 리스트
+
+/*
+    프로필과 저장목록에서 모든게 같이 스크롤되게 만들고 싶음
+    리사이클러뷰에 온클릭 리스너를 다는 효율적인 방법
+    구글 로그인과 일반로그인 데이터를 분리해서 가져오는 효율적인 방법
+
+ */
+
+//안쓰는 import 자동 정리 ctrl + alt + o
 
 
 //        android:usesCleartextTraffic="true"
@@ -29,7 +38,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.main.fragments.FragMessage;
 import com.shinplest.airbnbclone.src.main.fragments.FragProfile;
-import com.shinplest.airbnbclone.src.main.fragments.FragSavelist;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.FragSavelist;
 import com.shinplest.airbnbclone.src.main.fragment_search.FragSearch;
 import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
 

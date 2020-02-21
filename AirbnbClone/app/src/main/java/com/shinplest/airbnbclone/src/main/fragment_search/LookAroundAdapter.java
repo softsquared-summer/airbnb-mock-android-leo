@@ -34,14 +34,14 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
             super(view);
             this.simpleDraweeView = view.findViewById(R.id.iv_pic);
             this.textView = view.findViewById(R.id.tv_text);
-            this.cardView = view.findViewById(R.id.cardview);
+            this.cardView = view.findViewById(R.id.cv_frag_search_continue_look_around);
         }
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_holder, parent, false);
+        View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_look_around, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
         return myViewHolder;
     }
@@ -56,8 +56,6 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
 
         //첫번째와 마지막
         if (position == 0 || position == 4) {
-            holder.textView.setVisibility(View.GONE);
-            holder.simpleDraweeView.setVisibility(View.GONE);
             holder.cardView.getLayoutParams().width = 10;
             holder.cardView.setVisibility(View.INVISIBLE);
         }
