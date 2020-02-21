@@ -6,10 +6,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="120dp">
 
         <TextView
-            android:paddingTop="40dp"
+            android:paddingTop="30dp"
             style="@style/FragTitleText"
             android:text="저장 목록"
             android:layout_centerInParent="true"/>
