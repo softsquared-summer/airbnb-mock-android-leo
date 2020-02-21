@@ -112,6 +112,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_frag_search_look_around"
                     style="@style/FragSearchTitleText"
                     android:text="에어비앤비 둘러보기" />
 
@@ -121,6 +122,18 @@
                     android:layout_height="150dp"
                     android:layout_marginTop="20dp"
                     android:clipToPadding="false" />
+
+                <TextView
+                    style="@style/FragSearchTitleText"
+                    android:text="계속 둘러보기"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_frag_search_continue_look_around"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:clipToPadding="false" />
+
 
                 <TextView
                     style="@style/FragSearchTitleText"
