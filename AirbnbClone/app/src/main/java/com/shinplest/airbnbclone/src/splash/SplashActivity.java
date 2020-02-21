@@ -34,7 +34,7 @@ public class SplashActivity extends BaseActivity {
         if (user != null) {
             //구글로그인이 되어있으면
             activityIntent = new Intent(this, MainActivity.class);
-            activityIntent.putExtra("Login", 1);
+            activityIntent.putExtra("Login", "google");
         } else if (!X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")) {
             activityIntent = new Intent(this, MainActivity.class);
         }
