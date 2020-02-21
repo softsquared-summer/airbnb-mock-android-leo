@@ -46,24 +46,17 @@ public class FragProfile extends BaseFragment {
         mRvSetting.setLayoutManager(new LinearLayoutManager(getContext()));
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "Fruits"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Apple"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Orange"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Banana"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "Cars"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Audi"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Aston Martin"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "BMW"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Cadillac"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "계정 관리"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "개인 정보"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "결제 및 대금 수령"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "알림"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "호스팅"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "숙소 등록하기"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "체험 호스팅하기"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "지원"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "안전 센터"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "지역 지원 서비스에 연락하기"));
 
-        ExpandableListAdapter.Item places = new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "Places");
-        places.invisibleChildren = new ArrayList<>();
-        places.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Kerala"));
-        places.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Tamil Nadu"));
-        places.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Karnataka"));
-        places.invisibleChildren.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "Maharashtra"));
-
-        data.add(places);
 
         mRvSetting.setAdapter(new ExpandableListAdapter(data));
 

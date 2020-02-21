@@ -1,6 +1,7 @@
 package com.shinplest.airbnbclone.src.main;
 
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case CHILD:
                 TextView itemTextView = new TextView(context);
                 itemTextView.setPadding(subItemPaddingLeft, subItemPaddingTopAndBottom, 0, subItemPaddingTopAndBottom);
-                itemTextView.setTextColor(0x88000000);
+                itemTextView.setTextColor(context.getResources().getColor(R.color.basicText));
+                itemTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                 itemTextView.setLayoutParams(
                         new ViewGroup.LayoutParams(
                                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -90,7 +92,6 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static class Item {
         public int type;
         public String text;
-        public List<Item> invisibleChildren;
 
         public Item() {
         }
