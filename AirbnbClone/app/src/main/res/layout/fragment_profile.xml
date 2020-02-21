@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="120dp">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/sd_frag_profile_profile"
@@ -55,6 +55,7 @@
             android:elevation="2dp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="20dp"
             android:id="@+id/rv_frag_profile_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

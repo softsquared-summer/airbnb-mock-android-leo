@@ -47,9 +47,9 @@ public class FragProfile extends BaseFragment {
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "계정 관리"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "개인 정보"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "결제 및 대금 수령"));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "알림"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "개인 정보", getResources().getDrawable(R.drawable.profile_userinfo)));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "결제 및 대금 수령",getResources().getDrawable(R.drawable.profile_payment)));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "알림",getResources().getDrawable(R.drawable.profile_noti)));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "호스팅"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "숙소 등록하기"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "체험 호스팅하기"));

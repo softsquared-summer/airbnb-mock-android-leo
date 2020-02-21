@@ -1,7 +1,7 @@
 package com.shinplest.airbnbclone.src.main;
 
 import android.content.Context;
-import android.util.TypedValue;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +39,6 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 itemView = itemInflater.inflate(R.layout.expandable_list_item_frag_profile, parent, false);
                 ListItemViewHolder itemHolder = new ListItemViewHolder(itemView);
                 return itemHolder;
-
-//                };
         }
         return null;
     }
@@ -57,6 +55,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case CHILD:
                 final ListItemViewHolder itemController = (ListItemViewHolder) holder;
                 itemController.tvItem.setText(data.get(position).text);
+                itemController.ivItem.setImageDrawable(data.get(position).image);
                 break;
         }
     }
@@ -96,11 +95,10 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-
-
     public static class Item {
         public int type;
         public String text;
+        public Drawable image;
 
         public Item() {
         }
@@ -108,6 +106,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public Item(int type, String text) {
             this.type = type;
             this.text = text;
+        }
+
+        public Item(int type, String text, Drawable image) {
+            this.type = type;
+            this.text = text;
+            this.image = image;
         }
     }
 }
