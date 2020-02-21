@@ -26,8 +26,8 @@ public class SplashActivity extends BaseActivity {
         //구글 로그인 오케이 || 토큰 있으면 메인으로
         //아니라면 로그인 액티비티로.
 
-//        //토큰이 없으면 로그인페이지로 이동
-//        if(X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")){
+//        //구글 로그인이 되어 있거나 토큰이 있으면
+//        if( ||!X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")){
 //
 //        }
 //        //토큰이 있으면
@@ -47,5 +47,10 @@ public class SplashActivity extends BaseActivity {
         }
         startActivity(activityIntent);
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }
