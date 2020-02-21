@@ -30,6 +30,7 @@ public class FragProfile extends BaseFragment {
     private TextView mTvUserName;
 
     private RecyclerView mRvSetting;
+    private ExpandableListAdapter adapter;
 
     private Button mBtnLogout;
 
@@ -62,12 +63,6 @@ public class FragProfile extends BaseFragment {
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "서비스 약관"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "로그 아웃"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계정 전환하기"));
-
-
-
-
-
-
 
         mRvSetting.setAdapter(new ExpandableListAdapter(data));
 

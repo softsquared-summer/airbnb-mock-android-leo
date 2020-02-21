@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,13 +33,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             case HEADER:
                 LayoutInflater headerInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 headerView = headerInflater.inflate(R.layout.expandable_list_header_frag_profile, parent, false);
-                ListHeaderViewHolder headerHolder = new ListHeaderViewHolder(headerView);
-                return headerHolder;
+                return new ListHeaderViewHolder(headerView);
             case CHILD:
                 LayoutInflater itemInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 itemView = itemInflater.inflate(R.layout.expandable_list_item_frag_profile, parent, false);
-                ListItemViewHolder itemHolder = new ListItemViewHolder(itemView);
-                return itemHolder;
+                return new ListItemViewHolder(itemView);
+
         }
         return null;
     }
