@@ -19,6 +19,11 @@ public class UserInfo {
         this.pw = pw;
     }
 
+    public UserInfo(String email, String pw) {
+        this.email = email;
+        this.pw = pw;
+    }
+
     public String getPhone() {
         return phone;
     }

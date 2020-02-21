@@ -30,6 +30,7 @@ import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
 import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
+import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
 public class FragSearch extends BaseFragment {
 
@@ -67,7 +68,9 @@ public class FragSearch extends BaseFragment {
         mAuth = FirebaseAuth.getInstance();
         mTvLookAround = view.findViewById(R.id.tv_frag_search_look_around);
         //로그인 된 이름 따라서 UI 바꿔줌
-        updateUI(mAuth);
+        //구글로그인일 때만
+        if (LOGIN_INFO.equals("google"))
+            updateUI(mAuth);
 
         //검색창 눌렀을때 온클릭 리스너
         mLlSearch = view.findViewById(R.id.ll_frag_search_search);
@@ -124,10 +127,6 @@ public class FragSearch extends BaseFragment {
         snapHelper.attachToRecyclerView(mRvContinewLookAround);
 
 
-
-
-
-
         return view;
     }
 
@@ -142,9 +141,11 @@ public class FragSearch extends BaseFragment {
         }
     }
 
-    private  void updateUI(FirebaseAuth auth){
+    private void updateUI(FirebaseAuth auth) {
         GoogleUserInfo user = new GoogleUserInfo(auth);
-        mTvLookAround.setText(user.getGoogleUserName()+"님, 무엇을 찾고 계신가요?");
+
+        if (user != null)
+            mTvLookAround.setText(user.getGoogleUserName() + "님, 무엇을 찾고 계신가요?");
     }
 
 

@@ -39,6 +39,9 @@ public class ApplicationClass extends Application {
     //캘린더 날짜 호출하는 Request Code;
     public static int GET_DATE = 111;
 
+    //로그인 정보 저장하는 변수 1 == google 2 == jwt
+    public static String LOGIN_INFO = "jwt";
+
     @Override
     public void onCreate() {
         super.onCreate();

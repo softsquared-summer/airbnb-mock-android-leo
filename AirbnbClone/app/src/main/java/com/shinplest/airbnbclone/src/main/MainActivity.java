@@ -43,6 +43,8 @@ import com.shinplest.airbnbclone.src.main.fragment_savelist.FragSavelist;
 import com.shinplest.airbnbclone.src.main.fragment_search.FragSearch;
 import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
 
+import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView mBottomNavigationView;
@@ -54,7 +56,14 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         setContentView(R.layout.activity_main);
 
         //기본으로 로드해주는 부분
+        Bundle extras = getIntent().getExtras();
+        if(extras!= null){
+            if (extras.getString("Login") == null)
+                LOGIN_INFO = extras.getString("Login");
+        }
+
         loadFragment(new FragSearch());
+
 
         //버텀 네비바에 따라 바뀌는 부분
         mBottomNavigationView = findViewById(R.id.bottom_navigation_main);

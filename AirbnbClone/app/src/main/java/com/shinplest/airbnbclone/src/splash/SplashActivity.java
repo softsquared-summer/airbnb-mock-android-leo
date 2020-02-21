@@ -32,7 +32,9 @@ public class SplashActivity extends BaseActivity {
 
         //구글 로그인이 되어 있거나 토큰이 있으면
         if (user != null) {
+            //구글로그인이 되어있으면
             activityIntent = new Intent(this, MainActivity.class);
+            activityIntent.putExtra("Login", 1);
         } else if (!X_ACCESS_TOKEN.equals("X-ACCESS-TOKEN")) {
             activityIntent = new Intent(this, MainActivity.class);
         }

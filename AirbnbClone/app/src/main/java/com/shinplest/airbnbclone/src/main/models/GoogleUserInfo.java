@@ -11,18 +11,22 @@ public class GoogleUserInfo {
 
     public GoogleUserInfo(FirebaseAuth mAuth) {
         this.mAuth = mAuth;
-        user = mAuth.getCurrentUser();
+        if (mAuth.getCurrentUser() != null)
+            user = mAuth.getCurrentUser();
     }
 
-    public String getGoogleUserEmail(){
+    public String getGoogleUserEmail() {
         return user.getEmail();
     }
 
-    public String getGoogleUserName(){
-        return user.getDisplayName();
+    public String getGoogleUserName() {
+        if (user.getDisplayName() != null)
+            return user.getDisplayName();
+        else
+            return "";
     }
 
-    public String getGoogleUserProfilePhotoUrl(){
+    public String getGoogleUserProfilePhotoUrl() {
         return user.getPhotoUrl().toString();
     }
 }
