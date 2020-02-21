@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
+import com.shinplest.airbnbclone.src.Search.SearchActivity;
 import com.shinplest.airbnbclone.src.main.CardAdapter;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
@@ -58,8 +59,8 @@ public class FragSearch extends BaseFragment {
         mLlSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomToastFrag("test");
-                //Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivity(intent);
             }
         });
 
