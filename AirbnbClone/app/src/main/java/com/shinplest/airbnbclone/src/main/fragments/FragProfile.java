@@ -56,6 +56,17 @@ public class FragProfile extends BaseFragment {
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "지원"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "안전 센터"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "지역 지원 서비스에 연락하기"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "도움말"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "의견 남기기"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "약관"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "서비스 약관"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "로그 아웃"));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계정 전환하기"));
+
+
+
+
+
 
 
         mRvSetting.setAdapter(new ExpandableListAdapter(data));
