@@ -5,6 +5,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,29 +26,21 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int type) {
-        View view = null;
-        Context context = parent.getContext();
-        float dp = context.getResources().getDisplayMetrics().density;
-        int subItemPaddingTopAndBottom = (int) (10 * dp);
+        View headerView = null;
+        View itemView = null;
         switch (type) {
             case HEADER:
-                LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.expendable_list_header_frag_profile, parent, false);
-                ListHeaderViewHolder header = new ListHeaderViewHolder(view);
-                return header;
+                LayoutInflater headerInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                headerView = headerInflater.inflate(R.layout.expandable_list_header_frag_profile, parent, false);
+                ListHeaderViewHolder headerHolder = new ListHeaderViewHolder(headerView);
+                return headerHolder;
             case CHILD:
+                LayoutInflater itemInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                itemView = itemInflater.inflate(R.layout.expandable_list_item_frag_profile, parent, false);
+                ListItemViewHolder itemHolder = new ListItemViewHolder(itemView);
+                return itemHolder;
 
-                //레이아웃 만들고 거기다가 할당해주는게 맞을듯
-                TextView itemTextView = new TextView(context);
-                itemTextView.setPadding(0, subItemPaddingTopAndBottom, 0, subItemPaddingTopAndBottom);
-                itemTextView.setTextColor(context.getResources().getColor(R.color.basicText));
-                itemTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                itemTextView.setLayoutParams(
-                        new ViewGroup.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));
-                return new RecyclerView.ViewHolder(itemTextView) {
-                };
+//                };
         }
         return null;
     }
@@ -56,14 +49,14 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         final Item item = data.get(position);
         switch (item.type) {
             case HEADER:
-                final ListHeaderViewHolder itemController = (ListHeaderViewHolder) holder;
-                itemController.refferalItem = item;
-                itemController.header_title.setText(item.text);
+                final ListHeaderViewHolder headerController = (ListHeaderViewHolder) holder;
+                headerController.refferalItem = item;
+                headerController.header_title.setText(item.text);
 
                 break;
             case CHILD:
-                TextView itemTextView = (TextView) holder.itemView;
-                itemTextView.setText(data.get(position).text);
+                final ListItemViewHolder itemController = (ListItemViewHolder) holder;
+                itemController.tvItem.setText(data.get(position).text);
                 break;
         }
     }
@@ -89,6 +82,21 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             header_title = (TextView) itemView.findViewById(R.id.header_title);
         }
     }
+
+    private static class ListItemViewHolder extends RecyclerView.ViewHolder {
+        public TextView tvItem;
+        public ImageView ivItem;
+
+        //헤더부분 뷰홀더
+        public ListItemViewHolder(View itemView) {
+            super(itemView);
+            tvItem = itemView.findViewById(R.id.tv_expandable_item);
+            ivItem = itemView.findViewById(R.id.iv_expandable_item);
+        }
+    }
+
+
+
 
     public static class Item {
         public int type;
