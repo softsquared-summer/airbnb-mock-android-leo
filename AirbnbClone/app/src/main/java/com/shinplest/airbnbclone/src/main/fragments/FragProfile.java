@@ -73,7 +73,7 @@ public class FragProfile extends BaseFragment {
 
         mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
         mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
-        updateUI();
+        updateUI(mAuth);
 
 
         mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
@@ -86,7 +86,6 @@ public class FragProfile extends BaseFragment {
                 getActivity().finishAffinity();
             }
         });
-
         return view;
     }
 
@@ -100,8 +99,8 @@ public class FragProfile extends BaseFragment {
     }
 
     //프로필 update
-    private  void updateUI(){
-        GoogleUserInfo user = new GoogleUserInfo(mAuth);
+    private  void updateUI(FirebaseAuth auth){
+        GoogleUserInfo user = new GoogleUserInfo(auth);
         mSdProfilePhoto.setImageURI(user.getGoogleUserProfilePhotoUrl());
         mTvUserName.setText(user.getGoogleUserName());
     }
