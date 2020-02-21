@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragments;
+package com.shinplest.airbnbclone.src.main.fragment_search;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,6 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.Search.SearchActivity;
-import com.shinplest.airbnbclone.src.main.CardAdapter;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
@@ -36,6 +36,8 @@ public class FragSearch extends BaseFragment {
     private Button mBtnDate;
     private Button mBtnAttendance;
 
+    private TextView mTvLookAround;
+
     //first recycler view
     private RecyclerView mRvLookAround;
     private RecyclerView.Adapter adapter;
@@ -52,6 +54,8 @@ public class FragSearch extends BaseFragment {
 //      뷰가 초기화 되기 전에 fresco initiate
         Fresco.initialize(getActivity());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+//        mTvLookAround.setText();
 
 
         //검색창 눌렀을때 온클릭 리스너
@@ -93,7 +97,7 @@ public class FragSearch extends BaseFragment {
         mRvLookAround.setLayoutManager(layoutManager);
         String[] textSet = {"test", "숙소", "체험", "어드벤처", "test"};
         int[] imgSet = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_foreground,};
-        adapter = new CardAdapter(textSet, imgSet);
+        adapter = new LookAroundAdapter(textSet, imgSet);
         mRvLookAround.setAdapter(adapter);
         snapHelper.attachToRecyclerView(mRvLookAround);
 

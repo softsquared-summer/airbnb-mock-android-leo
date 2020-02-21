@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main;
+package com.shinplest.airbnbclone.src.main.fragment_search;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
+public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.MyViewHolder> {
 
     private String[] textSet;
     private int[] imgSet;
 
     // 생성자
-    public CardAdapter(String[] textSet, int[] imgSet) {
+    public LookAroundAdapter(String[] textSet, int[] imgSet) {
         this.textSet = textSet;
         this.imgSet = imgSet;
     }

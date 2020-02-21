@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.ExpandableListAdapter;
+import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,10 +70,10 @@ public class FragProfile extends BaseFragment {
         mAuth = FirebaseAuth.getInstance();
 
         //구글 아이디로 프로필 업데이트 해주는 부분
-        FirebaseUser user = mAuth.getCurrentUser();
+
         mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
         mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
-        updateUI(user);
+        updateUI();
 
 
         mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
@@ -100,8 +100,9 @@ public class FragProfile extends BaseFragment {
     }
 
     //프로필 update
-    private  void updateUI(FirebaseUser user){
-        mSdProfilePhoto.setImageURI(user.getPhotoUrl());
-        mTvUserName.setText(user.getDisplayName());
+    private  void updateUI(){
+        GoogleUserInfo user = new GoogleUserInfo(mAuth);
+        mSdProfilePhoto.setImageURI(user.getGoogleUserProfilePhotoUrl());
+        mTvUserName.setText(user.getGoogleUserName());
     }
 }
