@@ -1,7 +1,7 @@
 package com.shinplest.airbnbclone.src.login.models;
 
+import com.shinplest.airbnbclone.src.login.Userinfo_Login;
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
-import com.shinplest.airbnbclone.src.register.UserInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,5 +13,5 @@ public interface LoginRetrofitInterface {
     Call<DefaultResponse> getJwt();
 
    @POST("/jwt")
-   Call<DefaultResponse>  postJwt(@Body UserInfo user);
+   Call<DefaultResponse>  postJwt(@Body Userinfo_Login user);
 }
