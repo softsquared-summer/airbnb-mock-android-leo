@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragments;
+package com.shinplest.airbnbclone.src.main.fragment_travel;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import com.shinplest.airbnbclone.R;
 
-public class FragTravel extends Fragment {
-    public FragTravel() {
+public class TravelFragment extends Fragment {
+    public TravelFragment() {
     }
 
     @Nullable

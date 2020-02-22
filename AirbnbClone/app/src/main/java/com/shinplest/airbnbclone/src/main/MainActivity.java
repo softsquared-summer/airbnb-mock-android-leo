@@ -40,11 +40,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
-import com.shinplest.airbnbclone.src.main.fragments.FragMessage;
-import com.shinplest.airbnbclone.src.main.fragments.FragProfile;
-import com.shinplest.airbnbclone.src.main.fragment_savelist.FragSavelist;
-import com.shinplest.airbnbclone.src.main.fragment_search.FragSearch;
-import com.shinplest.airbnbclone.src.main.fragments.FragTravel;
+import com.shinplest.airbnbclone.src.main.fragment_message.MessageFragment;
+import com.shinplest.airbnbclone.src.main.fragment_profile.ProfileFragment;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.SavelistFragment;
+import com.shinplest.airbnbclone.src.main.fragment_search.SearchFragment;
+import com.shinplest.airbnbclone.src.main.fragment_travel.TravelFragment;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 LOGIN_INFO = extras.getString("Login");
         }
 
-        loadFragment(new FragSearch());
+        loadFragment(new SearchFragment());
 
 
         //버텀 네비바에 따라 바뀌는 부분
@@ -94,19 +94,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
         switch (item.getItemId()) {
             case R.id.action_search:
-                fragment = new FragSearch();
+                fragment = new SearchFragment();
                 break;
             case R.id.action_savelist:
-                fragment = new FragSavelist();
+                fragment = new SavelistFragment();
                 break;
             case R.id.action_travel:
-                fragment = new FragTravel();
+                fragment = new TravelFragment();
                 break;
             case R.id.action_message:
-                fragment = new FragMessage();
+                fragment = new MessageFragment();
                 break;
             case R.id.action_profile:
-                fragment = new FragProfile();
+                fragment = new ProfileFragment();
                 break;
         }
         return loadFragment(fragment);

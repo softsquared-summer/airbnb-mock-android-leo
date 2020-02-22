@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragments;
+package com.shinplest.airbnbclone.src.main.fragment_profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +22,7 @@ import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragProfile extends BaseFragment {
+public class ProfileFragment extends BaseFragment {
     private FirebaseAuth mAuth;
 
     //view
@@ -34,7 +34,7 @@ public class FragProfile extends BaseFragment {
 
     private Button mBtnLogout;
 
-    public FragProfile() {
+    public ProfileFragment() {
     }
 
     @Nullable

@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.shinplest.airbnbclone.R;
 
-public class FragSavelist extends Fragment {
+public class SavelistFragment extends Fragment {
 
     private RecyclerView mRvSavelist;
 
-    public FragSavelist() {
+    public SavelistFragment() {
     }
 
     @Nullable

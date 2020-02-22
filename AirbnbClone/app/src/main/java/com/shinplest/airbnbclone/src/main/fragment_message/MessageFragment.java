@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragments;
+package com.shinplest.airbnbclone.src.main.fragment_message;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.shinplest.airbnbclone.R;
 
-public class FragMessage extends Fragment {
-    public FragMessage() {
+public class MessageFragment extends Fragment {
+    public MessageFragment() {
     }
 
     @Nullable

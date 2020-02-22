@@ -32,7 +32,7 @@ import static android.app.Activity.RESULT_OK;
 import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
-public class FragSearch extends BaseFragment {
+public class SearchFragment extends BaseFragment {
 
     private FirebaseAuth mAuth;
 
@@ -55,7 +55,7 @@ public class FragSearch extends BaseFragment {
 
     private SnapHelper snapHelper;
 
-    public FragSearch() {
+    public SearchFragment() {
     }
 
     @Nullable
