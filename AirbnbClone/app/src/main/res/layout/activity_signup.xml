@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="에어비앤비 커뮤니티 가입하기"
+                android:text="@string/activity_signup_title"
                 android:textColor="@color/secondText"
                 android:textSize="25sp"
                 android:textStyle="bold" />

@@ -28,13 +28,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="에어비앤비에 로그인하기"
+            android:text="@string/activity_login_title"
             android:textSize="23sp" />
 
         <TextView
             style="@style/BasicText"
             android:layout_marginTop="20dp"
-            android:text="이메일" />
+            android:text="@string/activity_login_email" />
 
         <EditText
             android:id="@+id/et_login_email"
@@ -44,7 +44,7 @@
         <TextView
             style="@style/BasicText"
             android:layout_marginTop="20dp"
-            android:text="비밀번호" />
+            android:text="@string/activity_login_password" />
 
         <EditText
             android:id="@+id/et_login_password"
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_login_btn_unclickable"
-            android:text="로그인" />
+            android:text="@string/activity_login_login" />
 
 
     </LinearLayout>
