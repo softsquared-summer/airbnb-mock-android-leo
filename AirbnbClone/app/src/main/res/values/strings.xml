@@ -7,6 +7,7 @@
     <!-- activity signup-->
     <string name="activity_signup_title">에어비앤비 커뮤니티 가입하기</string>
     <string name="signup_login">이미 계정을 보유하고 계시나요? <u>로그인</u></string>
+    <string name="activity_signup_phonenum">전화번호</string>
 
 
     <!-- activity login-->

@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전화번호"
+                android:text="@string/activity_signup_phonenum"
                 android:textColor="@color/secondText"
                 android:textSize="15sp" />
 
