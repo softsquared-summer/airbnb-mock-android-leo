@@ -29,9 +29,8 @@ public class MessageFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.frag_message_menu, menu);
-
         super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.frag_message_menu, menu);
 
     }
 }
