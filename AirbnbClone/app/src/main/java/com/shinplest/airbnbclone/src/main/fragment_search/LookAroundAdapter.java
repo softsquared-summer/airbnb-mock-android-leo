@@ -32,9 +32,9 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
 
         public MyViewHolder(View view) {
             super(view);
-            this.simpleDraweeView = view.findViewById(R.id.sv_frag_search_look_around);
-            this.textView = view.findViewById(R.id.tv_frag_search_look_around);
-            this.cardView = view.findViewById(R.id.cv_frag_search_continue_look_around);
+            this.simpleDraweeView = view.findViewById(R.id.sv_frag_search_holder_look_around);
+            this.textView = view.findViewById(R.id.tv_frag_search_holder_look_around);
+            this.cardView = view.findViewById(R.id.cv_frag_search_holder_continue_look_around);
         }
     }
 

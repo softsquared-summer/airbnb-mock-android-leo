@@ -114,6 +114,7 @@
                 <TextView
                     android:id="@+id/tv_frag_search_look_around"
                     style="@style/FragSearchTitleText"
+                    android:layout_marginTop="20dp"
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -30,7 +30,7 @@ public class ContinueLookAroundAdapter extends RecyclerView.Adapter<ContinueLook
             super(view);
             this.tvTitle = view.findViewById(R.id.tv_search_frag_continue_look_around_title);
             this.tvContent = view.findViewById(R.id.tv_search_frag_continue_look_around_content);
-            this.cardView = view.findViewById(R.id.cv_frag_search_continue_look_around);
+            this.cardView = view.findViewById(R.id.cv_frag_search_holder_continue_look_around);
         }
     }
 

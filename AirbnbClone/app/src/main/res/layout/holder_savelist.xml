@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cv_frag_search_continue_look_around"
+    android:id="@+id/cv_frag_search_holder_continue_look_around"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:elevation="2dp">
