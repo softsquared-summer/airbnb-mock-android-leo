@@ -12,7 +12,9 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
+import com.shinplest.airbnbclone.src.register.interfaces.RegisterActivityView;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterRetrofitInterface;
+import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,9 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
 import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements RegisterActivityView {
     private Button mBtnRegister;
-    private UserInfo userInfo;
+    private RequestRegister requestRegister;
 
     //모든 에딧텍스트
     private EditText mEtFirstName;
@@ -43,7 +45,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
         mBtnRegister = findViewById(R.id.btn_register_test);
 
-        phoneNum = getIntent().getExtras().getString("phoneNum","010-0000-0000");
+        phoneNum = getIntent().getExtras().getString("phoneNum", "010-0000-0000");
         showCustomToast(phoneNum);
 
         getEditText();
@@ -52,7 +54,16 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 //json 레트로핏으로 보내기
-                getEditTextInfo();
+
+                //EditText값 리퀘스트에 할당해줌
+                requestRegister = new RequestRegister();
+                requestRegister.setPhone(phoneNum);
+                requestRegister.setLast_name(mEtLastName.getText().toString());
+                requestRegister.setFirst_name(mEtFirstName.getText().toString());
+                requestRegister.setBirthday(mEtBirthday.getText().toString());
+                requestRegister.setEmail(mEtEmail.getText().toString());
+                requestRegister.setPw(mEtPassword.getText().toString());
+
 
                 retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
@@ -61,18 +72,19 @@ public class RegisterActivity extends BaseActivity {
 
                 RegisterRetrofitInterface registerRetrofitInterface = retrofit.create(RegisterRetrofitInterface.class);
 
-                Call<DefaultResponse> call = registerRetrofitInterface.postTest(userInfo);
+                Call<DefaultResponse> call = registerRetrofitInterface.postTest(requestRegister);
                 call.enqueue(new Callback<DefaultResponse>() {
                     @Override
                     public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                         DefaultResponse defaultResponse = response.body();
                         showCustomToast(defaultResponse.getMessage());
-                        if (defaultResponse.getCode() == 100){
+                        if (defaultResponse.getCode() == 100) {
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         }
                     }
+
                     @Override
                     public void onFailure(Call<DefaultResponse> call, Throwable t) {
                         showCustomToast("network fail");
@@ -82,14 +94,23 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
-    private void getEditText(){
+    private void getEditText() {
         mEtLastName = findViewById(R.id.et_register_last_name);
         mEtFirstName = findViewById(R.id.et_register_first_name);
         mEtBirthday = findViewById(R.id.et_register_birthday);
         mEtEmail = findViewById(R.id.et_register_eamil);
         mEtPassword = findViewById(R.id.et_register_password);
     }
-    private void getEditTextInfo(){
-       userInfo = new UserInfo(phoneNum, mEtLastName.getText().toString(), mEtFirstName.getText().toString(), mEtBirthday.getText().toString(), mEtEmail.getText().toString(), mEtPassword.getText().toString());
+
+
+
+    @Override
+    public void validateSuccess(String text) {
+
+    }
+
+    @Override
+    public void validateFailure(String message) {
+
     }
 }

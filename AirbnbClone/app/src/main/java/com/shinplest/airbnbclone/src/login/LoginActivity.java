@@ -1,6 +1,5 @@
 package com.shinplest.airbnbclone.src.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,22 +10,11 @@ import androidx.annotation.Nullable;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
-import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
-import com.shinplest.airbnbclone.src.main.MainActivity;
-import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
-import com.shinplest.airbnbclone.src.register.UserInfo;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
+import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 
 public class LoginActivity extends BaseActivity implements LoginActivityView {
 
-    private UserInfo userInfo;
+    private RequestRegister userInfo;
 
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -51,8 +39,8 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             @Override
             public void onClick(View v) {
 
-                userInfo = new UserInfo(mEtEmail.getText().toString(), mEtPassword.getText().toString());
-                tryGetJwt();
+//                userInfo = new RequestRegister(mEtEmail.getText().toString(), mEtPassword.getText().toString());
+//                tryGetJwt();
             }
         });
     }
