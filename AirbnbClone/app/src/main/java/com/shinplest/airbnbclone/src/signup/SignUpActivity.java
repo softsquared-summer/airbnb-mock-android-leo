@@ -52,6 +52,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
     private LinearLayout mLlLogin;
 
+    private String phoneNum;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,10 +93,10 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String phonenum = mEtPhonenum.getText().toString();
+                phoneNum = mEtPhonenum.getText().toString();
 
                 //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어주고 phone중간에 -삽입해줌
-                if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phonenum)) {
+                if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phoneNum)) {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
                 } else {
@@ -104,15 +106,19 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             }
         });
 
-        //버튼 누르면 번호 가입 인텐트로 넘겨줌
+        //버튼 누르면 폰번호 있는지 없는지 판단후
+        //있으면 -> 로그인, 없으면 -> 가입 넘겨줌
         mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
-                intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
-                startActivity(intent);
-                finish();
+
+                tryGetPoneAvailable(phoneNum);
+
+//                Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
+//                intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
+//                startActivity(intent);
+//                finish();
             }
         });
 
@@ -126,6 +132,12 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             }
         });
 
+    }
+
+    private void tryGetPoneAvailable(String phoneNum) {
+        final SignUpService signUpService = new SignUpService(this);
+        showProgressDialog();
+        signUpService.getPhoneAvailable(phoneNum);
     }
 
     private void signIn() {
@@ -188,6 +200,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     @Override
     public void validateSignUpSuccess(String text) {
         hideProgressDialog();
+        showCustomToast(text);
     }
 
     @Override

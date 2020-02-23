@@ -6,10 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class SignUpRetrofitInterface {
-    @GET("")
-    Call<DefaultResponse> getSignUp(@Query("phone") String phonenum) {
-        return null;
-    }
-
+public interface SignUpRetrofitInterface {
+    @GET("/users")
+    Call<DefaultResponse> getPhoneAvailable(@Query("phone") String phone);
 }

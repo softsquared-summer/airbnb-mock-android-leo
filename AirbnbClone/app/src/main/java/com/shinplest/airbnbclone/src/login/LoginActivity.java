@@ -74,7 +74,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     public void validateLoginSuccess(String jwt) {
         hideProgressDialog();
         showCustomToast(jwt);
-        sSharedPreferences = getSharedPreferences(ApplicationClass.TAG, MODE_PRIVATE);
         SharedPreferences.Editor editor = sSharedPreferences.edit();
         editor.putString(X_ACCESS_TOKEN, jwt).apply();
         Log.d("test", sSharedPreferences.getString(X_ACCESS_TOKEN, "nothing"));
