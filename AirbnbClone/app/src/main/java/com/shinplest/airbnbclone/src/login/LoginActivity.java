@@ -10,24 +10,21 @@ import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
-import com.shinplest.airbnbclone.src.login.models.LoginRetrofitInterface;
+import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
+import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
-import com.shinplest.airbnbclone.src.register.RegisterActivity;
 import com.shinplest.airbnbclone.src.register.UserInfo;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
 import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
+import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
 import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     private UserInfo userInfo;
 
@@ -55,36 +52,26 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
 
                 userInfo = new UserInfo(mEtEmail.getText().toString(), mEtPassword.getText().toString());
-
-                retrofit = new Retrofit
-                        .Builder()
-                        .baseUrl(BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create()).build();
-
-                LoginRetrofitInterface loginRetrofitInterface = retrofit.create(LoginRetrofitInterface.class);
-
-                Call<DefaultResponse> call = loginRetrofitInterface.postJwt(userInfo);
-                call.enqueue(new Callback<DefaultResponse>() {
-                    @Override
-                    public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                        DefaultResponse defaultResponse  = response.body();
-                        showCustomToast(defaultResponse.getMessage());
-                        if (defaultResponse.getCode() == 100){
-                            sSharedPreferences = getSharedPreferences("jwt", MODE_PRIVATE);
-                            sSharedPreferences.edit().putString(X_ACCESS_TOKEN, defaultResponse.getResult().getJwt());
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<DefaultResponse> call, Throwable t) {
-
-                    }
-                });
-
+                tryGetJwt();
             }
         });
+    }
+
+    private void tryGetJwt(){
+        showProgressDialog();
+
+        final LoginService loginService = new LoginService(this);
+        loginService.getjwt();
+    }
+
+    @Override
+    public void validateLoginSuccess(boolean isSuccess, int code, String message) {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void validateLoginFailure(String message) {
+        hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 }

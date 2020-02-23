@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.login.models;
+package com.shinplest.airbnbclone.src.login.interfaces;
 
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.register.UserInfo;
