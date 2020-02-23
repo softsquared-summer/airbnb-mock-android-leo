@@ -42,9 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:textSize="15sp"
                 android:text="'바르셀로나'에 가보시는 건 어떠세요?"
-                android:textColor="@color/secondText" />
+                android:textColor="@color/secondText"
+                android:textSize="15sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -120,20 +120,23 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_frag_search_look_around"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:clipToPadding="false" />
+                    android:clipToPadding="false"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"/>
 
                 <TextView
                     style="@style/FragSearchTitleText"
-                    android:text="계속 둘러보기"/>
+                    android:text="계속 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_frag_search_continue_look_around"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_marginTop="20dp"
-                    android:clipToPadding="false" />
+                    android:clipToPadding="false"
+                    android:paddingTop="5dp" />
 
 
                 <TextView
@@ -143,7 +146,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_frag_search_experience"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     style="@style/FragSearchBasicText"
@@ -161,8 +164,6 @@
                 <TextView
                     style="@style/FragSearchTitleText"
                     android:text="전 세계 숙소" />
-
-
 
 
             </LinearLayout>
