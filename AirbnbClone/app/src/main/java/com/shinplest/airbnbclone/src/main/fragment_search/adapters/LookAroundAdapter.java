@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragment_search;
+package com.shinplest.airbnbclone.src.main.fragment_search.adapters;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,12 +16,12 @@ import com.shinplest.airbnbclone.R;
 public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.MyViewHolder> {
 
     private String[] textSet;
-    private int[] imgSet;
+    private String[] urlSet;
 
     // 생성자
-    public LookAroundAdapter(String[] textSet, int[] imgSet) {
+    public LookAroundAdapter(String[] textSet, String[] imgSet) {
         this.textSet = textSet;
-        this.imgSet = imgSet;
+        this.urlSet = imgSet;
     }
 
     // 리사이클러뷰에 들어갈 뷰 홀더, 그리고 그 뷰 홀더에 들어갈 아이템들을 지정
@@ -32,9 +32,9 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
 
         public MyViewHolder(View view) {
             super(view);
-            this.simpleDraweeView = view.findViewById(R.id.iv_pic);
-            this.textView = view.findViewById(R.id.tv_text);
-            this.cardView = view.findViewById(R.id.cv_frag_search_continue_look_around);
+            this.simpleDraweeView = view.findViewById(R.id.sv_frag_search_holder_look_around);
+            this.textView = view.findViewById(R.id.tv_frag_search_holder_look_around);
+            this.cardView = view.findViewById(R.id.cv_frag_search_holder_continue_look_around);
         }
     }
 
@@ -49,9 +49,8 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(this.textSet[position]);
-//        holder.simpleDraweeView.setBackgroundResource(this.imgSet[position]);
         //fresco로 이미지 넣어주자
-        Uri uri = Uri.parse("https://t1.daumcdn.net/cfile/tistory/243321375185EF0304");
+        Uri uri = Uri.parse(this.urlSet[position]);
         holder.simpleDraweeView.setImageURI(uri);
 
         //첫번째와 마지막
@@ -61,10 +60,9 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
         }
 
     }
-
     @Override
     public int getItemCount() {
-        return textSet.length > imgSet.length ? textSet.length : imgSet.length;
+        return textSet.length;
     }
 
 

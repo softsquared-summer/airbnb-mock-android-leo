@@ -1,19 +1,18 @@
 package com.shinplest.airbnbclone.src.login;
 
-import android.content.Intent;
-
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
-import com.shinplest.airbnbclone.src.main.MainActivity;
-import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
+import com.shinplest.airbnbclone.src.login.models.JwtResponse;
+import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
+import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
+import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
 
 public class LoginService {
 
@@ -23,15 +22,22 @@ public class LoginService {
         this.mLoginActivityView = loginActivityView;
     }
 
-    void getjwt(){
-        final LoginRetrofitInterface loginRetrofitInterface = getRetrofit().create(LoginRetrofitInterface.class);
-        loginRetrofitInterface.getJwt().enqueue(new Callback<DefaultResponse>() {
+    void postJwt(RequestJwt requestJwt){
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final LoginRetrofitInterface loginRetrofitInterface = retrofit.create(LoginRetrofitInterface.class);
+        loginRetrofitInterface.postJwt(requestJwt).enqueue(new Callback<JwtResponse>() {
             @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+            public void onResponse(Call<JwtResponse> call, Response<JwtResponse> response) {
+                JwtResponse jwtResponse = response.body();
+                mLoginActivityView.validateLoginSuccess(jwtResponse.getResult().getJwt());
             }
 
             @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+            public void onFailure(Call<JwtResponse> call, Throwable t) {
                 mLoginActivityView.validateLoginFailure(null);
             }
         });

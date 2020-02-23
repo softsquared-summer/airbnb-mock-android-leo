@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:paddingTop="30dp"
-            style="@style/FragTitleText"
-            android:text="저장 목록"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_frag_savelist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <TextView
+                    style="@style/FragTitleText"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="35dp"
+                    android:text="저장 목록" />
+            </RelativeLayout>
+
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_frag_savelist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
 </LinearLayout>

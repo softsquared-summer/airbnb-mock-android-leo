@@ -114,6 +114,7 @@
                 <TextView
                     android:id="@+id/tv_frag_search_look_around"
                     style="@style/FragSearchTitleText"
+                    android:layout_marginTop="20dp"
                     android:text="에어비앤비 둘러보기" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -138,6 +139,11 @@
                 <TextView
                     style="@style/FragSearchTitleText"
                     android:text="최고 평점의 체험" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_frag_search_experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/FragSearchBasicText"
