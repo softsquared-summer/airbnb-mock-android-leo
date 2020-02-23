@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +12,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
-import com.shinplest.airbnbclone.src.register.RegisterService;
-import com.shinplest.airbnbclone.src.register.models.RequestRegister;
+import com.shinplest.airbnbclone.src.main.MainActivity;
 
 
 //기본적으로 jwt가 없는 상황을 가정 없을경우, 이메일과 password로 jwt를 받고, sharedpreference에 저장
@@ -65,10 +65,14 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     }
 
 
+    //jwt로그인 됐을때, sharedpreference에 저장하기
     @Override
     public void validateLoginSuccess(String message) {
         hideProgressDialog();
         showCustomToast(message);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

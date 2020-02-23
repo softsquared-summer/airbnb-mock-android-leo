@@ -15,8 +15,8 @@ package com.shinplest.airbnbclone.src.main;
     도메인 별로 코드를 리팩토링하는 효과적인 방법
     앱바 디자인 효과적으로 하는법
 
-    구글로그인 어떻게 구현했지?
-    서버수업에 참여해도 되는지?
+
+    jwt라는걸 sharedpreference에 저장하는게 자동로그인이 되게하려는거 아닌가? splash에서 jwt를 쏘면 되는거 아닌가?
  */
 
 //안쓰는 import 자동 정리 ctrl + alt + o
