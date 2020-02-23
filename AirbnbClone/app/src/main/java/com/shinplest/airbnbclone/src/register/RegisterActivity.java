@@ -45,6 +45,8 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
             public void onClick(View v) {
                 //json 레트로핏으로 보내기
 
+                showProgressDialog();
+
                 //EditText값 리퀘스트에 할당해줌
                 requestRegister = new RequestRegister();
                 requestRegister.setPhone(phoneNum);

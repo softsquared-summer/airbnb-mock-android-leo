@@ -1,6 +1,5 @@
 package com.shinplest.airbnbclone.src.main.models;
 import com.google.gson.annotations.SerializedName;
-import com.shinplest.airbnbclone.src.login.models.Result;
 
 public class DefaultResponse {
     @SerializedName("code")
@@ -12,12 +11,6 @@ public class DefaultResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    @SerializedName("result")
-    private Result result;
-
-    public Result getResult() {
-        return result;
-    }
 
     public int getCode() {
         return code;

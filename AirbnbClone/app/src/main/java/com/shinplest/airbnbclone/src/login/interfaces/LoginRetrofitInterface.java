@@ -11,6 +11,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface LoginRetrofitInterface {
-    @GET("/jwt")
-    Call<JwtResponse> getJwt(@Body RequestJwt user);
+    @POST("/jwt")
+    Call<JwtResponse> postJwt(@Body RequestJwt user);
 }

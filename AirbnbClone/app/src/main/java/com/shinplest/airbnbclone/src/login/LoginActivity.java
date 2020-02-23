@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
+import com.shinplest.airbnbclone.src.login.models.RequestJwt;
+import com.shinplest.airbnbclone.src.register.RegisterService;
 import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 
 
@@ -17,7 +19,7 @@ import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 
 public class LoginActivity extends BaseActivity implements LoginActivityView {
 
-    private RequestRegister userInfo;
+    private RequestJwt requestJwt;
 
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -38,26 +40,35 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         mBtnLogin = findViewById(R.id.btn_login_login);
 
 
+
+        //버튼을 클릭했을때 jwt를 받아오고 로그인을 시켜줌.
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                userInfo = new RequestRegister(mEtEmail.getText().toString(), mEtPassword.getText().toString());
-//                tryGetJwt();
+                requestJwt = new RequestJwt();
+                requestJwt.setEmail(mEtEmail.getText().toString());
+                requestJwt.setPw(mEtPassword.getText().toString());
+
+                tryPostLogin();
+
+
+
             }
         });
     }
 
-    private void tryGetJwt(){
-        showProgressDialog();
-
+    private void tryPostLogin(){
         final LoginService loginService = new LoginService(this);
-        loginService.getjwt();
+        showProgressDialog();
+        loginService.postJwt(requestJwt);
     }
 
+
     @Override
-    public void validateLoginSuccess(boolean isSuccess, int code, String message) {
+    public void validateLoginSuccess(String message) {
         hideProgressDialog();
+        showCustomToast(message);
     }
 
     @Override
