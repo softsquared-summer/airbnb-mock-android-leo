@@ -23,7 +23,6 @@ public class MessageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_message, container, false);
         //새로고침 옵션메뉴 보이게
         setHasOptionsMenu(true);
-
         return view;
     }
 
