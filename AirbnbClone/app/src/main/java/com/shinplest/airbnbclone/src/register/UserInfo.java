@@ -2,11 +2,17 @@ package com.shinplest.airbnbclone.src.register;
 
 
 public class UserInfo {
+
     private String phone;
+
     private String last_name;
+
     private String first_name;
+
     private String birthday;
+
     private String email;
+
     private String pw;
 
 

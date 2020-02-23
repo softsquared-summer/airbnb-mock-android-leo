@@ -27,8 +27,8 @@
         <activity
             android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".src.search.SearchActivity"/>
-        <activity android:name=".src.login.LoginActivity"/>
+        <activity android:name=".src.search.SearchActivity" />
+        <activity android:name=".src.login.LoginActivity" />
     </application>
 
 </manifest>

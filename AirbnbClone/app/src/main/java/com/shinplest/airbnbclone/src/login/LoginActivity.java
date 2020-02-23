@@ -23,6 +23,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
+import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
 import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
@@ -70,7 +71,7 @@ public class LoginActivity extends BaseActivity {
                         showCustomToast(defaultResponse.getMessage());
                         if (defaultResponse.getCode() == 100){
                             sSharedPreferences = getSharedPreferences("jwt", MODE_PRIVATE);
-                            sSharedPreferences.edit().putString("token", defaultResponse.getResult().getJwt());
+                            sSharedPreferences.edit().putString(X_ACCESS_TOKEN, defaultResponse.getResult().getJwt());
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

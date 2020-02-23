@@ -7,11 +7,11 @@
 
     <TextView
         style="@style/TitleText"
-        android:text="정보 입력하기" />
+        android:text="@string/activity_register_title" />
 
     <TextView
         style="@style/RegisterBasicText"
-        android:text="이름(예: 길동)\n정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요." />
+        android:text="@string/activity_register_name" />
 
     <EditText
         android:id="@+id/et_register_first_name"
@@ -19,7 +19,7 @@
 
     <TextView
         style="@style/RegisterBasicText"
-        android:text="성(예: 홍)" />
+        android:text="@string/activity_register_lastname" />
 
     <EditText
         android:id="@+id/et_register_last_name"
@@ -27,7 +27,7 @@
 
     <TextView
         style="@style/RegisterBasicText"
-        android:text="생일(yyyyyyyy/mm/dd)\n만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 다른 에어비앤비 이용자에게 공개되지 않습니다." />
+        android:text="@string/activity_register_birthday" />
 
     <EditText
         android:id="@+id/et_register_birthday"
@@ -35,7 +35,7 @@
 
     <TextView
         style="@style/RegisterBasicText"
-        android:text="이메일\n예약 확인 이메일이 전송됩니다." />
+        android:text="@string/activity_register_email" />
 
     <EditText
         android:id="@+id/et_register_eamil"
@@ -43,7 +43,7 @@
 
     <TextView
         style="@style/RegisterBasicText"
-        android:text="비밀번호\n기호나 숫자를 포함해야 하며 8자 이상이어야 합니다." />
+        android:text="@string/activity_register_password" />
 
     <EditText
         android:id="@+id/et_register_password"

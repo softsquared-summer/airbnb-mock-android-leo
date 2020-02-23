@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--ifroom 공간있을때만 보여라 app:showAsAction="ifRoom" -->
+    <item
+        android:id="@+id/refesh_message"
+        android:enabled="true"
+        android:title="새로고침" />
+
+</menu>

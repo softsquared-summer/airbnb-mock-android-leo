@@ -32,7 +32,7 @@ import static android.app.Activity.RESULT_OK;
 import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
-public class FragSearch extends BaseFragment {
+public class SearchFragment extends BaseFragment {
 
     private FirebaseAuth mAuth;
 
@@ -55,14 +55,12 @@ public class FragSearch extends BaseFragment {
 
     private SnapHelper snapHelper;
 
-    public FragSearch() {
+    public SearchFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//      뷰가 초기화 되기 전에 fresco initiate
-        Fresco.initialize(getActivity());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         mAuth = FirebaseAuth.getInstance();
