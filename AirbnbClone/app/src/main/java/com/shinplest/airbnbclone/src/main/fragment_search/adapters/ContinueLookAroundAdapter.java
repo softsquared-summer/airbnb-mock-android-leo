@@ -14,7 +14,6 @@ import com.shinplest.airbnbclone.R;
 public class ContinueLookAroundAdapter extends RecyclerView.Adapter<ContinueLookAroundAdapter.MyViewHolder> {
     private String[] titleSet;
     private String[] contentSet;
-    private CardView cardView;
 
     public ContinueLookAroundAdapter(String[] titleSet, String[] contentSet) {
         this.titleSet = titleSet;
