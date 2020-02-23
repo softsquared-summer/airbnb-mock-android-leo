@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="400dp"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sv_frag_search_holder_experience"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <TextView
+        android:id="@+id/tv_frag_search_holder_experience_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="국가" />
+
+    <TextView
+        android:id="@+id/tv_frag_search_holder_experience_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제목 : 이탈리아 할머니에게 직접 배우는 파스타" />
+
+    <TextView
+        android:id="@+id/tv_frag_search_holder_experience_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="가격 : 1인당 \뷰퉈" />
+
+    <TextView
+        android:id="@+id/tv_frag_search_holder_experience_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="★ 4.99 (1065)" />
+
+    <TextView
+        android:id="@+id/tv_frag_search_holder_experience_include"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="교통편, 음식, 음료 포함" />
+
+
+</LinearLayout>

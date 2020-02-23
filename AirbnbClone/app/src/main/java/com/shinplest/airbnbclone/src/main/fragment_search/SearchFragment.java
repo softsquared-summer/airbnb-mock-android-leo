@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
@@ -52,7 +53,10 @@ public class SearchFragment extends BaseFragment {
     //secont recycler view
     private RecyclerView mRvContinewLookAround;
     private RecyclerView.Adapter mContinueLookAroundAdapter;
-    private RecyclerView.LayoutManager mHorizontalLayoutManagerContinueLookAround;
+
+    //third recycler view
+    private RecyclerView mRvExperience;
+    private RecyclerView.Adapter mExperienceAdapter;
 
     private SnapHelper snapHelper;
 
@@ -121,13 +125,19 @@ public class SearchFragment extends BaseFragment {
         //두번째 리사이클러
         mRvContinewLookAround = view.findViewById(R.id.rv_frag_search_continue_look_around);
         mRvContinewLookAround.setHasFixedSize(true);
-        mHorizontalLayoutManagerContinueLookAround = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        mRvContinewLookAround.setLayoutManager(mHorizontalLayoutManagerContinueLookAround);
+        mRvContinewLookAround.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         String[] titleSet = {"test", "한국", "신주쿠, Shinjuku City, 일본", "맨해튼, 뉴욕, 뉴욕", "test"};
         String[] contentSet = {"test", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "test"};
         mContinueLookAroundAdapter = new ContinueLookAroundAdapter(titleSet, contentSet);
         mRvContinewLookAround.setAdapter(mContinueLookAroundAdapter);
         snapHelper.attachToRecyclerView(mRvContinewLookAround);
+
+        //세번째 체험 리사이클러 뷰
+        mRvExperience = view.findViewById(R.id.rv_frag_search_experience);
+        mRvExperience.setHasFixedSize(true);
+        mRvExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+
 
 
         return view;
