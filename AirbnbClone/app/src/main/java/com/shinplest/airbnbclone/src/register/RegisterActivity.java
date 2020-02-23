@@ -11,19 +11,8 @@ import androidx.annotation.Nullable;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
-import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterActivityView;
-import com.shinplest.airbnbclone.src.register.interfaces.RegisterRetrofitInterface;
 import com.shinplest.airbnbclone.src.register.models.RequestRegister;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.shinplest.airbnbclone.src.ApplicationClass.BASE_URL;
-import static com.shinplest.airbnbclone.src.ApplicationClass.retrofit;
 
 public class RegisterActivity extends BaseActivity implements RegisterActivityView {
     private Button mBtnRegister;
@@ -50,6 +39,7 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
 
         getEditText();
 
+
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,34 +54,17 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
                 requestRegister.setEmail(mEtEmail.getText().toString());
                 requestRegister.setPw(mEtPassword.getText().toString());
 
+                //로그인 요청 보냄
+                tryPostRegiseter();
 
-                retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                RegisterRetrofitInterface registerRetrofitInterface = retrofit.create(RegisterRetrofitInterface.class);
-
-                Call<DefaultResponse> call = registerRetrofitInterface.postTest(requestRegister);
-                call.enqueue(new Callback<DefaultResponse>() {
-                    @Override
-                    public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                        DefaultResponse defaultResponse = response.body();
-                        showCustomToast(defaultResponse.getMessage());
-                        if (defaultResponse.getCode() == 100) {
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                        showCustomToast("network fail");
-                    }
-                });
             }
         });
+    }
+
+    private void tryPostRegiseter(){
+        final RegisterService registerService = new RegisterService(this);
+        showProgressDialog();
+        registerService.postRegister(requestRegister);
     }
 
     private void getEditText() {
@@ -102,15 +75,20 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
         mEtPassword = findViewById(R.id.et_register_password);
     }
 
-
-
     @Override
-    public void validateSuccess(String text) {
-
+    public void validateSuccess(String text, int code) {
+        hideProgressDialog();
+        showCustomToast(text);
+        if (code == 100) {
+            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
-    public void validateFailure(String message) {
-
+    public void validateFailure() {
+        hideProgressDialog();
+        showCustomToast(getString(R.string.network_error));
     }
 }

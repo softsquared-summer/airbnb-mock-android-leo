@@ -3,8 +3,8 @@ package com.shinplest.airbnbclone.src.register.interfaces;
 
 public interface RegisterActivityView {
 
-    void validateSuccess(String text);
+    void validateSuccess(String text, int code);
 
-    void validateFailure(String message);
+    void validateFailure();
 }
 
