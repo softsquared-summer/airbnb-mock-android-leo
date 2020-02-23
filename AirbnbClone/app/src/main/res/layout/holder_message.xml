@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fresco="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="100dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sv_frag_message_holder_profile"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             fresco:roundAsCircle="true" />
@@ -23,6 +21,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="5"
             android:orientation="vertical"
             app:layout_constraintLeft_toRightOf="@+id/sv_frag_message_holder_profile"
@@ -36,7 +35,8 @@
                     android:id="@+id/tv_frag_message_holder_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="B">
+                    android:text="B"
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -50,6 +50,7 @@
             </RelativeLayout>
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/tv_frag_message_holder_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
