@@ -2,7 +2,7 @@ package com.shinplest.airbnbclone.src.login.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class JwtResponse {
+public class UserNoResponse {
     @SerializedName("result")
     private Result result;
 
@@ -14,6 +14,7 @@ public class JwtResponse {
 
     @SerializedName("isSuccess")
     private boolean isSuccess;
+
 
     public int getCode() {
         return code;
@@ -32,11 +33,11 @@ public class JwtResponse {
     }
 
     public class Result{
-        @SerializedName("jwt")
-        private String jwt;
+        @SerializedName("userNo")
+        private int userNo;
 
-        public String getJwt() {
-            return jwt;
+        public int getUserNo() {
+            return userNo;
         }
     }
 }
