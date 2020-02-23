@@ -31,10 +31,11 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.LoginActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.register.RegisterActivity;
+import com.shinplest.airbnbclone.src.signup.interfaces.SignUpActivityView;
 
 import java.util.regex.Pattern;
 
-public class SignUpActivity extends BaseActivity {
+public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
     //구글로그인 관련 변수
     private FirebaseAuth mAuth = null;
@@ -180,4 +181,13 @@ public class SignUpActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void validateSignUpSuccess(String text) {
+
+    }
+
+    @Override
+    public void validateFailure(String message) {
+
+    }
 }
