@@ -1,4 +1,4 @@
 package com.shinplest.airbnbclone.src.signup.models;
 
-public class SignUpResponse {
+public class RequestSignUp {
 }

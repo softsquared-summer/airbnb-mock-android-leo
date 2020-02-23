@@ -2,6 +2,7 @@ package com.shinplest.airbnbclone.src.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -34,6 +35,9 @@ import com.shinplest.airbnbclone.src.register.RegisterActivity;
 import com.shinplest.airbnbclone.src.signup.interfaces.SignUpActivityView;
 
 import java.util.regex.Pattern;
+
+
+//단순히 전화번호 있는지 없는지를 검증하고, 있으면 Login Activity 없으면 Register Activity로 넘겨줌
 
 public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
@@ -74,6 +78,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
         //전화번호 검증하는 부분
         mEtPhonenum = findViewById(R.id.et_login_phonenum);
+        //전화번호 변하는 formating
+        mEtPhonenum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         mEtPhonenum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -128,7 +134,6 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -175,19 +180,18 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        }
-        else{
+        } else {
             showCustomToast("google login error code : no user");
         }
     }
 
     @Override
     public void validateSignUpSuccess(String text) {
-
+        hideProgressDialog();
     }
 
     @Override
     public void validateFailure(String message) {
-
+        hideProgressDialog();
     }
 }
