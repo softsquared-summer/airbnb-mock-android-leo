@@ -12,6 +12,9 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 
+
+//기본적으로 jwt가 없는 상황을 가정 없을경우, 이메일과 password로 jwt를 받고, sharedpreference에 저장
+
 public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     private RequestRegister userInfo;

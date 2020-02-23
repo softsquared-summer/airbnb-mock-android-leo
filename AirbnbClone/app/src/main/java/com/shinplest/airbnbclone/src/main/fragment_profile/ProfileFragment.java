@@ -21,6 +21,8 @@ import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+
 public class ProfileFragment extends BaseFragment {
     private FirebaseAuth mAuth;
 
@@ -99,8 +101,11 @@ public class ProfileFragment extends BaseFragment {
 
     //프로필 update
     private  void updateUI(FirebaseAuth auth){
-        GoogleUserInfo user = new GoogleUserInfo(auth);
-        mSdProfilePhoto.setImageURI(user.getGoogleUserProfilePhotoUrl());
-        mTvUserName.setText(user.getGoogleUserName());
+        //구글로그인일때만 사진가져와서 업데이트
+        if(LOGIN_INFO == "google"){
+            GoogleUserInfo user = new GoogleUserInfo(auth);
+            mSdProfilePhoto.setImageURI(user.getGoogleUserProfilePhotoUrl());
+            mTvUserName.setText(user.getGoogleUserName());
+        }
     }
 }
