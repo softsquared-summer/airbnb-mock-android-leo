@@ -1,4 +1,4 @@
 package com.shinplest.airbnbclone.src.main.fragment_search;
 
-public class ExperienceAdapter {
+public class SearchFragmentService {
 }

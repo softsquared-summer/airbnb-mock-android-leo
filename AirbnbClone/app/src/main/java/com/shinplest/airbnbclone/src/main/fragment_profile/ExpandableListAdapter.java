@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main;
+package com.shinplest.airbnbclone.src.main.fragment_profile;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

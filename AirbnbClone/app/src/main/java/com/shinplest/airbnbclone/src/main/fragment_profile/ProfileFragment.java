@@ -16,7 +16,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
-import com.shinplest.airbnbclone.src.main.ExpandableListAdapter;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 
 import java.util.ArrayList;

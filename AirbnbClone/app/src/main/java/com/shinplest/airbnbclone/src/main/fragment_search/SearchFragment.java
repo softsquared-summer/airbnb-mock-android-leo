@@ -1,7 +1,6 @@
 package com.shinplest.airbnbclone.src.main.fragment_search;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
+import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
+import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
 import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;

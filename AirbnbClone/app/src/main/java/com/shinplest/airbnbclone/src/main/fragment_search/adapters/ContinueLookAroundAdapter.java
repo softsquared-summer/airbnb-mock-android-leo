@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragment_search;
+package com.shinplest.airbnbclone.src.main.fragment_search.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
