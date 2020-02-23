@@ -15,18 +15,20 @@ import com.shinplest.airbnbclone.R;
 import java.util.ArrayList;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
-    private ArrayList<Message> message;
+    private ArrayList<Message> messages;
 
+    public MessageAdapter(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
 
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private SimpleDraweeView simpleDraweeView;
-        private TextView tvUserName, tvDate, tvContent,tvRoom,  tvAvailable;
+        private TextView tvUserName, tvDate, tvContent, tvRoom, tvAvailable;
 
         public MyViewHolder(View view) {
             super(view);
             this.simpleDraweeView = view.findViewById(R.id.sv_frag_message_holder_profile);
-            this.tvUserName = view.findViewById(R.id.tv_frag_message_holder_username;
+            this.tvUserName = view.findViewById(R.id.tv_frag_message_holder_username);
             this.tvDate = view.findViewById(R.id.tv_frag_message_holder_date);
             this.tvContent = view.findViewById(R.id.tv_frag_message_holder_content);
             this.tvRoom = view.findViewById(R.id.tv_frag_message_holder_room);
@@ -45,15 +47,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.simpleDraweeView.setImageURI(Uri.parse(profileUrlSet.get(position)));
-        holder.tvUserName.setText(userNameSet.get(position));
-        holder.tvDate.setText(dateSet.get(position));
-        holder.tvRoom.setText(roomSet.get(position));
-
+        holder.simpleDraweeView.setImageURI(Uri.parse(messages.get(position).getProfileUrl()));
+        holder.tvUserName.setText(messages.get(position).getUserName());
+        holder.tvDate.setText(messages.get(position).getDate());
+        holder.tvContent.setText(messages.get(position).getContent());
+        holder.tvRoom.setText(messages.get(position).getRoom());
+        holder.tvAvailable.setText(messages.get(position).getAvailable());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return messages.size();
     }
 }
