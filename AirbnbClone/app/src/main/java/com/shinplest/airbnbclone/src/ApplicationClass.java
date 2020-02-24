@@ -10,6 +10,8 @@ import com.shinplest.airbnbclone.config.XAccessTokenInterceptor;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -71,5 +73,15 @@ public class ApplicationClass extends Application {
         }
 
         return retrofit;
+    }
+
+    public static String getNumbersFromString(String string){
+        String number = null;
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(string);
+        while(m.find()){
+            number =  m.group();
+        }
+        return number;
     }
 }

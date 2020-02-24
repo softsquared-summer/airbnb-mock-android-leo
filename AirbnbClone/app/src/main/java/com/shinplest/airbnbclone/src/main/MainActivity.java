@@ -11,6 +11,22 @@ package com.shinplest.airbnbclone.src.main;
     앱바 디자인 효과적으로 하는법
 */
 
+
+/*
+       Airbnb Clone App SoftSquared Leo
+       Designed by Shinplest
+
+       SignUp Activity
+       - 상단 X버튼 누를시 앱 종료
+       - 그러나 로그인넘어갈때는 종료시키지 않음(다시 돌아갈 수 있게 하기 위한 장치)
+       - 스피너에 따라 번호값 바뀜
+       - 번호 입력시 정규식으로 버튼 색과 클릭가능여부 바꿈
+       - 버튼클릭시 번호가 있으면 로그인으로, 없으면 가입창으로 넘겨줌
+       - 구글로그인 나중에 구현
+       - 로그인 하고 싶을경우 로그인을 클릭하면 로그인창으로 넘김
+
+ */
+
 //주요 고안점
 
 //splash화면에서 불필요한 시간을 없애기 위해서, drawable로 구현. jwt 확인
@@ -34,7 +50,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
-import com.shinplest.airbnbclone.src.login.LoginService;
 import com.shinplest.airbnbclone.src.main.fragment_message.MessageFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.ProfileFragment;
 import com.shinplest.airbnbclone.src.main.fragment_savelist.SavelistFragment;

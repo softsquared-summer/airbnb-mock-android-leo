@@ -7,9 +7,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,10 +40,19 @@ import com.shinplest.airbnbclone.src.signup.interfaces.SignUpActivityView;
 
 import java.util.regex.Pattern;
 
+import static com.shinplest.airbnbclone.src.ApplicationClass.getNumbersFromString;
+
 
 //단순히 전화번호 있는지 없는지를 검증하고, 있으면 Login Activity 없으면 Register Activity로 넘겨줌
 
 public class SignUpActivity extends BaseActivity implements SignUpActivityView {
+
+    //스피너 바꿔줌
+    private Spinner mSpnCountryCode;
+    private TextView mTvCountryCode;
+    private ImageView mIvExit;
+
+
 
     //구글로그인 관련 변수
     private FirebaseAuth mAuth = null;
@@ -59,11 +72,24 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        //전화번호 선택에 따라 국가 번호 바꿔줌
+        changeCountryCode();
+
+        //엑스버튼 앱자체 종료
+        mIvExit = findViewById(R.id.iv_signup_exit);
+        mIvExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomToast("앱을 종료합니다.");
+                finishAffinity();
+            }
+        });
+
         //구글로그인
         signInButton = findViewById(R.id.signInButton);
         mAuth = FirebaseAuth.getInstance();
 
-        //구글 로인 객체
+        //구글 로그인 객체
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -75,15 +101,40 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showCustomToast("현재 개발중인 기능입니다. 잠시만 기다려주세요");
                 //signIn();
             }
         });
 
         //전화번호 검증하는 부분
+        validatePhoneNumber();
+
+
+        //버튼 누르면 폰번호 있는지 없는지 판단후
+        //있으면 -> 로그인, 없으면 -> 가입 넘겨줌
+        mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
+        mBtnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tryGetPoneAvailable(phoneNum);
+            }
+        });
+
+
+        //로그인누르면 로그인창으로 넘겨주는 부분
+        mLlLogin = findViewById(R.id.ll_singup_login);
+        mLlLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void validatePhoneNumber() {
         mEtPhonenum = findViewById(R.id.et_login_phonenum);
-        //전화번호 변하는 formating
         mEtPhonenum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         mEtPhonenum.addTextChangedListener(new TextWatcher() {
             @Override
@@ -98,7 +149,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             public void afterTextChanged(Editable s) {
                 phoneNum = mEtPhonenum.getText().toString();
 
-                //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어주고 phone중간에 -삽입해줌
+                //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어줌
                 if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phoneNum)) {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
@@ -108,27 +159,24 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
                 }
             }
         });
+    }
 
-        //버튼 누르면 폰번호 있는지 없는지 판단후
-        //있으면 -> 로그인, 없으면 -> 가입 넘겨줌
-        mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
-        mBtnRegister.setOnClickListener(new View.OnClickListener() {
+    private void changeCountryCode() {
+        mSpnCountryCode = findViewById(R.id.spn_signup_country);
+        mSpnCountryCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                tryGetPoneAvailable(phoneNum);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mTvCountryCode = findViewById(R.id.tv_signup_country_code);
+                String countryCode = mSpnCountryCode.getSelectedItem().toString();
+                String number = getNumbersFromString(countryCode);
+                mTvCountryCode.setText("+"+number);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-
-        //로그인으로 넘겨주는 버튼
-        mLlLogin = findViewById(R.id.ll_singup_login);
-        mLlLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     private void tryGetPoneAvailable(String phoneNum) {
@@ -203,7 +251,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         if (code == 101) {
             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
-            showCustomToast("가입된 아이디가 존재합니다. 로그인 하세요");
+            showCustomToast("가입된 아이디가 존재합니다.\n로그인 하세요");
         }
         //번호가 없을 경우-> 회원가입
         else {
