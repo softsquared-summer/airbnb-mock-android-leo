@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,12 +16,13 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@SuppressLint("Registered")
 public class ApplicationClass extends Application {
     public static MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=uft-8");
     public static MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
     // 테스트 서버 주소
-    public static String BASE_URL = "http://test.developerjoy.fun/";
+    public static String BASE_URL = "http://developerjoy.fun";
 
     public static SharedPreferences sSharedPreferences = null;
 
@@ -45,7 +47,6 @@ public class ApplicationClass extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         if (sSharedPreferences == null) {
             sSharedPreferences = getApplicationContext().getSharedPreferences(TAG, Context.MODE_PRIVATE);
         }

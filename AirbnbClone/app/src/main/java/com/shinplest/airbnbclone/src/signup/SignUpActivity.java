@@ -2,6 +2,7 @@ package com.shinplest.airbnbclone.src.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -35,6 +36,9 @@ import com.shinplest.airbnbclone.src.signup.interfaces.SignUpActivityView;
 
 import java.util.regex.Pattern;
 
+
+//단순히 전화번호 있는지 없는지를 검증하고, 있으면 Login Activity 없으면 Register Activity로 넘겨줌
+
 public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
     //구글로그인 관련 변수
@@ -47,6 +51,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     private EditText mEtPhonenum;
 
     private LinearLayout mLlLogin;
+
+    private String phoneNum;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +80,8 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
         //전화번호 검증하는 부분
         mEtPhonenum = findViewById(R.id.et_login_phonenum);
+        //전화번호 변하는 formating
+        mEtPhonenum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         mEtPhonenum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -85,10 +93,10 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String phonenum = mEtPhonenum.getText().toString();
+                phoneNum = mEtPhonenum.getText().toString();
 
                 //핸드폰 유효성 검사 그에따라 색을 바꿔주고 클릭 가능 불가능여부 바꾸어주고 phone중간에 -삽입해줌
-                if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phonenum)) {
+                if (Pattern.matches("^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$", phoneNum)) {
                     mBtnRegister.setBackground(getResources().getDrawable(R.drawable.shape_login_btn_clickable));
                     mBtnRegister.setEnabled(true);
                 } else {
@@ -98,15 +106,16 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             }
         });
 
-        //버튼 누르면 번호 가입 인텐트로 넘겨줌
+        //버튼 누르면 폰번호 있는지 없는지 판단후
+        //있으면 -> 로그인, 없으면 -> 가입 넘겨줌
         mBtnRegister = findViewById(R.id.btn_login_register_by_phone_number);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
-                intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
-                startActivity(intent);
-                finish();
+
+                tryGetPoneAvailable(phoneNum);
+
+
             }
         });
 
@@ -122,11 +131,16 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
     }
 
+    private void tryGetPoneAvailable(String phoneNum) {
+        final SignUpService signUpService = new SignUpService(this);
+        showProgressDialog();
+        signUpService.getPhoneAvailable(phoneNum);
+    }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
 
 
     @Override
@@ -175,19 +189,33 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        }
-        else{
+        } else {
             showCustomToast("google login error code : no user");
         }
     }
 
+    //핸드폰 번호가 있을 경우
     @Override
-    public void validateSignUpSuccess(String text) {
+    public void validateSignUpSuccess(String message, int code) {
+        hideProgressDialog();
 
+        //가입된 번호가 있을경우
+        if (code == 101) {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
+            showCustomToast("가입된 아이디가 존재합니다. 로그인 하세요");
+        }
+        //번호가 없을 경우-> 회원가입
+        else {
+            Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
+            intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
+            startActivity(intent);
+        }
     }
 
     @Override
     public void validateFailure(String message) {
-
+        hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 }

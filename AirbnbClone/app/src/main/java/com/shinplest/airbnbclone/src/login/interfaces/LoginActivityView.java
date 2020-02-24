@@ -4,4 +4,8 @@ public interface LoginActivityView {
     void validateLoginSuccess(String message);
 
     void validateLoginFailure(String message);
+
+    void validateJwtLoginSuccess();
+
+    void validateJwtLoginFailure();
 }

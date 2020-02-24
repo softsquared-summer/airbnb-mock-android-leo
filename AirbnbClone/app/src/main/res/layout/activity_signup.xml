@@ -109,7 +109,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:background="@null"
-                    android:digits="0123456789-"
                     android:hint="예: 010-0000-0000"
                     android:inputType="phone" />
 

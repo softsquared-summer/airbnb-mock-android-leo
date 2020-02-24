@@ -1,7 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sv_frag_message_holder_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            fresco:roundAsCircle="true" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@+id/sv_frag_message_holder_profile"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_frag_message_holder_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_frag_message_holder_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="2019년 5월 23일" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/tv_frag_message_holder_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="in the centerof sjdfk" />
+
+            <TextView
+                android:id="@+id/tv_frag_message_holder_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제주 펜션 오다" />
+
+            <TextView
+                android:id="@+id/tv_frag_message_holder_avilable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="예약 확정" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
