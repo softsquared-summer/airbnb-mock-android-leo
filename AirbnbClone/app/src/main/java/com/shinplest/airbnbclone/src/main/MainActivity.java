@@ -8,15 +8,8 @@ package com.shinplest.airbnbclone.src.main;
 
     구글 로그인과 일반로그인 데이터를 분리해서 가져오는 효율적인 방법 -> 지금은 string 값을 intent로 전달해서 구분하고 있는데, 그렇게 하니까 좀 불편
     사용하는 액티비티마다 코드를 분기해서 짜는 건 조금 비효율 적인거 같은데 -> 일단 서버기준으로, 해야겠다.
-
-    인터셉터 사용법(네트워크 코드 나누는 법) -> 자동으로 써져있다
     앱바 디자인 효과적으로 하는법
-
-
-    jwt라는걸 sharedpreference에 저장하는게 자동로그인이 되게하려는거 아닌가? splash에서 jwt를 쏘면 되는거 아닌가? -> 어디에 저장해야하냐..?
 */
-
-//메니페스트 http 접속 허용해주려고 임시로 만듬
 
 //주요 고안점
 
@@ -40,15 +33,17 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.login.LoginService;
 import com.shinplest.airbnbclone.src.main.fragment_message.MessageFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.ProfileFragment;
 import com.shinplest.airbnbclone.src.main.fragment_savelist.SavelistFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.SearchFragment;
 import com.shinplest.airbnbclone.src.main.fragment_travel.TravelFragment;
+import com.shinplest.airbnbclone.src.main.interfaces.MainActivityView;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
-public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, MainActivityView {
 
     private BottomNavigationView mBottomNavigationView;
 
@@ -72,7 +67,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         mBottomNavigationView = findViewById(R.id.bottom_navigation_main);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        tryGetUserNo();
 
+
+
+    }
+
+    private void tryGetUserNo(){
+        final MainService loginService = new MainService(this);
+        showProgressDialog();
+        loginService.getUserNo();
     }
 
     private boolean loadFragment(Fragment fragment) {
@@ -86,7 +90,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
         return false;
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -110,5 +113,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    public void validateJwtLoginSuccess(String message, int userNo) {
+        hideProgressDialog();
+        showCustomToast("user no"+userNo);
+    }
+
+    @Override
+    public void validateJwtLoginFailure(String message) {
+
     }
 }

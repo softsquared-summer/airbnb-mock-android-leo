@@ -112,20 +112,17 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 tryGetPoneAvailable(phoneNum);
-
-
             }
         });
 
+        //로그인으로 넘겨주는 버튼
         mLlLogin = findViewById(R.id.ll_singup_login);
         mLlLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -214,7 +211,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
     }
 
     @Override
-    public void validateFailure(String message) {
+    public void validateSignUpFailure(String message) {
         hideProgressDialog();
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }

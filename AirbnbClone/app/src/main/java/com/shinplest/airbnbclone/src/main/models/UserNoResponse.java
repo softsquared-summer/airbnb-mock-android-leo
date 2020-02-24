@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.login.models;
+package com.shinplest.airbnbclone.src.main.models;
 
 import com.google.gson.annotations.SerializedName;
 

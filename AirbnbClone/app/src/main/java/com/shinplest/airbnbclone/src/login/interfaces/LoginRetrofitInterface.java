@@ -2,7 +2,7 @@ package com.shinplest.airbnbclone.src.login.interfaces;
 
 import com.shinplest.airbnbclone.src.login.models.JwtResponse;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
-import com.shinplest.airbnbclone.src.login.models.UserNoResponse;
+import com.shinplest.airbnbclone.src.main.models.UserNoResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
