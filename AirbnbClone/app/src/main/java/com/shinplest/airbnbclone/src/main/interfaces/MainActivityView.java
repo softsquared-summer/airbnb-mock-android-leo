@@ -2,9 +2,8 @@ package com.shinplest.airbnbclone.src.main.interfaces;
 
 
 public interface MainActivityView {
+    void validateJwtLoginSuccess(String message, int userNo);
 
-    void validateSuccess(String text);
-
-    void validateFailure(String message);
+    void validateJwtLoginFailure(String message);
 }
 

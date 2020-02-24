@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.ApplicationClass;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
@@ -62,7 +61,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
                 requestJwt.setPw(mEtPassword.getText().toString());
 
                 tryPostLogin();
-                tryGetUserNo();
             }
         });
     }
@@ -73,21 +71,21 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         loginService.postJwt(requestJwt);
     }
 
-    private void tryGetUserNo(){
-        final LoginService loginService = new LoginService(this);
-        showProgressDialog();
-        loginService.getUserNo();
-    }
 
 
     //jwt로그인 됐을때, sharedpreference에 저장하기
     @Override
-    public void validateLoginSuccess(String jwt) {
+    public void validateLoginSuccess(String jwt, int code) {
         hideProgressDialog();
         showCustomToast(jwt);
         SharedPreferences.Editor editor = sSharedPreferences.edit();
         editor.putString(X_ACCESS_TOKEN, jwt).apply();
-        Log.d("test", sSharedPreferences.getString(X_ACCESS_TOKEN, "nothing"));
+        //여기서 토큰 제대로 저장 되는 거 확인 로그아웃 시에, 토큰을 삭제해주면 된다.
+        Log.d("token", sSharedPreferences.getString(X_ACCESS_TOKEN, "token save fail"));
+        //jwt저장하고, 메인액티비티로 넘어감
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -95,18 +93,5 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         hideProgressDialog();
         Log.d("test", "로그인 실패");
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
-    }
-
-    @Override
-    public void validateJwtLoginSuccess() {
-        hideProgressDialog();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void validateJwtLoginFailure() {
-
     }
 }

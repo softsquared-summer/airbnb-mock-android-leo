@@ -40,15 +40,17 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.login.LoginService;
 import com.shinplest.airbnbclone.src.main.fragment_message.MessageFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.ProfileFragment;
 import com.shinplest.airbnbclone.src.main.fragment_savelist.SavelistFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.SearchFragment;
 import com.shinplest.airbnbclone.src.main.fragment_travel.TravelFragment;
+import com.shinplest.airbnbclone.src.main.interfaces.MainActivityView;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
-public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, MainActivityView {
 
     private BottomNavigationView mBottomNavigationView;
 
@@ -72,7 +74,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         mBottomNavigationView = findViewById(R.id.bottom_navigation_main);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        tryGetUserNo();
 
+
+
+    }
+
+    private void tryGetUserNo(){
+        final MainService loginService = new MainService(this);
+        showProgressDialog();
+        loginService.getUserNo();
     }
 
     private boolean loadFragment(Fragment fragment) {
@@ -86,7 +97,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         }
         return false;
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -110,5 +120,16 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 break;
         }
         return loadFragment(fragment);
+    }
+
+    @Override
+    public void validateJwtLoginSuccess(String message, int userNo) {
+        hideProgressDialog();
+        showCustomToast("user no"+userNo);
+    }
+
+    @Override
+    public void validateJwtLoginFailure(String message) {
+
     }
 }
