@@ -3,7 +3,6 @@ package com.shinplest.airbnbclone.src.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,9 +14,6 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 import com.shinplest.airbnbclone.src.main.MainActivity;
-
-
-//기본적으로 jwt가 없는 상황을 가정 없을경우, 이메일과 password로 jwt를 받고, sharedpreference에 저장
 
 public class LoginActivity extends BaseActivity implements LoginActivityView {
 
@@ -32,6 +28,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //상단 버튼 누를시 뒤로가기
         mIvBackArrow = findViewById(R.id.iv_login_back_arrow);
         mIvBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,19 +37,15 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             }
         });
 
-        //버튼 클릭시 jwt 토큰 요청후 sharedpreference에 저장
-
         mEtEmail = findViewById(R.id.et_login_email);
         mEtPassword = findViewById(R.id.et_login_password);
         mBtnLogin = findViewById(R.id.btn_login_login);
-
         //버튼을 클릭했을때 jwt를 받아오고 로그인을 시켜줌.
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 키보드 없애준다.
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                hideKeyboard();
 
                 RequestJwt requestJwt = new RequestJwt();
                 //아이디 비밀번호 로그인시
@@ -69,7 +62,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         loginService.postJwt(requestJwt);
     }
 
-
     //jwt로그인 됐을때, sharedpreference에 저장하기
     //성공했으나 로그인 됐는지 실패했는지 알려줘야됨
     @Override
@@ -85,7 +77,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         else
             showCustomToast(message);
     }
-
 
     //네트워크문제로 성공 못했을 경우
     @Override
