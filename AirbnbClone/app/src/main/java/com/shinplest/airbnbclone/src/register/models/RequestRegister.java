@@ -7,10 +7,10 @@ public class RequestRegister {
 
     @SerializedName("phone")
     private String phone;
-    @SerializedName("last_name")
-    private String last_name;
-    @SerializedName("first_name")
-    private String first_name;
+    @SerializedName("firstName")
+    private String firstName;
+    @SerializedName("lastName")
+    private String lastName;
     @SerializedName("birthday")
     private String birthday;
     @SerializedName("email")
@@ -22,12 +22,12 @@ public class RequestRegister {
         this.phone = phone;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setBirthday(String birthday) {

@@ -30,7 +30,7 @@ package com.shinplest.airbnbclone.src.main;
        - 이메일 비밀번호 공백 입력시 자동삭제
        - 로그인 버튼 누를시 키보드 숨김
        - 서버로부터 검증받은 데이터 토스트 띄워줌
-       - 로그인 성공시 jwt를 sSharedPreference에 저장
+       - 로그인 성공시 jwt를 sSharedPreference에 저장w
 
  */
 

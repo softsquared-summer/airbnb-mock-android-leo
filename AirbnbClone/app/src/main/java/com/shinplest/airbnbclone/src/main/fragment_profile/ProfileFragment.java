@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.main.fragment_profile;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,36 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         //프로필 리사이클러뷰
         mRvSetting = view.findViewById(R.id.rv_frag_profile_setting);
         mRvSetting.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        //프로필 아래 메뉴 추가
+        List<ExpandableListAdapter.Item> data = addExpandableListData();
+        mRvSetting.setAdapter(new ExpandableListAdapter(data));
+
+        //로그아웃 하기위해서 가져옴
+        mAuth = FirebaseAuth.getInstance();
+        //구글 아이디로 프로필 업데이트 해주는 부분
+        mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
+        mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
+        updateUI(mAuth);
+        //구글 로그아웃
+        mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
+        mBtnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //로그아웃하고 앱 자체 종료
+                signOut();
+                showCustomToastFrag("로그아웃 되었습니다. ");
+                getActivity().finishAffinity();
+            }
+        });
+
+        //프로필 업데이트 by jwt
+        tryGetSimpleUserInfo();
+        return view;
+    }
+
+    private List<ExpandableListAdapter.Item> addExpandableListData() {
         List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "계정 관리"));
@@ -66,33 +97,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "로그 아웃"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "계정 전환하기"));
 
-        mRvSetting.setAdapter(new ExpandableListAdapter(data));
-
-        //로그아웃 하기위해서 가져옴
-        mAuth = FirebaseAuth.getInstance();
-
-        //구글 아이디로 프로필 업데이트 해주는 부분
-
-        mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
-        mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
-        updateUI(mAuth);
-
-
-        mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
-        mBtnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //로그아웃하고 앱 자체 종료
-                signOut();
-                showCustomToastFrag("로그아웃 되었습니다. ");
-                getActivity().finishAffinity();
-            }
-        });
-
-
-        //프로필 업데이트
-        tryGetSimpleUserInfo();
-        return view;
+        return data;
     }
 
     private void tryGetSimpleUserInfo() {
@@ -100,10 +105,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         showProgressDialog();
         profileService.getSimpleUserInfo();
     }
-
-    ;
-
-
     //구글 로그아웃
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
@@ -125,9 +126,10 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
     }
 
     @Override
-    public void validateSuccess(String last_name, String first_name, int code, String message) {
+    public void validateSuccess(String profileImgUrl, String firstName, int code, String message) {
         hideProgressDialog();
-        mTvUserName.setText(first_name + " "+last_name);
+        mTvUserName.setText(firstName);
+        mSdProfilePhoto.setImageURI(Uri.parse(profileImgUrl));
         showCustomToastFrag(message);
     }
 

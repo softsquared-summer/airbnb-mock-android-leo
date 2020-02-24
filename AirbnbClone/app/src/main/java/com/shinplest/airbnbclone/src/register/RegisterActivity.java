@@ -42,14 +42,14 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
             @Override
             public void onClick(View v) {
                 //json 레트로핏으로 보내기
-
+                hideKeyboard();
                 showProgressDialog();
 
                 //EditText값 리퀘스트에 할당해줌
                 requestRegister = new RequestRegister();
                 requestRegister.setPhone(phoneNum);
-                requestRegister.setLast_name(mEtLastName.getText().toString());
-                requestRegister.setFirst_name(mEtFirstName.getText().toString());
+                requestRegister.setLastName(mEtLastName.getText().toString());
+                requestRegister.setFirstName(mEtFirstName.getText().toString());
                 requestRegister.setBirthday(mEtBirthday.getText().toString());
                 requestRegister.setEmail(mEtEmail.getText().toString());
                 requestRegister.setPw(mEtPassword.getText().toString());
