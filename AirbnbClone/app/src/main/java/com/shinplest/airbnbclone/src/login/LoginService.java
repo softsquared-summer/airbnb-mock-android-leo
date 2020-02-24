@@ -1,5 +1,8 @@
 package com.shinplest.airbnbclone.src.login;
 
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
 import com.shinplest.airbnbclone.src.login.models.JwtResponse;
@@ -9,7 +12,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
+import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 public class LoginService {
 
@@ -29,7 +34,16 @@ public class LoginService {
                 if (jwtResponse == null){
                     mLoginActivityView.validateLoginFailure(null);
                 }
-                mLoginActivityView.validateLoginSuccess(jwtResponse.getResult().getJwt(), jwtResponse.getCode());
+                //성공했을때만 jwt보내줌
+                if (jwtResponse.getCode() == 100){
+                    String jwt = jwtResponse.getResult().getJwt();
+                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode());
+                    SharedPreferences.Editor editor = sSharedPreferences.edit();
+                    editor.putString(X_ACCESS_TOKEN, jwt).apply();
+                    Log.d("network", "token" + sSharedPreferences.getString(X_ACCESS_TOKEN, "token save fail"));
+                }
+                else
+                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode());
             }
 
             @Override

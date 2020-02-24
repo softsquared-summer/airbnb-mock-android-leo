@@ -16,6 +16,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
+import com.shinplest.airbnbclone.src.main.fragment_profile.interfaces.ProfileFragmentView;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseFragment implements ProfileFragmentView {
     private FirebaseAuth mAuth;
 
     //view
@@ -50,8 +51,8 @@ public class ProfileFragment extends BaseFragment {
 
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "계정 관리"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "개인 정보", getResources().getDrawable(R.drawable.profile_userinfo)));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "결제 및 대금 수령",getResources().getDrawable(R.drawable.profile_payment)));
-        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "알림",getResources().getDrawable(R.drawable.profile_noti)));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "결제 및 대금 수령", getResources().getDrawable(R.drawable.profile_payment)));
+        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "알림", getResources().getDrawable(R.drawable.profile_noti)));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, "호스팅"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "숙소 등록하기"));
         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, "체험 호스팅하기"));
@@ -87,25 +88,51 @@ public class ProfileFragment extends BaseFragment {
                 getActivity().finishAffinity();
             }
         });
+
+
+        //프로필 업데이트
+        tryGetSimpleUserInfo();
         return view;
     }
+
+    private void tryGetSimpleUserInfo() {
+        final ProfileService profileService = new ProfileService(this);
+        showProgressDialog();
+        profileService.getSimpleUserInfo();
+    }
+
+    ;
+
 
     //구글 로그아웃
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
     }
+
     //구글 회원탈퇴
     private void revokeAccess() {
         mAuth.getCurrentUser().delete();
     }
 
     //프로필 update
-    private  void updateUI(FirebaseAuth auth){
+    private void updateUI(FirebaseAuth auth) {
         //구글로그인일때만 사진가져와서 업데이트
-        if(LOGIN_INFO == "google"){
+        if (LOGIN_INFO == "google") {
             GoogleUserInfo user = new GoogleUserInfo(auth);
             mSdProfilePhoto.setImageURI(user.getGoogleUserProfilePhotoUrl());
             mTvUserName.setText(user.getGoogleUserName());
         }
+    }
+
+    @Override
+    public void validateSuccess(String last_name, String first_name, int code, String message) {
+        hideProgressDialog();
+        mTvUserName.setText(first_name + " "+last_name);
+        showCustomToastFrag(message);
+    }
+
+    @Override
+    public void validateFailure(String message) {
+
     }
 }

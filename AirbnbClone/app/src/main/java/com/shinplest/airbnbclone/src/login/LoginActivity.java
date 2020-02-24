@@ -1,9 +1,7 @@
 package com.shinplest.airbnbclone.src.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +14,6 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 import com.shinplest.airbnbclone.src.main.MainActivity;
-
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 
 //기본적으로 jwt가 없는 상황을 가정 없을경우, 이메일과 password로 jwt를 받고, sharedpreference에 저장
@@ -57,41 +52,40 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
             public void onClick(View v) {
 
                 requestJwt = new RequestJwt();
-                requestJwt.setEmail(mEtEmail.getText().toString());
-                requestJwt.setPw(mEtPassword.getText().toString());
-
+                requestJwt.setEmail(mEtEmail.getText().toString().replace(" ", ""));
+                requestJwt.setPw(mEtPassword.getText().toString().replace(" ", ""));
                 tryPostLogin();
             }
         });
     }
 
-    private void tryPostLogin(){
+    private void tryPostLogin() {
         final LoginService loginService = new LoginService(this);
         showProgressDialog();
         loginService.postJwt(requestJwt);
     }
 
 
-
     //jwt로그인 됐을때, sharedpreference에 저장하기
+    //성공했으나 로그인 됐는지 실패했는지 알려줘야됨
     @Override
-    public void validateLoginSuccess(String jwt, int code) {
+    public void validateLoginSuccess(int code) {
         hideProgressDialog();
-        showCustomToast(jwt);
-        SharedPreferences.Editor editor = sSharedPreferences.edit();
-        editor.putString(X_ACCESS_TOKEN, jwt).apply();
-        //여기서 토큰 제대로 저장 되는 거 확인 로그아웃 시에, 토큰을 삭제해주면 된다.
-        Log.d("token", sSharedPreferences.getString(X_ACCESS_TOKEN, "token save fail"));
-        //jwt저장하고, 메인액티비티로 넘어감
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        if (code == 100) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (code == 200)
+            showCustomToast("아이디가 존재하지 않습니다.");
+        else
+            showCustomToast("비밀번호를 확인하세요.");
     }
 
+
+    //네트워크문제로 성공 못했을 경우
     @Override
     public void validateLoginFailure(String message) {
         hideProgressDialog();
-        Log.d("test", "로그인 실패");
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 }
