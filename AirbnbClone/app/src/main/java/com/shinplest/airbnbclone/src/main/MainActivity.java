@@ -25,6 +25,7 @@ package com.shinplest.airbnbclone.src.main;
 //요즘 핫한 파이어 베이스를 통한 구글 로그인 구현 -> 로그인 정보 가져와서 profile에 넣어주는 기능 구현 필요
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,7 @@ import com.shinplest.airbnbclone.src.main.fragment_travel.TravelFragment;
 import com.shinplest.airbnbclone.src.main.interfaces.MainActivityView;
 
 import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+import static com.shinplest.airbnbclone.src.ApplicationClass.USER_NO;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, MainActivityView {
 
@@ -118,7 +120,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     public void validateJwtLoginSuccess(String message, int userNo) {
         hideProgressDialog();
+        Log.d("network", "validateJwtLoginSuccess: userNo"+userNo);
         showCustomToast("user no"+userNo);
+        USER_NO = userNo;
     }
 
     @Override

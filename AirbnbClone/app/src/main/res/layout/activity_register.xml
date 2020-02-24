@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:orientation="vertical">
+    android:layout_margin="20dp">
 
-    <TextView
-        style="@style/TitleText"
-        android:text="@string/activity_register_title" />
-
-    <TextView
-        style="@style/RegisterBasicText"
-        android:text="@string/activity_register_name" />
-
-    <EditText
-        android:id="@+id/et_register_first_name"
-        style="@style/RegisterEditText" />
-
-    <TextView
-        style="@style/RegisterBasicText"
-        android:text="@string/activity_register_lastname" />
-
-    <EditText
-        android:id="@+id/et_register_last_name"
-        style="@style/RegisterEditText" />
-
-    <TextView
-        style="@style/RegisterBasicText"
-        android:text="@string/activity_register_birthday" />
-
-    <EditText
-        android:id="@+id/et_register_birthday"
-        style="@style/RegisterEditText" />
-
-    <TextView
-        style="@style/RegisterBasicText"
-        android:text="@string/activity_register_email" />
-
-    <EditText
-        android:id="@+id/et_register_eamil"
-        style="@style/RegisterEditText" />
-
-    <TextView
-        style="@style/RegisterBasicText"
-        android:text="@string/activity_register_password" />
-
-    <EditText
-        android:id="@+id/et_register_password"
-        style="@style/RegisterEditText" />
-
-    <Button
-        android:id="@+id/btn_register_test"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="테스트 가입" />
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            style="@style/TitleText"
+            android:text="@string/activity_register_title" />
+
+        <TextView
+            style="@style/RegisterBasicText"
+            android:text="@string/activity_register_name" />
+
+        <EditText
+            android:id="@+id/et_register_first_name"
+            style="@style/RegisterEditText" />
+
+        <TextView
+            style="@style/RegisterBasicText"
+            android:text="@string/activity_register_lastname" />
+
+        <EditText
+            android:id="@+id/et_register_last_name"
+            style="@style/RegisterEditText" />
+
+        <TextView
+            style="@style/RegisterBasicText"
+            android:text="@string/activity_register_birthday" />
+
+        <EditText
+            android:id="@+id/et_register_birthday"
+            style="@style/RegisterEditText" />
+
+        <TextView
+            style="@style/RegisterBasicText"
+            android:text="@string/activity_register_email" />
+
+        <EditText
+            android:id="@+id/et_register_eamil"
+            style="@style/RegisterEditText" />
+
+        <TextView
+            style="@style/RegisterBasicText"
+            android:text="@string/activity_register_password" />
+
+        <EditText
+            android:id="@+id/et_register_password"
+            style="@style/RegisterEditText" />
+
+        <Button
+            android:id="@+id/btn_register_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="테스트 가입" />
+
+    </LinearLayout>
+</ScrollView>

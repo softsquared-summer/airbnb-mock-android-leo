@@ -44,6 +44,9 @@ public class ApplicationClass extends Application {
     //로그인 정보 저장하는 변수 1 == google 2 == jwt
     public static String LOGIN_INFO = "jwt";
 
+    //유저 번호 저장하는 변수 USER_NO
+    public static int USER_NO = 0;
+
     @Override
     public void onCreate() {
         super.onCreate();

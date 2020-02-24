@@ -20,7 +20,7 @@
     <string name="activity_register_title">정보 입력하기</string>
     <string name="activity_register_name">이름(예: 길동)\n정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</string>
     <string name="activity_register_lastname">성(예: 홍)</string>
-    <string name="activity_register_birthday">생일(yyyyyyyy/mm/dd)\n만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 다른 에어비앤비 이용자에게 공개되지 않습니다.</string>
+    <string name="activity_register_birthday">생일(yyyy/mm/dd)\n만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 다른 에어비앤비 이용자에게 공개되지 않습니다.</string>
     <string name="activity_register_email">이메일\n예약 확인 이메일이 전송됩니다.</string>
     <string name="activity_register_password">비밀번호\n기호나 숫자를 포함해야 하며 8자 이상이어야 합니다.</string>
 </resources>
