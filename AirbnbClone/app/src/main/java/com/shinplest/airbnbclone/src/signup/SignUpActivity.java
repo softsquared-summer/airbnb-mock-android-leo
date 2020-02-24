@@ -115,10 +115,7 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
                 tryGetPoneAvailable(phoneNum);
 
-//                Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
-//                intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
-//                startActivity(intent);
-//                finish();
+
             }
         });
 
@@ -197,14 +194,28 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
         }
     }
 
+    //핸드폰 번호가 있을 경우
     @Override
-    public void validateSignUpSuccess(String text) {
+    public void validateSignUpSuccess(String message, int code) {
         hideProgressDialog();
-        showCustomToast(text);
+
+        //가입된 번호가 있을경우
+        if (code == 101) {
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
+            showCustomToast("가입된 아이디가 존재합니다. 로그인 하세요");
+        }
+        //번호가 없을 경우-> 회원가입
+        else {
+            Intent intent = new Intent(SignUpActivity.this, RegisterActivity.class);
+            intent.putExtra("phoneNum", mEtPhonenum.getText().toString());
+            startActivity(intent);
+        }
     }
 
     @Override
     public void validateFailure(String message) {
         hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 }

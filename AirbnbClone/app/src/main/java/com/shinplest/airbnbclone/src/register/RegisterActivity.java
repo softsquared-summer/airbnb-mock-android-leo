@@ -32,14 +32,12 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mBtnRegister = findViewById(R.id.btn_register_test);
 
+        //핸드폰 번호 인텐트 가져옴
         phoneNum = getIntent().getExtras().getString("phoneNum", "010-0000-0000");
-        showCustomToast(phoneNum);
-
         getEditText();
 
-
+        mBtnRegister = findViewById(R.id.btn_register_test);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

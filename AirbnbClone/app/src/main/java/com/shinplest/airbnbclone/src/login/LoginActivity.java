@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -25,6 +26,8 @@ import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 public class LoginActivity extends BaseActivity implements LoginActivityView {
 
+    private ImageView mIvBackArrow;
+
     private RequestJwt requestJwt;
     private EditText mEtEmail;
     private EditText mEtPassword;
@@ -34,6 +37,14 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mIvBackArrow = findViewById(R.id.iv_login_back_arrow);
+        mIvBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //버튼 클릭시 jwt 토큰 요청후 sharedpreference에 저장
 

@@ -24,7 +24,7 @@ public class SignUpService {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
-                mSignUpActivityView.validateSignUpSuccess(defaultResponse.getMessage());
+                mSignUpActivityView.validateSignUpSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
             @Override
