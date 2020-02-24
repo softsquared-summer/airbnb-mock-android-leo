@@ -71,10 +71,13 @@ public class SignUpActivity extends BaseActivity implements SignUpActivityView {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        //구글로그인 나중에 구현
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+
+                showCustomToast("현재 개발중인 기능입니다. 잠시만 기다려주세요");
+                //signIn();
             }
         });
 

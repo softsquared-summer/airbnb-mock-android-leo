@@ -1,9 +1,7 @@
 package com.shinplest.airbnbclone.src.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +14,6 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 import com.shinplest.airbnbclone.src.main.MainActivity;
-
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
 
 
 //기본적으로 jwt가 없는 상황을 가정 없을경우, 이메일과 password로 jwt를 받고, sharedpreference에 저장
