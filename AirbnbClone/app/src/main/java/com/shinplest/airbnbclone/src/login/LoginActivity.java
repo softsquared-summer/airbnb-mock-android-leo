@@ -3,6 +3,7 @@ package com.shinplest.airbnbclone.src.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,7 +23,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     private ImageView mIvBackArrow;
 
-    private RequestJwt requestJwt;
     private EditText mEtEmail;
     private EditText mEtPassword;
     private Button mBtnLogin;
@@ -50,16 +50,20 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 키보드 없애준다.
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 
-                requestJwt = new RequestJwt();
+                RequestJwt requestJwt = new RequestJwt();
+                //아이디 비밀번호 로그인시
                 requestJwt.setEmail(mEtEmail.getText().toString().replace(" ", ""));
                 requestJwt.setPw(mEtPassword.getText().toString().replace(" ", ""));
-                tryPostLogin();
+                tryPostLogin(requestJwt);
             }
         });
     }
 
-    private void tryPostLogin() {
+    private void tryPostLogin(RequestJwt requestJwt) {
         final LoginService loginService = new LoginService(this);
         showProgressDialog();
         loginService.postJwt(requestJwt);
@@ -69,16 +73,17 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     //jwt로그인 됐을때, sharedpreference에 저장하기
     //성공했으나 로그인 됐는지 실패했는지 알려줘야됨
     @Override
-    public void validateLoginSuccess(int code) {
+    public void validateLoginSuccess(int code, String message) {
         hideProgressDialog();
+        //로그인 성공
         if (code == 100) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
-        } else if (code == 200)
-            showCustomToast("아이디가 존재하지 않습니다.");
+        }
+        //로그인 실패 -> 비밀번호 틀림
         else
-            showCustomToast("비밀번호를 확인하세요.");
+            showCustomToast(message);
     }
 
 

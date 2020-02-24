@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.inputmethod.InputMethodManager;
 
 import com.shinplest.airbnbclone.config.XAccessTokenInterceptor;
 
@@ -84,4 +85,5 @@ public class ApplicationClass extends Application {
         }
         return number;
     }
+
 }
