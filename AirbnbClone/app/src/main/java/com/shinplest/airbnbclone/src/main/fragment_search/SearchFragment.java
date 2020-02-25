@@ -59,7 +59,6 @@ public class SearchFragment extends BaseFragment {
 
     //first recycler view
     private RecyclerView mRvLookAround;
-    private RecyclerView.Adapter mLookAroundAdapter;
     private RecyclerView.LayoutManager mHorizontalLayoutManagerLookAround;
 
     //secont recycler view

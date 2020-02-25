@@ -8,17 +8,22 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 
-public class SearchActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
     private ConstraintLayout mClSearchHouseContainer;
 
     private TextView mTvCancel;
+
+    private RecyclerView mRvHouses;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,5 +50,20 @@ public class SearchActivity extends BaseActivity {
                 mClSearchHouseContainer.setVisibility(View.VISIBLE);
             }
         });
+
+        //하우스 리사이클러
+        mRvHouses = findViewById(R.id.rv_search_houses);
+        mRvHouses.setHasFixedSize(true);
+        mRvHouses.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void validateSignUpSuccess(String message, int code) {
+
+    }
+
+    @Override
+    public void validateSignUpFailure(String message) {
+
     }
 }
