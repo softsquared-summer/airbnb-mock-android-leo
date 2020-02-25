@@ -96,9 +96,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         tryGetUserNo();
-
-
-
     }
 
     private void tryGetUserNo(){

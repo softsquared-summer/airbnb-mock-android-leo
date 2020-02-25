@@ -11,6 +11,31 @@ public class RequestModifyProfile {
     private String location;
     @SerializedName("school")
     private String school;
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
     @SerializedName("job")
     private String job;
     @SerializedName("language")

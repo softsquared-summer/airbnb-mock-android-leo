@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.login.LoginActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterActivityView;
 import com.shinplest.airbnbclone.src.register.models.RequestRegister;
@@ -32,42 +33,32 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        getUiSourse();
         //핸드폰 번호 인텐트 가져옴
         phoneNum = getIntent().getExtras().getString("phoneNum", "010-0000-0000");
-        getEditText();
 
         mBtnRegister = findViewById(R.id.btn_register_test);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //json 레트로핏으로 보내기
-                hideKeyboard();
-                showProgressDialog();
-
                 //EditText값 리퀘스트에 할당해줌
                 requestRegister = new RequestRegister();
-                requestRegister.setPhone(phoneNum);
-                requestRegister.setLastName(mEtLastName.getText().toString());
-                requestRegister.setFirstName(mEtFirstName.getText().toString());
-                requestRegister.setBirthday(mEtBirthday.getText().toString());
-                requestRegister.setEmail(mEtEmail.getText().toString());
-                requestRegister.setPw(mEtPassword.getText().toString());
+                setRequest();
 
                 //로그인 요청 보냄
                 tryPostRegiseter();
-
             }
         });
     }
 
-    private void tryPostRegiseter(){
+    private void tryPostRegiseter() {
+        hideKeyboard();
         final RegisterService registerService = new RegisterService(this);
         showProgressDialog();
         registerService.postRegister(requestRegister);
     }
 
-    private void getEditText() {
+    private void getUiSourse() {
         mEtLastName = findViewById(R.id.et_register_last_name);
         mEtFirstName = findViewById(R.id.et_register_first_name);
         mEtBirthday = findViewById(R.id.et_register_birthday);
@@ -75,12 +66,22 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
         mEtPassword = findViewById(R.id.et_register_password);
     }
 
+    private void setRequest() {
+        requestRegister.setPhone(phoneNum);
+        requestRegister.setLastName(mEtLastName.getText().toString());
+        requestRegister.setFirstName(mEtFirstName.getText().toString());
+        requestRegister.setBirthday(mEtBirthday.getText().toString());
+        requestRegister.setEmail(mEtEmail.getText().toString());
+        requestRegister.setPw(mEtPassword.getText().toString());
+    }
+
     @Override
     public void validateSuccess(String text, int code) {
         hideProgressDialog();
         showCustomToast(text);
         if (code == 100) {
-            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            showCustomToast("회원 가입이 성공했습니다.\n로그인 하세요.");
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }

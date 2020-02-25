@@ -67,7 +67,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     @Override
     public void validateLoginSuccess(int code, String message) {
         hideProgressDialog();
-        //로그인 성공
+        //로그인 성공시 jwt로 한번더 요청을 보냄
         if (code == 100) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

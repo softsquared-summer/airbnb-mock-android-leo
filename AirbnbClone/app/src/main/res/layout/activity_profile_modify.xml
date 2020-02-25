@@ -18,6 +18,7 @@
             android:src="@drawable/exit" />
 
         <TextView
+            android:id="@+id/tv_profle_modify_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -71,7 +72,7 @@
                     android:text="프로필 제목" />
 
                 <EditText
-                    android:id="@+id/et_register_first_name"
+                    android:id="@+id/et_profile_modify_title"
                     style="@style/RegisterEditText" />
 
 
@@ -84,7 +85,7 @@
                     android:text="거주지" />
 
                 <EditText
-                    android:id="@+id/et_register_last_name"
+                    android:id="@+id/et_profile_modify_location"
                     style="@style/RegisterEditText"
                     android:hint="예시 : 프랑스의 파리, 뉴욕의 브루클린, 일리노이 주의 시카고" />
 
@@ -93,7 +94,7 @@
                     android:text="학교" />
 
                 <EditText
-                    android:id="@+id/et_register_birthday"
+                    android:id="@+id/et_profile_modify_school"
                     style="@style/RegisterEditText"
                     android:hint="학교" />
 
@@ -102,7 +103,7 @@
                     android:text="직업" />
 
                 <EditText
-                    android:id="@+id/et_register_eamil"
+                    android:id="@+id/et_profile_modify_job"
                     style="@style/RegisterEditText"
                     android:hint="예시 : 에어비앤비, 애플, 맥도날드" />
 
@@ -111,7 +112,7 @@
                     android:text="언어" />
 
                 <EditText
-                    android:id="@+id/et_register_password"
+                    android:id="@+id/et_profile_modify_language"
                     style="@style/RegisterEditText"
                     android:hint="예시 : 한국어, 중국어, 영어" />
 
