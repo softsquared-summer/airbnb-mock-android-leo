@@ -78,7 +78,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses = findViewById(R.id.rv_search_houses);
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        mRvHouses.setAdapter(new HousesAdapter(mHouseDataList));
+        mRvHouses.setAdapter(new HousesAdapter(this,mHouseDataList));
     }
 
     private void tryGetSimpleHouseInfo() {
