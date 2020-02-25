@@ -1,6 +1,5 @@
 package com.shinplest.airbnbclone.src.main.fragment_search;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,11 +20,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
-import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
-import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
+import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
