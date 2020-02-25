@@ -32,12 +32,12 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
         //가장먼저 ui 가져옴
         getUiSourse();
 
-
         //프로필 수정으로 넘어감
         mIvModifyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, ProfileModifyActivity.class);
+                intent.putExtra("Profile", mProfile);
                 startActivity(intent);
             }
         });
@@ -63,7 +63,7 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
         String title = mProfile.getMyinfo();
         String registerDate = mProfile.getCreatedDate();
 
-        mSvProfilePhoto.setImageURI(Uri.parse(mProfile.getProfileImgUrl()));
+        mSvProfilePhoto.setImageURI(Uri.parse(imgUrl));
         if (title != null)
             mTvProfileTitle.setText(title);
         else mTvProfileTitle.setText("프로필 제목 없음");

@@ -26,12 +26,12 @@ public class ProfileModifyService {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
-                mProfileModifyActivityView.validateJwtLoginSuccess(defaultResponse.getMessage(), defaultResponse.getCode());
+                mProfileModifyActivityView.validateProfileModifySuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                mProfileModifyActivityView.validateJwtLoginFailure(null);
+                mProfileModifyActivityView.validateProfileModifyFailure(null);
             }
         });
 

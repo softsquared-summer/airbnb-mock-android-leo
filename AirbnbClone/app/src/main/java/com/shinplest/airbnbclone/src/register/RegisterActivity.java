@@ -41,6 +41,7 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard();
                 //EditText값 리퀘스트에 할당해줌
                 requestRegister = new RequestRegister();
                 setRequest();
@@ -52,7 +53,6 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
     }
 
     private void tryPostRegiseter() {
-        hideKeyboard();
         final RegisterService registerService = new RegisterService(this);
         showProgressDialog();
         registerService.postRegister(requestRegister);
