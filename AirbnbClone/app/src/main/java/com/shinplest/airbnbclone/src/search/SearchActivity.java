@@ -19,6 +19,8 @@ import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 public class SearchActivity extends BaseActivity implements SearchActivityView {
 
+    SimpleHouseInfoResponse mHouseDataResponse;
+
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
     private ConstraintLayout mClSearchHouseContainer;
@@ -57,9 +59,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses = findViewById(R.id.rv_search_houses);
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-
-
-
         tryGetSimpleHouseInfo();
 
 
@@ -75,6 +74,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     @Override
     public void validateSearchSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
+        mHouseDataResponse = simpleHouseInfoResponse;
         Log.d("network", "validateSearchSuccess: "+simpleHouseInfoResponse.getMessage());
     }
 

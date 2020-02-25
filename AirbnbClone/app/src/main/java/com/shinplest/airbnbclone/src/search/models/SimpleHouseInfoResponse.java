@@ -2,9 +2,11 @@ package com.shinplest.airbnbclone.src.search.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class SimpleHouseInfoResponse {
     @SerializedName("result")
-    private Result result;
+    private ArrayList<Result> result;
 
     @SerializedName("code")
     private int code;
@@ -15,7 +17,7 @@ public class SimpleHouseInfoResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public Result getResult() {
+    public ArrayList<Result> getResult() {
         return result;
     }
 
