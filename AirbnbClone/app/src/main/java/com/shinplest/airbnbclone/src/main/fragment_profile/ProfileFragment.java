@@ -54,6 +54,11 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mTvShowProfile = view.findViewById(R.id.tv_frag_profile_show_profile);
+        mRvSetting = view.findViewById(R.id.rv_frag_profile_setting);
+
+
+
+
         mTvShowProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +68,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         });
 
         //프로필 리사이클러뷰
-        mRvSetting = view.findViewById(R.id.rv_frag_profile_setting);
         mRvSetting.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
@@ -89,9 +93,20 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
             }
         });
 
+
+        return view;
+    }
+
+    //에이피아이 다시 쏴줌
+    @Override
+    public void onStart() {
+        super.onStart();
         //프로필 업데이트 by jwt
         tryGetSimpleUserInfo();
-        return view;
+    }
+
+    private void getUiSourse(){
+
     }
 
     private List<ExpandableListAdapter.Item> addExpandableListData() {
@@ -122,6 +137,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         showProgressDialog();
         profileService.getSimpleUserInfo();
     }
+
     //구글 로그아웃
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
