@@ -1,7 +1,9 @@
 package com.shinplest.airbnbclone.src.search.interfaces;
 
-public interface SearchActivityView {
-    void validateSignUpSuccess(String message, int code);
+import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
-    void validateSignUpFailure(String message);
+public interface SearchActivityView {
+    void validateSearchSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse);
+
+    void validateSearchFailure(String message);
 }

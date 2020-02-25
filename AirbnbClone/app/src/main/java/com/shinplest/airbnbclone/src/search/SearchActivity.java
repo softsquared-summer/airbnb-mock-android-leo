@@ -1,6 +1,7 @@
 package com.shinplest.airbnbclone.src.search;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
+import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 public class SearchActivity extends BaseActivity implements SearchActivityView {
 
@@ -55,15 +57,29 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses = findViewById(R.id.rv_search_houses);
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        tryGetSimpleHouseInfo();
+
+
+    }
+
+    private void tryGetSimpleHouseInfo(){
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.getSimpleHouseInfo();
+        Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
     }
 
     @Override
-    public void validateSignUpSuccess(String message, int code) {
-
+    public void validateSearchSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
+        hideProgressDialog();
+        Log.d("network", "validateSearchSuccess: "+simpleHouseInfoResponse.getMessage());
     }
 
     @Override
-    public void validateSignUpFailure(String message) {
-
+    public void validateSearchFailure(String message) {
+        hideProgressDialog();
     }
 }
