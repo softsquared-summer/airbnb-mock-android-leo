@@ -25,7 +25,7 @@
 
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@+id/sd_frag_profile_profile"
@@ -39,6 +39,7 @@
                     android:text="UserName" />
 
                 <TextView
+                    android:id="@+id/tv_frag_profile_show_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="프로필 보기" />
