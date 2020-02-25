@@ -1,8 +1,6 @@
-package com.shinplest.airbnbclone.src.main.fragment_profile;
+package com.shinplest.airbnbclone.src.profile;
 
-import android.util.Log;
-
-import com.shinplest.airbnbclone.src.main.fragment_profile.interfaces.ProfileFragmentView;
+import com.shinplest.airbnbclone.src.profile.interfaces.ProfileActivityView;
 import com.shinplest.airbnbclone.src.profile.interfaces.ProfileRetrofitInterface;
 import com.shinplest.airbnbclone.src.profile.models.ProfileResponse;
 
@@ -14,23 +12,21 @@ import static com.shinplest.airbnbclone.src.ApplicationClass.USER_NO;
 import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
 
 public class ProfileService {
-    private final ProfileFragmentView mProfileFragmentView;
+    private final ProfileActivityView mProfileActivityView;
 
-    public ProfileService(ProfileFragmentView profileFragmentView) {
-        this.mProfileFragmentView = profileFragmentView;
+    public ProfileService(ProfileActivityView profileActivityView) {
+        this.mProfileActivityView = profileActivityView;
     }
 
-    void getSimpleUserInfo() {
+    void getProfile(){
         ProfileRetrofitInterface profileRetrofitInterface = getRetrofit().create(ProfileRetrofitInterface.class);
 
         Call<ProfileResponse> call = profileRetrofitInterface.getProfile(USER_NO);
         call.enqueue(new Callback<ProfileResponse>() {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse simpleUserinfoResponse = response.body();
-                Log.d("network", "onResponse: firstname"+simpleUserinfoResponse.getResult().getFirstName());
-                mProfileFragmentView.validateSuccess(simpleUserinfoResponse.getResult().getProfileImgUrl(),
-                        simpleUserinfoResponse.getResult().getFirstName(), simpleUserinfoResponse.getCode(), simpleUserinfoResponse.getMessage());
+                ProfileResponse profileResponse = response.body();
+                mProfileActivityView.validateSuccess(profileResponse, profileResponse.getCode(), profileResponse.getMessage());
             }
 
             @Override
