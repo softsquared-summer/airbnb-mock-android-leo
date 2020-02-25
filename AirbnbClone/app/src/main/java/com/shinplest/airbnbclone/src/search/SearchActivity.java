@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseActivity;
@@ -20,6 +21,15 @@ import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 import java.util.ArrayList;
 
 public class SearchActivity extends BaseActivity implements SearchActivityView {
+
+    //뷰페이져 테스트
+    ViewPager mViewPager;
+    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
+    CustomPageAdapter customPageAdapter;
 
     //집데이터 배열
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
@@ -84,7 +94,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         //데이터 가져옴
         mHouseDataList = simpleHouseInfoResponse.getResult();
         makeHouseRecyclerView();
-        Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(0).getHouseInfo());
+        Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(2).getHouseName());
     }
 
     @Override
