@@ -35,6 +35,7 @@
         <activity android:name=".src.login.LoginActivity" />
         <activity android:name=".src.profile.ProfileActivity"/>
         <activity android:name=".src.profile_modify.ProfileModifyActivity"/>
+        <activity android:name=".src.house.HouseActivity"/>
     </application>
 
 </manifest>
