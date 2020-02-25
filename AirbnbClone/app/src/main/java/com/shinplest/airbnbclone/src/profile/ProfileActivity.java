@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.profile.interfaces.ProfileActivityView;
 import com.shinplest.airbnbclone.src.profile.models.ProfileResponse;
 import com.shinplest.airbnbclone.src.profile_modify.ProfileModifyActivity;

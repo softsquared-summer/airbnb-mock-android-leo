@@ -17,17 +17,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseFragment;
+import com.shinplest.airbnbclone.src.general.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.interfaces.ProfileFragmentView;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import com.shinplest.airbnbclone.src.profile.ProfileActivity;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.LOGIN_INFO;
 
 public class ProfileFragment extends BaseFragment implements ProfileFragmentView {
     private FirebaseAuth mAuth;

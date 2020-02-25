@@ -1,7 +1,6 @@
 package com.shinplest.airbnbclone.src.login;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
@@ -12,9 +11,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.getRetrofit;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.X_ACCESS_TOKEN;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.getRetrofit;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.sSharedPreferences;
 
 public class LoginService {
 

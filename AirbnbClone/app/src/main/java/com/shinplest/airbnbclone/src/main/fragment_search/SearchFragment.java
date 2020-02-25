@@ -19,7 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseFragment;
+import com.shinplest.airbnbclone.src.general.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
@@ -33,8 +33,8 @@ import com.yongbeom.aircalendar.core.AirCalendarIntent;
 import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
-import static com.shinplest.airbnbclone.src.ApplicationClass.GET_DATE;
-import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.LOGIN_INFO;
 
 public class SearchFragment extends BaseFragment {
 

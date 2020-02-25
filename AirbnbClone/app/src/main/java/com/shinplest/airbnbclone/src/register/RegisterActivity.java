@@ -9,9 +9,8 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.login.LoginActivity;
-import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.register.interfaces.RegisterActivityView;
 import com.shinplest.airbnbclone.src.register.models.RequestRegister;
 

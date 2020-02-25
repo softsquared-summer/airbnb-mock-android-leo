@@ -45,11 +45,11 @@ public class CustomPageAdapter extends PagerAdapter {
 
         container.addView(itemView);
 
-        //listening to image click
+        //이미지 클릭했을때 아래를 눌러달라고 요청 이거 해결법 고민중
         simpleDraweeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "you clicked image " + (position + 1), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "숙소 이름을 클릭해주세요\n(이거 기능구현 대체 방법 생각중)", Toast.LENGTH_SHORT).show();
             }
         });
 

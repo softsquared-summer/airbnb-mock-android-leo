@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src;
+package com.shinplest.airbnbclone.src.general;
 
 import android.app.ProgressDialog;
 import android.widget.Toast;

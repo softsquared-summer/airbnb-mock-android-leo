@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 import com.shinplest.airbnbclone.src.main.MainActivity;

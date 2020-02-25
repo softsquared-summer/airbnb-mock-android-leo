@@ -1,6 +1,7 @@
 package com.shinplest.airbnbclone.src.search;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.ArrayList;
@@ -42,16 +42,27 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         }
     }
 
+
+    //여기서 각각의 뷰 홀더에 리스너를 달아주고,
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_house, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
+
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        //하우스 넘버 받아오는 부분
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OnclickTest", "onClick: "+ mHouseDataList.get(position).getHouseNo());
+                //여기서 하우스 넘버로 새로운 액티비티로 넘어가줘야함
+            }
+        });
 
         SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
 //        String[] urls = house.getHouseImages().split(",");
@@ -63,9 +74,9 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
 
         CustomPageAdapter customPageAdapter = new CustomPageAdapter(context, url);
         holder.mVpHousePhotos.setAdapter(customPageAdapter);
-        holder.mVpHousePhotos.setId(position+1);
+        holder.mVpHousePhotos.setId(position + 1);
 
-        if (mViewPagerState.containsKey(position)){
+        if (mViewPagerState.containsKey(position)) {
             holder.mVpHousePhotos.setCurrentItem(mViewPagerState.get(position));
         }
 

@@ -10,12 +10,10 @@ import androidx.annotation.Nullable;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.profile.models.ProfileResponse;
 import com.shinplest.airbnbclone.src.profile_modify.interfaces.ProfileModifyActivityView;
 import com.shinplest.airbnbclone.src.profile_modify.models.RequestModifyProfile;
-
-import org.w3c.dom.Text;
 
 public class ProfileModifyActivity extends BaseActivity implements ProfileModifyActivityView {
     private ProfileResponse.Result mProfile;
