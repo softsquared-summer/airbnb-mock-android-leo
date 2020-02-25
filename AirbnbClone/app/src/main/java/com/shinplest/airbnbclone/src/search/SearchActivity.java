@@ -17,9 +17,12 @@ import com.shinplest.airbnbclone.src.BaseActivity;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
+import java.util.ArrayList;
+
 public class SearchActivity extends BaseActivity implements SearchActivityView {
 
-    SimpleHouseInfoResponse mHouseDataResponse;
+    //집데이터 배열
+    private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
@@ -33,6 +36,9 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        //하우스 데이터 가져옴
+        tryGetSimpleHouseInfo();
 
         mTvCancel = findViewById(R.id.tv_search_cancel);
         mTvCancel.setOnClickListener(new View.OnClickListener() {
@@ -55,16 +61,17 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
+    }
+
+    private void makeHouseRecyclerView() {
         //하우스 리사이클러
         mRvHouses = findViewById(R.id.rv_search_houses);
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        tryGetSimpleHouseInfo();
-
-
+        mRvHouses.setAdapter(new HousesAdapter(mHouseDataList));
     }
 
-    private void tryGetSimpleHouseInfo(){
+    private void tryGetSimpleHouseInfo() {
         final SearchService searchService = new SearchService(this);
         showProgressDialog();
         searchService.getSimpleHouseInfo();
@@ -74,8 +81,10 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     @Override
     public void validateSearchSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
-        mHouseDataResponse = simpleHouseInfoResponse;
-        Log.d("network", "validateSearchSuccess: "+simpleHouseInfoResponse.getMessage());
+        //데이터 가져옴
+        mHouseDataList = simpleHouseInfoResponse.getResult();
+        makeHouseRecyclerView();
+        Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(0).getHouseInfo());
     }
 
     @Override
