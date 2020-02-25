@@ -33,7 +33,7 @@ public class SearchService {
         params.put("bathroom", "0");
         params.put("facilities", "");
         params.put("buildingType", "");
-        params.put("rule", " ");
+        params.put("rule", "");
         params.put("location", "");
         params.put("language", "");
 

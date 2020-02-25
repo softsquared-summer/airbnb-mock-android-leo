@@ -1,6 +1,7 @@
 package com.shinplest.airbnbclone.src.login;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginRetrofitInterface;
@@ -29,6 +30,7 @@ public class LoginService {
         loginRetrofitInterface.postJwt(requestJwt).enqueue(new Callback<JwtResponse>() {
             @Override
             public void onResponse(Call<JwtResponse> call, Response<JwtResponse> response) {
+                Log.d("network", "onResponse: "+call.request().url().toString());
                 final JwtResponse jwtResponse = response.body();
                 if (jwtResponse == null){
                     mLoginActivityView.validateLoginFailure(null);
