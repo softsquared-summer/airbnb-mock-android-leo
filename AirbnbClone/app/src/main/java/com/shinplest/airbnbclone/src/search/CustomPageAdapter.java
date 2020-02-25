@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.main.fragment_search;
+package com.shinplest.airbnbclone.src.search;
 
 import android.content.Context;
 import android.net.Uri;

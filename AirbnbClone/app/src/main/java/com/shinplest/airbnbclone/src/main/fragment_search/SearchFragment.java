@@ -23,6 +23,7 @@ import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
+import com.shinplest.airbnbclone.src.search.CustomPageAdapter;
 import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;

@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.search;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
+import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHolder> {
+    private Context context;
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
-    public HousesAdapter(ArrayList<SimpleHouseInfoResponse.Result> houseDataList) {
+    //뷰페이져 상태저장하는 hashMap
+    HashMap<Integer, Integer> mViewPagerState = new HashMap<>();
+
+    public HousesAdapter(Context context, ArrayList<SimpleHouseInfoResponse.Result> houseDataList) {
+        this.context = context;
         this.mHouseDataList = houseDataList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private ViewPager mVpHousePhotos;
         private TextView mTvHouseInfo, mTvStarAvg, mTvHouseName;
 
@@ -44,7 +52,23 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
+//        String[] urls = house.getHouseImages().split(",");
+        String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
+
+        CustomPageAdapter customPageAdapter = new CustomPageAdapter(context, url);
+        holder.mVpHousePhotos.setAdapter(customPageAdapter);
+        holder.mVpHousePhotos.setId(position+1);
+
+        if (mViewPagerState.containsKey(position)){
+            holder.mVpHousePhotos.setCurrentItem(mViewPagerState.get(position));
+        }
+
         holder.mTvHouseInfo.setText(house.getHouseInfo());
         holder.mTvStarAvg.setText(house.getStarAvg());
         holder.mTvHouseName.setText(house.getHouseName());
@@ -54,5 +78,6 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
     public int getItemCount() {
         return mHouseDataList.size();
     }
+
 
 }

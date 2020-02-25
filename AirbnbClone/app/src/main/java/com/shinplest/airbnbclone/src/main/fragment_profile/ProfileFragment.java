@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.main.fragment_profile;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,9 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.interfaces.ProfileFragmentView;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
+import com.shinplest.airbnbclone.src.profile.ProfileActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,10 @@ import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
 public class ProfileFragment extends BaseFragment implements ProfileFragmentView {
     private FirebaseAuth mAuth;
+
+
+    //show profile
+    private TextView mTvShowProfile;
 
     //view
     private SimpleDraweeView mSdProfilePhoto;
@@ -44,6 +52,15 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        mTvShowProfile = view.findViewById(R.id.tv_frag_profile_show_profile);
+        mTvShowProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //프로필 리사이클러뷰
         mRvSetting = view.findViewById(R.id.rv_frag_profile_setting);
