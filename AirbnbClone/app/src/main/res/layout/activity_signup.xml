@@ -18,6 +18,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/iv_signup_exit"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_marginLeft="5dp"
@@ -70,7 +71,7 @@
                 android:textSize="15sp" />
 
             <Spinner
-                android:id="@+id/spn_login_country"
+                android:id="@+id/spn_signup_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -97,15 +98,23 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/tv_signup_country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+82"
                     android:textColor="@color/basicText"
                     android:textSize="18sp" />
+                <View
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/splitColor" />
 
                 <EditText
                     android:id="@+id/et_login_phonenum"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:background="@null"

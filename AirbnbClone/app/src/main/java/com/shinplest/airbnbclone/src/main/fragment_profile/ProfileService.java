@@ -28,9 +28,9 @@ public class ProfileService {
             @Override
             public void onResponse(Call<SimpleUserinfoResponse> call, Response<SimpleUserinfoResponse> response) {
                 SimpleUserinfoResponse simpleUserinfoResponse = response.body();
-                Log.d("network", "onResponse: firstname"+simpleUserinfoResponse.getResult().getFirst_name());
-                mProfileFragmentView.validateSuccess(simpleUserinfoResponse.getResult().getFirst_name(), simpleUserinfoResponse.getResult().getLast_name(),
-                        simpleUserinfoResponse.getCode(), simpleUserinfoResponse.getMessage());
+                Log.d("network", "onResponse: firstname"+simpleUserinfoResponse.getResult().getFirstName());
+                mProfileFragmentView.validateSuccess(simpleUserinfoResponse.getResult().getProfileImgUrl(),
+                        simpleUserinfoResponse.getResult().getFirstName(), simpleUserinfoResponse.getCode(), simpleUserinfoResponse.getMessage());
             }
 
             @Override

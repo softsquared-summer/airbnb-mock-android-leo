@@ -9,7 +9,6 @@ public class SimpleUserinfoResponse {
     @SerializedName("code")
     private int code;
 
-
     @SerializedName("message")
     private String message;
 
@@ -33,18 +32,18 @@ public class SimpleUserinfoResponse {
     }
 
     public class Result {
-        @SerializedName("last_name")
-        private String last_name;
+        @SerializedName("firstName")
+        private String firstName;
 
-        @SerializedName("first_name")
-        private String first_name;
+        @SerializedName("image")
+        private String profileImgUrl;
 
-        public String getLast_name() {
-            return last_name;
+        public String getFirstName() {
+            return firstName;
         }
 
-        public String getFirst_name() {
-            return first_name;
+        public String getProfileImgUrl() {
+            return profileImgUrl;
         }
     }
 }

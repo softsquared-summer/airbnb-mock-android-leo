@@ -49,124 +49,137 @@
 
     </LinearLayout>
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintTop_toBottomOf="@id/container_frag_search_search">
+        android:layout_weight="1">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimaryDark"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                <LinearLayout
-                    android:id="@+id/test2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/statusbackgroundColor"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="10dp"
-                    app:layout_collapseMode="parallax">
-
-                    <Button
-                        android:id="@+id/btn_frag_search_date"
-                        style="@style/SearchButton"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/shape_btn"
-                        android:text="날짜"
-                        android:textColor="@color/basicText" />
-
-                    <Button
-                        android:id="@+id/btn_frag_search_attendance"
-                        style="@style/SearchButton"
-                        android:background="@drawable/shape_btn"
-                        android:text="인원"
-                        android:textColor="@color/basicText" />
-                </LinearLayout>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <androidx.core.widget.NestedScrollView
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            android:orientation="vertical"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/container_frag_search_search">
 
-            <LinearLayout
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="?attr/colorPrimaryDark"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <LinearLayout
+                        android:id="@+id/test2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/statusbackgroundColor"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="10dp"
+                        app:layout_collapseMode="parallax">
+
+                        <Button
+                            android:id="@+id/btn_frag_search_date"
+                            style="@style/SearchButton"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/shape_btn"
+                            android:text="날짜"
+                            android:textColor="@color/basicText" />
+
+                        <Button
+                            android:id="@+id/btn_frag_search_attendance"
+                            style="@style/SearchButton"
+                            android:background="@drawable/shape_btn"
+                            android:text="인원"
+                            android:textColor="@color/basicText" />
+                    </LinearLayout>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-                <TextView
-                    android:id="@+id/tv_frag_search_look_around"
-                    style="@style/FragSearchTitleText"
-                    android:layout_marginTop="20dp"
-                    android:text="에어비앤비 둘러보기" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_frag_search_look_around"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:clipToPadding="false"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    style="@style/FragSearchTitleText"
-                    android:text="계속 둘러보기" />
+                    <TextView
+                        android:id="@+id/tv_frag_search_look_around"
+                        style="@style/FragSearchTitleText"
+                        android:layout_marginTop="20dp"
+                        android:text="에어비앤비 둘러보기" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_frag_search_continue_look_around"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="20dp"
-                    android:clipToPadding="false"
-                    android:paddingTop="5dp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_frag_search_look_around"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:clipToPadding="false"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp" />
 
+                    <TextView
+                        style="@style/FragSearchTitleText"
+                        android:text="계속 둘러보기" />
 
-                <TextView
-                    style="@style/FragSearchTitleText"
-                    android:text="최고 평점의 체험" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_frag_search_experience"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    style="@style/FragSearchBasicText"
-                    android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_frag_search_continue_look_around"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="20dp"
+                        android:clipToPadding="false"
+                        android:paddingTop="5dp" />
 
 
-                <TextView
-                    style="@style/FragSearchTitleText"
-                    android:text="에어비앤비 어드밴처를 소개합니다." />
+                    <TextView
+                        style="@style/FragSearchTitleText"
+                        android:text="최고 평점의 체험" />
 
-                <TextView
-                    style="@style/FragSearchBasicText"
-                    android:text="현지 전문가가 진행하는 2일 이상의 여행 - 액티비티, 식사, 숙박 포함" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_frag_search_experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    style="@style/FragSearchTitleText"
-                    android:text="전 세계 숙소" />
+                    <TextView
+                        style="@style/FragSearchBasicText"
+                        android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
 
 
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    <TextView
+                        style="@style/FragSearchTitleText"
+                        android:text="에어비앤비 어드밴처를 소개합니다." />
+
+                    <TextView
+                        style="@style/FragSearchBasicText"
+                        android:text="현지 전문가가 진행하는 2일 이상의 여행 - 액티비티, 식사, 숙박 포함" />
+
+                    <TextView
+                        style="@style/FragSearchTitleText"
+                        android:text="전 세계 숙소" />
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/vpg_test"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </FrameLayout>
+
+
 </LinearLayout>

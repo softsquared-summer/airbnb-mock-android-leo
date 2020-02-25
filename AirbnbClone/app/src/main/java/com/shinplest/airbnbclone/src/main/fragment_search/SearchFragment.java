@@ -15,14 +15,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
-import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
+import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
@@ -36,6 +37,15 @@ import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
 
 public class SearchFragment extends BaseFragment {
 
+    //뷰페이져 테스트
+    ViewPager viewPager;
+    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
+            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
+    CustomPageAdapter customPageAdapter;
+
     private FirebaseAuth mAuth;
 
     //view
@@ -47,7 +57,6 @@ public class SearchFragment extends BaseFragment {
 
     //first recycler view
     private RecyclerView mRvLookAround;
-    private RecyclerView.Adapter mLookAroundAdapter;
     private RecyclerView.LayoutManager mHorizontalLayoutManagerLookAround;
 
     //secont recycler view
@@ -67,6 +76,11 @@ public class SearchFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        //뷰페이지 테스트
+        viewPager = view.findViewById(R.id.vpg_test);
+        customPageAdapter = new CustomPageAdapter(getContext(), url);
+        viewPager.setAdapter(customPageAdapter);
 
         mAuth = FirebaseAuth.getInstance();
         mTvLookAround = view.findViewById(R.id.tv_frag_search_look_around);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_house_holder"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_house_holder_house_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="개인실 침대 1개"/>
+        <TextView
+            android:id="@+id/tv_house_holder_star_avg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5 점(305)"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_house_holder_house_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="싱글룸과 개인 보안"/>
+</LinearLayout>

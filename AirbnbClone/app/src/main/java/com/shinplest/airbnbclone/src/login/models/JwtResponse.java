@@ -23,10 +23,6 @@ public class JwtResponse {
         return message;
     }
 
-    public boolean isSuccess() {
-        return isSuccess;
-    }
-
     public Result getResult() {
         return result;
     }

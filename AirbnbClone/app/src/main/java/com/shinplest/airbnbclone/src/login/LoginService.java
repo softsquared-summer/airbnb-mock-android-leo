@@ -30,20 +30,19 @@ public class LoginService {
         loginRetrofitInterface.postJwt(requestJwt).enqueue(new Callback<JwtResponse>() {
             @Override
             public void onResponse(Call<JwtResponse> call, Response<JwtResponse> response) {
+                Log.d("network", "onResponse: "+call.request().url().toString());
                 final JwtResponse jwtResponse = response.body();
                 if (jwtResponse == null){
                     mLoginActivityView.validateLoginFailure(null);
                 }
-                //성공했을때만 jwt보내줌
+                //성공했을때만 저장
                 if (jwtResponse.getCode() == 100){
-                    String jwt = jwtResponse.getResult().getJwt();
-                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode());
+                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode(), jwtResponse.getMessage());
                     SharedPreferences.Editor editor = sSharedPreferences.edit();
-                    editor.putString(X_ACCESS_TOKEN, jwt).apply();
-                    Log.d("network", "token" + sSharedPreferences.getString(X_ACCESS_TOKEN, "token save fail"));
+                    editor.putString(X_ACCESS_TOKEN, jwtResponse.getResult().getJwt()).apply();
                 }
                 else
-                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode());
+                    mLoginActivityView.validateLoginSuccess(jwtResponse.getCode(), jwtResponse.getMessage());
             }
 
             @Override
