@@ -42,7 +42,12 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
             }
         });
 
+    }
 
+    //api호출은 시작될때 마다 해주도록
+    @Override
+    protected void onStart() {
+        super.onStart();
         tryGetProfile();
     }
 
