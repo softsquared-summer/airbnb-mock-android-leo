@@ -1,60 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_search_top_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:clipToPadding="false"
-        android:layout_marginTop="15dp">
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/ll_frag_search_search"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="6"
-            android:background="@drawable/shape_rounding"
-            android:clickable="true"
-            android:elevation="2dp"
-            android:focusable="true"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:clipToPadding="false"
+            android:padding="5dp">
 
-            <EditText
+            <LinearLayout
+                android:id="@+id/ll_frag_search_search"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="6"
+                android:background="@drawable/shape_rounding"
+                android:clickable="true"
+                android:elevation="2dp"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="4"
+                    android:background="@null"
+                    android:hint="어디로 가세요?"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/search_exit" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_search_cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_weight="4"
-                android:background="@null"
-                android:textSize="15sp"
-                android:hint="어디로 가세요?" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="15dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:src="@drawable/search_exit" />
+                android:text="취소"
+                android:textColor="@color/secondText"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/search_button_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="searchtest" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_search_house_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/container_frag_search_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/statusbackgroundColor"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape_rounding"
+                android:clickable="true"
+                android:elevation="2dp"
+                android:focusable="true"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/search_frag_shearch" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:text="바르셀로나 숙소"
+                    android:textColor="@color/secondText"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_search_cancel"
-            android:layout_width="0dp"
-            android:layout_marginLeft="20dp"
+            android:id="@+id/test_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="취소"
-            android:textColor="@color/secondText"
-            android:textSize="15sp" />
+            android:text="여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다."
+            app:layout_constraintTop_toBottomOf="@+id/container_frag_search_search" />
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/test_text" />
 
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
