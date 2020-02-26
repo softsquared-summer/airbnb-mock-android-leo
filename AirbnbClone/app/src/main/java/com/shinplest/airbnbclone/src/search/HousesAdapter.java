@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,17 +34,22 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private LinearLayout mLlHouseContainer;
+
         private WormDotsIndicator mWormDotsIndicator;
         private ViewPager mVpHousePhotos;
-        private TextView mTvHouseInfo, mTvStarAvg, mTvHouseName;
+        private TextView mTvHouseInfo, mTvStarAvg, mTvHouseName, mTvReviewCnt;
+
 
         public MyViewHolder(@NonNull View view) {
             super(view);
+            this.mLlHouseContainer = view.findViewById(R.id.ll_house_holder_container);
             this.mWormDotsIndicator = view.findViewById(R.id.dots_indicator);
             this.mVpHousePhotos = view.findViewById(R.id.vp_house_holder);
             this.mTvHouseInfo = view.findViewById(R.id.tv_house_holder_house_info);
             this.mTvStarAvg = view.findViewById(R.id.tv_house_holder_star_avg);
             this.mTvHouseName = view.findViewById(R.id.tv_house_holder_house_name);
+            this.mTvReviewCnt = view.findViewById(R.id.tv_house_holder_review_count);
         }
     }
 
@@ -61,7 +67,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         //하우스 넘버 받아오는 부분
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.mLlHouseContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("OnclickTest", "onClick: " + mHouseDataList.get(position).getHouseNo());
@@ -91,7 +97,8 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         }
 
         holder.mTvHouseInfo.setText(house.getHouseInfo());
-        holder.mTvStarAvg.setText("★ "+ house.getStarAvg()+" ("+house.getReviewCnt()+")");
+        holder.mTvStarAvg.setText(house.getStarAvg());
+        holder.mTvReviewCnt.setText("("+house.getReviewCnt()+")");
         holder.mTvHouseName.setText(house.getHouseName());
     }
 
