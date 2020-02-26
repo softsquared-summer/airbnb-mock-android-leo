@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
+import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.ArrayList;
@@ -82,14 +83,24 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     }
 
     private void tryGetSimpleHouseInfo() {
-        final SearchService searchService = new SearchService(this);
+        final SearchHouseService searchHouseService = new SearchHouseService(this);
         showProgressDialog();
-        searchService.getSimpleHouseInfo();
+        searchHouseService.getSimpleHouseInfo();
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
     }
 
     @Override
-    public void validateSearchSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
+    public void searchSuccess(ExistLocationResponse.Result existLocationList, int code, String message) {
+
+    }
+
+    @Override
+    public void searchFailure() {
+
+    }
+
+    @Override
+    public void searchHouseSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
         //데이터 가져옴
         mHouseDataList = simpleHouseInfoResponse.getResult();
@@ -100,7 +111,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     }
 
     @Override
-    public void validateSearchFailure(String message) {
+    public void searchHouseFailure(String message) {
         hideProgressDialog();
     }
 }

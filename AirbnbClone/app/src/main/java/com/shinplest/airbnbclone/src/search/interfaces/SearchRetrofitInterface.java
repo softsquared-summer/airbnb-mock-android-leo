@@ -1,11 +1,13 @@
 package com.shinplest.airbnbclone.src.search.interfaces;
 
+import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 //public interface SearchRetrofitInterface {
@@ -26,4 +28,7 @@ import retrofit2.http.QueryMap;
 public interface SearchRetrofitInterface{
     @GET("/houses")
     Call<SimpleHouseInfoResponse> getSimpleHouseInfo(@QueryMap Map<String, String> querymap);
+
+    @GET("/search")
+    Call<ExistLocationResponse> getExistLocation(@Query("category") String category, @Query("search") String searchWord);
 }
