@@ -34,6 +34,9 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     //집데이터 배열
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
+    //리스트뷰 배열
+    private ArrayList<ExistLocationResponse.Result> mLocationList;
+
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
     private ConstraintLayout mClSearchHouseContainer;
@@ -60,6 +63,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
 
             //텍스트가 변할때 마다 검색리스트를 불러옴
+            //바뀌면 기존 배열 비우고, 새로운 배열 저장하고 어댑터에 알려준다.
             @Override
             public void afterTextChanged(Editable s) {
                 String text = mEtSearchLocation.getText().toString();
@@ -91,6 +95,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
+
     private void tryGetExistLocation(String searchWord) {
         final SearchService searchService = new SearchService(this);
         showProgressDialog();
@@ -120,17 +125,20 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
     }
 
+
+    //로케이션을 받아오면 로케이션 arraylist를 저장
     @Override
     public void searchSuccess(ArrayList<ExistLocationResponse.Result> existLocationList, String code, String message) {
         //검색결과가 없을때 제외하고
-        if (existLocationList.size() != 0)
-            Log.d("test", existLocationList.get(0).getExistLocation());
+        if (existLocationList.size() != 0) {
+            mLocationList = existLocationList;
+        }
         hideProgressDialog();
     }
 
     @Override
     public void searchFailure() {
-
+        hideProgressDialog();
     }
 
     @Override
@@ -148,4 +156,5 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     public void searchHouseFailure(String message) {
         hideProgressDialog();
     }
+
 }
