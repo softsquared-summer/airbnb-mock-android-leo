@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class HouseResponse {
     @SerializedName("result")
-    private ArrayList<Result> result;
+    private Result result;
 
     @SerializedName("code")
     private int code;
@@ -17,12 +17,36 @@ public class HouseResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
+    public Result getResult() {
+        return result;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
     public class Result{
         @SerializedName("image")
         private ArrayList<Image> images;
 
         @SerializedName("info")
-        private ArrayList<Info> info;
+        private Info info;
+
+        public ArrayList<Image> getImages() {
+            return images;
+        }
+
+        public Info getInfo() {
+            return info;
+        }
     }
 
     public class Image{
@@ -30,6 +54,14 @@ public class HouseResponse {
         private int no;
         @SerializedName("image")
         private String imgUrl;
+
+        public int getNo() {
+            return no;
+        }
+
+        public String getImgUrl() {
+            return imgUrl;
+        }
     }
 
     public class Info{
@@ -63,6 +95,45 @@ public class HouseResponse {
         @SerializedName("checkOut")
         private String checkOut;
 
+        public String getHouseTitle() {
+            return houseTitle;
+        }
+
+        public String getHouseLocation() {
+            return houseLocation;
+        }
+
+        public String getHouseHost() {
+            return houseHost;
+        }
+
+        public String getHouseType() {
+            return houseType;
+        }
+
+        public String getHouseSummary() {
+            return houseSummary;
+        }
+
+        public String getHouseInfo() {
+            return houseInfo;
+        }
+
+        public String getHouseDetail() {
+            return houseDetail;
+        }
+
+        public String getMinimumStay() {
+            return minimumStay;
+        }
+
+        public String getCheckIn() {
+            return checkIn;
+        }
+
+        public String getCheckOut() {
+            return checkOut;
+        }
     }
 }
 //

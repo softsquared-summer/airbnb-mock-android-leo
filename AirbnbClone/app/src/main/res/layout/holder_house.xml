@@ -15,7 +15,8 @@
             android:id="@+id/vp_house_holder"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:clickable="false"/>
+            android:clickable="false"
+            android:focusable="false"/>
 
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/dots_indicator"

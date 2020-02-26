@@ -49,7 +49,7 @@ public class HouseViewPageAdatper extends PagerAdapter {
         simpleDraweeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "숙소 이름을 클릭해주세요\n(이거 기능구현 대체 방법 생각중)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "아래의 숙소 이름을 클릭해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
 

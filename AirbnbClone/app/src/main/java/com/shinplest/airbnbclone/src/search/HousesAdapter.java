@@ -70,9 +70,11 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         holder.mLlHouseContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("OnclickTest", "onClick: " + mHouseDataList.get(position).getHouseNo());
+                int houseNo = mHouseDataList.get(position).getHouseNo();
+                Log.d("OnclickTest", "onClick: " + houseNo);
                 //여기서 하우스 넘버로 새로운 액티비티로 넘어가줘야함
                 Intent intent = new Intent(v.getContext(), HouseActivity.class);
+                intent.putExtra("houseNo", houseNo);
                 context.startActivity(intent);
             }
         });

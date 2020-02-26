@@ -177,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                android:layout_marginBottom="150dp">
+              >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -205,6 +205,7 @@
                         android:text="300개 이상의 숙소" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginBottom="100dp"
                         android:id="@+id/rv_search_houses"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
