@@ -23,12 +23,14 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
     private ProfileResponse.Result mProfile = null;
 
     private SimpleDraweeView mSvProfilePhoto;
-    private TextView mTvProfileTitle, mTvProfileRegisterDate;
+    private TextView mTvProfileTitle, mTvProfileRegisterDate, mTvProfileLccation,
+            mTvProfileLaguage, mTvProfileJob, mTvProfileProvidedInfo;
     private ImageView mIvModifyProfile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_profile);
         //가장먼저 ui 가져옴
         getUiSourse();
@@ -55,6 +57,10 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
     private void getUiSourse() {
         mSvProfilePhoto = findViewById(R.id.sv_profile_profile_photo);
         mTvProfileTitle = findViewById(R.id.tv_profile_info);
+        mTvProfileLccation = findViewById(R.id.tv_profile_location);
+        mTvProfileLaguage = findViewById(R.id.tv_profile_language);
+        mTvProfileJob = findViewById(R.id.tv_profile_job);
+        mTvProfileProvidedInfo = findViewById(R.id.tv_profile_provided_info);
         mTvProfileRegisterDate = findViewById(R.id.tv_profile_register_date);
         mIvModifyProfile = findViewById(R.id.iv_profile_pen_modify);
     }
@@ -69,6 +75,11 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
             mTvProfileTitle.setText(title);
         else mTvProfileTitle.setText("프로필 제목 없음");
         mTvProfileRegisterDate.setText("회원 가입" + registerDate);
+
+        mTvProfileLccation.setText("거주지 : " + mProfile.getLocation());
+        mTvProfileLaguage.setText("구사 언어 : "+mProfile.getLanguage());
+        mTvProfileJob.setText("직장 : "+mProfile.getJob());
+        mTvProfileProvidedInfo.setText(mProfile.getFirstName()+"님이 제공한 정보");
     }
 
     void tryGetProfile() {
