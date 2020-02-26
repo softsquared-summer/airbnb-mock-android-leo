@@ -95,6 +95,8 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mHouseDataList = simpleHouseInfoResponse.getResult();
         makeHouseRecyclerView();
         Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(2).getHouseName());
+
+//        mHouseDataList.addAll(mHouseDataList);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
     private SimpleDraweeView mSvProfilePhoto;
     private TextView mTvProfileTitle, mTvProfileRegisterDate, mTvProfileLccation,
             mTvProfileLaguage, mTvProfileJob, mTvProfileProvidedInfo;
-    private ImageView mIvModifyProfile;
+    private ImageView mIvBackArrow, mIvModifyProfile;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +34,13 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
         setContentView(R.layout.activity_profile);
         //가장먼저 ui 가져옴
         getUiSourse();
+
+        mIvBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //프로필 수정으로 넘어감
         mIvModifyProfile.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +69,7 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
         mTvProfileJob = findViewById(R.id.tv_profile_job);
         mTvProfileProvidedInfo = findViewById(R.id.tv_profile_provided_info);
         mTvProfileRegisterDate = findViewById(R.id.tv_profile_register_date);
+        mIvBackArrow = findViewById(R.id.iv_profile_back_arrow);
         mIvModifyProfile = findViewById(R.id.iv_profile_pen_modify);
     }
 
