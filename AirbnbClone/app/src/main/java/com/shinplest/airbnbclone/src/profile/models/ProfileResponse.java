@@ -4,6 +4,8 @@ import androidx.annotation.StringRes;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 public class ProfileResponse {
     @SerializedName("result")
     private Result result;
@@ -33,7 +35,7 @@ public class ProfileResponse {
         return isSuccess;
     }
 
-    public class Result {
+    public class Result implements Serializable {
         @SerializedName("firstName")
         private String firstName;
 

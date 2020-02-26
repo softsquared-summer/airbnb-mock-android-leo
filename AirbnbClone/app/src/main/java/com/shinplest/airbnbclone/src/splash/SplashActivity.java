@@ -8,11 +8,11 @@ import androidx.annotation.Nullable;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.signup.SignUpActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.X_ACCESS_TOKEN;
 
 public class SplashActivity extends BaseActivity {
     private FirebaseAuth mAuth = null;

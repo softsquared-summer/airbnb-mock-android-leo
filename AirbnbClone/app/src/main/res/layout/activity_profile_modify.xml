@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/exit" />
+
+        <TextView
+            android:id="@+id/tv_profle_modify_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="저장" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/sv_profile_modify"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/sv_profile_modify"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toEndOf="@+id/sv_profile_modify"
+                    android:src="@drawable/profile_camera" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_profile_modify_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/RegisterBasicText"
+                    android:text="프로필 제목" />
+
+                <EditText
+                    android:id="@+id/et_profile_modify_title"
+                    style="@style/RegisterEditText" />
+
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="추가정보 입력(선택사항)" />
+
+                <TextView
+                    style="@style/RegisterBasicText"
+                    android:text="거주지" />
+
+                <EditText
+                    android:id="@+id/et_profile_modify_location"
+                    style="@style/RegisterEditText"
+                    android:hint="예시 : 프랑스의 파리, 뉴욕의 브루클린, 일리노이 주의 시카고" />
+
+                <TextView
+                    style="@style/RegisterBasicText"
+                    android:text="학교" />
+
+                <EditText
+                    android:id="@+id/et_profile_modify_school"
+                    style="@style/RegisterEditText"
+                    android:hint="학교" />
+
+                <TextView
+                    style="@style/RegisterBasicText"
+                    android:text="직업" />
+
+                <EditText
+                    android:id="@+id/et_profile_modify_job"
+                    style="@style/RegisterEditText"
+                    android:hint="예시 : 에어비앤비, 애플, 맥도날드" />
+
+                <TextView
+                    style="@style/RegisterBasicText"
+                    android:text="언어" />
+
+                <EditText
+                    android:id="@+id/et_profile_modify_language"
+                    style="@style/RegisterEditText"
+                    android:hint="예시 : 한국어, 중국어, 영어" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

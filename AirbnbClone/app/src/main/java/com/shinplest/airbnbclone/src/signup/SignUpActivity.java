@@ -32,7 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.login.LoginActivity;
 import com.shinplest.airbnbclone.src.main.MainActivity;
 import com.shinplest.airbnbclone.src.register.RegisterActivity;
@@ -40,7 +40,7 @@ import com.shinplest.airbnbclone.src.signup.interfaces.SignUpActivityView;
 
 import java.util.regex.Pattern;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.getNumbersFromString;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.getNumbersFromString;
 
 
 //단순히 전화번호 있는지 없는지를 검증하고, 있으면 Login Activity 없으면 Register Activity로 넘겨줌

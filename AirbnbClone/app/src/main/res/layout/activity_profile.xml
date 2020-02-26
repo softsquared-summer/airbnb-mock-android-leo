@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -13,18 +14,19 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/login_back" />
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back_arrow" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:id="@+id/iv_profile_pen_modify"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/profile_pen" />
     </RelativeLayout>
-    
+
     <LinearLayout
         android:id="@+id/ll_profile_container"
         android:layout_width="match_parent"
@@ -32,48 +34,98 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
-        
-        
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1
-"
-                android:layout_height="wrap_content"
-                android:text="안녕하세요 재형 입니다."/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_profile_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="프로필 제목"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_profile_register_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="회원가입: 8월 2016" />
+            </LinearLayout>
+
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/sv_profile_profile_photo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                app:roundAsCircle="true" />
 
         </LinearLayout>
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-        </com.facebook.drawee.view.SimpleDraweeView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/profile_verified" />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="인증 완료" />
+
+        </LinearLayout>
+
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/profile_verified"/>
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/profile_comment" />
 
             <TextView
+                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="인증 완료"/>
+                android:layout_gravity="center_vertical"
+                android:text="후기 3개" />
 
         </LinearLayout>
-        
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/splitColor"
+            android:elevation="2dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleText"
+            android:text="소개"/>
+
     </LinearLayout>
 
 </LinearLayout>

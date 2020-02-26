@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
 import com.shinplest.airbnbclone.src.login.models.RequestJwt;
 import com.shinplest.airbnbclone.src.main.MainActivity;
@@ -67,7 +67,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     @Override
     public void validateLoginSuccess(int code, String message) {
         hideProgressDialog();
-        //로그인 성공
+        //로그인 성공시 jwt로 한번더 요청을 보냄
         if (code == 100) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

@@ -8,8 +8,8 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.X_ACCESS_TOKEN;
-import static com.shinplest.airbnbclone.src.ApplicationClass.sSharedPreferences;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.X_ACCESS_TOKEN;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.sSharedPreferences;
 
 
 public class XAccessTokenInterceptor implements Interceptor {

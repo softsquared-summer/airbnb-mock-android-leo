@@ -5,6 +5,7 @@ package com.shinplest.airbnbclone.src.main;
 
 /*
     리사이클러뷰에 온클릭 리스너를 다는 효율적인 방법 -> 인터넷에서 찾아본 방법들이 전부 뭔가 되지 않음, 쉽고 편하게 쓰는 법 어떤식으로 쓰는가?
+    -> 아이템 뷰에 리스너를 달았는데, 뷰페이져는 따로 관리되는거 해결 방법
 
     구글 로그인과 일반로그인 데이터를 분리해서 가져오는 효율적인 방법 -> 지금은 string 값을 intent로 전달해서 구분하고 있는데, 그렇게 하니까 좀 불편
     사용하는 액티비티마다 코드를 분기해서 짜는 건 조금 비효율 적인거 같은데 -> 일단 서버기준으로, 해야겠다.
@@ -30,7 +31,11 @@ package com.shinplest.airbnbclone.src.main;
        - 이메일 비밀번호 공백 입력시 자동삭제
        - 로그인 버튼 누를시 키보드 숨김
        - 서버로부터 검증받은 데이터 토스트 띄워줌
-       - 로그인 성공시 jwt를 sSharedPreference에 저장w
+       - 로그인 성공시 jwt를 sSharedPreference에 저장
+
+
+       프로필 관련
+       -onStart에 api를 호출함으로써 업데이트가 제대로 반영되도록 함.
 
  */
 
@@ -56,7 +61,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.BaseActivity;
+import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.main.fragment_message.MessageFragment;
 import com.shinplest.airbnbclone.src.main.fragment_profile.ProfileFragment;
 import com.shinplest.airbnbclone.src.main.fragment_savelist.SavelistFragment;
@@ -64,8 +69,8 @@ import com.shinplest.airbnbclone.src.main.fragment_search.SearchFragment;
 import com.shinplest.airbnbclone.src.main.fragment_travel.TravelFragment;
 import com.shinplest.airbnbclone.src.main.interfaces.MainActivityView;
 
-import static com.shinplest.airbnbclone.src.ApplicationClass.LOGIN_INFO;
-import static com.shinplest.airbnbclone.src.ApplicationClass.USER_NO;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.LOGIN_INFO;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
 
 public class MainActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener, MainActivityView {
 
@@ -92,9 +97,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         tryGetUserNo();
-
-
-
     }
 
     private void tryGetUserNo(){
@@ -149,6 +151,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
 
     @Override
     public void validateJwtLoginFailure(String message) {
-
+        hideProgressDialog();
+        showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 }

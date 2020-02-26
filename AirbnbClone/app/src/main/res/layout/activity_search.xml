@@ -120,42 +120,106 @@
 
         </LinearLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nsv_search"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:layout_constraintTop_toBottomOf="@+id/container_search_search">
 
-            <LinearLayout
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintTop_toBottomOf="@id/container_frag_search_search">
 
-                <TextView
-                    android:id="@+id/tv_search_noti"
+                <com.google.android.material.appbar.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다." />
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                <View
+                    <com.google.android.material.appbar.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:contentScrim="?attr/colorPrimaryDark"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/statusbackgroundColor"
+                            android:clipToPadding="false"
+                            android:orientation="horizontal"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="10dp"
+                            app:layout_collapseMode="parallax">
+
+                            <Button
+                                style="@style/SearchButton"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/shape_btn"
+                                android:text="날짜"
+                                android:textColor="@color/basicText" />
+
+                            <Button
+                                style="@style/SearchButton"
+                                android:background="@drawable/shape_btn"
+                                android:text="인원"
+                                android:textColor="@color/basicText" />
+
+                            <Button
+                                style="@style/SearchButton"
+                                android:background="@drawable/shape_btn"
+                                android:text="필터"
+                                android:textColor="@color/basicText" />
+                        </LinearLayout>
+                    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nsv_search"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/splitColor"
-                    android:elevation="2dp" />
+                    android:layout_height="match_parent"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:clipToPadding="false"
-                    android:id="@+id/rv_search_houses"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_search_noti" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <TextView
+                            style="@style/RegisterBasicText"
+                            android:text="여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다." />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/splitColor" />
+
+                        <TextView
+                            style="@style/FragSearchTitleText"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="20dp"
+                            android:text="300개 이상의 숙소" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_search_houses"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_search_noti" />
+
+                    </LinearLayout>
 
 
-        </androidx.core.widget.NestedScrollView>
+                </androidx.core.widget.NestedScrollView>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </FrameLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
