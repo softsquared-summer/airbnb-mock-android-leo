@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 public class SearchLocationListAdaper extends BaseAdapter {
 
-    ArrayList<ExistLocationResponse.Result> mExistLoctionList;
+    ArrayList<String> mExistLoctionList;
     LayoutInflater mLayoutInflator;
 
-    public SearchLocationListAdaper(ArrayList<ExistLocationResponse.Result> mExistLoctionList, Context context) {
+    public SearchLocationListAdaper(ArrayList<String> mExistLoctionList, Context context) {
         this.mExistLoctionList = mExistLoctionList;
         mLayoutInflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -40,7 +40,7 @@ public class SearchLocationListAdaper extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        String location = mExistLoctionList.get(position).getExistLocation();
+        String location = mExistLoctionList.get(position);
         convertView = mLayoutInflator.inflate(R.layout.search_item, parent, false);
         TextView tvLocation = convertView.findViewById(R.id.tv_search_list_location);
         tvLocation.setText(location);

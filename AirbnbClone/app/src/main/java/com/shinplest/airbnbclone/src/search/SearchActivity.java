@@ -36,7 +36,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
     //리스트뷰 배열
-    private ArrayList<ExistLocationResponse.Result> mLocationList = null;
+    private ArrayList<String> mLocationList = null;
     private SearchLocationListAdaper mSearchLocationListAdaper;
 
     private Button testButton;
@@ -54,7 +54,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         getUiSource();
 
         //생성해주고 할당만 함
-        mLocationList = new ArrayList<ExistLocationResponse.Result>();
+        mLocationList = new ArrayList<String>();
         mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
         mLvSearchLocation.setAdapter(mSearchLocationListAdaper);
 
@@ -138,11 +138,11 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     //로케이션을 받아오면 로케이션 arraylist를 저장
     @Override
-    public void searchSuccess(ArrayList<ExistLocationResponse.Result> existLocationList, String code, String message) {
+    public void searchSuccess(ArrayList<String> existLocationList, String code, String message) {
         //검색결과가 없을때 제외하고 바꿔주고 바꼈다고 알려줌
         if (existLocationList.size() != 0) {
             mLocationList = existLocationList;
-            Log.d("test", mLocationList.get(0).getExistLocation());
+            Log.d("test", mLocationList.get(0));
             mSearchLocationListAdaper.notifyDataSetChanged();
         }
         hideProgressDialog();

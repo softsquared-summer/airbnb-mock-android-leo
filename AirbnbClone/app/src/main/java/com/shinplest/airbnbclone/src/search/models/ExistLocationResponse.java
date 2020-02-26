@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ExistLocationResponse {
     @SerializedName("result")
-    private ArrayList<Result> results;
+    private ArrayList<String> results;
 
     @SerializedName("isSuccess")
     private String isSuccess;
@@ -17,7 +17,7 @@ public class ExistLocationResponse {
     @SerializedName("messsage")
     private String messsage;
 
-    public ArrayList<Result> getResults() {
+    public ArrayList<String> getResults() {
         return results;
     }
 
@@ -33,12 +33,4 @@ public class ExistLocationResponse {
         return messsage;
     }
 
-    public class Result {
-        @SerializedName("existLocation")
-        private String existLocation;
-
-        public String getExistLocation() {
-            return existLocation;
-        }
-    }
 }
