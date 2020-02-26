@@ -1,9 +1,12 @@
 package com.shinplest.airbnbclone.src.search;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,16 +37,37 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
     private ConstraintLayout mClSearchHouseContainer;
-
     private TextView mTvCancel;
-
     private RecyclerView mRvHouses;
+    private EditText mEtSearchLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getUiSource();
+
+        //검색리스너가 검색을 할때마다 리스트 가져온다.
+        mEtSearchLocation.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            //텍스트가 변할때 마다 검색리스트를 불러옴
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = mEtSearchLocation.getText().toString();
+                String text2 = s.toString();
+                tryGetExistLocation(text);
+            }
+        });
+
 
         //하우스 데이터 가져옴
         tryGetSimpleHouseInfo();
@@ -67,11 +91,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
-    private void getUiSource(){
+    private void tryGetExistLocation(String searchWord) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.getExistLocationList(searchWord);
+    }
+
+    private void getUiSource() {
         mTvCancel = findViewById(R.id.tv_search_cancel);
         mLlSearchTopContainer = findViewById(R.id.ll_search_top_container);
         mClSearchHouseContainer = findViewById(R.id.cl_search_house_container);
         testButton = findViewById(R.id.search_button_test);
+        mEtSearchLocation = findViewById(R.id.et_search_location);
     }
 
     private void makeHouseRecyclerView() {
@@ -79,7 +110,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses = findViewById(R.id.rv_search_houses);
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        mRvHouses.setAdapter(new HousesAdapter(this,mHouseDataList));
+        mRvHouses.setAdapter(new HousesAdapter(this, mHouseDataList));
     }
 
     private void tryGetSimpleHouseInfo() {
@@ -90,8 +121,11 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     }
 
     @Override
-    public void searchSuccess(ExistLocationResponse.Result existLocationList, int code, String message) {
-
+    public void searchSuccess(ArrayList<ExistLocationResponse.Result> existLocationList, String code, String message) {
+        //검색결과가 없을때 제외하고
+        if (existLocationList.size() != 0)
+            Log.d("test", existLocationList.get(0).getExistLocation());
+        hideProgressDialog();
     }
 
     @Override
