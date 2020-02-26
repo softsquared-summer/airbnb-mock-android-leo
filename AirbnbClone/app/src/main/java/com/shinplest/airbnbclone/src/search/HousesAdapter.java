@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.house.HouseActivity;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,13 +33,13 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private DotsIndicator mDotsIndicator;
+        private WormDotsIndicator mWormDotsIndicator;
         private ViewPager mVpHousePhotos;
         private TextView mTvHouseInfo, mTvStarAvg, mTvHouseName;
 
         public MyViewHolder(@NonNull View view) {
             super(view);
-            this.mDotsIndicator = view.findViewById(R.id.dots_indicator);
+            this.mWormDotsIndicator = view.findViewById(R.id.dots_indicator);
             this.mVpHousePhotos = view.findViewById(R.id.vp_house_holder);
             this.mTvHouseInfo = view.findViewById(R.id.tv_house_holder_house_info);
             this.mTvStarAvg = view.findViewById(R.id.tv_house_holder_star_avg);
@@ -78,7 +78,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
 
         //뷰페이져 어댑터와 indicator 할당
         holder.mVpHousePhotos.setAdapter(customPageAdapter);
-        holder.mDotsIndicator.setViewPager(holder.mVpHousePhotos);
+        holder.mWormDotsIndicator.setViewPager(holder.mVpHousePhotos);
         holder.mVpHousePhotos.setId(position + 1);
 
         if (mViewPagerState.containsKey(position)) {
