@@ -84,7 +84,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
 
     private void setRequest() {
         //샘플이미지
-        requestModifyProfile.setImage("https://homepages.cae.wisc.edu/~ece533/images/airplane.png_test");
+        requestModifyProfile.setImage("https://cdn.pixabay.com/photo/2020/01/13/19/27/victor-emmanuel-ii-monument-4763299_960_720.jpg");
         requestModifyProfile.setInfo(mEtTitle.getText().toString());
         requestModifyProfile.setLocation(mEtLocation.getText().toString());
         requestModifyProfile.setSchool(mEtSchool.getText().toString());
