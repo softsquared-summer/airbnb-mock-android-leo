@@ -69,7 +69,7 @@
         <ListView
             android:id="@+id/lv_search_location_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="200dp"/>
 
         <Button
             android:id="@+id/search_button_test"

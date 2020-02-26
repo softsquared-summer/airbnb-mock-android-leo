@@ -1,7 +1,5 @@
 package com.shinplest.airbnbclone.src.search;
 
-import android.util.Log;
-
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchRetrofitInterface;
 import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
@@ -26,13 +24,11 @@ public class SearchService {
             @Override
             public void onResponse(Call<ExistLocationResponse> call, Response<ExistLocationResponse> response) {
                 ExistLocationResponse existLocationResponse = response.body();
-                Log.d("test", call.request().url().toString());
                 mSearchActivityView.searchSuccess(existLocationResponse.getResults(), existLocationResponse.getCode(), existLocationResponse.getMesssage());
             }
 
             @Override
             public void onFailure(Call<ExistLocationResponse> call, Throwable t) {
-                Log.d("test", call.request().url().toString());
             }
         });
 

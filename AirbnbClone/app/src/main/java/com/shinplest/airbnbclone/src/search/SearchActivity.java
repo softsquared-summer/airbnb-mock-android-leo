@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -35,7 +36,8 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
     //리스트뷰 배열
-    private ArrayList<ExistLocationResponse.Result> mLocationList;
+    private ArrayList<ExistLocationResponse.Result> mLocationList = null;
+    private SearchLocationListAdaper mSearchLocationListAdaper;
 
     private Button testButton;
     private LinearLayout mLlSearchTopContainer;
@@ -43,12 +45,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private TextView mTvCancel;
     private RecyclerView mRvHouses;
     private EditText mEtSearchLocation;
+    private ListView mLvSearchLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getUiSource();
+
+        //생성해주고 할당만 함
+        mLocationList = new ArrayList<ExistLocationResponse.Result>();
+        mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
+        mLvSearchLocation.setAdapter(mSearchLocationListAdaper);
 
         //검색리스너가 검색을 할때마다 리스트 가져온다.
         mEtSearchLocation.addTextChangedListener(new TextWatcher() {
@@ -108,6 +116,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mClSearchHouseContainer = findViewById(R.id.cl_search_house_container);
         testButton = findViewById(R.id.search_button_test);
         mEtSearchLocation = findViewById(R.id.et_search_location);
+        mLvSearchLocation = findViewById(R.id.lv_search_location_list);
     }
 
     private void makeHouseRecyclerView() {
@@ -123,15 +132,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         showProgressDialog();
         searchHouseService.getSimpleHouseInfo();
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
+
     }
 
 
     //로케이션을 받아오면 로케이션 arraylist를 저장
     @Override
     public void searchSuccess(ArrayList<ExistLocationResponse.Result> existLocationList, String code, String message) {
-        //검색결과가 없을때 제외하고
+        //검색결과가 없을때 제외하고 바꿔주고 바꼈다고 알려줌
         if (existLocationList.size() != 0) {
             mLocationList = existLocationList;
+            Log.d("test", mLocationList.get(0).getExistLocation());
+            mSearchLocationListAdaper.notifyDataSetChanged();
         }
         hideProgressDialog();
     }
