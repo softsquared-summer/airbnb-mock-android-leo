@@ -55,6 +55,12 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
         //생성해주고 할당만 함
         mLocationList = new ArrayList<String>();
+        mLocationList.add("학교");
+        mLocationList.add("학교");
+        mLocationList.add("학교");
+        mLocationList.add("학교");
+        mLocationList.add("학교");
+
         mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
         mLvSearchLocation.setAdapter(mSearchLocationListAdaper);
 
@@ -139,13 +145,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     //로케이션을 받아오면 로케이션 arraylist를 저장
     @Override
     public void searchSuccess(ArrayList<String> existLocationList, String code, String message) {
+        hideProgressDialog();
+
         //검색결과가 없을때 제외하고 바꿔주고 바꼈다고 알려줌
         if (existLocationList.size() != 0) {
-            mLocationList = existLocationList;
-            Log.d("test", mLocationList.get(0));
+            mLocationList.clear();
+            //아무것도없는값 보내줄때 예외처리
+            if (existLocationList.get(0).equals("")){
+                return;
+            }
+            mLocationList.addAll(existLocationList);
             mSearchLocationListAdaper.notifyDataSetChanged();
         }
-        hideProgressDialog();
     }
 
     @Override

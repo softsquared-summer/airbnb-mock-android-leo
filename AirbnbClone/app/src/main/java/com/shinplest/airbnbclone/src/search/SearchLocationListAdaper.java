@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.shinplest.airbnbclone.R;
-import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
 
 import java.util.ArrayList;
 
