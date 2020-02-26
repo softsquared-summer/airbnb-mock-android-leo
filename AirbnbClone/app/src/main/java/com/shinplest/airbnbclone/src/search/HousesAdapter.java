@@ -80,7 +80,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         }
 
         holder.mTvHouseInfo.setText(house.getHouseInfo());
-        holder.mTvStarAvg.setText(house.getStarAvg());
+        holder.mTvStarAvg.setText("★ "+ house.getStarAvg()+" ("+house.getReviewCnt()+")");
         holder.mTvHouseName.setText(house.getHouseName());
     }
 
