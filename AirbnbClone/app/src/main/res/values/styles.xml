@@ -135,6 +135,24 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
+    <!--house text-->
+
+
+    <style name="HouseTitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HouseBasicText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 
     <!-- btn style-->
 
