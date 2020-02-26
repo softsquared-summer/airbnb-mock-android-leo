@@ -16,6 +16,8 @@
             android:layout_height="60dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:placeholderImage="@drawable/placeholder"
+            app:placeholderImageScaleType="center"
             fresco:roundAsCircle="true" />
 
         <LinearLayout
@@ -50,11 +52,11 @@
             </RelativeLayout>
 
             <TextView
-                android:textSize="16sp"
                 android:id="@+id/tv_frag_message_holder_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="in the centerof sjdfk" />
+                android:text="in the centerof sjdfk"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_frag_message_holder_room"

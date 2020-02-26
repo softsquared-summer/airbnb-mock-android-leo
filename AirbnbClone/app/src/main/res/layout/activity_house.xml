@@ -16,7 +16,7 @@
 
             <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="250dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -63,11 +63,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_house_type_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="아파트의 개인실" />
 
                 <TextView
+                    android:id="@+id/tv_houset_title"
                     style="@style/HouseTitleText"
                     android:text="Tourist Double roome"
                     android:textSize="30sp" />
@@ -108,10 +110,10 @@
 
 
                     <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/sv_profile_profile_photo"
+                        android:id="@+id/sv_house_host_profile"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        app:placeholderImage="@drawable/appicon"
+                        app:placeholderImage="@drawable/splash"
                         app:roundAsCircle="true" />
                 </LinearLayout>
 

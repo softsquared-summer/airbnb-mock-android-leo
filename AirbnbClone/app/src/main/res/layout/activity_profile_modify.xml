@@ -8,13 +8,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:src="@drawable/exit" />
 
         <TextView
@@ -24,7 +24,8 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:text="저장" />
+            android:text="저장"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <ScrollView
@@ -39,14 +40,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/sv_profile_modify"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_centerHorizontal="true"
-                    app:placeholderImage="@drawable/appicon"/>
+                    app:placeholderImage="@drawable/appicon" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -78,7 +80,8 @@
 
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/FragProfileTitleText"
+                    android:layout_marginTop="20dp"
                     android:text="추가정보 입력(선택사항)" />
 
                 <TextView

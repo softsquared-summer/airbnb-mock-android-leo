@@ -14,13 +14,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
-public class CustomPageAdapter extends PagerAdapter {
+public class HouseViewPageAdatper extends PagerAdapter {
 
     Context context;
     String urls[];
     LayoutInflater layoutInflater;
 
-    public CustomPageAdapter(Context context, String[] urls) {
+    public HouseViewPageAdatper(Context context, String[] urls) {
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -28,7 +28,7 @@ public class CustomPageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return urls.length;
+        return urls.length ;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CustomPageAdapter extends PagerAdapter {
         simpleDraweeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "숙소 이름을 클릭해주세요\n(이거 기능구현 대체 방법 생각중)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "아래의 숙소 이름을 클릭해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
 
