@@ -24,11 +24,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     //뷰페이져 테스트
     ViewPager mViewPager;
-    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
+
     CustomPageAdapter customPageAdapter;
 
     //집데이터 배열

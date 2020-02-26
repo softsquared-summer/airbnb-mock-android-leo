@@ -70,13 +70,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
 
         SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
         //여기서 주소 받아와서 이미지 바꿔줌
-//        String[] urls = house.getHouseImages().split(",");
-        String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-                "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
-
+        String[] url = house.getHouseImages().split(",");
         CustomPageAdapter customPageAdapter = new CustomPageAdapter(context, url);
         holder.mVpHousePhotos.setAdapter(customPageAdapter);
         holder.mVpHousePhotos.setId(position + 1);
