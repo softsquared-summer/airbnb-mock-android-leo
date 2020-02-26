@@ -74,10 +74,15 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
         //여기서 주소 받아와서 이미지 바꿔줌
         String[] url = house.getHouseImages().split(",");
-        CustomPageAdapter customPageAdapter = new CustomPageAdapter(context, url);
+        for(int i = 0 ; i < url.length; i++){
+
+            Log.d("testest", url[i]);
+        }
+
+        HouseViewPageAdatper houseViewPageAdatper = new HouseViewPageAdatper(context, url);
 
         //뷰페이져 어댑터와 indicator 할당
-        holder.mVpHousePhotos.setAdapter(customPageAdapter);
+        holder.mVpHousePhotos.setAdapter(houseViewPageAdatper);
         holder.mWormDotsIndicator.setViewPager(holder.mVpHousePhotos);
         holder.mVpHousePhotos.setId(position + 1);
 

@@ -23,7 +23,7 @@ import com.shinplest.airbnbclone.src.general.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
-import com.shinplest.airbnbclone.src.search.CustomPageAdapter;
+import com.shinplest.airbnbclone.src.search.HouseViewPageAdatper;
 import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
@@ -45,7 +45,7 @@ public class SearchFragment extends BaseFragment {
             "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
             "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
             "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
-    CustomPageAdapter customPageAdapter;
+    HouseViewPageAdatper houseViewPageAdatper;
 
     private FirebaseAuth mAuth;
 
@@ -80,8 +80,8 @@ public class SearchFragment extends BaseFragment {
 
         //뷰페이지 테스트
         viewPager = view.findViewById(R.id.vpg_test);
-        customPageAdapter = new CustomPageAdapter(getContext(), url);
-        viewPager.setAdapter(customPageAdapter);
+        houseViewPageAdatper = new HouseViewPageAdatper(getContext(), url);
+        viewPager.setAdapter(houseViewPageAdatper);
 
         mAuth = FirebaseAuth.getInstance();
         mTvLookAround = view.findViewById(R.id.tv_frag_search_look_around);

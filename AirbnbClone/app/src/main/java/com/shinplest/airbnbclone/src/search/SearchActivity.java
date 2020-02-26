@@ -25,7 +25,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     //뷰페이져 테스트
     ViewPager mViewPager;
 
-    CustomPageAdapter customPageAdapter;
+    HouseViewPageAdatper houseViewPageAdatper;
 
     //집데이터 배열
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;

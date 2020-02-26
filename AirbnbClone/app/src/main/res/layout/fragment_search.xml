@@ -149,7 +149,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_frag_search_experience"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         style="@style/FragSearchBasicText"

@@ -175,7 +175,7 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nsv_search"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
                 <LinearLayout

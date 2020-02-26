@@ -14,21 +14,23 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
-public class CustomPageAdapter extends PagerAdapter {
+public class HouseViewPageAdatper extends PagerAdapter {
 
     Context context;
     String urls[];
     LayoutInflater layoutInflater;
 
-    public CustomPageAdapter(Context context, String[] urls) {
+    public HouseViewPageAdatper(Context context, String[] urls) {
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+
+    //마지막 아이템이 흰화면으로 나와서 해결하기 위해서 -1 해줌
     @Override
     public int getCount() {
-        return urls.length;
+        return urls.length - 1;
     }
 
     @Override
