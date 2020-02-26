@@ -26,11 +26,9 @@ public class HouseViewPageAdatper extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
-    //마지막 아이템이 흰화면으로 나와서 해결하기 위해서 -1 해줌
     @Override
     public int getCount() {
-        return urls.length - 1;
+        return urls.length ;
     }
 
     @Override
