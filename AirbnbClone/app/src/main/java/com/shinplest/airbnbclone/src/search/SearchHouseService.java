@@ -21,11 +21,11 @@ public class SearchHouseService {
         this.mSearchActivityView = searchActivityView;
     }
 
-    void getSimpleHouseInfo(){
+    void getSimpleHouseInfo(String searchWord){
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("search", "서울");
+        params.put("search", searchWord);
         params.put("guest", "0");
         params.put("houseType", "");
         params.put("bed", "0");

@@ -5,8 +5,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,12 +42,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private SearchLocationListAdaper mSearchLocationListAdaper;
 
     private Button testButton;
-    private LinearLayout mLlSearchTopContainer;
+    private LinearLayout mLlSearchTopContainer, mLlSearchBar;
     private ConstraintLayout mClSearchHouseContainer;
-    private TextView mTvCancel;
+    private TextView mTvCancel, mTvSearchLocation;
     private RecyclerView mRvHouses;
     private EditText mEtSearchLocation;
     private ListView mLvSearchLocation;
+    private ImageView mIvEraseInput;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,14 +58,28 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
         //생성해주고 할당만 함
         mLocationList = new ArrayList<String>();
-        mLocationList.add("학교");
-        mLocationList.add("학교");
-        mLocationList.add("학교");
-        mLocationList.add("학교");
-        mLocationList.add("학교");
+/*        mLocationList.add("괌");
+        mLocationList.add("파리");
+        mLocationList.add("서울");*/
+
 
         mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
         mLvSearchLocation.setAdapter(mSearchLocationListAdaper);
+        //아이템이 클릭됐을때 그 워드로 검색요청을 보내준다.
+        mLvSearchLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                hideKeyboard();
+                TextView textView = view.findViewById(R.id.tv_search_list_location);
+                String searchWord = textView.getText().toString();
+                showCustomToast(searchWord);
+                //하우스 데이터 가져옴
+                tryGetSimpleHouseInfo(searchWord);
+                mLlSearchTopContainer.setVisibility(View.GONE);
+                mClSearchHouseContainer.setVisibility(View.VISIBLE);
+                mTvSearchLocation.setText(searchWord + " 숙소");
+            }
+        });
 
         //검색리스너가 검색을 할때마다 리스트 가져온다.
         mEtSearchLocation.addTextChangedListener(new TextWatcher() {
@@ -77,18 +94,12 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
 
             //텍스트가 변할때 마다 검색리스트를 불러옴
-            //바뀌면 기존 배열 비우고, 새로운 배열 저장하고 어댑터에 알려준다.
             @Override
             public void afterTextChanged(Editable s) {
-                String text = mEtSearchLocation.getText().toString();
-                String text2 = s.toString();
-                tryGetExistLocation(text);
+                String searchWord = s.toString();
+                tryGetExistLocation(searchWord);
             }
         });
-
-
-        //하우스 데이터 가져옴
-        tryGetSimpleHouseInfo();
 
         //검색 취소 해주는 부분
         mTvCancel.setOnClickListener(new View.OnClickListener() {
@@ -98,12 +109,19 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
-        //검색화면 교체해주는 부분
-        testButton.setOnClickListener(new View.OnClickListener() {
+        //상단 검색바 누를시 다시 검색으로 바꿔줌
+        mLlSearchBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mLlSearchTopContainer.setVisibility(View.GONE);
-                mClSearchHouseContainer.setVisibility(View.VISIBLE);
+                mLlSearchTopContainer.setVisibility(View.VISIBLE);
+                mClSearchHouseContainer.setVisibility(View.GONE);
+            }
+        });
+
+        mIvEraseInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEtSearchLocation.setText("");
             }
         });
 
@@ -118,11 +136,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     private void getUiSource() {
         mTvCancel = findViewById(R.id.tv_search_cancel);
+        mTvSearchLocation = findViewById(R.id.tv_search_house_location);
         mLlSearchTopContainer = findViewById(R.id.ll_search_top_container);
         mClSearchHouseContainer = findViewById(R.id.cl_search_house_container);
-        testButton = findViewById(R.id.search_button_test);
         mEtSearchLocation = findViewById(R.id.et_search_location);
         mLvSearchLocation = findViewById(R.id.lv_search_location_list);
+        mLlSearchBar = findViewById(R.id.ll_search_search_bar);
+        mIvEraseInput = findViewById(R.id.iv_search_erase_input);
     }
 
     private void makeHouseRecyclerView() {
@@ -133,10 +153,10 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses.setAdapter(new HousesAdapter(this, mHouseDataList));
     }
 
-    private void tryGetSimpleHouseInfo() {
+    private void tryGetSimpleHouseInfo(String searchWord) {
         final SearchHouseService searchHouseService = new SearchHouseService(this);
         showProgressDialog();
-        searchHouseService.getSimpleHouseInfo();
+        searchHouseService.getSimpleHouseInfo(searchWord);
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
 
     }

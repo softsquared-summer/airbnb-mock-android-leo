@@ -45,6 +45,7 @@
                     android:textSize="15sp" />
 
                 <ImageView
+                    android:id="@+id/iv_search_erase_input"
                     android:layout_width="0dp"
                     android:layout_height="15dp"
                     android:layout_gravity="center"
@@ -87,11 +88,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/search_button_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="searchtest" />
     </LinearLayout>
 
 
@@ -132,6 +128,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/ll_search_search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -154,6 +151,7 @@
                     android:src="@drawable/search_frag_shearch" />
 
                 <TextView
+                    android:id="@+id/tv_search_house_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
