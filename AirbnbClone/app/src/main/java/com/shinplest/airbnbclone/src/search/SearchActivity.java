@@ -24,11 +24,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     //뷰페이져 테스트
     ViewPager mViewPager;
-    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
+
     CustomPageAdapter customPageAdapter;
 
     //집데이터 배열
@@ -46,11 +42,12 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        getUiSource();
 
         //하우스 데이터 가져옴
         tryGetSimpleHouseInfo();
 
-        mTvCancel = findViewById(R.id.tv_search_cancel);
+        //검색 취소 해주는 부분
         mTvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,11 +55,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
-
         //검색화면 교체해주는 부분
-        mLlSearchTopContainer = findViewById(R.id.ll_search_top_container);
-        mClSearchHouseContainer = findViewById(R.id.cl_search_house_container);
-        testButton = findViewById(R.id.search_button_test);
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +64,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
+    }
+
+    private void getUiSource(){
+        mTvCancel = findViewById(R.id.tv_search_cancel);
+        mLlSearchTopContainer = findViewById(R.id.ll_search_top_container);
+        mClSearchHouseContainer = findViewById(R.id.cl_search_house_container);
+        testButton = findViewById(R.id.search_button_test);
     }
 
     private void makeHouseRecyclerView() {

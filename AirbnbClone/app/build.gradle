@@ -47,4 +47,5 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:2.1.0'
     implementation 'com.github.yongbeam:AirCalendar:1.2.1'
     implementation 'com.github.takusemba:multisnaprecyclerview:2.0.2'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 }
