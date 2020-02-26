@@ -22,6 +22,8 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
+import com.shinplest.airbnbclone.src.main.fragment_search.interfaces.SearchFragmentView;
+import com.shinplest.airbnbclone.src.main.fragment_search.models.SimpleExprerienceResponse;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
 import com.shinplest.airbnbclone.src.search.HouseViewPageAdatper;
 import com.shinplest.airbnbclone.src.search.SearchActivity;
@@ -36,7 +38,7 @@ import static android.app.Activity.RESULT_OK;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.LOGIN_INFO;
 
-public class SearchFragment extends BaseFragment {
+public class SearchFragment extends BaseFragment implements SearchFragmentView {
 
     //뷰페이져 테스트
     ViewPager viewPager;
@@ -152,7 +154,7 @@ public class SearchFragment extends BaseFragment {
         mRvExperience.setHasFixedSize(true);
         mRvExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-
+        tryGetSimpleExperiencInfo();
 
 
         return view;
@@ -177,4 +179,21 @@ public class SearchFragment extends BaseFragment {
     }
 
 
+    void tryGetSimpleExperiencInfo(){
+        final SearchFragmentService searchFragmentService = new SearchFragmentService(this);
+        showProgressDialog();
+        searchFragmentService.getSimplerExperienceInfo();
+    }
+
+
+    @Override
+    public void searchHouseSuccess(SimpleExprerienceResponse simpleExprerienceResponse) {
+        hideProgressDialog();
+        showCustomToastFrag("성공");
+    }
+
+    @Override
+    public void searchHouseFailure(String message) {
+
+    }
 }
