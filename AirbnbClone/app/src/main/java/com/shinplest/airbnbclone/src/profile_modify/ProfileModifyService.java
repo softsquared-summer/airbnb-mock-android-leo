@@ -1,5 +1,7 @@
 package com.shinplest.airbnbclone.src.profile_modify;
 
+import android.util.Log;
+
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.profile_modify.interfaces.ProfileModifyActivityView;
 import com.shinplest.airbnbclone.src.profile_modify.interfaces.ProfileMotifyRetrofitInterface;
@@ -9,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.getRetrofit;
 
 public class ProfileModifyService {
@@ -21,11 +24,12 @@ public class ProfileModifyService {
     void putModifiedProfile(RequestModifyProfile requestModifyProfile) {
         ProfileMotifyRetrofitInterface profileMotifyRetrofitInterface = getRetrofit().create(ProfileMotifyRetrofitInterface.class);
 
-        Call<DefaultResponse> call = profileMotifyRetrofitInterface.putModifyProfile(requestModifyProfile);
+        Call<DefaultResponse> call = profileMotifyRetrofitInterface.putModifyProfile(USER_NO, requestModifyProfile);
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
+                Log.d("puttest", call.request().url().toString());
                 mProfileModifyActivityView.validateProfileModifySuccess(defaultResponse.getMessage(), defaultResponse.getCode());
             }
 

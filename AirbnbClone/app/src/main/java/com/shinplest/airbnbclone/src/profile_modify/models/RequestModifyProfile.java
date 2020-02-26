@@ -5,12 +5,21 @@ import com.google.gson.annotations.SerializedName;
 public class RequestModifyProfile {
     @SerializedName("image")
     private String image;
+
     @SerializedName("info")
     private String info;
+
     @SerializedName("location")
     private String location;
+
     @SerializedName("school")
     private String school;
+
+    @SerializedName("job")
+    private String job;
+
+    @SerializedName("language")
+    private String language;
 
     public void setImage(String image) {
         this.image = image;
@@ -36,10 +45,6 @@ public class RequestModifyProfile {
         this.language = language;
     }
 
-    @SerializedName("job")
-    private String job;
-    @SerializedName("language")
-    private String language;
 
     public String getImage() {
         return image;

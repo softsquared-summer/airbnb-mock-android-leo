@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
@@ -28,6 +29,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_profile_modify);
         getUiSource();
         //프로필액티비티로부터 프로필 인텐트 받음
@@ -58,7 +60,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
         mSvProfileImage.setImageURI(Uri.parse(mProfile.getProfileImgUrl()));
         mEtTitle.setText(mProfile.getMyinfo());
         mEtLocation.setText(mProfile.getLocation());
-        mEtLocation.setText(mProfile.getSchool());
+        mEtSchool.setText(mProfile.getSchool());
         mEtJob.setText(mProfile.getJob());
         mEtLanguage.setText(mProfile.getLanguage());
     }
@@ -82,7 +84,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
 
     private void setRequest() {
         //샘플이미지
-        requestModifyProfile.setImage("https://homepages.cae.wisc.edu/~ece533/images/airplane.png");
+        requestModifyProfile.setImage("https://cdn.pixabay.com/photo/2020/01/13/19/27/victor-emmanuel-ii-monument-4763299_960_720.jpg");
         requestModifyProfile.setInfo(mEtTitle.getText().toString());
         requestModifyProfile.setLocation(mEtLocation.getText().toString());
         requestModifyProfile.setSchool(mEtSchool.getText().toString());

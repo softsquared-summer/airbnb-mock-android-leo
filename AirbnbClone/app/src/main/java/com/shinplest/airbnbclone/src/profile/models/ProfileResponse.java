@@ -19,6 +19,10 @@ public class ProfileResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
+    public Result getResult() {
+        return result;
+    }
+
     public int getCode() {
         return code;
     }
@@ -27,9 +31,6 @@ public class ProfileResponse {
         return message;
     }
 
-    public Result getResult() {
-        return result;
-    }
 
     public boolean isSuccess() {
         return isSuccess;

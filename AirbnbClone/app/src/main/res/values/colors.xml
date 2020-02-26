@@ -13,6 +13,7 @@
     <color name="secondText">#484848</color>
     <color name="placeholdText">#767676</color>
     <color name="buttonText">#ffffff</color>
+    <color name="clickableText">#008488</color>
 
     <!-- split line color-->
     <color name="splitColor">#ebebeb</color>
