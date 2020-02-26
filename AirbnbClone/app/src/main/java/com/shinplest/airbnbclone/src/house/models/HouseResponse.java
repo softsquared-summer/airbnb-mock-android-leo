@@ -40,6 +40,20 @@ public class HouseResponse {
         @SerializedName("info")
         private Info info;
 
+        @SerializedName("facility")
+        private ArrayList<Facility> facilities;
+
+        @SerializedName("location")
+        private Location location;
+
+        public ArrayList<Facility> getFacilities() {
+            return facilities;
+        }
+
+        public Location getLocation() {
+            return location;
+        }
+
         public ArrayList<Image> getImages() {
             return images;
         }
@@ -68,6 +82,9 @@ public class HouseResponse {
         @SerializedName("houseTitle")
         private String houseTitle;
 
+        @SerializedName("hostImage")
+        private String hostImage;
+
         @SerializedName("houseLocation")
         private String houseLocation;
 
@@ -94,6 +111,10 @@ public class HouseResponse {
 
         @SerializedName("checkOut")
         private String checkOut;
+
+        public String getHostImage() {
+            return hostImage;
+        }
 
         public String getHouseTitle() {
             return houseTitle;
@@ -135,8 +156,43 @@ public class HouseResponse {
             return checkOut;
         }
     }
+
+    public class Facility{
+        @SerializedName("facilitisename")
+        private String facilitisename;
+
+        @SerializedName("facilitiseinfo")
+        private String facilitiseinfo;
+
+        public String getFacilitisename() {
+            return facilitisename;
+        }
+
+        public String getFacilitiseinfo() {
+            return facilitiseinfo;
+        }
+    }
+
+    public class Location{
+        @SerializedName("location")
+        private String location;
+
+        @SerializedName("longitude")
+        private Float longitude;
+
+        @SerializedName("latitude")
+        private Float latitude;
+
+        public String getLocation() {
+            return location;
+        }
+
+        public Float getLongitude() {
+            return longitude;
+        }
+
+        public Float getLatitude() {
+            return latitude;
+        }
+    }
 }
-//
-//
-//@SerializedName("")
-//private String

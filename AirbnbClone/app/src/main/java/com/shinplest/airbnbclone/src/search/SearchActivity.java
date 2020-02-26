@@ -22,7 +22,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
-import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.ArrayList;
