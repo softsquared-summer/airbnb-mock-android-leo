@@ -42,7 +42,6 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
     }
 
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLlHouseContainer;
 
@@ -83,8 +82,8 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
         holder.mLlHouseContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int houseNo = mHouseDataList.get(position).getHouseNo();
-                int isSave = mHouseDataList.get(position).getIsSave();
+                int houseNo = house.getHouseNo();
+                int isSave = house.getIsSave();
                 Log.d("OnclickTest", "onClick: " + houseNo);
                 //여기서 하우스 넘버로 새로운 액티비티로 넘어가줘야함
                 Intent intent = new Intent(v.getContext(), HouseActivity.class);
@@ -97,24 +96,22 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
         });
 
         //저장 결과에 따라서 이미지 바꿔줌
-        if (house.getIsSave() == 0){
+        if (house.getIsSave() == 0) {
             holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
-        }
-        else
+        } else
             holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
 
         holder.mIvSaveHouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //저장안되어있으면
-                if (house.getIsSave() == 0){
+                if (house.getIsSave() == 0) {
                     //저장하고
                     mSearchActivityView.tryPostSaveHouse(USER_NO, house.getHouseNo());
                     holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
                     //저장됨으로 바꿔줌 클라도
                     house.setIsSave(1);
-                }
-                else{
+                } else {
                     mSearchActivityView.tryDeleteSavedHouse(USER_NO, house.getHouseNo());
                     holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
                     //저정안됨으로바꿔줌 클라도
@@ -125,10 +122,9 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
         });
 
 
-
         //여기서 주소 받아와서 이미지 바꿔줌
         String[] url = house.getHouseImages().split(",");
-        for(int i = 0 ; i < url.length; i++){
+        for (int i = 0; i < url.length; i++) {
 
             Log.d("testest", url[i]);
         }
@@ -146,7 +142,7 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
 
         holder.mTvHouseInfo.setText(house.getHouseInfo());
         holder.mTvStarAvg.setText(house.getStarAvg());
-        holder.mTvReviewCnt.setText("("+house.getReviewCnt()+")");
+        holder.mTvReviewCnt.setText("(" + house.getReviewCnt() + ")");
         holder.mTvHouseName.setText(house.getHouseName());
     }
 
@@ -154,7 +150,6 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
     public int getItemCount() {
         return mHouseDataList.size();
     }
-
 
 
 }

@@ -1,6 +1,10 @@
 package com.shinplest.airbnbclone.src.main.fragment_search.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
+import com.shinplest.airbnbclone.src.experience.ExperienceActivity;
+import com.shinplest.airbnbclone.src.house.HouseActivity;
 import com.shinplest.airbnbclone.src.main.fragment_search.models.SimpleExprerienceResponse;
 
 import java.util.ArrayList;
 
 public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.MyViewHolder> {
     private ArrayList<SimpleExprerienceResponse.Result> mExperienceList;
+    private Context context;
 
-    public ExperienceAdapter(ArrayList<SimpleExprerienceResponse.Result> experienceList) {
-        this.mExperienceList = experienceList;
+    public ExperienceAdapter(ArrayList<SimpleExprerienceResponse.Result> mExperienceList, Context context) {
+        this.mExperienceList = mExperienceList;
+        this.context = context;
     }
-
 
     // 리사이클러뷰에 들어갈 뷰 홀더, 그리고 그 뷰 홀더에 들어갈 아이템들을 지정
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -53,16 +60,35 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.My
         return myViewHolder;
     }
 
+
+    //클릭했을때 넘겨줌
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        SimpleExprerienceResponse.Result experiencInfo = mExperienceList.get(position);
-        holder.mSvExperiencePhoto.setImageURI(Uri.parse(experiencInfo.getRepImage()));
-        holder.mTvCategory.setText(experiencInfo.getCategoryName());
-        holder.mTvTitle.setText(experiencInfo.getExperienceTitle());
-        holder.mTvPrice.setText(experiencInfo.getExperiencePrice());
-        holder.mTvRate.setText("★"+experiencInfo.getStarAvg());
-        holder.mTvReviewCnt.setText("("+experiencInfo.getReviewcnt()+")");
-        holder.mTvInclude.setText(experiencInfo.getExperienceInfo());
+        final SimpleExprerienceResponse.Result experience = mExperienceList.get(position);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int experienceNo = experience.getExperienceNo();
+                int isSave = experience.getIsSave();
+                Log.d("OnclickTest", "onClick: " + experienceNo);
+                //여기서 experience 넘버로 새로운 액티비티로 넘어가줘야함
+                Intent intent = new Intent(v.getContext(), ExperienceActivity.class);
+                Bundle extras = new Bundle();
+                extras.putInt("experienceNo", experienceNo);
+                extras.putInt("isSave", isSave);
+                intent.putExtras(extras);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.mSvExperiencePhoto.setImageURI(Uri.parse(experience.getRepImage()));
+        holder.mTvCategory.setText(experience.getCategoryName());
+        holder.mTvTitle.setText(experience.getExperienceTitle());
+        holder.mTvPrice.setText(experience.getExperiencePrice());
+        holder.mTvRate.setText("★"+experience.getStarAvg());
+        holder.mTvReviewCnt.setText("("+experience.getReviewcnt()+")");
+        holder.mTvInclude.setText(experience.getExperienceInfo());
     }
 
     @Override

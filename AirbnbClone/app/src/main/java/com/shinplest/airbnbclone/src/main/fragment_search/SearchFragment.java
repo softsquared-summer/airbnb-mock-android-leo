@@ -137,7 +137,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mRvExperience.setHasFixedSize(true);
         mRvExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mExperienceList = new ArrayList<SimpleExprerienceResponse.Result>();
-        mExperienceAdapter = new ExperienceAdapter(mExperienceList);
+        mExperienceAdapter = new ExperienceAdapter(mExperienceList, getContext());
         mRvExperience.setAdapter(mExperienceAdapter);
         mRvExperience.addItemDecoration(new GridItemDecoration(10));
 

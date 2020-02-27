@@ -35,6 +35,9 @@ public class SimpleExprerienceResponse {
     }
 
     public class Result {
+        @SerializedName("experienceNo")
+        private int experienceNo;
+
         @SerializedName("repImage")
         private String repImage;
 
@@ -55,6 +58,9 @@ public class SimpleExprerienceResponse {
 
         @SerializedName("experienceInfo")
         private String experienceInfo;
+
+        @SerializedName("isSave")
+        private int isSave;
 
         public String getRepImage() {
             return repImage;
@@ -82,6 +88,14 @@ public class SimpleExprerienceResponse {
 
         public String getExperienceInfo() {
             return experienceInfo;
+        }
+
+        public int getExperienceNo() {
+            return experienceNo;
+        }
+
+        public int getIsSave() {
+            return isSave;
         }
     }
 
