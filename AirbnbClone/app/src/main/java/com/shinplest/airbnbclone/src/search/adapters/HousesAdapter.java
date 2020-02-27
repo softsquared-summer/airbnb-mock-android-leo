@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         private WormDotsIndicator mWormDotsIndicator;
         private ViewPager mVpHousePhotos;
         private TextView mTvHouseInfo, mTvStarAvg, mTvHouseName, mTvReviewCnt;
+        private ImageView mIvSaveHouse;
 
 
         public MyViewHolder(@NonNull View view) {
@@ -50,6 +52,7 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
             this.mTvStarAvg = view.findViewById(R.id.tv_house_holder_star_avg);
             this.mTvHouseName = view.findViewById(R.id.tv_house_holder_house_name);
             this.mTvReviewCnt = view.findViewById(R.id.tv_house_holder_review_count);
+            this.mIvSaveHouse = view.findViewById(R.id.iv_house_holder_house_save);
         }
     }
 
@@ -61,11 +64,25 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
         View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_house, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
 
+
+//        //하우스에 따라서 이미지 바꿔줌
+//        myViewHolder.mIvSaveHouse.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (house.getIsSave() == 0){
+//                    holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
+//                }
+//                else
+//                    holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
+//            }
+//        });
+
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+        final SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
         //하우스 넘버 받아오는 부분
         holder.mLlHouseContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +96,15 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
             }
         });
 
-        SimpleHouseInfoResponse.Result house = mHouseDataList.get(position);
+        //저장 결과에 따라서 이미지 바꿔줌
+        if (house.getIsSave() == 0){
+            holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
+        }
+        else
+            holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
+
+
+
         //여기서 주소 받아와서 이미지 바꿔줌
         String[] url = house.getHouseImages().split(",");
         for(int i = 0 ; i < url.length; i++){
