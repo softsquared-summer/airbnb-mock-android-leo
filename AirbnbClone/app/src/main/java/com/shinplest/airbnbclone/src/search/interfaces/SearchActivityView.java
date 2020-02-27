@@ -12,4 +12,8 @@ public interface SearchActivityView {
     void searchHouseSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse);
 
     void searchHouseFailure(String message);
+
+    void saveHouseSuccess(int code, String message);
+
+    void saveHouseFailure();
 }

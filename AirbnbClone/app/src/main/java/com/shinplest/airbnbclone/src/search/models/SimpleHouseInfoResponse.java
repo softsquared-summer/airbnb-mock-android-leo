@@ -52,6 +52,13 @@ public class SimpleHouseInfoResponse {
         @SerializedName("houseImages")
         private String houseImages;
 
+        @SerializedName("isSave")
+        private int isSave;
+
+        public int getIsSave() {
+            return isSave;
+        }
+
         public int getHouseNo() {
             return houseNo;
         }

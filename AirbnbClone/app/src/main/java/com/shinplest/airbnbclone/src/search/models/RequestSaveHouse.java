@@ -2,7 +2,7 @@ package com.shinplest.airbnbclone.src.search.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SaveHouseRequest {
+public class RequestSaveHouse {
     @SerializedName("houseNo")
     private int houseNo;
 

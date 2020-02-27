@@ -202,4 +202,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         hideProgressDialog();
     }
 
+    @Override
+    public void saveHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if(code == 100){
+
+        }
+        showCustomToast(message);
+    }
+
+    @Override
+    public void saveHouseFailure() {
+
+    }
+
 }

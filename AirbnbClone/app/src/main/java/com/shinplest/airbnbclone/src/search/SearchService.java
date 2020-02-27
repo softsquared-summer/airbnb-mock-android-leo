@@ -2,9 +2,11 @@ package com.shinplest.airbnbclone.src.search;
 
 import android.util.Log;
 
+import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchRetrofitInterface;
 import com.shinplest.airbnbclone.src.search.models.ExistLocationResponse;
+import com.shinplest.airbnbclone.src.search.models.RequestSaveHouse;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.getRetrofit;
 
 public class SearchService {
@@ -42,6 +45,8 @@ public class SearchService {
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
 
         HashMap<String, String> params = new HashMap<>();
+        Integer userNo = USER_NO;
+        params.put("userNo", userNo.toString());
         params.put("search", searchWord);
         params.put("guest", "0");
         params.put("houseType", "");
@@ -69,5 +74,25 @@ public class SearchService {
                 Log.d("network", call.request().url().toString());
             }
         });
+    }
+
+    void postSaveHouse(int userNo, int houseNo){
+        final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
+        RequestSaveHouse requestSaveHouse = new RequestSaveHouse();
+        requestSaveHouse.setHouseNo(houseNo);
+        Call<DefaultResponse> call = searchRetrofitInterface.postHouseSave(userNo, requestSaveHouse);
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse =response.body();
+                mSearchActivityView.saveHouseSuccess(defaultResponse.getCode(), defaultResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+
+            }
+        });
+
     }
 }
