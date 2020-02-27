@@ -32,7 +32,8 @@ public class ExperienceService {
 
             @Override
             public void onFailure(Call<ExperienceResponse> call, Throwable t) {
-
+                Log.d("testtesttest", call.request().url().toString());
+                mExperienceActivityView.getExperienceFailure(null);
             }
         });
     }
