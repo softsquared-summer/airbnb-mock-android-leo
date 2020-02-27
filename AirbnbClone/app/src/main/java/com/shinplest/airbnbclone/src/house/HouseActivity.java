@@ -12,10 +12,9 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
-import com.shinplest.airbnbclone.src.search.HouseViewPageAdatper;
+import com.shinplest.airbnbclone.src.search.adapters.HouseViewPageAdatper;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class HouseActivity extends BaseActivity implements HouseActivityView {
 

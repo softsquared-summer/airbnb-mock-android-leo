@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.search;
+package com.shinplest.airbnbclone.src.search.adapters;
 
 import android.content.Context;
 import android.content.Intent;

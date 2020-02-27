@@ -21,6 +21,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
+import com.shinplest.airbnbclone.src.search.adapters.HouseViewPageAdatper;
+import com.shinplest.airbnbclone.src.search.adapters.HousesAdapter;
+import com.shinplest.airbnbclone.src.search.adapters.SearchLocationListAdaper;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
@@ -153,9 +156,9 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     }
 
     private void tryGetSimpleHouseInfo(String searchWord) {
-        final SearchHouseService searchHouseService = new SearchHouseService(this);
+        final SearchService searchService = new SearchService(this);
         showProgressDialog();
-        searchHouseService.getSimpleHouseInfo(searchWord);
+        searchService.getSimpleHouseInfo(searchWord);
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
 
     }
