@@ -55,6 +55,10 @@ public class SimpleHouseInfoResponse {
         @SerializedName("isSave")
         private int isSave;
 
+        public void setIsSave(int isSave) {
+            this.isSave = isSave;
+        }
+
         public int getIsSave() {
             return isSave;
         }
