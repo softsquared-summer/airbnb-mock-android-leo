@@ -30,10 +30,13 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
         if (code == 100) {
             showCustomToast("경험 데이터 가져오기 성공");
         }
+        else
+            showCustomToast("실패");
     }
 
     @Override
     public void getExperienceFailure(String message) {
         hideProgressDialog();
+        showCustomToast("실패");
     }
 }

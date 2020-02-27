@@ -2,6 +2,8 @@ package com.shinplest.airbnbclone.src.experience.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class ExperienceResponse {
 
     @SerializedName("result")
@@ -34,18 +36,18 @@ public class ExperienceResponse {
 
     public class Result {
         @SerializedName("image")
-        private Info image;
+        private ArrayList<Image> image;
 
         @SerializedName("info")
         private Info info;
 
         @SerializedName("item")
-        private Item item;
+        private ArrayList<Item> item;
 
         @SerializedName("location")
         private Location location;
 
-        public Info getImage() {
+        public ArrayList<Image> getImage() {
             return image;
         }
 
@@ -53,7 +55,7 @@ public class ExperienceResponse {
             return info;
         }
 
-        public Item getItem() {
+        public ArrayList<Item> getItem() {
             return item;
         }
 
@@ -89,6 +91,9 @@ public class ExperienceResponse {
 
         @SerializedName("playtime")
         private String playtime;
+
+        @SerializedName("personnel")
+        private String personnel;
 
         @SerializedName("inclusion")
         private String inclusion;
