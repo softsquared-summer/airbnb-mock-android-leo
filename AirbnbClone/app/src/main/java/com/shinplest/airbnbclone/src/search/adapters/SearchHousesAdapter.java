@@ -110,11 +110,10 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
                 if (house.getIsSave() == 0){
                     //저장하고
                     mSearchActivityView.tryPostSaveHouse(USER_NO, house.getHouseNo());
-                    notifyDataSetChanged();
-                    Log.d("test", "onClick: ");
+                    holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
                 }
                 else{
-                    //삭제한다
+                    holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
                 }
 
             }

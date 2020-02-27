@@ -162,6 +162,14 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
+    //search activity에서 저장해주는 함수
+
+    @Override
+    public void tryPostSaveHouse(int userNo, int houseNo) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.postSaveHouse(userNo, houseNo);
+    }
 
 
 
@@ -191,6 +199,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     public void searchHouseSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
         //데이터 가져옴
+        mHouseDataList.clear();
         mHouseDataList.addAll(simpleHouseInfoResponse.getResult());
         mSearchHouseAdapter.notifyDataSetChanged();
     }
@@ -204,9 +213,9 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     public void saveHouseSuccess(int code, String message) {
         hideProgressDialog();
         if (code == 100) {
-
+            showCustomToast("저장목록에 저장되었습니다");
         }
-        showCustomToast(message);
+        //showCustomToast(message);
     }
 
     @Override
@@ -214,10 +223,4 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
-    @Override
-    public void tryPostSaveHouse(int userNo, int houseNo) {
-        final SearchService searchService = new SearchService(this);
-        showProgressDialog();
-        searchService.postSaveHouse(userNo, houseNo);
-    }
 }
