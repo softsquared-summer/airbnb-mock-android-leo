@@ -14,13 +14,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
-public class HouseViewPageAdatper extends PagerAdapter {
+public class SearchHouseViewPageAdatper extends PagerAdapter {
 
     Context context;
     String urls[];
     LayoutInflater layoutInflater;
 
-    public HouseViewPageAdatper(Context context, String[] urls) {
+    public SearchHouseViewPageAdatper(Context context, String[] urls) {
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

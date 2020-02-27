@@ -21,8 +21,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
-import com.shinplest.airbnbclone.src.search.adapters.HouseViewPageAdatper;
-import com.shinplest.airbnbclone.src.search.adapters.HousesAdapter;
+import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.shinplest.airbnbclone.src.search.adapters.SearchHousesAdapter;
 import com.shinplest.airbnbclone.src.search.adapters.SearchLocationListAdaper;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
@@ -34,7 +34,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     //뷰페이져 테스트
     ViewPager mViewPager;
 
-    HouseViewPageAdatper houseViewPageAdatper;
+    SearchHouseViewPageAdatper searchHouseViewPageAdatper;
 
     //집데이터 배열
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
@@ -48,6 +48,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ConstraintLayout mClSearchHouseContainer;
     private TextView mTvCancel, mTvSearchLocation;
     private RecyclerView mRvHouses;
+    private SearchHousesAdapter mSearchHouseAdapter;
     private EditText mEtSearchLocation;
     private ListView mLvSearchLocation;
     private ImageView mIvEraseInput;
@@ -60,9 +61,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
         //생성해주고 할당만 함
         mLocationList = new ArrayList<String>();
-/*        mLocationList.add("괌");
-        mLocationList.add("파리");
-        mLocationList.add("서울");*/
 
 
         mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
@@ -127,6 +125,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
+
+        //숙소 리스트뷰
+        mHouseDataList = new ArrayList<>();
+        mRvHouses.setHasFixedSize(true);
+        mRvHouses.setLayoutManager(new LinearLayoutManager(this));
+        mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList);
+        mRvHouses.setAdapter(mSearchHouseAdapter);
     }
 
 
@@ -145,15 +150,9 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mLvSearchLocation = findViewById(R.id.lv_search_location_list);
         mLlSearchBar = findViewById(R.id.ll_search_search_bar);
         mIvEraseInput = findViewById(R.id.iv_search_erase_input);
+        mRvHouses = findViewById(R.id.rv_search_houses);
     }
 
-    private void makeHouseRecyclerView() {
-        //하우스 리사이클러
-        mRvHouses = findViewById(R.id.rv_search_houses);
-        mRvHouses.setHasFixedSize(true);
-        mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        mRvHouses.setAdapter(new HousesAdapter(this, mHouseDataList));
-    }
 
     private void tryGetSimpleHouseInfo(String searchWord) {
         final SearchService searchService = new SearchService(this);
@@ -173,7 +172,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         if (existLocationList.size() != 0) {
             mLocationList.clear();
             //아무것도없는값 보내줄때 예외처리
-            if (existLocationList.get(0).equals("")){
+            if (existLocationList.get(0).equals("")) {
                 return;
             }
             mLocationList.addAll(existLocationList);
@@ -190,11 +189,8 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     public void searchHouseSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
         //데이터 가져옴
-        mHouseDataList = simpleHouseInfoResponse.getResult();
-        makeHouseRecyclerView();
-        Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(2).getHouseName());
-
-//        mHouseDataList.addAll(mHouseDataList);
+        mHouseDataList.addAll(simpleHouseInfoResponse.getResult());
+        mSearchHouseAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -205,7 +201,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     @Override
     public void saveHouseSuccess(int code, String message) {
         hideProgressDialog();
-        if(code == 100){
+        if (code == 100) {
 
         }
         showCustomToast(message);

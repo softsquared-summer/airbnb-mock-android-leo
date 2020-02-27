@@ -22,14 +22,14 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHolder> {
+public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
     //뷰페이져 상태저장하는 hashMap
     HashMap<Integer, Integer> mViewPagerState = new HashMap<>();
 
-    public HousesAdapter(Context context, ArrayList<SimpleHouseInfoResponse.Result> houseDataList) {
+    public SearchHousesAdapter(Context context, ArrayList<SimpleHouseInfoResponse.Result> houseDataList) {
         this.context = context;
         this.mHouseDataList = houseDataList;
     }
@@ -112,10 +112,10 @@ public class HousesAdapter extends RecyclerView.Adapter<HousesAdapter.MyViewHold
             Log.d("testest", url[i]);
         }
 
-        HouseViewPageAdatper houseViewPageAdatper = new HouseViewPageAdatper(context, url);
+        SearchHouseViewPageAdatper searchHouseViewPageAdatper = new SearchHouseViewPageAdatper(context, url);
 
         //뷰페이져 어댑터와 indicator 할당
-        holder.mVpHousePhotos.setAdapter(houseViewPageAdatper);
+        holder.mVpHousePhotos.setAdapter(searchHouseViewPageAdatper);
         holder.mWormDotsIndicator.setViewPager(holder.mVpHousePhotos);
         holder.mVpHousePhotos.setId(position + 1);
 

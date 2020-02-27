@@ -12,7 +12,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
-import com.shinplest.airbnbclone.src.search.adapters.HouseViewPageAdatper;
+import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mHouseNo = getIntent().getIntExtra("houseNo", 1);
         tryGetHouseInfo();
 
-        mVpHouseImages.setAdapter(new HouseViewPageAdatper(this, url));
+        mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, url));
 
 
     }
