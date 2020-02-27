@@ -35,7 +35,7 @@ public class HouseResponse {
 
     public class Result{
         @SerializedName("image")
-        private ArrayList<Image> images;
+        private Image image;
 
         @SerializedName("info")
         private Info info;
@@ -54,8 +54,8 @@ public class HouseResponse {
             return location;
         }
 
-        public ArrayList<Image> getImages() {
-            return images;
+        public Image getImage() {
+            return image;
         }
 
         public Info getInfo() {
@@ -64,17 +64,11 @@ public class HouseResponse {
     }
 
     public class Image{
-        @SerializedName("no")
-        private int no;
-        @SerializedName("image")
-        private String imgUrl;
+        @SerializedName("imageUrl")
+        private String imageUrl;
 
-        public int getNo() {
-            return no;
-        }
-
-        public String getImgUrl() {
-            return imgUrl;
+        public String getImageUrl() {
+            return imageUrl;
         }
     }
 

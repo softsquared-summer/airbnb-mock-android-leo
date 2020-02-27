@@ -33,7 +33,7 @@ public class HouseService {
             @Override
             public void onFailure(Call<HouseResponse> call, Throwable t) {
                 Log.d("testtesttest", call.request().url().toString());
-                Log.d("testtesttest","fail");
+                mHouseActivityView.getHouseFailure(null);
             }
         });
 
