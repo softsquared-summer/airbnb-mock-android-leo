@@ -44,8 +44,8 @@ public class SimpleExprerienceResponse {
         @SerializedName("experienceTitle")
         private String experienceTitle;
 
-        @SerializedName("price")
-        private String price;
+        @SerializedName("experiencePrice")
+        private String experiencePrice;
 
         @SerializedName("starAvg")
         private String starAvg;
@@ -53,8 +53,8 @@ public class SimpleExprerienceResponse {
         @SerializedName("reviewcnt")
         private String reviewcnt;
 
-        @SerializedName("info")
-        private String info;
+        @SerializedName("experienceInfo")
+        private String experienceInfo;
 
         public String getRepImage() {
             return repImage;
@@ -68,8 +68,8 @@ public class SimpleExprerienceResponse {
             return experienceTitle;
         }
 
-        public String getPrice() {
-            return price;
+        public String getExperiencePrice() {
+            return experiencePrice;
         }
 
         public String getStarAvg() {
@@ -80,8 +80,8 @@ public class SimpleExprerienceResponse {
             return reviewcnt;
         }
 
-        public String getInfo() {
-            return info;
+        public String getExperienceInfo() {
+            return experienceInfo;
         }
     }
 

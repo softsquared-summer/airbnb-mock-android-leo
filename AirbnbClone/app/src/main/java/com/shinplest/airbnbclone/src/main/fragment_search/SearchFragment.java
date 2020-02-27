@@ -139,6 +139,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mExperienceList = new ArrayList<SimpleExprerienceResponse.Result>();
         mExperienceAdapter = new ExperienceAdapter(mExperienceList);
         mRvExperience.setAdapter(mExperienceAdapter);
+        mRvExperience.addItemDecoration(new GridItemDecoration(10));
 
 
         //체험데이터 가져옴

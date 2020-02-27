@@ -52,9 +52,11 @@
 
         <EditText
             android:id="@+id/et_register_password"
-            style="@style/RegisterEditText" />
+            style="@style/RegisterEditText"
+            android:inputType="textPassword"/>
 
         <Button
+            android:layout_marginBottom="50dp"
             android:id="@+id/btn_register_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
