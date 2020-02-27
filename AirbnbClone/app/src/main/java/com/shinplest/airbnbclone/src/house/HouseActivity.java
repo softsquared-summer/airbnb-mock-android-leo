@@ -54,7 +54,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         } else
             mIvIsSave.setImageResource(R.drawable.house_saved);
         //이미지
-        String[] houseDataImages = mHouseData.getImage().getImageUrl().split(",");
+        houseDataImages = mHouseData.getImage().getImageUrl().split(",");
         mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, houseDataImages));
 
 

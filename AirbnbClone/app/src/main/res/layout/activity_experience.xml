@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content">
 
                 <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp_experience"
                     android:layout_width="match_parent"
                     android:layout_height="400dp" />
 
@@ -110,24 +111,28 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_experience_category"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="식재료 채집"
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/tv_experience_title"
                             style="@style/HouseHeadText"
                             android:text="로마에서 즐기는 송로버섯 체험"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30sp" />
 
                         <TextView
+                            android:id="@+id/tv_experience_evaluation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="식재료 채집"
+                            android:text="5.00 (3)"
                             android:textColor="@color/colorPrimary" />
 
                         <TextView
+                            android:id="@+id/tv_experience_juso"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="로마 이탈리아"
