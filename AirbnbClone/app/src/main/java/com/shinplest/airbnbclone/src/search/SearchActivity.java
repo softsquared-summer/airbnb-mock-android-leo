@@ -134,13 +134,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses.setAdapter(mSearchHouseAdapter);
     }
 
-
-    private void tryGetExistLocation(String searchWord) {
-        final SearchService searchService = new SearchService(this);
-        showProgressDialog();
-        searchService.getExistLocationList(searchWord);
-    }
-
     private void getUiSource() {
         mTvCancel = findViewById(R.id.tv_search_cancel);
         mTvSearchLocation = findViewById(R.id.tv_search_house_location);
@@ -154,12 +147,25 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     }
 
 
+    private void tryGetExistLocation(String searchWord) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.getExistLocationList(searchWord);
+    }
+
+
     private void tryGetSimpleHouseInfo(String searchWord) {
         final SearchService searchService = new SearchService(this);
         showProgressDialog();
         searchService.getSimpleHouseInfo(searchWord);
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
 
+    }
+
+    public void tryPostSaveHouse(){
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+//        searchService.postSaveHouse();
     }
 
 

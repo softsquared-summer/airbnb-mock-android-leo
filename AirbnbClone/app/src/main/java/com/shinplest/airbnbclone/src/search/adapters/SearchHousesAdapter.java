@@ -22,6 +22,7 @@ import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
@@ -64,19 +65,6 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
         View holderView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_house, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holderView);
 
-
-//        //하우스에 따라서 이미지 바꿔줌
-//        myViewHolder.mIvSaveHouse.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (house.getIsSave() == 0){
-//                    holder.mIvSaveHouse.setImageResource(R.drawable.search_save);
-//                }
-//                else
-//                    holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
-//            }
-//        });
-
         return myViewHolder;
     }
 
@@ -102,6 +90,21 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
         }
         else
             holder.mIvSaveHouse.setImageResource(R.drawable.search_saved);
+
+        holder.mIvSaveHouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //저장안되어있으면
+                if (house.getIsSave() == 0){
+                    //저장하고
+//                    tryPostSaveHouse()
+                }
+                else{
+                    //삭제한다
+                }
+
+            }
+        });
 
 
 
