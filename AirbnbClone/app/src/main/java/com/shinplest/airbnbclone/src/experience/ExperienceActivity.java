@@ -50,8 +50,7 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
 
     void updateUi(){
         mExperienceDataImages = mExperienceData.getImage().get(0).getImageUrl().split(",");
-        mVpExperienceImages.setAdapter(new SearchHouseViewPageAdatper(this, mExperienceDataImages));
-
+        mVpExperienceImages.setAdapter(new ExperienceViewPageAdatper(this, mExperienceDataImages));
 
         ExperienceResponse.Info experienceDataInfo = mExperienceData.getInfo();
         mTvCategory.setText(experienceDataInfo.getCategory());
