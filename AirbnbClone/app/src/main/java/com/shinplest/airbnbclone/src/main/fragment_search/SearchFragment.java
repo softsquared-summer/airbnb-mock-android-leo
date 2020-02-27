@@ -2,6 +2,7 @@ package com.shinplest.airbnbclone.src.main.fragment_search;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,23 +16,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseFragment;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ContinueLookAroundAdapter;
+import com.shinplest.airbnbclone.src.main.fragment_search.adapters.ExperienceAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.adapters.LookAroundAdapter;
 import com.shinplest.airbnbclone.src.main.fragment_search.interfaces.SearchFragmentView;
 import com.shinplest.airbnbclone.src.main.fragment_search.models.SimpleExprerienceResponse;
 import com.shinplest.airbnbclone.src.main.models.GoogleUserInfo;
-import com.shinplest.airbnbclone.src.search.HouseViewPageAdatper;
 import com.shinplest.airbnbclone.src.search.SearchActivity;
 import com.takusemba.multisnaprecyclerview.MultiSnapHelper;
 import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
@@ -39,36 +41,19 @@ import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.LOGIN_INFO;
 
 public class SearchFragment extends BaseFragment implements SearchFragmentView {
-
-    //뷰페이져 테스트
-    ViewPager viewPager;
-    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
-    HouseViewPageAdatper houseViewPageAdatper;
-
     private FirebaseAuth mAuth;
 
     //view
     private LinearLayout mLlSearch;
     private Button mBtnDate;
-
     private TextView mTvLookAround;
-
-    //first recycler view
-    private RecyclerView mRvLookAround;
+    private RecyclerView mRvLookAround, mRvContinewLookAround, mRvExperience;
     private RecyclerView.LayoutManager mHorizontalLayoutManagerLookAround;
-
-    //secont recycler view
-    private RecyclerView mRvContinewLookAround;
-    private RecyclerView.Adapter mContinueLookAroundAdapter;
-
-    //third recycler view
-    private RecyclerView mRvExperience;
-
     private SnapHelper snapHelper;
+
+    //세번째 데이터
+    private ArrayList<SimpleExprerienceResponse.Result> mExperienceList;
+    private ExperienceAdapter mExperienceAdapter;
 
 
     //첫번째 리사이클러뷰 데이터
@@ -80,8 +65,8 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
             "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
 
     //두번째 리사이클러 데이터
-    String[] titleSet = {"test", "한국", "신주쿠, Shinjuku City, 일본", "맨해튼, 뉴욕, 뉴욕", "바르셀로나, 스페인", "로마", "바티칸","test"};
-    String[] contentSet = {"test", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험","숙소 및 체험","숙소 및 체험","test"};
+    String[] titleSet = {"test", "한국", "신주쿠, Shinjuku City, 일본", "맨해튼, 뉴욕, 뉴욕", "바르셀로나, 스페인", "로마", "바티칸", "test"};
+    String[] contentSet = {"test", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "숙소 및 체험", "test"};
 
     public SearchFragment() {
     }
@@ -96,7 +81,6 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mRvLookAround = view.findViewById(R.id.rv_frag_search_look_around);
         mRvContinewLookAround = view.findViewById(R.id.rv_frag_search_continue_look_around);
         mRvExperience = view.findViewById(R.id.rv_frag_search_experience);
-
 
         //--------구글 로그인
 
@@ -146,13 +130,15 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         //두번째 리사이클러
         mRvContinewLookAround.setHasFixedSize(true);
         mRvContinewLookAround.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        mContinueLookAroundAdapter = new ContinueLookAroundAdapter(titleSet, contentSet);
-        mRvContinewLookAround.setAdapter(mContinueLookAroundAdapter);
+        mRvContinewLookAround.setAdapter(new ContinueLookAroundAdapter(titleSet, contentSet));
         snapHelper.attachToRecyclerView(mRvContinewLookAround);
 
         //세번째 체험 리사이클러 뷰
         mRvExperience.setHasFixedSize(true);
         mRvExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        mExperienceList = new ArrayList<SimpleExprerienceResponse.Result>();
+        mExperienceAdapter = new ExperienceAdapter(mExperienceList);
+        mRvExperience.setAdapter(mExperienceAdapter);
 
 
         //체험데이터 가져옴
@@ -180,21 +166,26 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
     }
 
 
-    void tryGetSimpleExperiencInfo(){
+    void tryGetSimpleExperiencInfo() {
         final SearchFragmentService searchFragmentService = new SearchFragmentService(this);
         showProgressDialog();
         searchFragmentService.getSimplerExperienceInfo();
     }
 
-
     @Override
-    public void searchHouseSuccess(SimpleExprerienceResponse simpleExprerienceResponse) {
+    public void getExperiencessSuccess(ArrayList<SimpleExprerienceResponse.Result> simpleExprerienceResponseResultList, int code, String message) {
         hideProgressDialog();
+        if (code == 100) {
+            mExperienceList.addAll(simpleExprerienceResponseResultList);
+            //데이터 가져오면 알려줌
+            mExperienceAdapter.notifyDataSetChanged();
+        }
         showCustomToastFrag("성공");
+
     }
 
     @Override
-    public void searchHouseFailure(String message) {
+    public void getExperiencessFailure(String message) {
 
     }
 }

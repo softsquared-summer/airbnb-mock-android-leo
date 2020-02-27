@@ -25,7 +25,7 @@
         android:id="@+id/tv_frag_search_holder_experience_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="가격 : 1인당 \뷰퉈" />
+        android:text="가격 : 1인당 \부터" />
 
     <TextView
         android:id="@+id/tv_frag_search_holder_experience_rate"
