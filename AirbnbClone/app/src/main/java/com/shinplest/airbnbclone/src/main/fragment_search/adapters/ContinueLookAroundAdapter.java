@@ -47,7 +47,7 @@ public class ContinueLookAroundAdapter extends RecyclerView.Adapter<ContinueLook
         holder.tvContent.setText(this.contentSet[position]);
 
         //첫번째와 마지막
-        if (position == 0 || position == 4) {
+        if (position == 0 || position == titleSet.length-1) {
             holder.cardView.getLayoutParams().width = 10;
             holder.cardView.setVisibility(View.INVISIBLE);
         }

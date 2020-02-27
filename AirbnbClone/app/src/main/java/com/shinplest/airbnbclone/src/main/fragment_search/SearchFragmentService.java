@@ -36,7 +36,7 @@ public class SearchFragmentService {
             @Override
             public void onResponse(Call<SimpleExprerienceResponse> call, Response<SimpleExprerienceResponse> response) {
                 final SimpleExprerienceResponse simpleExprerienceResponse = response.body();
-                mSearchFragmentView.searchHouseSuccess(simpleExprerienceResponse);
+                mSearchFragmentView.getExperiencessSuccess(simpleExprerienceResponse.getResult(), simpleExprerienceResponse.getCode(), simpleExprerienceResponse.getMessage());
             }
 
             @Override

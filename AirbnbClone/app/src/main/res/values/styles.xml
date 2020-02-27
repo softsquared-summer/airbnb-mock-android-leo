@@ -138,7 +138,7 @@
     <!--house text-->
 
 
-    <style name="HouseTitleText">
+    <style name="HouseHeadText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/secondText</item>
@@ -146,13 +146,37 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="HouseTitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
     <style name="HouseBasicText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/secondText</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="HousefaclityText">
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondText</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="HouseDotText">
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">8sp</item>
+    </style>
 
     <!-- btn style-->
 

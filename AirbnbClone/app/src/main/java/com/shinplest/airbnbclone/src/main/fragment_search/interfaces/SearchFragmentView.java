@@ -2,9 +2,11 @@ package com.shinplest.airbnbclone.src.main.fragment_search.interfaces;
 
 import com.shinplest.airbnbclone.src.main.fragment_search.models.SimpleExprerienceResponse;
 
-public interface SearchFragmentView {
-    void searchHouseSuccess(SimpleExprerienceResponse simpleExprerienceResponse);
+import java.util.ArrayList;
 
-    void searchHouseFailure(String message);
+public interface SearchFragmentView {
+    void getExperiencessSuccess(ArrayList<SimpleExprerienceResponse.Result> simpleExprerienceResponseResultList, int code, String message);
+
+    void getExperiencessFailure(String message);
 
 }
