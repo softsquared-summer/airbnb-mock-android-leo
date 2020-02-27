@@ -16,4 +16,7 @@ public interface SearchActivityView {
     void saveHouseSuccess(int code, String message);
 
     void saveHouseFailure();
+
+    void tryPostSaveHouse(int userNo, int houseNo);
+
 }

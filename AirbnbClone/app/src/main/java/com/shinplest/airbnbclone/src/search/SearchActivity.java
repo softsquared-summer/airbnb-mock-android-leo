@@ -130,7 +130,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mHouseDataList = new ArrayList<>();
         mRvHouses.setHasFixedSize(true);
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList);
+        mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList, this);
         mRvHouses.setAdapter(mSearchHouseAdapter);
     }
 
@@ -162,11 +162,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
-    public void tryPostSaveHouse(){
-        final SearchService searchService = new SearchService(this);
-        showProgressDialog();
-//        searchService.postSaveHouse();
-    }
+
 
 
     //로케이션을 받아오면 로케이션 arraylist를 저장
@@ -218,4 +214,10 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     }
 
+    @Override
+    public void tryPostSaveHouse(int userNo, int houseNo) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.postSaveHouse(userNo, houseNo);
+    }
 }

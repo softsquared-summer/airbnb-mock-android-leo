@@ -17,24 +17,31 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.house.HouseActivity;
+import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
+
 
 public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapter.MyViewHolder> {
+    private SearchActivityView mSearchActivityView;
     private Context context;
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
 
     //뷰페이져 상태저장하는 hashMap
     HashMap<Integer, Integer> mViewPagerState = new HashMap<>();
 
-    public SearchHousesAdapter(Context context, ArrayList<SimpleHouseInfoResponse.Result> houseDataList) {
+    public SearchHousesAdapter(Context context, ArrayList<SimpleHouseInfoResponse.Result> houseDataList, SearchActivityView searchActivityView) {
         this.context = context;
         this.mHouseDataList = houseDataList;
+        this.mSearchActivityView = searchActivityView;
     }
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout mLlHouseContainer;
@@ -102,7 +109,9 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
                 //저장안되어있으면
                 if (house.getIsSave() == 0){
                     //저장하고
-//                    tryPostSaveHouse()
+                    mSearchActivityView.tryPostSaveHouse(USER_NO, house.getHouseNo());
+                    notifyDataSetChanged();
+                    Log.d("test", "onClick: ");
                 }
                 else{
                     //삭제한다
@@ -141,6 +150,7 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
     public int getItemCount() {
         return mHouseDataList.size();
     }
+
 
 
 }
