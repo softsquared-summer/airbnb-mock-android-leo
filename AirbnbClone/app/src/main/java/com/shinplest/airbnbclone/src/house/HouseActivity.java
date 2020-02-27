@@ -1,7 +1,9 @@
 package com.shinplest.airbnbclone.src.house;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 
 public class HouseActivity extends BaseActivity implements HouseActivityView {
 
-    private int mHouseNo;
+    private int mHouseNo, mIsSave;
     private ViewPager mVpHouseImages;
     private HouseResponse.Result mHouseData;
 
@@ -36,6 +38,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             mTvHouseHost, mTvhouseDetail, mTvHouseMinimumStay, mTvHouseFacilty1,
             mTvHouseFacilty2, mTvHouseFacilty3, mTvHouseFacilty4, mTvHouseFacilty5,
             mTvHouseFacilty6, mTvHouseCheckIn, mTvHouseCheckOut;
+    private ImageView mIvIsSave;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,15 +47,22 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         getUiSourse();
 
 
-        mHouseNo = getIntent().getIntExtra("houseNo", 1);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        mHouseNo = extras.getInt("houseNo");
+        mIsSave = extras.getInt("isSave");
         tryGetHouseInfo();
 
         mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, url));
-
-
     }
 
     private void updateUi() {
+        //저장여부
+        if(mIsSave == 0){
+            mIvIsSave.setImageResource(R.drawable.house_save);
+        }else
+            mIvIsSave.setImageResource(R.drawable.house_saved);
+
         //이미지
         ArrayList<HouseResponse.Image> houseDataImages = mHouseData.getImages();
         HouseResponse.Info houseDataInfo = mHouseData.getInfo();
@@ -82,6 +92,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mTvHouseCheckIn.setText(houseDataInfo.getCheckIn());
         mTvHouseCheckOut.setText(houseDataInfo.getCheckOut());
 
+
     }
 
     private void getUiSourse() {
@@ -101,6 +112,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mTvHouseFacilty6 = findViewById(R.id.tv_house_facility_6);
         mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
         mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
+        mIvIsSave = findViewById(R.id.iv_house_save);
     }
 
     void tryGetHouseInfo() {

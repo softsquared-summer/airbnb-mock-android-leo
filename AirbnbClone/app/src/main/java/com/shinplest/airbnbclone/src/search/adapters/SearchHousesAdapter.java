@@ -2,6 +2,7 @@ package com.shinplest.airbnbclone.src.search.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,10 +77,14 @@ public class SearchHousesAdapter extends RecyclerView.Adapter<SearchHousesAdapte
             @Override
             public void onClick(View v) {
                 int houseNo = mHouseDataList.get(position).getHouseNo();
+                int isSave = mHouseDataList.get(position).getIsSave();
                 Log.d("OnclickTest", "onClick: " + houseNo);
                 //여기서 하우스 넘버로 새로운 액티비티로 넘어가줘야함
                 Intent intent = new Intent(v.getContext(), HouseActivity.class);
-                intent.putExtra("houseNo", houseNo);
+                Bundle extras = new Bundle();
+                extras.putInt("houseNo", houseNo);
+                extras.putInt("isSave", isSave);
+                intent.putExtras(extras);
                 context.startActivity(intent);
             }
         });
