@@ -21,6 +21,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
+import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.shinplest.airbnbclone.src.search.adapters.SearchHousesAdapter;
+import com.shinplest.airbnbclone.src.search.adapters.SearchLocationListAdaper;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchActivityView;
 import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
@@ -31,7 +34,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     //뷰페이져 테스트
     ViewPager mViewPager;
 
-    HouseViewPageAdatper houseViewPageAdatper;
+    SearchHouseViewPageAdatper searchHouseViewPageAdatper;
 
     //집데이터 배열
     private ArrayList<SimpleHouseInfoResponse.Result> mHouseDataList;
@@ -45,6 +48,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ConstraintLayout mClSearchHouseContainer;
     private TextView mTvCancel, mTvSearchLocation;
     private RecyclerView mRvHouses;
+    private SearchHousesAdapter mSearchHouseAdapter;
     private EditText mEtSearchLocation;
     private ListView mLvSearchLocation;
     private ImageView mIvEraseInput;
@@ -57,9 +61,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
         //생성해주고 할당만 함
         mLocationList = new ArrayList<String>();
-/*        mLocationList.add("괌");
-        mLocationList.add("파리");
-        mLocationList.add("서울");*/
 
 
         mSearchLocationListAdaper = new SearchLocationListAdaper(mLocationList, SearchActivity.this);
@@ -124,13 +125,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             }
         });
 
-    }
 
-
-    private void tryGetExistLocation(String searchWord) {
-        final SearchService searchService = new SearchService(this);
-        showProgressDialog();
-        searchService.getExistLocationList(searchWord);
+        //숙소 리스트뷰
+        mHouseDataList = new ArrayList<>();
+        mRvHouses.setHasFixedSize(true);
+        mRvHouses.setLayoutManager(new LinearLayoutManager(this));
+        mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList, this);
+        mRvHouses.setAdapter(mSearchHouseAdapter);
     }
 
     private void getUiSource() {
@@ -142,23 +143,34 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mLvSearchLocation = findViewById(R.id.lv_search_location_list);
         mLlSearchBar = findViewById(R.id.ll_search_search_bar);
         mIvEraseInput = findViewById(R.id.iv_search_erase_input);
+        mRvHouses = findViewById(R.id.rv_search_houses);
     }
 
-    private void makeHouseRecyclerView() {
-        //하우스 리사이클러
-        mRvHouses = findViewById(R.id.rv_search_houses);
-        mRvHouses.setHasFixedSize(true);
-        mRvHouses.setLayoutManager(new LinearLayoutManager(this));
-        mRvHouses.setAdapter(new HousesAdapter(this, mHouseDataList));
+
+    private void tryGetExistLocation(String searchWord) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.getExistLocationList(searchWord);
     }
+
 
     private void tryGetSimpleHouseInfo(String searchWord) {
-        final SearchHouseService searchHouseService = new SearchHouseService(this);
+        final SearchService searchService = new SearchService(this);
         showProgressDialog();
-        searchHouseService.getSimpleHouseInfo(searchWord);
+        searchService.getSimpleHouseInfo(searchWord);
         Log.d("network", "tryGetSimpleHouseInfo: getsimplehouseinfo");
 
     }
+
+    //search activity에서 저장해주는 함수
+
+    @Override
+    public void tryPostSaveHouse(int userNo, int houseNo) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.postSaveHouse(userNo, houseNo);
+    }
+
 
 
     //로케이션을 받아오면 로케이션 arraylist를 저장
@@ -170,7 +182,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         if (existLocationList.size() != 0) {
             mLocationList.clear();
             //아무것도없는값 보내줄때 예외처리
-            if (existLocationList.get(0).equals("")){
+            if (existLocationList.get(0).equals("")) {
                 return;
             }
             mLocationList.addAll(existLocationList);
@@ -187,16 +199,28 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     public void searchHouseSuccess(SimpleHouseInfoResponse simpleHouseInfoResponse) {
         hideProgressDialog();
         //데이터 가져옴
-        mHouseDataList = simpleHouseInfoResponse.getResult();
-        makeHouseRecyclerView();
-        Log.d("network", "validateSearchSuccess: " + mHouseDataList.get(2).getHouseName());
-
-//        mHouseDataList.addAll(mHouseDataList);
+        mHouseDataList.clear();
+        mHouseDataList.addAll(simpleHouseInfoResponse.getResult());
+        mSearchHouseAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void searchHouseFailure(String message) {
         hideProgressDialog();
+    }
+
+    @Override
+    public void saveHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장목록에 저장되었습니다");
+        }
+        //showCustomToast(message);
+    }
+
+    @Override
+    public void saveHouseFailure() {
+
     }
 
 }
