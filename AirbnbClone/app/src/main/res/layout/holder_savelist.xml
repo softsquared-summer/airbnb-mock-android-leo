@@ -2,14 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cv_frag_search_holder_continue_look_around"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="330dp"
     android:elevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sv_frag_savelist_room_photo"
@@ -19,28 +18,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_frag_savelist_location"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_frag_savelist_house_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="라스베가스" />
+                android:text="개인실 · 침대 1개" />
 
             <TextView
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/tv_frag_savelist_rooms"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_frag_savelist_house_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="숙소 1개" />
+                android:text="1★오즈의집★홍대입구3번출구 3분컷#연트롤파크30초컷#개인실#오픈세일+_+" />
 
+            <TextView
+                android:id="@+id/tv_frag_savelist_house_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="₩30000/박" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="★"
+                    android:textColor="@color/clickableText"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_house_holder_star_avg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="4.5" />
+
+                <TextView
+                    android:id="@+id/tv_house_holder_review_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="(303)" />
+            </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
