@@ -19,7 +19,7 @@ public class HouseService {
         this.mHouseActivityView = houseActivityView;
     }
 
-    void getHouseinfo(final int houseNo){
+    void getHouseinfo(int houseNo){
         final HouseRetrofitInterface houseRetrofitInterface = getRetrofit().create(HouseRetrofitInterface.class);
         houseRetrofitInterface.getHouseInfo(houseNo).enqueue(new Callback<HouseResponse>() {
             @Override

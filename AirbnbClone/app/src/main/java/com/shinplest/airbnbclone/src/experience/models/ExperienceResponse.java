@@ -16,6 +16,22 @@ public class ExperienceResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
+    public Result getResult() {
+        return result;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
     public class Result {
         @SerializedName("image")
         private Info image;

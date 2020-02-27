@@ -36,6 +36,7 @@
         <activity android:name=".src.profile.ProfileActivity"/>
         <activity android:name=".src.profile_modify.ProfileModifyActivity"/>
         <activity android:name=".src.house.HouseActivity"/>
+        <activity android:name=".src.experience.ExperienceActivity"/>
     </application>
 
 </manifest>
