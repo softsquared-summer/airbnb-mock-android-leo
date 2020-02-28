@@ -123,7 +123,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mRvLookAround.setHasFixedSize(true);
         mHorizontalLayoutManagerLookAround = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(mHorizontalLayoutManagerLookAround);
-        mRvLookAround.setAdapter(new LookAroundAdapter(getActivity(),FirstReyclerTextSet, FirstRecyclerUrlSet));
+        mRvLookAround.setAdapter(new LookAroundAdapter(getActivity(), FirstReyclerTextSet, FirstRecyclerUrlSet));
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
@@ -181,12 +181,11 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
             //데이터 가져오면 알려줌
             mExperienceAdapter.notifyDataSetChanged();
         }
-        showCustomToastFrag("성공");
-
     }
 
     @Override
     public void getExperiencessFailure(String message) {
-
+        hideProgressDialog();
+        showCustomToastFrag("실패");
     }
 }
