@@ -107,12 +107,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mBtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AirCalendarIntent intent = new AirCalendarIntent(getActivity());
-                intent.setSelectButtonText("결과 보기"); //the select button text
-                intent.setResetBtnText("삭제"); //the reset button text
-                intent.setWeekStart(Calendar.MONDAY);
-                intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
-                startActivityForResult(intent, GET_DATE);
+                makeAriCalendar();
             }
         });
 
@@ -145,6 +140,15 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         tryGetSimpleExperiencInfo();
 
         return view;
+    }
+
+    private void makeAriCalendar() {
+        AirCalendarIntent intent = new AirCalendarIntent(getActivity());
+        intent.setSelectButtonText("결과 보기"); //the select button text
+        intent.setResetBtnText("삭제"); //the reset button text
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+        startActivityForResult(intent, GET_DATE);
     }
 
 

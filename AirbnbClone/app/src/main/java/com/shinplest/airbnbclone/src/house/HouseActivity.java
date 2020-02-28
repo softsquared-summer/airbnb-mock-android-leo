@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +19,15 @@ import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
 import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
 
 public class HouseActivity extends BaseActivity implements HouseActivityView {
@@ -37,6 +44,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             mTvHouseFacilty6, mTvHouseCheckIn, mTvHouseCheckOut;
     private ImageView mIvIsSave, mIvBackArrow;
     private LinearLayout mLlMoreHouseReview;
+    private Button mBtnReserve;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +92,15 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             }
         });
 
+        mBtnReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeAriCalendar();
+            }
+        });
+
     }
+
     private void getUiSourse() {
         mSvHouseHostProfile = findViewById(R.id.sv_house_host_profile);
         mTvHouseTypeFirst = findViewById(R.id.tv_house_type_first);
@@ -105,6 +121,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mIvIsSave = findViewById(R.id.iv_house_save);
         mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
         mIvBackArrow = findViewById(R.id.iv_house_back);
+        mBtnReserve = findViewById(R.id.btn_house_reserve);
     }
 
     private void updateUi() {
@@ -148,6 +165,19 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     }
 
+    private void makeAriCalendar() {
+        AirCalendarIntent intent = new AirCalendarIntent(this);
+        intent.setSelectButtonText("결과 보기"); //the select button text
+        intent.setResetBtnText("삭제"); //the reset button text
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+
+        String result = "2020-02-29,2020-03-03,2020-03-04,2020-03-05,2020-03-09,2020-03-10";
+        String[] results = result.split(",");
+        ArrayList<String> resultss = new ArrayList<>(Arrays.asList(results));
+        intent.setBookingDateArray(resultss);
+        startActivityForResult(intent, GET_DATE);
+    }
 
 
     void tryGetHouseInfo() {
