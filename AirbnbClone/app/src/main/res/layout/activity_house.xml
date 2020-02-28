@@ -12,12 +12,12 @@
         android:layout_alignParentBottom="true">
 
         <LinearLayout
-            android:layout_marginLeft="20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
             android:layout_weight="3"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -27,8 +27,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/clickableText"
-                android:text="★ 4.78"/>
+                android:text="★ 4.78"
+                android:textColor="@color/clickableText" />
         </LinearLayout>
 
         <Button
@@ -479,6 +479,81 @@
                             android:layout_weight="1"
                             android:text="오전 11:00"
                             android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/splitColor" />
+
+
+                    <TextView
+                        style="@style/HouseTitleText"
+                        android:layout_marginTop="10dp"
+                        android:text="후기" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.facebook.drawee.view.SimpleDraweeView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="희은" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="2016년 2월" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="국내에서 자주 놀러다니는 사람이지만 에어비앤비는 처음으로 이용해봅니다. 하지만 놀랍도록 청결한 숙소와 번화가와 인접한 위치로 국내 여행자 뿐만 아니라 해외여행자의 접근성도 고려한 점에서 별점 만점 주고갑니다. 앞으로 쭈욱 발전해 나가는 오즈의 집 되시기 바랍니다"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_house_more_house_review"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="후기 429개 모두 읽기"
+                            android:textColor="@color/clickableText" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="textEnd"
+                            android:layout_height="wrap_content"
+                            android:text="★★★★★"
+                            android:textColor="@color/clickableText" />
+
                     </LinearLayout>
 
 
