@@ -80,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="나이트 라이프"
+                            android:text="나이트 ㅁㄴㅇㄹ"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -103,20 +103,7 @@
                             style="@style/ExperienceBasicWhiteText"
                             android:text="로마 이탈리아" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
 
-                            <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="채집"></Button>
-
-                            <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="투어"></Button>
-                        </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -137,8 +124,8 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
                                     android:src="@drawable/experience_playtime" />
 
                                 <TextView
@@ -160,16 +147,17 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/experience_playtime" />
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/experience_personnel" />
 
                                 <TextView
                                     style="@style/ExperienceGrayText"
-                                    android:text="진행시간"
+                                    android:text="그룹당 인원"
                                     android:textColor="@color/colorPrimary" />
 
                                 <TextView
+                                    android:id="@+id/tv_experience_e"
                                     style="@style/ExperienceBasicWhiteText"
                                     android:text="6시간" />
 
