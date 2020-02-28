@@ -56,7 +56,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_experience"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp" />
+                    android:layout_height="450dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -133,10 +133,8 @@
 
                         <TextView
                             android:id="@+id/tv_experience_juso"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="로마 이탈리아"
-                            android:textColor="@color/colorPrimary" />
+                            style="@style/ExperienceBasicWhiteText"
+                            android:text="로마 이탈리아" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -151,22 +149,134 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="투어"></Button>
+                        </LinearLayout>
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/splitColor"
-                                android:elevation="2dp" />
+                        <View
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/splitColor"
+                            android:elevation="2dp" />
+
+                      <LinearLayout
+                          android:layout_marginTop="20dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content">
+
+                          <LinearLayout
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:orientation="vertical">
+                              <ImageView
+                                  android:layout_width="18dp"
+                                  android:layout_height="18dp"
+                                  android:src="@drawable/experience_playtime"/>
+                              <TextView
+                                 style="@style/ExperienceGrayText"
+                                  android:text="진행시간"
+                                  android:textColor="@color/colorPrimary"/>
+
+                              <TextView
+                                  style="@style/ExperienceBasicWhiteText"
+                                  android:text="6시간"/>
+
+                          </LinearLayout>
+
+
+                          <LinearLayout
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:orientation="vertical">
+                              <ImageView
+                                  android:layout_width="18dp"
+                                  android:layout_height="18dp"
+                                  android:src="@drawable/experience_playtime"/>
+                              <TextView
+                                  style="@style/ExperienceGrayText"
+                                  android:text="진행시간"
+                                  android:textColor="@color/colorPrimary"/>
+
+                              <TextView
+                                  style="@style/ExperienceBasicWhiteText"
+                                  android:text="6시간"/>
+
+                          </LinearLayout>
+
+
+                      </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/experience_playtime"/>
+                                <TextView
+                                    style="@style/ExperienceGrayText"
+                                    android:text="진행시간"
+                                    android:textColor="@color/colorPrimary"/>
+
+                                <TextView
+                                    style="@style/ExperienceBasicWhiteText"
+                                    android:text="6시간"/>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/experience_playtime"/>
+                                <TextView
+                                    style="@style/ExperienceGrayText"
+                                    android:text="진행시간"
+                                    android:textColor="@color/colorPrimary"/>
+
+                                <TextView
+                                    style="@style/ExperienceBasicWhiteText"
+                                    android:text="6시간"/>
+
+                            </LinearLayout>
+
+
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="test"></TextView>
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    style="@style/ExperienceTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="프로그램"></TextView>
+
+            </LinearLayout>
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
