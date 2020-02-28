@@ -25,9 +25,9 @@ public class SearchService {
         this.mSearchActivityView = searchActivityView;
     }
 
-    void getExistLocationList(String searchWord){
+    void getExistLocationList(String searchWord) {
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
-        Call<ExistLocationResponse> call = searchRetrofitInterface.getExistLocation("house",searchWord);
+        Call<ExistLocationResponse> call = searchRetrofitInterface.getExistLocation("house", searchWord);
         call.enqueue(new Callback<ExistLocationResponse>() {
             @Override
             public void onResponse(Call<ExistLocationResponse> call, Response<ExistLocationResponse> response) {
@@ -41,7 +41,7 @@ public class SearchService {
         });
     }
 
-    void getSimpleHouseInfo(String searchWord){
+    void getSimpleHouseInfo(String searchWord) {
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
 
         HashMap<String, String> params = new HashMap<>();
@@ -76,7 +76,7 @@ public class SearchService {
         });
     }
 
-    void postSaveHouse(int userNo, int houseNo){
+    void postSaveHouse(int userNo, int houseNo) {
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
         RequestSaveHouse requestSaveHouse = new RequestSaveHouse();
         requestSaveHouse.setHouseNo(houseNo);
@@ -84,7 +84,7 @@ public class SearchService {
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse defaultResponse =response.body();
+                DefaultResponse defaultResponse = response.body();
                 mSearchActivityView.saveHouseSuccess(defaultResponse.getCode(), defaultResponse.getMessage());
             }
 
@@ -95,13 +95,13 @@ public class SearchService {
         });
     }
 
-    void deleteSavedHouse(int userNo, int houseNo){
+    void deleteSavedHouse(int userNo, int houseNo) {
         final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
         Call<DefaultResponse> call = searchRetrofitInterface.deleteSavedHouse(userNo, houseNo);
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse defaultResponse =response.body();
+                DefaultResponse defaultResponse = response.body();
                 mSearchActivityView.deleteSavedHouseSuccess(defaultResponse.getCode(), defaultResponse.getMessage());
             }
 

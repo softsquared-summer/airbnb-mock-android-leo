@@ -166,7 +166,6 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     public void getHouseSuccess(HouseResponse.Result houseResponseResult, int code, String message) {
         hideProgressDialog();
         if (code == 100) {
-            showCustomToast("하우스 데이터 가져오기 성공");
             mHouseData = houseResponseResult;
             updateUi();
         }

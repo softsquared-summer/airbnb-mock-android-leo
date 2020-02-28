@@ -107,7 +107,6 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mBtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomToastFrag("show calender");
                 AirCalendarIntent intent = new AirCalendarIntent(getActivity());
                 intent.setSelectButtonText("결과 보기"); //the select button text
                 intent.setResetBtnText("삭제"); //the reset button text
@@ -161,7 +160,6 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
 
     private void updateUI(FirebaseAuth auth) {
         GoogleUserInfo user = new GoogleUserInfo(auth);
-
         if (user != null)
             mTvLookAround.setText(user.getGoogleUserName() + "님, 무엇을 찾고 계신가요?");
     }

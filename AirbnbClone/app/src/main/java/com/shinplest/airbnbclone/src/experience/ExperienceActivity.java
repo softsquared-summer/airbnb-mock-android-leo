@@ -89,7 +89,6 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
     public void getExperienceSuccess(ExperienceResponse.Result experienceResult, int code, String message) {
         hideProgressDialog();
         if (code == 100) {
-            showCustomToast("경험 데이터 가져오기 성공");
             mExperienceData = experienceResult;
             updateUi();
         }
