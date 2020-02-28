@@ -59,15 +59,15 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
             @Override
             public void onClick(View v) {
                 switch (position) {
-                    case 0:
+                    case 1:
                         Intent intent = new Intent(context, SearchActivity.class);
                         context.startActivity(intent);
                         break;
-                    case 1:
+                    case 2:
                         //go to 체험
                         Toast.makeText(context, R.string.not_yet, Toast.LENGTH_SHORT).show();
                         break;
-                    case 2:
+                    case 3:
                         Toast.makeText(context, R.string.not_yet, Toast.LENGTH_SHORT).show();
                         break;
                 }
