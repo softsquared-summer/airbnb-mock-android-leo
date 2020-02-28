@@ -4,10 +4,11 @@ import com.shinplest.airbnbclone.src.main.fragment_savelist.models.SavelistRespo
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public class SavelistRetrofitInterface {
-    @GET("/saveList")
-    Call<SavelistResponse> getSavelist(@Query("filter") String filter, @Query("saveList") String saveLocation);
+public interface SavelistRetrofitInterface {
+    @GET("users/{userNo}/saveList")
+    Call<SavelistResponse> getSavelist(@Path ("userNo") int userNo, @Query("filter") String filter, @Query("saveLocation") String saveLocation);
 }
 
