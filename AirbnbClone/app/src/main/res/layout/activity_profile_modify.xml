@@ -51,6 +51,7 @@
                     app:placeholderImage="@drawable/appicon" />
 
                 <ImageView
+                    android:id="@+id/iv_profile_modify_camera"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:layout_alignBottom="@+id/sv_profile_modify"
@@ -71,53 +72,53 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/RegisterBasicText"
+                    style="@style/ProfileModifyBasicText"
                     android:text="프로필 제목" />
 
                 <EditText
                     android:id="@+id/et_profile_modify_title"
-                    style="@style/RegisterEditText" />
+                    style="@style/ProfileModifyEditText" />
 
 
                 <TextView
-                    style="@style/FragProfileTitleText"
+                    style="@style/ProfileModifyTitleText"
                     android:layout_marginTop="20dp"
                     android:text="추가정보 입력(선택사항)" />
 
                 <TextView
-                    style="@style/RegisterBasicText"
+                    style="@style/ProfileModifyBasicText"
                     android:text="거주지" />
 
                 <EditText
                     android:id="@+id/et_profile_modify_location"
-                    style="@style/RegisterEditText"
+                    style="@style/ProfileModifyEditText"
                     android:hint="예시 : 프랑스의 파리, 뉴욕의 브루클린, 일리노이 주의 시카고" />
 
                 <TextView
-                    style="@style/RegisterBasicText"
+                    style="@style/ProfileModifyBasicText"
                     android:text="학교" />
 
                 <EditText
                     android:id="@+id/et_profile_modify_school"
-                    style="@style/RegisterEditText"
+                    style="@style/ProfileModifyEditText"
                     android:hint="학교" />
 
                 <TextView
-                    style="@style/RegisterBasicText"
+                    style="@style/ProfileModifyBasicText"
                     android:text="직업" />
 
                 <EditText
                     android:id="@+id/et_profile_modify_job"
-                    style="@style/RegisterEditText"
+                    style="@style/ProfileModifyEditText"
                     android:hint="예시 : 에어비앤비, 애플, 맥도날드" />
 
                 <TextView
-                    style="@style/RegisterBasicText"
+                    style="@style/ProfileModifyBasicText"
                     android:text="언어" />
 
                 <EditText
                     android:id="@+id/et_profile_modify_language"
-                    style="@style/RegisterEditText"
+                    style="@style/ProfileModifyEditText"
                     android:hint="예시 : 한국어, 중국어, 영어" />
 
             </LinearLayout>

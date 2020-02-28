@@ -44,6 +44,10 @@ public class ApplicationClass extends Application {
     //캘린더 날짜 호출하는 Request Code;
     public static int GET_DATE = 111;
 
+    //사진찍기 관련 변수
+    public static final int FROM_ALBUM = 222;
+    public static final int FROM_CAMERA = 333;
+
     //로그인 정보 저장하는 변수 1 == google 2 == jwt
     public static String LOGIN_INFO = "jwt";
 
