@@ -53,6 +53,8 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ListView mLvSearchLocation;
     private ImageView mIvEraseInput;
 
+    private String mSearchWord;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,13 +73,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 hideKeyboard();
                 TextView textView = view.findViewById(R.id.tv_search_list_location);
-                String searchWord = textView.getText().toString();
-                showCustomToast(searchWord);
+                mSearchWord = textView.getText().toString();
+                showCustomToast(mSearchWord);
                 //하우스 데이터 가져옴
-                tryGetSimpleHouseInfo(searchWord);
+                tryGetSimpleHouseInfo(mSearchWord);
                 mLlSearchTopContainer.setVisibility(View.GONE);
                 mClSearchHouseContainer.setVisibility(View.VISIBLE);
-                mTvSearchLocation.setText(searchWord + " 숙소");
+                mTvSearchLocation.setText(mSearchWord + " 숙소");
             }
         });
 
@@ -94,7 +96,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
                 String searchWord = s.toString();
                 tryGetExistLocation(searchWord);
                 mSearchHouseAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -134,6 +135,16 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
         mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList, this);
         mRvHouses.setAdapter(mSearchHouseAdapter);
+    }
+
+    //네트워크 부분
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //시작할때 데이터 다시 받아오고 알려준다
+        if (mSearchWord != null)
+            tryGetSimpleHouseInfo(mSearchWord);
+        mSearchHouseAdapter.notifyDataSetChanged();
     }
 
     private void getUiSource() {

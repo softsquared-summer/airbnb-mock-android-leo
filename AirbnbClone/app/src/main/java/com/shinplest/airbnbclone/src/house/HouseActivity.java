@@ -21,6 +21,8 @@ import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
 
 import java.util.ArrayList;
 
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
+
 public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     private int mHouseNo, mIsSave;
@@ -49,6 +51,23 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         tryGetHouseInfo();
 
         //onclidk
+        mIvIsSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //저장안되어있으면 색 바꿔주고 요청 바꾼다
+                if (mIsSave == 0) {
+                    mIvIsSave.setImageResource(R.drawable.house_saved);
+                    tryPostSaveHouse(USER_NO, mHouseNo);
+                } else {
+                    mIsSave = 0;
+                    mIvIsSave.setImageResource(R.drawable.house_save);
+                    tryDeleteHouse(USER_NO, mHouseNo);
+                }
+
+            }
+        });
+
+
         mLlMoreHouseReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +147,20 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         houseService.getHouseinfo(mHouseNo);
     }
 
+    void tryPostSaveHouse(int userNo, int houseNo) {
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        ;
+        houseService.postSaveHouse(userNo, houseNo);
+    }
+
+    void tryDeleteHouse(int userNo, int houseNo) {
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        ;
+        houseService.deleteSavedHouse(userNo, houseNo);
+    }
+
     @Override
     public void getHouseSuccess(HouseResponse.Result houseResponseResult, int code, String message) {
         hideProgressDialog();
@@ -140,6 +173,35 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     @Override
     public void getHouseFailure(String message) {
+        hideProgressDialog();
+        showCustomToast("실패");
+    }
+
+    @Override
+    public void saveHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장 목록에 저장되었습니다.");
+        }
+    }
+
+    @Override
+    public void saveHouseFailure(String message) {
+        hideProgressDialog();
+        showCustomToast("실패");
+
+    }
+
+    @Override
+    public void deleteHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장 목록에서 삭제되었습니다.");
+        }
+    }
+
+    @Override
+    public void deleteHouseFailure(String message) {
         hideProgressDialog();
         showCustomToast("실패");
     }
