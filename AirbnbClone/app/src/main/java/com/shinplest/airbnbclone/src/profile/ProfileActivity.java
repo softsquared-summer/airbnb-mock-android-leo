@@ -35,6 +35,8 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
         //가장먼저 ui 가져옴
         getUiSourse();
 
+
+
         mIvBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
