@@ -35,7 +35,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             mTvHouseHost, mTvhouseDetail, mTvHouseMinimumStay, mTvHouseFacilty1,
             mTvHouseFacilty2, mTvHouseFacilty3, mTvHouseFacilty4, mTvHouseFacilty5,
             mTvHouseFacilty6, mTvHouseCheckIn, mTvHouseCheckOut;
-    private ImageView mIvIsSave;
+    private ImageView mIvIsSave, mIvBackArrow;
     private LinearLayout mLlMoreHouseReview;
 
     @Override
@@ -68,7 +68,6 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             }
         });
 
-
         mLlMoreHouseReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +77,34 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             }
         });
 
+        mIvBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
+    private void getUiSourse() {
+        mSvHouseHostProfile = findViewById(R.id.sv_house_host_profile);
+        mTvHouseTypeFirst = findViewById(R.id.tv_house_type_first);
+        mTvHouseTitle = findViewById(R.id.tv_houset_title);
+        mTvHouseLocation = findViewById(R.id.tv_house_location);
+        mTvHouseHost = findViewById(R.id.tv_house_host);
+        mVpHouseImages = findViewById(R.id.vp_house);
+        mTvhouseDetail = findViewById(R.id.tv_house_house_detail);
+        mTvHouseMinimumStay = findViewById(R.id.tv_house_house_minimum_stay);
+        mTvHouseFacilty1 = findViewById(R.id.tv_house_facility_1);
+        mTvHouseFacilty2 = findViewById(R.id.tv_house_facility_2);
+        mTvHouseFacilty3 = findViewById(R.id.tv_house_facility_3);
+        mTvHouseFacilty4 = findViewById(R.id.tv_house_facility_4);
+        mTvHouseFacilty5 = findViewById(R.id.tv_house_facility_5);
+        mTvHouseFacilty6 = findViewById(R.id.tv_house_facility_6);
+        mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
+        mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
+        mIvIsSave = findViewById(R.id.iv_house_save);
+        mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
+        mIvBackArrow = findViewById(R.id.iv_house_back);
     }
 
     private void updateUi() {
@@ -121,26 +148,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     }
 
-    private void getUiSourse() {
-        mSvHouseHostProfile = findViewById(R.id.sv_house_host_profile);
-        mTvHouseTypeFirst = findViewById(R.id.tv_house_type_first);
-        mTvHouseTitle = findViewById(R.id.tv_houset_title);
-        mTvHouseLocation = findViewById(R.id.tv_house_location);
-        mTvHouseHost = findViewById(R.id.tv_house_host);
-        mVpHouseImages = findViewById(R.id.vp_house);
-        mTvhouseDetail = findViewById(R.id.tv_house_house_detail);
-        mTvHouseMinimumStay = findViewById(R.id.tv_house_house_minimum_stay);
-        mTvHouseFacilty1 = findViewById(R.id.tv_house_facility_1);
-        mTvHouseFacilty2 = findViewById(R.id.tv_house_facility_2);
-        mTvHouseFacilty3 = findViewById(R.id.tv_house_facility_3);
-        mTvHouseFacilty4 = findViewById(R.id.tv_house_facility_4);
-        mTvHouseFacilty5 = findViewById(R.id.tv_house_facility_5);
-        mTvHouseFacilty6 = findViewById(R.id.tv_house_facility_6);
-        mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
-        mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
-        mIvIsSave = findViewById(R.id.iv_house_save);
-        mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
-    }
+
 
     void tryGetHouseInfo() {
         final HouseService houseService = new HouseService(this);

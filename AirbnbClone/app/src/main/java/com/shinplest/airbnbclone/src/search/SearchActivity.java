@@ -90,17 +90,14 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
             }
 
-            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String searchWord = s.toString();
-                tryGetExistLocation(searchWord);
-                mSearchHouseAdapter.notifyDataSetChanged();
             }
-
+            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void afterTextChanged(Editable s) {
-
+                String searchWord = s.toString();
+                tryGetExistLocation(searchWord);
             }
         });
 
@@ -196,22 +193,23 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     @Override
     public void searchSuccess(ArrayList<String> existLocationList, String code, String message) {
         hideProgressDialog();
-
-        //검색결과가 없을때 제외하고 바꿔주고 바꼈다고 알려줌
+        mLocationList.clear();
+        mSearchLocationListAdaper.notifyDataSetChanged();
         if (existLocationList.size() != 0) {
-            mLocationList.clear();
             //아무것도없는값 보내줄때 예외처리
             if (existLocationList.get(0).equals("")) {
                 return;
             }
             mLocationList.addAll(existLocationList);
-            mSearchLocationListAdaper.notifyDataSetChanged();
         }
+        mSearchLocationListAdaper.notifyDataSetChanged();
+
     }
 
     @Override
     public void searchFailure() {
         hideProgressDialog();
+        showCustomToast("검색값 조회 실패");
     }
 
     @Override

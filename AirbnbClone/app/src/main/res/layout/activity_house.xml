@@ -231,6 +231,7 @@
                             android:text="house detail" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/HouseBasicText"
                             android:text="더 읽어보기"
                             android:textAlignment="textEnd"
@@ -544,6 +545,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="후기 429개 모두 읽기"
+                            android:textSize="16sp"
                             android:textColor="@color/clickableText" />
 
                         <TextView
@@ -551,6 +553,7 @@
                             android:layout_weight="1"
                             android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
+                            android:textSize="16sp"
                             android:text="★★★★★"
                             android:textColor="@color/clickableText" />
 
