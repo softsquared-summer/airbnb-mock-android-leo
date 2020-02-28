@@ -123,7 +123,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mRvLookAround.setHasFixedSize(true);
         mHorizontalLayoutManagerLookAround = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(mHorizontalLayoutManagerLookAround);
-        mRvLookAround.setAdapter(new LookAroundAdapter(FirstReyclerTextSet, FirstRecyclerUrlSet));
+        mRvLookAround.setAdapter(new LookAroundAdapter(getActivity(),FirstReyclerTextSet, FirstRecyclerUrlSet));
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
