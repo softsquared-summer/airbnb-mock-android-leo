@@ -44,9 +44,9 @@ public class HouseReviewResponse {
             return reviews;
         }
 
-        public Evaluation getEvaluation() {
-            return evaluation;
-        }
+//        public Evaluation getEvaluation() {
+//            return evaluation;
+//        }
     }
 
     public class Evaluation {
@@ -54,13 +54,13 @@ public class HouseReviewResponse {
         private int houseNo;
 
         @SerializedName("starAvg")
-        private int starAvg;
+        private String starAvg;
 
         @SerializedName("reviewCnt")
         private String reviewCnt;
 
         @SerializedName("starCheckin")
-        private int starCheckin;
+        private String  starCheckin;
 
         @SerializedName("starCommunication")
         private int starCommunication;
@@ -81,7 +81,7 @@ public class HouseReviewResponse {
             return houseNo;
         }
 
-        public int getStarAvg() {
+        public String getStarAvg() {
             return starAvg;
         }
 
@@ -89,7 +89,7 @@ public class HouseReviewResponse {
             return reviewCnt;
         }
 
-        public int getStarCheckin() {
+        public String getStarCheckin() {
             return starCheckin;
         }
 
