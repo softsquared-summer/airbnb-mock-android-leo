@@ -21,11 +21,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_house_review_holder_guest_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="희은" />
 
             <TextView
+                android:id="@+id/tv_house_review_holder_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2016년 2월" />
@@ -34,12 +36,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_house_review_holder_review_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="국내에서 자주 놀러다니는 사람이지만 에어비앤비는 처음으로 이용해봅니다. 하지만 놀랍도록 청결한 숙소와 번화가와 인접한 위치로 국내 여행자 뿐만 아니라 해외여행자의 접근성도 고려한 점에서 별점 만점 주고갑니다. 앞으로 쭈욱 발전해 나가는 오즈의 집 되시기 바랍니다"></TextView>
 
 
     <TextView
+        android:id="@+id/tv_house_review_holder_host_reply"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
