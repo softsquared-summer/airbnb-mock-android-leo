@@ -41,6 +41,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme_TransparentTheme);
         setContentView(R.layout.activity_house);
         getUiSourse();
 

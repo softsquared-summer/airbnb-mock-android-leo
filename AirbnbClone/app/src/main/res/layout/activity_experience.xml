@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
@@ -22,7 +22,8 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_experience"
                     android:layout_width="match_parent"
-                    android:layout_height="460dp" />
+                    android:layout_height="460dp"
+                    android:fitsSystemWindows="true" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -42,7 +43,7 @@
                         android:layout_height="25dp"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="20dp"
-                        android:layout_toLeftOf="@id/iv_house_save"
+                        android:layout_toLeftOf="@id/iv_experience_issave"
                         android:src="@drawable/house_share" />
 
                     <ImageView
@@ -103,7 +104,6 @@
                             android:id="@+id/tv_experience_juso"
                             style="@style/ExperienceBasicWhiteText"
                             android:text="로마 이탈리아" />
-
 
 
                         <View
@@ -169,10 +169,10 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginBottom="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp">
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -237,20 +237,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_marginTop="20dp"
                     style="@style/ExperienceTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="프로그램" />
 
 
                 <TextView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/tv_experinece_program"
                     style="@style/ExperienceBasicText"
+                    android:layout_marginTop="20dp"
                     android:maxLines="10"
                     android:text="프로그램입니다"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
 
 
                 <TextView
@@ -262,33 +262,33 @@
 
 
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/sv_experience_host_img"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    app:roundAsCircle="true"/>
+                    android:layout_marginTop="20dp"
+                    app:roundAsCircle="true" />
 
                 <TextView
-                    android:layout_marginTop="20dp"
                     android:id="@+id/tv_experience_host_name"
                     style="@style/TitleText"
-                    android:text="Yuseke"/>
+                    android:layout_marginTop="20dp"
+                    android:text="Yuseke" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/tv_experience_host_introduce"
                     style="@style/ExperienceBasicText"
-                    android:text="호스트 소개"/>
+                    android:layout_marginTop="10dp"
+                    android:text="호스트 소개" />
 
             </LinearLayout>
 
             <ImageView
-                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/experience_verified"
+                android:layout_marginTop="30dp"
+                android:adjustViewBounds="true"
                 android:scaleType="centerInside"
-                android:adjustViewBounds="true"/>
+                android:src="@drawable/experience_verified" />
 
 
         </LinearLayout>
