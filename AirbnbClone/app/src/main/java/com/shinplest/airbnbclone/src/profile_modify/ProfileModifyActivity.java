@@ -1,9 +1,13 @@
 package com.shinplest.airbnbclone.src.profile_modify;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +28,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
     private TextView mTvSaveModifiedProfile;
     private EditText mEtTitle, mEtLocation, mEtSchool, mEtJob, mEtLanguage;
     private SimpleDraweeView mSvProfileImage;
+    private ImageView mIvCamera;
 
 
     @Override
@@ -47,14 +52,22 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
                 //에딧텍스트 내용 전부 set해줌
                 requestModifyProfile = new RequestModifyProfile();
                 setRequest();
-
                 //수정요청 보냄
                 tryPutProfile();
             }
         });
 
+        //카메라 불러올건지 저장목록 불러올건지 물어본다.
+        mIvCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeCameraAlertDialog();
+            }
+        });
+
 
     }
+
 
     private void setBeforeProfile() {
         mSvProfileImage.setImageURI(Uri.parse(mProfile.getProfileImgUrl()));
@@ -72,6 +85,26 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
         profileModifyService.putModifiedProfile(requestModifyProfile);
     }
 
+    private void makeCameraAlertDialog() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("사진 찍기").setCancelable(false)
+                .setMessage("사진을 새로찍으시거나 사진 라이브러리에서 선택하세요.")
+                .setPositiveButton("카메라",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // 사진 촬영 클릭
+                                //takePhoto();
+                            }
+                        }).setNegativeButton("갤러리", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int id) {
+                //앨범에서 선택
+                //selectAlbum();
+            }
+        });
+        AlertDialog alert = alertBuilder.create();
+        alert.show();
+    }
+
     private void getUiSource() {
         mTvSaveModifiedProfile = findViewById(R.id.tv_profle_modify_save);
         mEtTitle = findViewById(R.id.et_profile_modify_title);
@@ -80,6 +113,7 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
         mEtJob = findViewById(R.id.et_profile_modify_job);
         mEtLanguage = findViewById(R.id.et_profile_modify_language);
         mSvProfileImage = findViewById(R.id.sv_profile_modify);
+        mIvCamera = findViewById(R.id.iv_profile_modify_camera);
     }
 
     private void setRequest() {

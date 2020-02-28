@@ -51,6 +51,7 @@
                     app:placeholderImage="@drawable/appicon" />
 
                 <ImageView
+                    android:id="@+id/iv_profile_modify_camera"
                     android:layout_width="20dp"
                     android:layout_height="25dp"
                     android:layout_alignBottom="@+id/sv_profile_modify"
