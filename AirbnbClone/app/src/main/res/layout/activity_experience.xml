@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +81,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
-                            android:text="나이트 ㅁㄴㅇㄹ"
+                            android:text="나이트 라이프"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -108,14 +109,14 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:background="@color/splitColor"
                             android:elevation="2dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp">
+                            android:layout_marginTop="25dp">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -124,8 +125,8 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
                                     android:src="@drawable/experience_playtime" />
 
                                 <TextView
@@ -134,6 +135,7 @@
                                     android:textColor="@color/colorPrimary" />
 
                                 <TextView
+                                    android:id="@+id/tv_experience_playtime"
                                     style="@style/ExperienceBasicWhiteText"
                                     android:text="6시간" />
 
@@ -147,8 +149,8 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
                                     android:src="@drawable/experience_personnel" />
 
                                 <TextView
@@ -157,7 +159,7 @@
                                     android:textColor="@color/colorPrimary" />
 
                                 <TextView
-                                    android:id="@+id/tv_experience_e"
+                                    android:id="@+id/tv_experience_personnel"
                                     style="@style/ExperienceBasicWhiteText"
                                     android:text="6시간" />
 
@@ -167,6 +169,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginBottom="20dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp">
@@ -178,16 +181,17 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/experience_playtime" />
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:src="@drawable/experience_inclusion" />
 
                                 <TextView
                                     style="@style/ExperienceGrayText"
-                                    android:text="진행시간"
+                                    android:text="포함사항"
                                     android:textColor="@color/colorPrimary" />
 
                                 <TextView
+                                    android:id="@+id/tv_experience_inclusion"
                                     style="@style/ExperienceBasicWhiteText"
                                     android:text="6시간" />
 
@@ -201,18 +205,19 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
                                     android:src="@drawable/experience_playtime" />
 
                                 <TextView
                                     style="@style/ExperienceGrayText"
-                                    android:text="진행시간"
+                                    android:text="제공 언어"
                                     android:textColor="@color/colorPrimary" />
 
                                 <TextView
+                                    android:id="@+id/tv_experience_offLanguage"
                                     style="@style/ExperienceBasicWhiteText"
-                                    android:text="6시간" />
+                                    android:text="영어 일본어" />
 
                             </LinearLayout>
 
@@ -232,6 +237,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_marginTop="20dp"
                     style="@style/ExperienceTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -239,9 +245,12 @@
 
 
                 <TextView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/tv_experinece_program"
                     style="@style/ExperienceBasicText"
                     android:maxLines="10"
-                    android:text="프로그램입니다" />
+                    android:text="프로그램입니다"
+                    android:textSize="15sp"/>
 
 
                 <TextView
@@ -251,7 +260,35 @@
                     android:maxLines="10"
                     android:text="호스트" />
 
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/sv_experience_host_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:roundAsCircle="true"/>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/tv_experience_host_name"
+                    style="@style/TitleText"
+                    android:text="Yuseke"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_experience_host_introduce"
+                    style="@style/ExperienceBasicText"
+                    android:text="호스트 소개"/>
+
             </LinearLayout>
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/experience_verified"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"/>
 
 
         </LinearLayout>
@@ -260,7 +297,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
@@ -285,7 +322,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="20dp"

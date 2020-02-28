@@ -1,6 +1,7 @@
 package com.shinplest.airbnbclone.src.experience;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.experience.interfaces.ExperienceActivityView;
 import com.shinplest.airbnbclone.src.experience.models.ExperienceResponse;
@@ -19,7 +21,9 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
     private int mExperienceNo, mIsSave;
 
     private ViewPager mVpExperienceImages;
-    private TextView mTvCategory, mTvTitle, mTvEvaluation, mTvJuso;
+    private TextView mTvCategory, mTvTitle, mTvEvaluation, mTvJuso, mTvPlaytime,
+            mTvPersonnel, mTvInclusion, mTvOffLanguage, mTvProgram, mTvHostName, mTvHostIntroduce;
+    private SimpleDraweeView mSvHostImage;
 
 
     private ExperienceResponse.Result mExperienceData;
@@ -46,6 +50,13 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
         mTvTitle = findViewById(R.id.tv_experience_title);
         mTvEvaluation = findViewById(R.id.tv_experience_evaluation);
         mTvJuso = findViewById(R.id.tv_experience_juso);
+        mTvPersonnel= findViewById(R.id.tv_experience_playtime);
+        mTvInclusion = findViewById(R.id.tv_experience_inclusion);
+        mTvOffLanguage = findViewById(R.id.tv_experience_offLanguage);
+        mTvProgram = findViewById(R.id.tv_experinece_program);
+        mTvHostName = findViewById(R.id.tv_experience_host_name);
+        mTvHostIntroduce = findViewById(R.id.tv_experience_host_introduce);
+        mSvHostImage = findViewById(R.id.sv_experience_host_img);
 
     }
 
@@ -56,9 +67,16 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
         ExperienceResponse.Info experienceDataInfo = mExperienceData.getInfo();
         mTvCategory.setText(experienceDataInfo.getCategory());
         mTvTitle.setText(experienceDataInfo.getTitle());
-        mTvEvaluation.setText(experienceDataInfo.getEvaluation());
+        mTvEvaluation.setText("★"+experienceDataInfo.getEvaluation());
         mTvJuso.setText(experienceDataInfo.getJuso());
-
+        mTvPersonnel.setText(experienceDataInfo.getPlaytime());
+        mTvPersonnel.setText(experienceDataInfo.getPersonnel());
+        mTvInclusion.setText(experienceDataInfo.getInclusion());
+        mTvOffLanguage.setText(experienceDataInfo.getOfferLanguage());
+        mTvProgram.setText(experienceDataInfo.getProgram());
+        mTvHostName.setText(experienceDataInfo.getHostName());
+        mTvHostIntroduce.setText(experienceDataInfo.getHostIntroduce());
+        mSvHostImage.setImageURI(Uri.parse(experienceDataInfo.getHostImage()));
     }
 
     void tryGetExperienceInfo(int experienceNo){
