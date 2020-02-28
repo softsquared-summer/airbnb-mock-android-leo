@@ -16,6 +16,8 @@ import com.shinplest.airbnbclone.src.housereview.models.HouseReviewResponse;
 
 import java.util.ArrayList;
 
+import static android.view.View.GONE;
+
 public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.MyViewHolder> {
 
     private ArrayList<HouseReviewResponse.Review> mHouseReviewList;
@@ -28,6 +30,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView mTvGuestName, mTvDate, mTvContent, mTvHostReply;
         SimpleDraweeView mSvGuestImg;
+        View mViewLine;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -36,6 +39,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
             this.mTvContent = itemView.findViewById(R.id.tv_house_review_holder_review_content);
             this.mTvHostReply = itemView.findViewById(R.id.tv_house_review_holder_host_reply);
             this.mSvGuestImg = itemView.findViewById(R.id.sv_house_review_holder_guest_img);
+            this.mViewLine = itemView.findViewById(R.id.line_above_host_reply);
         }
     }
 
@@ -54,7 +58,13 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
         holder.mTvGuestName.setText(review.getGuestName());
         holder.mTvDate.setText(review.getDate());
         holder.mTvContent.setText(review.getReviewContent());
-        holder.mTvHostReply.setText(review.getHostReply());
+        //호스트 답변없으면 안써줌
+        if (review.getHostReply() == null) {
+            holder.mTvHostReply.setVisibility(GONE);
+            holder.mViewLine.setVisibility(GONE);
+        } else {
+            holder.mTvHostReply.setText(review.getHostReply());
+        }
     }
 
     @Override
