@@ -43,9 +43,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
+    implementation 'com.google.firebase:firebase-storage:16.0.5'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.facebook.fresco:fresco:2.1.0'
     implementation 'com.github.yongbeam:AirCalendar:1.2.1'
     implementation 'com.github.takusemba:multisnaprecyclerview:2.0.2'
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+    implementation 'gun0912.ted:tedpermission:2.2.3'
 }
