@@ -1,12 +1,10 @@
 package com.shinplest.airbnbclone.src.housereview.interfaces;
 
+
 import com.shinplest.airbnbclone.src.housereview.models.HouseReviewResponse;
 
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-
 public interface HouseReviewActivityView {
-    @GET("/houses/{houseNo}/review")
-    Call<HouseReviewResponse> getHouseReviews(@Path("houseNo") int houseNo);
+    void getHouseReviewSuccess(HouseReviewResponse.Result houseReviewData, int code, String message);
+
+    void getHouseReviewFailure(String message);
 }
