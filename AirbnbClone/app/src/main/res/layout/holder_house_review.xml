@@ -10,6 +10,7 @@
         android:layout_height="wrap_content">
 
         <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sv_house_review_holder_guest_img"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:roundAsCircle="true"/>

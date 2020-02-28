@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.housereview;
 
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.housereview.models.HouseReviewResponse;
 
@@ -25,6 +27,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView mTvGuestName, mTvDate, mTvContent, mTvHostReply;
+        SimpleDraweeView mSvGuestImg;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -32,6 +35,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
             this.mTvDate = itemView.findViewById(R.id.tv_house_review_holder_date);
             this.mTvContent = itemView.findViewById(R.id.tv_house_review_holder_review_content);
             this.mTvHostReply = itemView.findViewById(R.id.tv_house_review_holder_host_reply);
+            this.mSvGuestImg = itemView.findViewById(R.id.sv_house_review_holder_guest_img);
         }
     }
 
@@ -46,8 +50,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final HouseReviewResponse.Review review = mHouseReviewList.get(position);
-
-        Log.d("test", "onBindViewHolder: "+review.getGuestName());
+        holder.mSvGuestImg.setImageURI(Uri.parse(review.getGuestImg()));
         holder.mTvGuestName.setText(review.getGuestName());
         holder.mTvDate.setText(review.getDate());
         holder.mTvContent.setText(review.getReviewContent());
