@@ -1,4 +1,4 @@
-package com.shinplest.airbnbclone.src.search.adapters;
+package com.shinplest.airbnbclone.src.experience;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,13 +14,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
-public class SearchHouseViewPageAdatper extends PagerAdapter {
+public class ExperienceViewPageAdatper extends PagerAdapter {
 
     Context context;
     String urls[];
     LayoutInflater layoutInflater;
 
-    public SearchHouseViewPageAdatper(Context context, String[] urls) {
+    public ExperienceViewPageAdatper(Context context, String[] urls) {
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -38,7 +38,7 @@ public class SearchHouseViewPageAdatper extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = layoutInflater.inflate(R.layout.house_viewpager_item, container, false);
+        View itemView = layoutInflater.inflate(R.layout.experience_viewpager_item, container, false);
 
         SimpleDraweeView simpleDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.sv_house);
         simpleDraweeView.setImageURI(Uri.parse(urls[position]));

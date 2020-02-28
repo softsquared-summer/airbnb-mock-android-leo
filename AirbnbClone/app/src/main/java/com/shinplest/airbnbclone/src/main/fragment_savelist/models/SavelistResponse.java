@@ -1,10 +1,10 @@
-package com.shinplest.airbnbclone.src.search.models;
+package com.shinplest.airbnbclone.src.main.fragment_savelist.models;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class SimpleHouseInfoResponse {
+public class SavelistResponse {
     @SerializedName("result")
     private ArrayList<Result> result;
 
@@ -33,35 +33,33 @@ public class SimpleHouseInfoResponse {
         return isSuccess;
     }
 
-    public class Result{
+    public class Result {
         @SerializedName("houseNo")
         private int houseNo;
 
         @SerializedName("houseInfo")
         private String houseInfo;
 
+        @SerializedName("message")
+        private String message;
+
         @SerializedName("starAvg")
         private String starAvg;
 
         @SerializedName("reviewCnt")
-        private int reviewCnt;
+        private String reviewCnt;
 
         @SerializedName("houseName")
-        private String  houseName;
+        private String houseName;
 
-        @SerializedName("houseImages")
-        private String houseImages;
+        @SerializedName("housePrice")
+        private String housePrice;
+
+        @SerializedName("images")
+        private String images;
 
         @SerializedName("isSave")
         private int isSave;
-
-        public void setIsSave(int isSave) {
-            this.isSave = isSave;
-        }
-
-        public int getIsSave() {
-            return isSave;
-        }
 
         public int getHouseNo() {
             return houseNo;
@@ -71,11 +69,15 @@ public class SimpleHouseInfoResponse {
             return houseInfo;
         }
 
+        public String getMessage() {
+            return message;
+        }
+
         public String getStarAvg() {
             return starAvg;
         }
 
-        public int getReviewCnt() {
+        public String getReviewCnt() {
             return reviewCnt;
         }
 
@@ -83,8 +85,18 @@ public class SimpleHouseInfoResponse {
             return houseName;
         }
 
-        public String getHouseImages() {
-            return houseImages;
+        public String getHousePrice() {
+            return housePrice;
+        }
+
+        public String getImages() {
+            return images;
+        }
+
+        public int getIsSave() {
+            return isSave;
         }
     }
+
+
 }

@@ -145,15 +145,17 @@
                     <TextView
                         style="@style/FragSearchTitleText"
                         android:text="최고 평점의 체험" />
+                    <TextView
+                        style="@style/FragSearchBasicText"
+                        android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:id="@+id/rv_frag_search_experience"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
-                    <TextView
-                        style="@style/FragSearchBasicText"
-                        android:text="현지 호스트가 진행하는 다양하고 재미있는 활동을 예약해보세요" />
 
 
                     <TextView

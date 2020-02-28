@@ -23,15 +23,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     private int mHouseNo, mIsSave;
     private ViewPager mVpHouseImages;
     private HouseResponse.Result mHouseData;
-
-
-    //테스트용
-    String url[] = {"https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg",
-            "https://pds.joins.com/news/component/htmlphoto_mmdata/201906/05/htm_20190605181513963994.jpg"};
-
+    private String[] houseDataImages;
     ///ui
     private SimpleDraweeView mSvHouseHostProfile;
     private TextView mTvHouseTypeFirst, mTvHouseTitle, mTvHouseLocation,
@@ -53,20 +45,21 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mIsSave = extras.getInt("isSave");
         tryGetHouseInfo();
 
-        mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, url));
     }
 
     private void updateUi() {
         //저장여부
-        if(mIsSave == 0){
+        if (mIsSave == 0) {
             mIvIsSave.setImageResource(R.drawable.house_save);
-        }else
+        } else
             mIvIsSave.setImageResource(R.drawable.house_saved);
-
         //이미지
-        ArrayList<HouseResponse.Image> houseDataImages = mHouseData.getImages();
+        houseDataImages = mHouseData.getImage().getImageUrl().split(",");
+        mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, houseDataImages));
+
+
         HouseResponse.Info houseDataInfo = mHouseData.getInfo();
-        ArrayList<HouseResponse.Facility> houseDataFacilities= mHouseData.getFacilities();
+        ArrayList<HouseResponse.Facility> houseDataFacilities = mHouseData.getFacilities();
         mSvHouseHostProfile.setImageURI(Uri.parse(houseDataInfo.getHostImage()));
         mTvHouseTypeFirst.setText(houseDataInfo.getHouseType());
         mTvHouseTitle.setText(houseDataInfo.getHouseTitle());
@@ -76,18 +69,18 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mTvHouseMinimumStay.setText(houseDataInfo.getMinimumStay());
 
         //편의시설 크기만큼 랜덤으로 부여 해줌 -> 편의시설 6개만 랜럼으로 추출해서 보여주기 위함
-        int random = (int)(Math.random()*houseDataFacilities.size());
+        int random = (int) (Math.random() * houseDataFacilities.size());
         //범위밖으로 나가면
-        if(random+6 > houseDataFacilities.size()){
+        if (random + 6 > houseDataFacilities.size()) {
             random -= houseDataFacilities.size();
             random += 6;
         }
         mTvHouseFacilty1.setText(houseDataFacilities.get(random).getFacilitisename());
-        mTvHouseFacilty2.setText(houseDataFacilities.get(random+1).getFacilitisename());
-        mTvHouseFacilty3.setText(houseDataFacilities.get(random+2).getFacilitisename());
-        mTvHouseFacilty4.setText(houseDataFacilities.get(random+3).getFacilitisename());
-        mTvHouseFacilty5.setText(houseDataFacilities.get(random+4).getFacilitisename());
-        mTvHouseFacilty6.setText(houseDataFacilities.get(random+5).getFacilitisename());
+        mTvHouseFacilty2.setText(houseDataFacilities.get(random + 1).getFacilitisename());
+        mTvHouseFacilty3.setText(houseDataFacilities.get(random + 2).getFacilitisename());
+        mTvHouseFacilty4.setText(houseDataFacilities.get(random + 3).getFacilitisename());
+        mTvHouseFacilty5.setText(houseDataFacilities.get(random + 4).getFacilitisename());
+        mTvHouseFacilty6.setText(houseDataFacilities.get(random + 5).getFacilitisename());
 
         mTvHouseCheckIn.setText(houseDataInfo.getCheckIn());
         mTvHouseCheckOut.setText(houseDataInfo.getCheckOut());

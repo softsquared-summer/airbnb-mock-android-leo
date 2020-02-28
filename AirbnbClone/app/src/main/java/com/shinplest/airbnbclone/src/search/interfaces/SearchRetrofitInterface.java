@@ -9,6 +9,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -26,6 +27,10 @@ public interface SearchRetrofitInterface{
     //숙소 저장하는 API
     @POST("/users/{userNo}/saveList")
     Call<DefaultResponse> postHouseSave(@Path("userNo") int userNo, @Body RequestSaveHouse requestSaveHouse);
+
+    //숙소 삭제하는 API
+    @DELETE("/users/{userNo}/saveList")
+    Call<DefaultResponse> deleteSavedHouse(@Path("userNo") int userNo, @Query("houseNo") int houseNo);
 
 }
 

@@ -19,7 +19,7 @@ public class HouseService {
         this.mHouseActivityView = houseActivityView;
     }
 
-    void getHouseinfo(final int houseNo){
+    void getHouseinfo(int houseNo){
         final HouseRetrofitInterface houseRetrofitInterface = getRetrofit().create(HouseRetrofitInterface.class);
         houseRetrofitInterface.getHouseInfo(houseNo).enqueue(new Callback<HouseResponse>() {
             @Override
@@ -33,7 +33,7 @@ public class HouseService {
             @Override
             public void onFailure(Call<HouseResponse> call, Throwable t) {
                 Log.d("testtesttest", call.request().url().toString());
-                Log.d("testtesttest","fail");
+                mHouseActivityView.getHouseFailure(null);
             }
         });
 

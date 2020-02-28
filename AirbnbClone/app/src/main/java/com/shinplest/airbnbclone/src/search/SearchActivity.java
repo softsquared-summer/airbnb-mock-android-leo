@@ -88,16 +88,18 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
             }
 
+            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchWord = s.toString();
+                tryGetExistLocation(searchWord);
+                mSearchHouseAdapter.notifyDataSetChanged();
 
             }
 
-            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void afterTextChanged(Editable s) {
-                String searchWord = s.toString();
-                tryGetExistLocation(searchWord);
+
             }
         });
 
@@ -171,6 +173,12 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         searchService.postSaveHouse(userNo, houseNo);
     }
 
+    @Override
+    public void tryDeleteSavedHouse(int userNo, int houseNo) {
+        final SearchService searchService = new SearchService(this);
+        showProgressDialog();
+        searchService.deleteSavedHouse(userNo, houseNo);
+    }
 
 
     //로케이션을 받아오면 로케이션 arraylist를 저장
@@ -220,6 +228,19 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     @Override
     public void saveHouseFailure() {
+
+    }
+
+    @Override
+    public void deleteSavedHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장목록에서 삭제 되었습니다.");
+        }
+    }
+
+    @Override
+    public void deleteSavedHouseFailure() {
 
     }
 

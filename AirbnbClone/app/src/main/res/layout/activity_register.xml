@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="30dp"
     android:background="@color/colorPrimary">
 
     <LinearLayout
@@ -52,9 +53,11 @@
 
         <EditText
             android:id="@+id/et_register_password"
-            style="@style/RegisterEditText" />
+            style="@style/RegisterEditText"
+            android:inputType="textPassword"/>
 
         <Button
+            android:layout_marginBottom="50dp"
             android:id="@+id/btn_register_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

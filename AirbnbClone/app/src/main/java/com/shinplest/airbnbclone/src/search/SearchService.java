@@ -93,6 +93,22 @@ public class SearchService {
 
             }
         });
+    }
 
+    void deleteSavedHouse(int userNo, int houseNo){
+        final SearchRetrofitInterface searchRetrofitInterface = getRetrofit().create(SearchRetrofitInterface.class);
+        Call<DefaultResponse> call = searchRetrofitInterface.deleteSavedHouse(userNo, houseNo);
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse =response.body();
+                mSearchActivityView.deleteSavedHouseSuccess(defaultResponse.getCode(), defaultResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

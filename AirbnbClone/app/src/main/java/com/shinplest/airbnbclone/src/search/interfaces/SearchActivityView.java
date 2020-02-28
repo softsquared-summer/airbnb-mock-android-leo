@@ -1,8 +1,8 @@
 package com.shinplest.airbnbclone.src.search.interfaces;
 
-        import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
+import com.shinplest.airbnbclone.src.search.models.SimpleHouseInfoResponse;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public interface SearchActivityView {
     void searchSuccess(ArrayList<String> existLocationList, String code, String message);
@@ -17,6 +17,12 @@ public interface SearchActivityView {
 
     void saveHouseFailure();
 
+    void deleteSavedHouseSuccess(int code, String message);
+
+    void deleteSavedHouseFailure();
+
     void tryPostSaveHouse(int userNo, int houseNo);
+
+    void tryDeleteSavedHouse(int userNo, int houseNo);
 
 }
