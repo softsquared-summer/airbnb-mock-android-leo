@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.housereview;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,6 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
-
         TextView mTvGuestName, mTvDate, mTvContent, mTvHostReply;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -34,7 +33,6 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
             this.mTvContent = itemView.findViewById(R.id.tv_house_review_holder_review_content);
             this.mTvHostReply = itemView.findViewById(R.id.tv_house_review_holder_host_reply);
         }
-
     }
 
     @NonNull
@@ -42,7 +40,6 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View holdervView = LayoutInflater.from(parent.getContext()).inflate(R.layout.holder_house_review, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(holdervView);
-
         return myViewHolder;
     }
 
@@ -50,6 +47,7 @@ public class HouseReviewAdapter extends RecyclerView.Adapter<HouseReviewAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final HouseReviewResponse.Review review = mHouseReviewList.get(position);
 
+        Log.d("test", "onBindViewHolder: "+review.getGuestName());
         holder.mTvGuestName.setText(review.getGuestName());
         holder.mTvDate.setText(review.getDate());
         holder.mTvContent.setText(review.getReviewContent());

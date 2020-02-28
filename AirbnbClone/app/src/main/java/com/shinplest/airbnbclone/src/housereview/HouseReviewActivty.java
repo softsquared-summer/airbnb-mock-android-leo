@@ -31,9 +31,11 @@ public class HouseReviewActivty extends BaseActivity implements HouseReviewActiv
         mHouseNo = getIntent().getIntExtra("houseNo", 1);
 
 
+        mHouseReviewList = new ArrayList<>();
         mRvHouseReviews.setHasFixedSize(true);
         mRvHouseReviews.setLayoutManager(new LinearLayoutManager(this));
         mHouseReviewAdapter = new HouseReviewAdapter(mHouseReviewList);
+        mRvHouseReviews.setAdapter(mHouseReviewAdapter);
 
         tryGetHouseReviewData(mHouseNo);
     }
@@ -52,16 +54,15 @@ public class HouseReviewActivty extends BaseActivity implements HouseReviewActiv
         houseReviewService.getHouseReviews(houseNo);
     }
 
-
-
     @Override
     public void getHouseReviewSuccess(HouseReviewResponse.Result houseReviewData, int code, String message) {
         hideProgressDialog();
         if (code == 100){
             showCustomToast("하우스 리뷰 가져오기 성공");
             mHouseReviewData = houseReviewData;
-            mHouseReviewList = houseReviewData.getReviews();
-            Log.d("hello", "getHouseReviewSuccess: "+mHouseReviewList.get(0).getHostReply());
+
+            mHouseReviewList.addAll(houseReviewData.getReviews());
+            Log.d("hello", "getHouseReviewSuccess: "+mHouseReviewList.get(0).getGuestName());
             updateUi();
         }
     }
