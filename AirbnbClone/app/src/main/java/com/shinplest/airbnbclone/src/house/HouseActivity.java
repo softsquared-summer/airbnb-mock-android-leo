@@ -3,7 +3,9 @@ package com.shinplest.airbnbclone.src.house;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
+import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             mTvHouseFacilty2, mTvHouseFacilty3, mTvHouseFacilty4, mTvHouseFacilty5,
             mTvHouseFacilty6, mTvHouseCheckIn, mTvHouseCheckOut;
     private ImageView mIvIsSave;
+    private LinearLayout mLlMoreHouseReview;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,12 +42,20 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         setContentView(R.layout.activity_house);
         getUiSourse();
 
-
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         mHouseNo = extras.getInt("houseNo");
         mIsSave = extras.getInt("isSave");
         tryGetHouseInfo();
+
+        //onclidk
+        mLlMoreHouseReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HouseActivity.this, HouseReviewActivty.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -106,6 +118,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
         mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
         mIvIsSave = findViewById(R.id.iv_house_save);
+        mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
     }
 
     void tryGetHouseInfo() {

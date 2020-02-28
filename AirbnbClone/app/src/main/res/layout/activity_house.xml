@@ -533,6 +533,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_house_more_house_review"
                         android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
