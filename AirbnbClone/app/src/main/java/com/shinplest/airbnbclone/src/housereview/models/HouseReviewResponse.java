@@ -34,11 +34,11 @@ public class HouseReviewResponse {
     }
 
     public class Result {
-        @SerializedName("reviews")
-        private ArrayList<Review> reviews;
-
         @SerializedName("evaluation")
         private Evaluation evaluation;
+
+        @SerializedName("reviews")
+        private ArrayList<Review> reviews;
 
         public ArrayList<Review> getReviews() {
             return reviews;

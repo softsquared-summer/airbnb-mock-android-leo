@@ -53,6 +53,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HouseActivity.this, HouseReviewActivty.class);
+                intent.putExtra("houseNo", mHouseNo);
                 startActivity(intent);
             }
         });
