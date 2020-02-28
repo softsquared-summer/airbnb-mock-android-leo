@@ -7,15 +7,23 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shinplest.airbnbclone.R;
+import com.shinplest.airbnbclone.src.general.BaseFragment;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.interfaces.SavelistFragmentView;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.models.SavelistResponse;
 
-public class SavelistFragment extends Fragment {
+import java.util.ArrayList;
+
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
+
+public class SavelistFragment extends BaseFragment implements SavelistFragmentView {
 
     private RecyclerView mRvSavelist;
+    private SavelistAdapter mSaveListAdapter;
+    private ArrayList<SavelistResponse.Result> mSavedHouseList;
 
     public SavelistFragment() {
     }
@@ -24,20 +32,39 @@ public class SavelistFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_savelist, container, false);
-
+        //getUiSource
         mRvSavelist = view.findViewById(R.id.rv_frag_savelist);
+        //네트워크 통신
+        tryGetSavedHouseList(USER_NO);
+        //RecyclerView 초기화
         mRvSavelist.setHasFixedSize(true);
         mRvSavelist.setLayoutManager(new LinearLayoutManager(getActivity()));
-        String[] roomPhotoUrlSet = {"https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG",
-                "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG",
-                "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG",
-                "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG",
-                "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG",
-                "https://t4.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/76Cz/image/LVlkZ5olVzCMIaEb7DqwmmE1Nxc.JPG"};
-        String[] locationSet = {"한국", "신주쿠, Shinjuku City, 일본", "한국", "신주쿠, Shinjuku City, 일본", "한국", "신주쿠, Shinjuku City, 일본"};
-        int[] roomsSet = {1, 2, 1, 2, 1, 2};
-        mRvSavelist.setAdapter(new SavelistAdapter(roomPhotoUrlSet, locationSet, roomsSet));
+        mSavedHouseList = new ArrayList<>();
+        mSaveListAdapter = new SavelistAdapter(mSavedHouseList);
+        mRvSavelist.setAdapter(mSaveListAdapter);
 
         return view;
+    }
+
+    void tryGetSavedHouseList(int userNo){
+        final SavelistService savelistService = new SavelistService(this);
+        showProgressDialog();
+        savelistService.getSaveList(userNo);
+    }
+
+    @Override
+    public void getSavedHouseListSuccess(ArrayList<SavelistResponse.Result> savedHouseList, int code, String message) {
+        hideProgressDialog();
+        if(code == 100){
+            mSavedHouseList.clear();
+            mSavedHouseList.addAll(savedHouseList);
+            mSaveListAdapter.notifyDataSetChanged();
+        }
+        showCustomToastFrag(message);
+    }
+
+    @Override
+    public void getSavedHouseListFailure(String message) {
+
     }
 }

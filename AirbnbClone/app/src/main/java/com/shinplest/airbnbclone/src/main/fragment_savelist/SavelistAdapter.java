@@ -10,29 +10,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
+import com.shinplest.airbnbclone.src.main.fragment_savelist.models.SavelistResponse;
 
-public class SavelistAdapter extends RecyclerView.Adapter <SavelistAdapter.SavelistViewHolder> {
+import java.util.ArrayList;
 
-    private String[] mRoomPhotoUrlSet;
-    private String[] mLocationSet;
-    private int[] mRoomsSet;
+public class SavelistAdapter extends RecyclerView.Adapter<SavelistAdapter.SavelistViewHolder> {
 
-    public SavelistAdapter(String[] mRoomPhotoUrlSet, String[] mLocationSet, int[] mRoomsSet) {
-        this.mRoomPhotoUrlSet = mRoomPhotoUrlSet;
-        this.mLocationSet = mLocationSet;
-        this.mRoomsSet = mRoomsSet;
+    private ArrayList<SavelistResponse.Result> mSavedHouseList;
+
+    public SavelistAdapter(ArrayList<SavelistResponse.Result> savedHouseList) {
+        this.mSavedHouseList = savedHouseList;
     }
 
-    public static class SavelistViewHolder extends RecyclerView.ViewHolder{
-        private SimpleDraweeView simpleDraweeView;
-        private TextView tvLocation;
-        private TextView tvRooms;
+    public static class SavelistViewHolder extends RecyclerView.ViewHolder {
+        private SimpleDraweeView mSimpleDraweeView;
+        private TextView mTvHouseInfo, mTvHouseName, mTvHousePrice, mTvStarAvg, mTvReviewCnt;
 
         public SavelistViewHolder(@NonNull View view) {
             super(view);
-            this.simpleDraweeView = view.findViewById(R.id.sv_frag_savelist_room_photo);
-            this.tvLocation = view.findViewById(R.id.tv_frag_savelist_location);
-            this.tvRooms = view.findViewById(R.id.tv_frag_savelist_rooms);
+            this.mSimpleDraweeView = view.findViewById(R.id.sv_frag_savelist_room_photo);
+            this.mTvHouseInfo = view.findViewById(R.id.tv_frag_savelist_house_info);
+            this.mTvHouseName = view.findViewById(R.id.tv_frag_savelist_house_name);
+            this.mTvHousePrice = view.findViewById(R.id.tv_frag_savelist_house_price);
+            this.mTvStarAvg = view.findViewById(R.id.tv_frag_savelist_house_star_avg);
+            this.mTvReviewCnt = view.findViewById(R.id.tv_frag_savelist_house_review_cnt);
         }
     }
 
@@ -47,14 +48,18 @@ public class SavelistAdapter extends RecyclerView.Adapter <SavelistAdapter.Savel
 
     @Override
     public void onBindViewHolder(@NonNull SavelistViewHolder holder, int position) {
-        holder.simpleDraweeView.setImageURI(this.mRoomPhotoUrlSet[position]);
-        holder.tvLocation.setText(this.mLocationSet[position]);
-        holder.tvRooms.setText("숙소"+this.mRoomsSet[position]+"개");
+        SavelistResponse.Result savedHouse =  mSavedHouseList.get(position);
+        //holder.simpleDraweeView.setImageURI(this.mRoomPhotoUrlSet[position]);
+        holder.mTvHouseInfo.setText(savedHouse.getHouseInfo());
+        holder.mTvHouseName.setText(savedHouse.getHouseName());
+        holder.mTvHousePrice.setText(savedHouse.getHousePrice());
+        holder.mTvStarAvg.setText(savedHouse.getStarAvg());
+        holder.mTvReviewCnt.setText(savedHouse.getReviewCnt());
     }
 
     @Override
     public int getItemCount() {
-        return mRoomPhotoUrlSet.length;
+        return mSavedHouseList.size();
     }
 
 
