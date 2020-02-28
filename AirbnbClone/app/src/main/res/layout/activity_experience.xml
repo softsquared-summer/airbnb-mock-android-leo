@@ -1,48 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="3"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="요금을 확인하려면 날짜를 입력하세요" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="★ 4.78"
-                android:textColor="@color/clickableText" />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="2"
-            android:background="@drawable/shape_login_btn_clickable"
-            android:text="날짜 입력" />
-    </LinearLayout>
-
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +21,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_experience"
                     android:layout_width="match_parent"
-                    android:layout_height="450dp" />
+                    android:layout_height="460dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -114,8 +79,10 @@
                             android:id="@+id/tv_experience_category"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="식재료 채집"
-                            android:textColor="@color/colorPrimary" />
+                            android:layout_marginTop="30dp"
+                            android:text="나이트 라이프"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/tv_experience_title"
@@ -152,83 +119,36 @@
                         </LinearLayout>
 
                         <View
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
                             android:background="@color/splitColor"
                             android:elevation="2dp" />
 
-                      <LinearLayout
-                          android:layout_marginTop="20dp"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content">
-
-                          <LinearLayout
-                              android:layout_width="0dp"
-                              android:layout_height="wrap_content"
-                              android:layout_weight="1"
-                              android:orientation="vertical">
-                              <ImageView
-                                  android:layout_width="18dp"
-                                  android:layout_height="18dp"
-                                  android:src="@drawable/experience_playtime"/>
-                              <TextView
-                                 style="@style/ExperienceGrayText"
-                                  android:text="진행시간"
-                                  android:textColor="@color/colorPrimary"/>
-
-                              <TextView
-                                  style="@style/ExperienceBasicWhiteText"
-                                  android:text="6시간"/>
-
-                          </LinearLayout>
-
-
-                          <LinearLayout
-                              android:layout_width="0dp"
-                              android:layout_height="wrap_content"
-                              android:layout_weight="1"
-                              android:orientation="vertical">
-                              <ImageView
-                                  android:layout_width="18dp"
-                                  android:layout_height="18dp"
-                                  android:src="@drawable/experience_playtime"/>
-                              <TextView
-                                  style="@style/ExperienceGrayText"
-                                  android:text="진행시간"
-                                  android:textColor="@color/colorPrimary"/>
-
-                              <TextView
-                                  style="@style/ExperienceBasicWhiteText"
-                                  android:text="6시간"/>
-
-                          </LinearLayout>
-
-
-                      </LinearLayout>
-
                         <LinearLayout
-                            android:layout_marginTop="20dp"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
 
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
+
                                 <ImageView
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
-                                    android:src="@drawable/experience_playtime"/>
+                                    android:src="@drawable/experience_playtime" />
+
                                 <TextView
                                     style="@style/ExperienceGrayText"
                                     android:text="진행시간"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/colorPrimary" />
 
                                 <TextView
                                     style="@style/ExperienceBasicWhiteText"
-                                    android:text="6시간"/>
+                                    android:text="6시간" />
 
                             </LinearLayout>
 
@@ -238,18 +158,73 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:orientation="vertical">
+
                                 <ImageView
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
-                                    android:src="@drawable/experience_playtime"/>
+                                    android:src="@drawable/experience_playtime" />
+
                                 <TextView
                                     style="@style/ExperienceGrayText"
                                     android:text="진행시간"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/colorPrimary" />
 
                                 <TextView
                                     style="@style/ExperienceBasicWhiteText"
-                                    android:text="6시간"/>
+                                    android:text="6시간" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/experience_playtime" />
+
+                                <TextView
+                                    style="@style/ExperienceGrayText"
+                                    android:text="진행시간"
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    style="@style/ExperienceBasicWhiteText"
+                                    android:text="6시간" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:src="@drawable/experience_playtime" />
+
+                                <TextView
+                                    style="@style/ExperienceGrayText"
+                                    android:text="진행시간"
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    style="@style/ExperienceBasicWhiteText"
+                                    android:text="6시간" />
 
                             </LinearLayout>
 
@@ -264,21 +239,72 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/ExperienceTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="프로그램"></TextView>
+                    android:text="프로그램" />
+
+
+                <TextView
+                    style="@style/ExperienceBasicText"
+                    android:maxLines="10"
+                    android:text="프로그램입니다" />
+
+
+                <TextView
+                    style="@style/ExperienceTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="10"
+                    android:text="호스트" />
 
             </LinearLayout>
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="요금을 확인하려면 날짜를 입력하세요" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="★ 4.78"
+                android:textColor="@color/clickableText" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="2"
+            android:background="@drawable/shape_login_btn_clickable"
+            android:text="날짜 입력" />
+    </LinearLayout>
 
 
 </RelativeLayout>

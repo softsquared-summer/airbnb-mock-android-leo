@@ -28,6 +28,7 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.ExperienceTheme);
         setContentView(R.layout.activity_experience);
         getUiSourse();
 
