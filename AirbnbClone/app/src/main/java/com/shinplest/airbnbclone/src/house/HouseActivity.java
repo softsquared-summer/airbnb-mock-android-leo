@@ -18,8 +18,10 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
+import com.shinplest.airbnbclone.src.house.models.RequestReserve;
 import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
 import java.util.ArrayList;
@@ -46,6 +48,7 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     private Button mBtnReserve;
 
     private ArrayList<String> mArrayUnavailable;
+    private RequestReserve mRequestReserve;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,6 +105,26 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             }
         });
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == GET_DATE) {
+            if (data != null) {
+                String startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
+                String endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
+                showCustomToast("Select Date range : \n" +  startDate+ "~" + endDate);
+                RequestReserve requestReserve = new RequestReserve();
+                requestReserve.setUserNo(USER_NO);
+                requestReserve.setCheckIn(startDate);
+                requestReserve.setCheckOut(endDate);
+                requestReserve.setGuestCnt(2);
+                requestReserve.setTotalPrice(40000);
+                tryPostReserve(mHouseNo,requestReserve);
+            }
+        }
     }
 
     private void getUiSourse() {
@@ -200,12 +223,17 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         houseService.deleteSavedHouse(userNo, houseNo);
     }
 
-    void tryGetHouseReservationDate(){
+    void tryGetHouseReservationDate() {
         final HouseService houseService = new HouseService(this);
         showProgressDialog();
         houseService.getHouseReservationDate(mHouseNo);
     }
 
+    void tryPostReserve(int houseNo, RequestReserve requestReserve){
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        houseService.postHouseReserve(houseNo, requestReserve);
+    }
     @Override
     public void getHouseSuccess(HouseResponse.Result houseResponseResult, int code, String message) {
         hideProgressDialog();
@@ -253,10 +281,10 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     //예약 불가능 날짜 가져오기
     @Override
     public void getReservationDateSuccess(String result, int code, String message) {
-        if (code == 100){
+        if (code == 100) {
             String[] unAvailavbleDateList = result.split(",");
-            Log.d("hello", "getReservationDateSuccess: "+unAvailavbleDateList[0]);
-            ArrayList<String> unAvailavbleDateArray= new ArrayList<>(Arrays.asList(unAvailavbleDateList));
+            Log.d("hello", "getReservationDateSuccess: " + unAvailavbleDateList[0]);
+            ArrayList<String> unAvailavbleDateArray = new ArrayList<>(Arrays.asList(unAvailavbleDateList));
             mArrayUnavailable = unAvailavbleDateArray;
         }
     }
@@ -268,4 +296,19 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         hideProgressDialog();
         showCustomToast("실패");
     }
+
+    @Override
+    public void postReserveSuccess(int code, String message) {
+        hideProgressDialog();
+        showCustomToast(message);
+    }
+
+    @Override
+    public void postReserveFailure(String message) {
+        Log.d("testest", "getReservationDateSuccess: 실패");
+        hideProgressDialog();
+        showCustomToast("실패");
+    }
+
+
 }
