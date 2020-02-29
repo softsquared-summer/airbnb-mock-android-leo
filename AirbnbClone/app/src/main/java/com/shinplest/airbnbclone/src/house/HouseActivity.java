@@ -3,6 +3,7 @@ package com.shinplest.airbnbclone.src.house;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,11 +22,9 @@ import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
@@ -46,6 +45,8 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
     private LinearLayout mLlMoreHouseReview;
     private Button mBtnReserve;
 
+    private ArrayList<String> mArrayUnavailable;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,8 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         mHouseNo = extras.getInt("houseNo");
         mIsSave = extras.getInt("isSave");
         tryGetHouseInfo();
+        //항상 예약가능한 날짜 가져와줌
+        tryGetHouseReservationDate();
 
         //onclidk
         mIvIsSave.setOnClickListener(new View.OnClickListener() {
@@ -171,11 +174,8 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         intent.setResetBtnText("삭제"); //the reset button text
         intent.setWeekStart(Calendar.MONDAY);
         intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
-
-        String result = "2020-02-29,2020-03-03,2020-03-04,2020-03-05,2020-03-09,2020-03-10";
-        String[] results = result.split(",");
-        ArrayList<String> resultss = new ArrayList<>(Arrays.asList(results));
-        intent.setBookingDateArray(resultss);
+        intent.setBookingDateArray(mArrayUnavailable);
+        intent.isBooking(true);
         startActivityForResult(intent, GET_DATE);
     }
 
@@ -198,6 +198,12 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         showProgressDialog();
         ;
         houseService.deleteSavedHouse(userNo, houseNo);
+    }
+
+    void tryGetHouseReservationDate(){
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        houseService.getHouseReservationDate(mHouseNo);
     }
 
     @Override
@@ -240,6 +246,25 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     @Override
     public void deleteHouseFailure(String message) {
+        hideProgressDialog();
+        showCustomToast("실패");
+    }
+
+    //예약 불가능 날짜 가져오기
+    @Override
+    public void getReservationDateSuccess(String result, int code, String message) {
+        if (code == 100){
+            String[] unAvailavbleDateList = result.split(",");
+            Log.d("hello", "getReservationDateSuccess: "+unAvailavbleDateList[0]);
+            ArrayList<String> unAvailavbleDateArray= new ArrayList<>(Arrays.asList(unAvailavbleDateList));
+            mArrayUnavailable = unAvailavbleDateArray;
+        }
+    }
+
+    @Override
+    public void getReservationDateFailure(String message) {
+        Log.d("testest", "getReservationDateSuccess: 실패");
+
         hideProgressDialog();
         showCustomToast("실패");
     }

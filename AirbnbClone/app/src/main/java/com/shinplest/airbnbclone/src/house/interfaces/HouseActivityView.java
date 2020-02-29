@@ -14,4 +14,8 @@ public interface HouseActivityView {
     void deleteHouseSuccess(int code, String message);
 
     void deleteHouseFailure(String message);
+
+    void getReservationDateSuccess(String result, int code, String message);
+
+    void getReservationDateFailure(String message);
 }

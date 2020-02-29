@@ -6,8 +6,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,7 +107,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="30dp"
                             android:background="@color/splitColor"
                             android:elevation="2dp" />
 
@@ -246,7 +245,7 @@
                 <TextView
                     android:id="@+id/tv_experinece_program"
                     style="@style/ExperienceBasicText"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:maxLines="10"
                     android:text="프로그램입니다"
                     android:textSize="15sp" />
@@ -264,7 +263,7 @@
                     android:id="@+id/sv_experience_host_img"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     app:roundAsCircle="true" />
 
                 <TextView
@@ -285,51 +284,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
+                android:layout_marginBottom="40dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/experience_verified"
-                android:layout_marginBottom="40dp"/>
+                android:src="@drawable/experience_verified" />
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="3"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="요금을 확인하려면 날짜를 입력하세요" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="★ 4.78"
-                android:textColor="@color/clickableText" />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="2"
-            android:background="@drawable/shape_login_btn_clickable"
-            android:text="날짜 입력" />
-    </LinearLayout>
 
 
 </RelativeLayout>
