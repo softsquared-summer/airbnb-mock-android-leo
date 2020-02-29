@@ -3,6 +3,7 @@ package com.shinplest.airbnbclone.src.house;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.interfaces.HouseRetrofitInterface;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
+import com.shinplest.airbnbclone.src.house.models.RequestReserve;
 import com.shinplest.airbnbclone.src.house.models.ReservationResponse;
 import com.shinplest.airbnbclone.src.main.models.DefaultResponse;
 import com.shinplest.airbnbclone.src.search.interfaces.SearchRetrofitInterface;
@@ -50,6 +51,22 @@ public class HouseService {
 
             @Override
             public void onFailure(Call<ReservationResponse> call, Throwable t) {
+                mHouseActivityView.getReservationDateFailure(null);
+            }
+        });
+    }
+
+    void postHouseReserve(int houseNo, RequestReserve requestReserve) {
+        final HouseRetrofitInterface houseRetrofitInterface = getRetrofit().create(HouseRetrofitInterface.class);
+        houseRetrofitInterface.postReserve(houseNo, requestReserve).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                mHouseActivityView.postReserveSuccess(defaultResponse.getCode(), defaultResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
                 mHouseActivityView.getReservationDateFailure(null);
             }
         });

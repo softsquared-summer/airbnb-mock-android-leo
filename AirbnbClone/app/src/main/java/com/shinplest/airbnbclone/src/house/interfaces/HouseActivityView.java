@@ -18,4 +18,8 @@ public interface HouseActivityView {
     void getReservationDateSuccess(String result, int code, String message);
 
     void getReservationDateFailure(String message);
+
+    void postReserveSuccess(int code, String message);
+
+    void postReserveFailure(String message);
 }
