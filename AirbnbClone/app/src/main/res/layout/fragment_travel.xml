@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -36,31 +37,33 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 android:src="@drawable/travel"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="예정 된 여행"/>
+                android:text="예정 된 여행"
+                android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_frag_travel_reserved_house"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="지난 여행"/>
-
-
-           <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="20dp"
+                android:text="예정 된 여행"
+                android:textSize="18sp" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_frag_travel_past_reserved_house"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
 
         </LinearLayout>

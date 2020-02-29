@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,8 @@ public class TravelFragment extends BaseFragment implements TravelFragmentView {
     private ReservedHouseAdapter mReservedHouseAdapter;
     private PastReservedHouseAdapter mPastReservedHouseAdapter;
 
+    private ImageView mIvNoTravel;
+
     public TravelFragment() {
     }
 
@@ -39,6 +42,7 @@ public class TravelFragment extends BaseFragment implements TravelFragmentView {
         //getUiSource;
         mRvReservedHouse = view.findViewById(R.id.rv_frag_travel_reserved_house);
         mRvPastReservedHouse = view.findViewById(R.id.rv_frag_travel_past_reserved_house);
+        mIvNoTravel = view.findViewById(R.id.iv_frag_travel_no_travel);
 
 
         mRvReservedHouse.setHasFixedSize(true);
@@ -74,6 +78,7 @@ public class TravelFragment extends BaseFragment implements TravelFragmentView {
         hideProgressDialog();
         if (code == 100) {
             //널이아닐때만 해줘야함 데이터가 있을경우만 널익셉션 해주자
+            mIvNoTravel.setVisibility(View.GONE);
             showCustomToastFrag(result.getReservationList().get(0).getName());
             mReservedHouseList.addAll(result.getReservationList());
             mPastReservedHouseList.addAll(result.getPastReservationList());

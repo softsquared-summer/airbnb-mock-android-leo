@@ -48,14 +48,14 @@ public class SavelistAdapter extends RecyclerView.Adapter<SavelistAdapter.Saveli
 
     @Override
     public void onBindViewHolder(@NonNull SavelistViewHolder holder, int position) {
-        SavelistResponse.Result savedHouse =  mSavedHouseList.get(position);
-        String [] houseImages = savedHouse.getImages().split(",");
+        SavelistResponse.Result savedHouse = mSavedHouseList.get(position);
+        String[] houseImages = savedHouse.getImages().split(",");
         holder.mSimpleDraweeView.setImageURI(houseImages[0]);
         holder.mTvHouseInfo.setText(savedHouse.getHouseInfo());
         holder.mTvHouseName.setText(savedHouse.getHouseName());
         holder.mTvHousePrice.setText(savedHouse.getHousePrice());
         holder.mTvStarAvg.setText(savedHouse.getStarAvg());
-        holder.mTvReviewCnt.setText(savedHouse.getReviewCnt());
+        holder.mTvReviewCnt.setText("(" + savedHouse.getReviewCnt() + ")");
     }
 
     @Override
