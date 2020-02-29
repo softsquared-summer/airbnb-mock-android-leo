@@ -2,7 +2,6 @@ package com.shinplest.airbnbclone.src.main.fragment_search;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,6 @@ import com.takusemba.multisnaprecyclerview.SnapGravity;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -133,7 +131,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mExperienceList = new ArrayList<SimpleExprerienceResponse.Result>();
         mExperienceAdapter = new ExperienceAdapter(mExperienceList, getContext());
         mRvExperience.setAdapter(mExperienceAdapter);
-        mRvExperience.addItemDecoration(new GridItemDecoration(10));
+        mRvExperience.addItemDecoration(new GridExperienceItemDecoration(10));
 
 
         //체험데이터 가져옴

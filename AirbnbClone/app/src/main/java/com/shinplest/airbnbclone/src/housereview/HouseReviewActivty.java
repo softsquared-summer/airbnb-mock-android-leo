@@ -1,7 +1,6 @@
 package com.shinplest.airbnbclone.src.housereview;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -73,7 +72,6 @@ public class HouseReviewActivty extends BaseActivity implements HouseReviewActiv
                 mRvHouseReviews.setVisibility(View.GONE);
                 showCustomToast("이 숙소는 리뷰가 아직 없습니다.");
             } else {
-                showCustomToast("하우스 리뷰 가져오기 성공");
                 mHouseReviewData = houseReviewData;
                 mHouseReviewList.addAll(houseReviewData.getReviews());
                 updateUi();

@@ -21,6 +21,7 @@ import com.shinplest.airbnbclone.src.house.models.HouseResponse;
 import com.shinplest.airbnbclone.src.house.models.RequestReserve;
 import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
@@ -159,6 +160,8 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         //이미지
         houseDataImages = mHouseData.getImage().getImageUrl().split(",");
         mVpHouseImages.setAdapter(new SearchHouseViewPageAdatper(this, houseDataImages));
+        WormDotsIndicator wormDotsIndicator = (WormDotsIndicator) findViewById(R.id.house_dots_indicator);
+        wormDotsIndicator.setViewPager(mVpHouseImages);
 
 
         HouseResponse.Info houseDataInfo = mHouseData.getInfo();

@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -60,10 +60,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="280dp" />
 
+                <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    android:id="@+id/house_dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    app:dotsColor="@color/colorPrimary"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="6dp"
+                    app:dotsSpacing="4dp"
+                    app:dotsStrokeColor="@color/colorPrimary"
+                    app:dotsStrokeWidth="2dp" />
+
                 <RelativeLayout
-                    android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp">
 
                     <ImageView
                         android:id="@+id/iv_house_back"
@@ -91,7 +106,7 @@
                         android:layout_marginRight="20dp"
                         android:src="@drawable/house_save" />
                 </RelativeLayout>
-            </RelativeLayout>
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/ll_house_container"
@@ -102,9 +117,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -232,8 +247,8 @@
                             android:text="house detail" />
 
                         <TextView
-                            android:layout_marginTop="5dp"
                             style="@style/HouseBasicText"
+                            android:layout_marginTop="5dp"
                             android:text="더 읽어보기"
                             android:textAlignment="textEnd"
                             android:textColor="@color/clickableText" />
@@ -536,9 +551,9 @@
 
                     <LinearLayout
                         android:id="@+id/ll_house_more_house_review"
-                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -546,17 +561,17 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="후기 429개 모두 읽기"
-                            android:textSize="16sp"
-                            android:textColor="@color/clickableText" />
+                            android:textColor="@color/clickableText"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp"
+                            android:layout_weight="1"
                             android:text="★★★★★"
-                            android:textColor="@color/clickableText" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/clickableText"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 

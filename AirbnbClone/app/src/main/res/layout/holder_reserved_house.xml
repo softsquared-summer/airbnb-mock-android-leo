@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/sv_holder_reserved_house_img"
+        android:layout_width="167dp"
+        android:layout_height="110dp"
+        app:roundedCornerRadius="5dp" />
+
+    <TextView
+        android:id="@+id/tv_holder_reserved_house_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:text="제목"/>
+
+    <TextView
+        android:id="@+id/tv_holder_reserved_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:text="일정"/>
+
+</LinearLayout>
