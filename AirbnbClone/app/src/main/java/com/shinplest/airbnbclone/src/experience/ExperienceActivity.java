@@ -3,7 +3,6 @@ package com.shinplest.airbnbclone.src.experience;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -14,7 +13,7 @@ import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.experience.interfaces.ExperienceActivityView;
 import com.shinplest.airbnbclone.src.experience.models.ExperienceResponse;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
-import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 public class ExperienceActivity extends BaseActivity implements ExperienceActivityView {
 
@@ -63,6 +62,9 @@ public class ExperienceActivity extends BaseActivity implements ExperienceActivi
     void updateUi(){
         mExperienceDataImages = mExperienceData.getImage().get(0).getImageUrl().split(",");
         mVpExperienceImages.setAdapter(new ExperienceViewPageAdatper(this, mExperienceDataImages));
+        WormDotsIndicator wormDotsIndicator = (WormDotsIndicator) findViewById(R.id.experience_dots_indicator);
+        wormDotsIndicator.setViewPager(mVpExperienceImages);
+
 
         ExperienceResponse.Info experienceDataInfo = mExperienceData.getInfo();
         mTvCategory.setText(experienceDataInfo.getCategory());
