@@ -206,7 +206,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="15dp"
-                                    android:src="@drawable/experience_playtime" />
+                                    android:src="@drawable/experience_offerlanguage" />
 
                                 <TextView
                                     style="@style/ExperienceGrayText"
@@ -284,10 +284,11 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/experience_verified" />
+                android:src="@drawable/experience_verified"
+                android:layout_marginBottom="40dp"/>
 
 
         </LinearLayout>

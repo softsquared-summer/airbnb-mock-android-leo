@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shinplest.airbnbclone.R;
 
 import java.util.List;
+
 import android.os.Handler;
 
 import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
@@ -30,7 +31,6 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.context = context;
         this.data = data;
     }
-
 
 
     @Override
@@ -60,27 +60,27 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
                 break;
 
-                //로그아웃 기능
+            //로그아웃 기능
             case CHILD:
                 final ListItemViewHolder itemController = (ListItemViewHolder) holder;
-                if(position != 14)
-                ((ListItemViewHolder) holder).tvItem.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "구현되지 않은 기능입니다.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                else {
-                    Toast.makeText(context, "로그아웃 되었습니다.\n 앱이 종료됩니다.", Toast.LENGTH_SHORT).show();
+                if (position != 14)
                     ((ListItemViewHolder) holder).tvItem.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Toast.makeText(context, "구현되지 않은 기능입니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                else {
+                    ((ListItemViewHolder) holder).tvItem.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "로그아웃 되었습니다.\n 앱이 종료됩니다.", Toast.LENGTH_SHORT).show();
                             final Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
                                     USER_NO = 1;
-                                    ((Activity)context).finishAffinity();
+                                    ((Activity) context).finishAffinity();
                                 }
                             }, 1000);
                         }
