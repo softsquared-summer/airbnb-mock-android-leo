@@ -63,19 +63,19 @@ public class HouseReviewResponse {
         private String  starCheckin;
 
         @SerializedName("starCommunication")
-        private int starCommunication;
+        private float starCommunication;
 
         @SerializedName("starAccuracy")
-        private int starAccuracy;
+        private float starAccuracy;
 
         @SerializedName("starLocation")
-        private int starLocation;
+        private float starLocation;
 
         @SerializedName("starClean")
-        private int starClean;
+        private float starClean;
 
         @SerializedName("starValue")
-        private int starValue;
+        private float starValue;
 
         public int getHouseNo() {
             return houseNo;
@@ -93,23 +93,23 @@ public class HouseReviewResponse {
             return starCheckin;
         }
 
-        public int getStarCommunication() {
+        public float getStarCommunication() {
             return starCommunication;
         }
 
-        public int getStarAccuracy() {
+        public float getStarAccuracy() {
             return starAccuracy;
         }
 
-        public int getStarLocation() {
+        public float getStarLocation() {
             return starLocation;
         }
 
-        public int getStarClean() {
+        public float getStarClean() {
             return starClean;
         }
 
-        public int getStarValue() {
+        public float getStarValue() {
             return starValue;
         }
     }
