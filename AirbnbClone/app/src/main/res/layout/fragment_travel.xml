@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="예정 된 여행"
+                android:text="지난 여행"
                 android:textSize="18sp" />
 
 
