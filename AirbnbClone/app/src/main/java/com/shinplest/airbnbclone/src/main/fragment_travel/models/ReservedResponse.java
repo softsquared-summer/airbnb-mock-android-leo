@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class ReservationResponse {
+public class ReservedResponse {
 
     @SerializedName("result")
     private Result result;
