@@ -21,7 +21,7 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
 
         //홀수번째 뷰면 오른쪽 여백
         if (parent.getChildLayoutPosition(view) % 2 == 0){
-            outRect.right = 60;
+            outRect.right = 80;
         }
         else{
             outRect.right = 0;

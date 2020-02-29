@@ -174,8 +174,8 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         intent.setResetBtnText("삭제"); //the reset button text
         intent.setWeekStart(Calendar.MONDAY);
         intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
-        intent.isBooking(true);
         intent.setBookingDateArray(mArrayUnavailable);
+        intent.isBooking(true);
         startActivityForResult(intent, GET_DATE);
     }
 
