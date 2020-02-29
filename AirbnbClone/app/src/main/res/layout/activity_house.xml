@@ -67,7 +67,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     app:dotsColor="@color/colorPrimary"
                     app:dotsCornerRadius="8dp"
                     app:dotsSize="6dp"
