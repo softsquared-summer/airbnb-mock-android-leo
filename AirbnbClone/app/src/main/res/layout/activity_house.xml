@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -66,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="15dp"
                     app:dotsColor="@color/colorPrimary"
                     app:dotsCornerRadius="8dp"
                     app:dotsSize="6dp"
@@ -105,7 +106,7 @@
                         android:layout_marginRight="20dp"
                         android:src="@drawable/house_save" />
                 </RelativeLayout>
-            </RelativeLayout>
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/ll_house_container"

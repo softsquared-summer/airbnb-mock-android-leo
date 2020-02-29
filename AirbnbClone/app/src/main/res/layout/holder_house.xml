@@ -30,7 +30,7 @@
             app:dotsSize="6dp"
             app:dotsSpacing="4dp"
             app:dotsStrokeColor="@color/colorPrimary"
-            app:dotsStrokeWidth="2dp" />
+            app:dotsStrokeWidth="2dp"/>
 
         <ImageView
             android:id="@+id/iv_house_holder_house_save"

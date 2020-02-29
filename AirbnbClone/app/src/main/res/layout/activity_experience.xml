@@ -22,6 +22,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="460dp" />
 
+                <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    android:id="@+id/experience_dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    app:dotsColor="@color/colorPrimary"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="6dp"
+                    app:dotsSpacing="4dp"
+                    app:dotsStrokeColor="@color/colorPrimary"
+                    app:dotsStrokeWidth="2dp"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
