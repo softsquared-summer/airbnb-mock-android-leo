@@ -20,15 +20,17 @@ public class HouseReviewService {
         this.mHouseReviewActivityView = houseReviewActivityView;
     }
 
-    void getHouseReviews(int houseNo){
+    void getHouseReviews(int houseNo) {
         final HouseReviewRetrofitInterface houseReviewRetrofitInterface = getRetrofit().create(HouseReviewRetrofitInterface.class);
         houseReviewRetrofitInterface.getHouseReviews(houseNo).enqueue(new Callback<HouseReviewResponse>() {
             @Override
             public void onResponse(Call<HouseReviewResponse> call, Response<HouseReviewResponse> response) {
                 Log.d("testtesttest", call.request().url().toString());
                 final HouseReviewResponse houseReviewResponse = response.body();
-                mHouseReviewActivityView.getHouseReviewSuccess(houseReviewResponse.getResult(), houseReviewResponse.getCode(), houseReviewResponse.getMessage());
-
+                if (houseReviewResponse != null)
+                    mHouseReviewActivityView.getHouseReviewSuccess(houseReviewResponse.getResult(), houseReviewResponse.getCode(), houseReviewResponse.getMessage());
+                else
+                    mHouseReviewActivityView.getHouseReviewFailure("이 숙소는 아직 리뷰가 없습니다.");
             }
 
             @Override

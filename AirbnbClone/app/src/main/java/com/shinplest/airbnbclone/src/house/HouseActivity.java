@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,8 +19,16 @@ import com.shinplest.airbnbclone.src.house.interfaces.HouseActivityView;
 import com.shinplest.airbnbclone.src.house.models.HouseResponse;
 import com.shinplest.airbnbclone.src.housereview.HouseReviewActivty;
 import com.shinplest.airbnbclone.src.search.adapters.SearchHouseViewPageAdatper;
+import com.yongbeom.aircalendar.core.AirCalendarIntent;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.GET_DATE;
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
 
 public class HouseActivity extends BaseActivity implements HouseActivityView {
 
@@ -33,12 +42,14 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             mTvHouseHost, mTvhouseDetail, mTvHouseMinimumStay, mTvHouseFacilty1,
             mTvHouseFacilty2, mTvHouseFacilty3, mTvHouseFacilty4, mTvHouseFacilty5,
             mTvHouseFacilty6, mTvHouseCheckIn, mTvHouseCheckOut;
-    private ImageView mIvIsSave;
+    private ImageView mIvIsSave, mIvBackArrow;
     private LinearLayout mLlMoreHouseReview;
+    private Button mBtnReserve;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme_TransparentTheme);
         setContentView(R.layout.activity_house);
         getUiSourse();
 
@@ -49,6 +60,22 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         tryGetHouseInfo();
 
         //onclidk
+        mIvIsSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //저장안되어있으면 색 바꿔주고 요청 바꾼다
+                if (mIsSave == 0) {
+                    mIvIsSave.setImageResource(R.drawable.house_saved);
+                    tryPostSaveHouse(USER_NO, mHouseNo);
+                } else {
+                    mIsSave = 0;
+                    mIvIsSave.setImageResource(R.drawable.house_save);
+                    tryDeleteHouse(USER_NO, mHouseNo);
+                }
+
+            }
+        });
+
         mLlMoreHouseReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +85,43 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             }
         });
 
+        mIvBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        mBtnReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeAriCalendar();
+            }
+        });
+
+    }
+
+    private void getUiSourse() {
+        mSvHouseHostProfile = findViewById(R.id.sv_house_host_profile);
+        mTvHouseTypeFirst = findViewById(R.id.tv_house_type_first);
+        mTvHouseTitle = findViewById(R.id.tv_houset_title);
+        mTvHouseLocation = findViewById(R.id.tv_house_location);
+        mTvHouseHost = findViewById(R.id.tv_house_host);
+        mVpHouseImages = findViewById(R.id.vp_house);
+        mTvhouseDetail = findViewById(R.id.tv_house_house_detail);
+        mTvHouseMinimumStay = findViewById(R.id.tv_house_house_minimum_stay);
+        mTvHouseFacilty1 = findViewById(R.id.tv_house_facility_1);
+        mTvHouseFacilty2 = findViewById(R.id.tv_house_facility_2);
+        mTvHouseFacilty3 = findViewById(R.id.tv_house_facility_3);
+        mTvHouseFacilty4 = findViewById(R.id.tv_house_facility_4);
+        mTvHouseFacilty5 = findViewById(R.id.tv_house_facility_5);
+        mTvHouseFacilty6 = findViewById(R.id.tv_house_facility_6);
+        mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
+        mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
+        mIvIsSave = findViewById(R.id.iv_house_save);
+        mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
+        mIvBackArrow = findViewById(R.id.iv_house_back);
+        mBtnReserve = findViewById(R.id.btn_house_reserve);
     }
 
     private void updateUi() {
@@ -101,26 +165,20 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     }
 
-    private void getUiSourse() {
-        mSvHouseHostProfile = findViewById(R.id.sv_house_host_profile);
-        mTvHouseTypeFirst = findViewById(R.id.tv_house_type_first);
-        mTvHouseTitle = findViewById(R.id.tv_houset_title);
-        mTvHouseLocation = findViewById(R.id.tv_house_location);
-        mTvHouseHost = findViewById(R.id.tv_house_host);
-        mVpHouseImages = findViewById(R.id.vp_house);
-        mTvhouseDetail = findViewById(R.id.tv_house_house_detail);
-        mTvHouseMinimumStay = findViewById(R.id.tv_house_house_minimum_stay);
-        mTvHouseFacilty1 = findViewById(R.id.tv_house_facility_1);
-        mTvHouseFacilty2 = findViewById(R.id.tv_house_facility_2);
-        mTvHouseFacilty3 = findViewById(R.id.tv_house_facility_3);
-        mTvHouseFacilty4 = findViewById(R.id.tv_house_facility_4);
-        mTvHouseFacilty5 = findViewById(R.id.tv_house_facility_5);
-        mTvHouseFacilty6 = findViewById(R.id.tv_house_facility_6);
-        mTvHouseCheckIn = findViewById(R.id.tv_house_checkin_time);
-        mTvHouseCheckOut = findViewById(R.id.tv_house_checkout_time);
-        mIvIsSave = findViewById(R.id.iv_house_save);
-        mLlMoreHouseReview = findViewById(R.id.ll_house_more_house_review);
+    private void makeAriCalendar() {
+        AirCalendarIntent intent = new AirCalendarIntent(this);
+        intent.setSelectButtonText("결과 보기"); //the select button text
+        intent.setResetBtnText("삭제"); //the reset button text
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+
+        String result = "2020-02-29,2020-03-03,2020-03-04,2020-03-05,2020-03-09,2020-03-10";
+        String[] results = result.split(",");
+        ArrayList<String> resultss = new ArrayList<>(Arrays.asList(results));
+        intent.setBookingDateArray(resultss);
+        startActivityForResult(intent, GET_DATE);
     }
+
 
     void tryGetHouseInfo() {
         final HouseService houseService = new HouseService(this);
@@ -128,11 +186,24 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
         houseService.getHouseinfo(mHouseNo);
     }
 
+    void tryPostSaveHouse(int userNo, int houseNo) {
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        ;
+        houseService.postSaveHouse(userNo, houseNo);
+    }
+
+    void tryDeleteHouse(int userNo, int houseNo) {
+        final HouseService houseService = new HouseService(this);
+        showProgressDialog();
+        ;
+        houseService.deleteSavedHouse(userNo, houseNo);
+    }
+
     @Override
     public void getHouseSuccess(HouseResponse.Result houseResponseResult, int code, String message) {
         hideProgressDialog();
         if (code == 100) {
-            showCustomToast("하우스 데이터 가져오기 성공");
             mHouseData = houseResponseResult;
             updateUi();
         }
@@ -140,6 +211,35 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
 
     @Override
     public void getHouseFailure(String message) {
+        hideProgressDialog();
+        showCustomToast("실패");
+    }
+
+    @Override
+    public void saveHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장 목록에 저장되었습니다.");
+        }
+    }
+
+    @Override
+    public void saveHouseFailure(String message) {
+        hideProgressDialog();
+        showCustomToast("실패");
+
+    }
+
+    @Override
+    public void deleteHouseSuccess(int code, String message) {
+        hideProgressDialog();
+        if (code == 100) {
+            showCustomToast("저장 목록에서 삭제되었습니다.");
+        }
+    }
+
+    @Override
+    public void deleteHouseFailure(String message) {
         hideProgressDialog();
         showCustomToast("실패");
     }

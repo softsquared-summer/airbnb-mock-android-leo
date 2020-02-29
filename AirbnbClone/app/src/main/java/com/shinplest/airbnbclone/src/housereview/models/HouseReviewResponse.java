@@ -44,9 +44,9 @@ public class HouseReviewResponse {
             return reviews;
         }
 
-//        public Evaluation getEvaluation() {
-//            return evaluation;
-//        }
+        public Evaluation getEvaluation() {
+            return evaluation;
+        }
     }
 
     public class Evaluation {

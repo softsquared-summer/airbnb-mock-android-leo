@@ -69,7 +69,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
 
         //프로필 아래 메뉴 추가
         List<ExpandableListAdapter.Item> data = addExpandableListData();
-        mRvSetting.setAdapter(new ExpandableListAdapter(data));
+        mRvSetting.setAdapter(new ExpandableListAdapter(data, getContext()));
 
         //로그아웃 하기위해서 가져옴
         mAuth = FirebaseAuth.getInstance();
@@ -77,17 +77,17 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         mSdProfilePhoto = view.findViewById(R.id.sd_frag_profile_profile);
         mTvUserName = view.findViewById(R.id.tv_frag_profile_username);
         updateUI(mAuth);
-        //구글 로그아웃
-        mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
-        mBtnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //로그아웃하고 앱 자체 종료
-                signOut();
-                showCustomToastFrag("로그아웃 되었습니다. ");
-                getActivity().finishAffinity();
-            }
-        });
+//        //구글 로그아웃
+//        mBtnLogout = view.findViewById(R.id.btn_frag_profile_logout);
+//        mBtnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //로그아웃하고 앱 자체 종료
+//                signOut();
+//                showCustomToastFrag("로그아웃 되었습니다. ");
+//                getActivity().finishAffinity();
+//            }
+//        });
 
 
         return view;
@@ -101,7 +101,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         tryGetSimpleUserInfo();
     }
 
-    private void getUiSourse(){
+    private void getUiSourse() {
 
     }
 
@@ -159,7 +159,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentView
         hideProgressDialog();
         mTvUserName.setText(firstName);
         mSdProfilePhoto.setImageURI(Uri.parse(profileImgUrl));
-        showCustomToastFrag(message);
     }
 
     @Override

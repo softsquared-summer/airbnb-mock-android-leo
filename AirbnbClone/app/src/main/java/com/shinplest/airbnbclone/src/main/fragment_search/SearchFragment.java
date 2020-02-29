@@ -107,13 +107,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mBtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomToastFrag("show calender");
-                AirCalendarIntent intent = new AirCalendarIntent(getActivity());
-                intent.setSelectButtonText("결과 보기"); //the select button text
-                intent.setResetBtnText("삭제"); //the reset button text
-                intent.setWeekStart(Calendar.MONDAY);
-                intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
-                startActivityForResult(intent, GET_DATE);
+                makeAriCalendar();
             }
         });
 
@@ -123,7 +117,7 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         mRvLookAround.setHasFixedSize(true);
         mHorizontalLayoutManagerLookAround = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvLookAround.setLayoutManager(mHorizontalLayoutManagerLookAround);
-        mRvLookAround.setAdapter(new LookAroundAdapter(FirstReyclerTextSet, FirstRecyclerUrlSet));
+        mRvLookAround.setAdapter(new LookAroundAdapter(getActivity(), FirstReyclerTextSet, FirstRecyclerUrlSet));
         snapHelper.attachToRecyclerView(mRvLookAround);
 
 
@@ -148,6 +142,15 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
         return view;
     }
 
+    private void makeAriCalendar() {
+        AirCalendarIntent intent = new AirCalendarIntent(getActivity());
+        intent.setSelectButtonText("결과 보기"); //the select button text
+        intent.setResetBtnText("삭제"); //the reset button text
+        intent.setWeekStart(Calendar.MONDAY);
+        intent.setWeekDaysLanguage(AirCalendarIntent.Language.KO); //language for the weekdays
+        startActivityForResult(intent, GET_DATE);
+    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -161,7 +164,6 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
 
     private void updateUI(FirebaseAuth auth) {
         GoogleUserInfo user = new GoogleUserInfo(auth);
-
         if (user != null)
             mTvLookAround.setText(user.getGoogleUserName() + "님, 무엇을 찾고 계신가요?");
     }
@@ -181,12 +183,11 @@ public class SearchFragment extends BaseFragment implements SearchFragmentView {
             //데이터 가져오면 알려줌
             mExperienceAdapter.notifyDataSetChanged();
         }
-        showCustomToastFrag("성공");
-
     }
 
     @Override
     public void getExperiencessFailure(String message) {
-
+        hideProgressDialog();
+        showCustomToastFrag("실패");
     }
 }

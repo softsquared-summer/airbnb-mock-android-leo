@@ -53,6 +53,8 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     private ListView mLvSearchLocation;
     private ImageView mIvEraseInput;
 
+    private String mSearchWord;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,13 +73,13 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 hideKeyboard();
                 TextView textView = view.findViewById(R.id.tv_search_list_location);
-                String searchWord = textView.getText().toString();
-                showCustomToast(searchWord);
+                mSearchWord = textView.getText().toString();
+                showCustomToast(mSearchWord);
                 //하우스 데이터 가져옴
-                tryGetSimpleHouseInfo(searchWord);
+                tryGetSimpleHouseInfo(mSearchWord);
                 mLlSearchTopContainer.setVisibility(View.GONE);
                 mClSearchHouseContainer.setVisibility(View.VISIBLE);
-                mTvSearchLocation.setText(searchWord + " 숙소");
+                mTvSearchLocation.setText(mSearchWord + " 숙소");
             }
         });
 
@@ -88,18 +90,14 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
             }
 
-            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String searchWord = s.toString();
-                tryGetExistLocation(searchWord);
-                mSearchHouseAdapter.notifyDataSetChanged();
-
             }
-
+            //텍스트가 변할때 마다 검색리스트를 불러옴
             @Override
             public void afterTextChanged(Editable s) {
-
+                String searchWord = s.toString();
+                tryGetExistLocation(searchWord);
             }
         });
 
@@ -134,6 +132,16 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
         mRvHouses.setLayoutManager(new LinearLayoutManager(this));
         mSearchHouseAdapter = new SearchHousesAdapter(this, mHouseDataList, this);
         mRvHouses.setAdapter(mSearchHouseAdapter);
+    }
+
+    //네트워크 부분
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //시작할때 데이터 다시 받아오고 알려준다
+        if (mSearchWord != null)
+            tryGetSimpleHouseInfo(mSearchWord);
+        mSearchHouseAdapter.notifyDataSetChanged();
     }
 
     private void getUiSource() {
@@ -185,22 +193,23 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
     @Override
     public void searchSuccess(ArrayList<String> existLocationList, String code, String message) {
         hideProgressDialog();
-
-        //검색결과가 없을때 제외하고 바꿔주고 바꼈다고 알려줌
+        mLocationList.clear();
+        mSearchLocationListAdaper.notifyDataSetChanged();
         if (existLocationList.size() != 0) {
-            mLocationList.clear();
             //아무것도없는값 보내줄때 예외처리
             if (existLocationList.get(0).equals("")) {
                 return;
             }
             mLocationList.addAll(existLocationList);
-            mSearchLocationListAdaper.notifyDataSetChanged();
         }
+        mSearchLocationListAdaper.notifyDataSetChanged();
+
     }
 
     @Override
     public void searchFailure() {
         hideProgressDialog();
+        showCustomToast("검색값 조회 실패");
     }
 
     @Override

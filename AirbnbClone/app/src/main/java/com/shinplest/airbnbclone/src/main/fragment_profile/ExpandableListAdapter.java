@@ -1,5 +1,6 @@
 package com.shinplest.airbnbclone.src.main.fragment_profile;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -15,15 +16,22 @@ import com.shinplest.airbnbclone.R;
 
 import java.util.List;
 
+import android.os.Handler;
+
+import static com.shinplest.airbnbclone.src.general.ApplicationClass.USER_NO;
+
 public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int HEADER = 0;
     public static final int CHILD = 1;
 
     private List<Item> data;
+    private Context context;
 
-    public ExpandableListAdapter(List<Item> data) {
+    public ExpandableListAdapter(List<Item> data, Context context) {
+        this.context = context;
         this.data = data;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int type) {
@@ -38,7 +46,6 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 LayoutInflater itemInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 itemView = itemInflater.inflate(R.layout.expandable_list_item_frag_profile, parent, false);
                 return new ListItemViewHolder(itemView);
-
         }
         return null;
     }
@@ -52,8 +59,33 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 headerController.header_title.setText(item.text);
 
                 break;
+
+            //로그아웃 기능
             case CHILD:
                 final ListItemViewHolder itemController = (ListItemViewHolder) holder;
+                if (position != 14)
+                    ((ListItemViewHolder) holder).tvItem.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "구현되지 않은 기능입니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                else {
+                    ((ListItemViewHolder) holder).tvItem.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "로그아웃 되었습니다.\n 앱이 종료됩니다.", Toast.LENGTH_SHORT).show();
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    USER_NO = 1;
+                                    ((Activity) context).finishAffinity();
+                                }
+                            }, 1000);
+                        }
+                    });
+                }
                 itemController.tvItem.setText(data.get(position).text);
                 itemController.ivItem.setImageDrawable(data.get(position).image);
                 break;

@@ -128,6 +128,10 @@ public class ExperienceResponse {
             return evaluation;
         }
 
+        public String getPersonnel() {
+            return personnel;
+        }
+
         public String getJuso() {
             return juso;
         }

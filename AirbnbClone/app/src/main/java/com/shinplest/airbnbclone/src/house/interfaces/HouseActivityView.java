@@ -6,4 +6,12 @@ public interface HouseActivityView {
     void getHouseSuccess(HouseResponse.Result houseResponseResult, int code, String message);
 
     void getHouseFailure(String message);
+
+    void saveHouseSuccess(int code, String message);
+
+    void saveHouseFailure(String message);
+
+    void deleteHouseSuccess(int code, String message);
+
+    void deleteHouseFailure(String message);
 }

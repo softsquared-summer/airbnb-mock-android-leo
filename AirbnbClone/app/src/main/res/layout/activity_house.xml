@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
@@ -32,6 +30,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_house_reserve"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
@@ -59,9 +58,10 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/vp_house"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp" />
+                    android:layout_height="280dp" />
 
                 <RelativeLayout
+                    android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp">
 
@@ -75,8 +75,8 @@
 
                     <ImageView
                         android:id="@+id/iv_house_share"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="20dp"
                         android:layout_toLeftOf="@id/iv_house_save"
@@ -84,8 +84,8 @@
 
                     <ImageView
                         android:id="@+id/iv_house_save"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="20dp"
@@ -102,6 +102,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -231,6 +232,7 @@
                             android:text="house detail" />
 
                         <TextView
+                            android:layout_marginTop="5dp"
                             style="@style/HouseBasicText"
                             android:text="더 읽어보기"
                             android:textAlignment="textEnd"
@@ -544,6 +546,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="후기 429개 모두 읽기"
+                            android:textSize="16sp"
                             android:textColor="@color/clickableText" />
 
                         <TextView
@@ -551,6 +554,7 @@
                             android:layout_weight="1"
                             android:textAlignment="textEnd"
                             android:layout_height="wrap_content"
+                            android:textSize="16sp"
                             android:text="★★★★★"
                             android:textColor="@color/clickableText" />
 

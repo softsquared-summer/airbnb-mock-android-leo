@@ -1,10 +1,14 @@
 package com.shinplest.airbnbclone.src.main.fragment_search.adapters;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -12,17 +16,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
+import com.shinplest.airbnbclone.src.search.SearchActivity;
 
 public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.MyViewHolder> {
 
+    private Activity context;
     private String[] textSet;
     private String[] urlSet;
 
-    // 생성자
-    public LookAroundAdapter(String[] textSet, String[] imgSet) {
+    public LookAroundAdapter(Activity context, String[] textSet, String[] urlSet) {
+        this.context = context;
         this.textSet = textSet;
-        this.urlSet = imgSet;
+        this.urlSet = urlSet;
     }
+
 
     // 리사이클러뷰에 들어갈 뷰 홀더, 그리고 그 뷰 홀더에 들어갈 아이템들을 지정
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -47,7 +54,25 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (position) {
+                    case 1:
+                        Intent intent = new Intent(context, SearchActivity.class);
+                        context.startActivity(intent);
+                        break;
+                    case 2:
+                        //go to 체험
+                        Toast.makeText(context, R.string.not_yet, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(context, R.string.not_yet, Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
         holder.textView.setText(this.textSet[position]);
         //fresco로 이미지 넣어주자
         Uri uri = Uri.parse(this.urlSet[position]);
@@ -60,6 +85,7 @@ public class LookAroundAdapter extends RecyclerView.Adapter<LookAroundAdapter.My
         }
 
     }
+
     @Override
     public int getItemCount() {
         return textSet.length;

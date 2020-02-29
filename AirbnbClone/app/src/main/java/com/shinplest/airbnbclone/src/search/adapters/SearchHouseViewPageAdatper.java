@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.shinplest.airbnbclone.R;
 
@@ -21,6 +22,7 @@ public class SearchHouseViewPageAdatper extends PagerAdapter {
     LayoutInflater layoutInflater;
 
     public SearchHouseViewPageAdatper(Context context, String[] urls) {
+        Fresco.initialize(context);
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
