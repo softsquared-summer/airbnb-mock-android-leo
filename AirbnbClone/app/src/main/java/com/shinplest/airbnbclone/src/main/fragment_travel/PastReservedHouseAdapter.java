@@ -32,8 +32,8 @@ public class PastReservedHouseAdapter extends RecyclerView.Adapter<PastReservedH
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.mSvReservedHousePhoto = itemView.findViewById(R.id.sv_holder_reserved_house_img);
-            this.mTvReservedDate = itemView.findViewById(R.id.tv_holder_reserved_house_name);
-            this.mTvReservedHouseName = itemView.findViewById(R.id.tv_holder_reserved_date);
+            this.mTvReservedHouseName = itemView.findViewById(R.id.tv_holder_reserved_house_name);
+            this.mTvReservedDate = itemView.findViewById(R.id.tv_holder_reserved_date);
 
         }
     }
