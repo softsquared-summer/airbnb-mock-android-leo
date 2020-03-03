@@ -74,7 +74,6 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
                 hideKeyboard();
                 TextView textView = view.findViewById(R.id.tv_search_list_location);
                 mSearchWord = textView.getText().toString();
-                showCustomToast(mSearchWord);
                 //하우스 데이터 가져옴
                 tryGetSimpleHouseInfo(mSearchWord);
                 mLlSearchTopContainer.setVisibility(View.GONE);
@@ -159,7 +158,7 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
 
     private void tryGetExistLocation(String searchWord) {
         final SearchService searchService = new SearchService(this);
-        showProgressDialog();
+        //showProgressDialog();
         searchService.getExistLocationList(searchWord);
     }
 

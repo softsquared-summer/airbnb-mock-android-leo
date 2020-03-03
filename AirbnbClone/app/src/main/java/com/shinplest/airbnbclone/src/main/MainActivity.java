@@ -147,8 +147,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     public void validateJwtLoginSuccess(String message, int userNo) {
         hideProgressDialog();
-        showCustomToast("user no"+userNo);
         USER_NO = userNo;
+        Log.d("debugcheck", "userno is" + userNo);
     }
 
     @Override
