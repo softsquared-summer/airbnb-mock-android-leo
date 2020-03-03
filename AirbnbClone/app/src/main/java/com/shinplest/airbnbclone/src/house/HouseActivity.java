@@ -116,7 +116,6 @@ public class HouseActivity extends BaseActivity implements HouseActivityView {
             if (data != null) {
                 String startDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_START_DATE);
                 String endDate = data.getStringExtra(AirCalendarDatePickerActivity.RESULT_SELECT_END_DATE);
-                showCustomToast("Select Date range : \n" +  startDate+ "~" + endDate);
                 RequestReserve requestReserve = new RequestReserve();
                 requestReserve.setUserNo(USER_NO);
                 requestReserve.setCheckIn(startDate);
