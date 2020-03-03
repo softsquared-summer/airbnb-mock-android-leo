@@ -79,7 +79,6 @@ public class TravelFragment extends BaseFragment implements TravelFragmentView {
         if (code == 100) {
             //널이아닐때만 해줘야함 데이터가 있을경우만 널익셉션 해주자
             mIvNoTravel.setVisibility(View.GONE);
-            showCustomToastFrag(result.getReservationList().get(0).getName());
             mReservedHouseList.addAll(result.getReservationList());
             mPastReservedHouseList.addAll(result.getPastReservationList());
             mReservedHouseAdapter.notifyDataSetChanged();

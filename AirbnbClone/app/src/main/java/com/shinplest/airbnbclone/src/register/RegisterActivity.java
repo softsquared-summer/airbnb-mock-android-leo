@@ -77,7 +77,6 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityVi
     @Override
     public void validateSuccess(String text, int code) {
         hideProgressDialog();
-        showCustomToast(text);
         if (code == 100) {
             showCustomToast("회원 가입이 성공했습니다.\n로그인 하세요.");
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
