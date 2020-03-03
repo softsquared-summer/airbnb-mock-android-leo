@@ -60,7 +60,6 @@ public class SavelistFragment extends BaseFragment implements SavelistFragmentVi
             mSavedHouseList.addAll(savedHouseList);
             mSaveListAdapter.notifyDataSetChanged();
         }
-        showCustomToastFrag(message);
     }
 
     @Override
