@@ -53,7 +53,6 @@ public class ProfileModifyActivity extends BaseActivity implements ProfileModify
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
         setContentView(R.layout.activity_profile_modify);
         getUiSource();
         //프로필액티비티로부터 프로필 인텐트 받음

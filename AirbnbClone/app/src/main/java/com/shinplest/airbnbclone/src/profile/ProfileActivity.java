@@ -30,7 +30,6 @@ public class ProfileActivity extends BaseActivity implements ProfileActivityView
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
         setContentView(R.layout.activity_profile);
         //가장먼저 ui 가져옴
         getUiSourse();
