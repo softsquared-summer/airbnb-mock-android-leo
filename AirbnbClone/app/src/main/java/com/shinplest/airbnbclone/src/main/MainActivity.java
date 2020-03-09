@@ -80,7 +80,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
 
         setTheme(R.style.AppTheme);
         setContentView(R.layout.activity_main);

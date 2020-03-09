@@ -21,9 +21,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //프레스코는 한번만 이니시 되야 메모리 리크 막는다고 안내하더라.
-        Fresco.initialize(this);
-
         Intent activityIntent;
         // 여기서 해야할 것 .
 

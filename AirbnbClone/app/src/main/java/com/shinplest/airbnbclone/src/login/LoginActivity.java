@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.shinplest.airbnbclone.R;
 import com.shinplest.airbnbclone.src.general.BaseActivity;
 import com.shinplest.airbnbclone.src.login.interfaces.LoginActivityView;
@@ -26,6 +27,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_login);
 
         //상단 버튼 누를시 뒤로가기

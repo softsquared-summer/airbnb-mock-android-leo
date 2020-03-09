@@ -22,7 +22,6 @@ public class SearchHouseViewPageAdatper extends PagerAdapter {
     LayoutInflater layoutInflater;
 
     public SearchHouseViewPageAdatper(Context context, String[] urls) {
-        Fresco.initialize(context);
         this.context = context;
         this.urls = urls;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
